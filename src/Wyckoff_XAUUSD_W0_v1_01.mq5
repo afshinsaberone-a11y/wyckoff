@@ -998,3 +998,10 @@ void OnTick()
      {
       g_setup.stage=ST_IN_POSITION;
       return;
+     }
+   if(IsNewBar(InpSignalTF,g_lastSignalBar))
+      ProcessSignalBar();
+   if(IsNewBar(InpEntryTF,g_lastEntryBar))
+      ProcessEntryBar();
+  }
+//+------------------------------------------------------------------+
