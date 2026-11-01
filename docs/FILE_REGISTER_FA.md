@@ -1,32 +1,41 @@
-# فهرست فایل‌ها و وضعیت انتقال
+# فهرست فایل‌ها و وضعیت آرشیو GitHub
 
-این فهرست بر اساس فایل‌های قابل مشاهده در تاریخچه گفت‌وگو تهیه شده است. وجود نام در این فهرست به معنی انتقال فایل به GitHub نیست.
+## منتقل‌شده و قابل دسترسی در مخزن
 
-## سورس‌های MQ5 مشاهده‌شده
-- Wyckoff_XAUUSD_W0.mq5
-- Wyckoff_XAUUSD_W0_v1_01.mq5
-- Wyckoff_XAUUSD_W0_v1_02.mq5 (دو خروجی هم‌نام در تاریخچه)
-- Wyckoff_XAUUSD_W0_v1_03.mq5
-- Wyckoff_XAUUSD_W0_v1_04.mq5
-- Wyckoff_XAUUSD_W0_v1_05.mq5
-- Wyckoff_XAUUSD_W0_v1_06.mq5
-- Wyckoff_XAUUSD_W0_v1_07.mq5
+### سورس‌ها
+- src/Wyckoff_XAUUSD_W0_base.mq5 (سورس پایه)
+- src/Wyckoff_XAUUSD_W0_v1_01.mq5 تا src/Wyckoff_XAUUSD_W0_v1_07.mq5
 
-## لاگ‌ها و داده‌های تست مشاهده‌شده
-- 20261101.log و 20261101(1).log
-- Wyckoff_W0_events.csv و Wyckoff_W0_events_cleaned_fullrun.csv
-- Wyckoff_W0_events_v1_03.csv و Wyckoff_W0_events_v1_04.csv
-- Wyckoff_W0_events_v1_05_E12.csv، Wyckoff_W0_events_v1_05_E18.csv، Wyckoff_W0_events_v1_05_E24.csv
-- Wyckoff_W0_events_v1_06_E12.csv
-- ReportTester-20181902waykof.xlsx
-- فایل تستر v1.01 با پسوند TST
+### لاگ‌ها
+- reports/20261101.log (۱۱۳۱ خط؛ کامل)
+- reports/20261101_1.log (۲۷۶۶ خط؛ کامل)
 
-## بسته‌های ZIP مشاهده‌شده
-بسته‌هایی با نام Wyckoff_XAUUSD_W0_package.zip و نسخه‌های v1.01 تا v1.06 در تاریخچه دیده شده‌اند. محتوا و یکپارچگی آن‌ها هنوز در GitHub تأیید نشده است.
+### رویدادها و CSV
+- events/Wyckoff_W0_events.csv
+- events/Wyckoff_W0_events_cleaned_fullrun.csv
+- events/Wyckoff_W0_events_v1_03.csv
+- events/Wyckoff_W0_events_v1_04.csv
+- events/Wyckoff_W0_events_v1_05_E12.csv
+- events/Wyckoff_W0_events_v1_05_E18.csv
+- events/Wyckoff_W0_events_v1_05_E24.csv
+- events/Wyckoff_W0_events_v1_06_E12.csv
 
-## ثبت‌شده در GitHub تا این لحظه
+### مستندات
+- README.md
 - docs/PROJECT_STATUS_FA.md
 - docs/BACKTEST_HISTORY_FA.md
+- docs/FILE_REGISTER_FA.md
+- docs/DEVELOPMENT_RULES_FA.md
 
-## محدودیت آرشیو چت
-این مخزن فعلاً خلاصه فنی را ثبت می‌کند، نه متن کامل و کلمه‌به‌کلمه تمام پیام‌های چت. برای آرشیو کامل باید خروجی رسمی گفتگو جداگانه دریافت و پس از بازبینی حریم خصوصی اضافه شود.
+## فایل‌های موجود در تاریخچه که هنوز به‌صورت باینری منتقل نشده‌اند
+- بسته‌های ZIP پروژه و نسخه‌های v1.01 تا v1.06
+- فایل تستر با پسوند TST نسخه v1.01
+- ReportTester-20181902waykof.xlsx
+
+محدودیت فعلی ابزار اتصال GitHub: امکان ایجاد/به‌روزرسانی فایل متنی UTF-8 و ثبت CSV/LOG/MQ5 متنی وجود دارد؛ مسیر بارگذاری مستقیم بایت‌های فایل‌های باینری ZIP/TST/XLSX از فایل‌های پیوست‌شده در این محیط در دسترس نیست. فایل XLSX نیز از مسیر استخراج متن، محتوای قابل خواندن ارائه نکرد.
+
+## نکته درباره کامل بودن چت
+این مخزن شامل جمع‌بندی فنی و فایل‌های پروژه قابل انتقال است، نه نسخه کامل و کلمه‌به‌کلمه تمام پیام‌های گفتگو. برای آرشیو کامل چت، باید Export رسمی گفتگو از رابط ChatGPT گرفته و پس از بررسی اطلاعات خصوصی به مخزن اضافه شود.
+
+## هشدار صحت
+ثبت فایل در GitHub فقط انتقال محتوا را ثابت می‌کند؛ به معنی کامپایل موفق، تأیید صحت منطق، یا سودآوری اکسپرت نیست. سورس‌ها با نام نسخه آرشیو شده‌اند و باید جداگانه در MetaEditor کامپایل و با گزارش تست متناظر ممیزی شوند.
