@@ -998,3 +998,386 @@ void ProcessEntryBar()
 
    double atrEntry=0.0;
    GetATR(g_atrEntryHandle,atrEntry);
+   bool triggerSent=false;
+   double breakLevel=0.0;
+   bool directionPass=false,bodyPass=(share>=InpMinConfirmBodyShare),breakPass=false;
+   double distanceToBreakPoints=0.0;
+
+   if(g_setup.direction==WYCKOFF_BUY)
+     {
+      double priorHigh=-DBL_MAX;
+      for(int i=1;i<=InpEntryBreakLookback;i++) priorHigh=MathMax(priorHigh,rates[i].high);
+      breakLevel=priorHigh;
+      g_setup.entryLastBreakLevel=priorHigh;
+      directionPass=(bar.close>bar.open);
+      breakPass=(bar.close>priorHigh);
+      distanceToBreakPoints=(priorHigh-bar.close)/g_point;
+      if(directionPass) g_setup.entryDirectionalBars++;
+      if(bodyPass) g_setup.entryBodyPassBars++;
+      if(breakPass) g_setup.entryBreakPassBars++;
+      if(directionPass && bodyPass && breakPass)
+        {
+         LogEvent("M5_BUY_TRIGGER","close="+DoubleToString(bar.close,g_digits)+
+                  "; priorHigh="+DoubleToString(priorHigh,g_digits)+
+                  "; bodyShare="+DoubleToString(share,3));
+         triggerSent=PlaceTrade(WYCKOFF_BUY,bar);
+        }
+     }
+   else if(g_setup.direction==WYCKOFF_SELL)
+     {
+      double priorLow=DBL_MAX;
+      for(int i=1;i<=InpEntryBreakLookback;i++) priorLow=MathMin(priorLow,rates[i].low);
+      breakLevel=priorLow;
+      g_setup.entryLastBreakLevel=priorLow;
+      directionPass=(bar.close<bar.open);
+      breakPass=(bar.close<priorLow);
+      distanceToBreakPoints=(bar.close-priorLow)/g_point;
+      if(directionPass) g_setup.entryDirectionalBars++;
+      if(bodyPass) g_setup.entryBodyPassBars++;
+      if(breakPass) g_setup.entryBreakPassBars++;
+      if(directionPass && bodyPass && breakPass)
+        {
+         LogEvent("M5_SELL_TRIGGER","close="+DoubleToString(bar.close,g_digits)+
+                  "; priorLow="+DoubleToString(priorLow,g_digits)+
+                  "; bodyShare="+DoubleToString(share,3));
+         triggerSent=PlaceTrade(WYCKOFF_SELL,bar);
+        }
+     }
+
+   if(InpLogEntryEvaluation)
+     {
+      double gapATR=(atrEntry>0.0 ? (distanceToBreakPoints*g_point)/atrEntry : 0.0);
+      string eval="bar="+TimeToString(bar.time,TIME_DATE|TIME_MINUTES)+
+                  "; checked="+(string)g_setup.entryBarsChecked+
+                  "; O="+DoubleToString(bar.open,g_digits)+
+                  "; H="+DoubleToString(bar.high,g_digits)+
+                  "; L="+DoubleToString(bar.low,g_digits)+
+                  "; C="+DoubleToString(bar.close,g_digits)+
+                  "; breakLevel="+DoubleToString(breakLevel,g_digits)+
+                  "; directionPass="+(directionPass ? "1" : "0")+
+                  "; bodyPass="+(bodyPass ? "1" : "0")+
+                  "; breakPass="+(breakPass ? "1" : "0")+
+                  "; bodyShare="+DoubleToString(share,3)+
+                  "; distanceToBreakPoints="+DoubleToString(distanceToBreakPoints,1)+
+                  "; distanceToBreakATR="+DoubleToString(gapATR,3);
+      LogEvent("M5_ENTRY_EVALUATION",eval);
+     }
+
+   if(g_setup.stage==ST_WAIT_ENTRY && !triggerSent &&
+      g_setup.entryBarsChecked>=InpEntryExpiryBars)
+      LogEntryExpiryAndReset();
+  }
+
+//------------------------------ H1 state machine ---------------------
+void ProcessSignalBar()
+  {
+   if(HasOurPosition())
+     {
+      g_setup.stage=ST_IN_POSITION;
+      return;
+     }
+   if(g_setup.stage==ST_IN_POSITION)
+     {
+      ResetSetup("POSITION_CLOSED");
+      return;
+     }
+   double atr=0.0;
+   if(!GetATR(g_atrSignalHandle,atr)) return;
+   int need=MathMax(InpStrengthSwingLookback+2,4);
+   MqlRates rates[];
+   if(!GetRates(InpSignalTF,1,need,rates)) return;
+   MqlRates bar=rates[0];
+
+   if(g_setup.stage==ST_IDLE)
+     {
+      // Do not lose a Spring/UTAD that appears on the first candle after
+      // the range window. DetectRange uses bars from shift 2 onward; process
+      // the latest closed candle (shift 1) immediately against those levels.
+      if(DetectRange())
+         ProcessWaitEvent(bar,atr);
+      return;
+     }
+
+   g_setup.rangeAge++;
+   if(g_setup.rangeAge>InpRangeMaxAgeBars)
+     {
+      ResetSetup("RANGE_EXPIRED");
+      return;
+     }
+
+   switch(g_setup.stage)
+     {
+      case ST_WAIT_EVENT:
+         ProcessWaitEvent(bar,atr);
+         break;
+      case ST_WAIT_TEST:
+         ProcessWaitTest(bar,atr);
+         break;
+      case ST_WAIT_STRENGTH:
+         ProcessWaitStrength(rates,atr);
+         break;
+      case ST_WAIT_PULLBACK:
+         ProcessWaitPullback(bar,atr);
+         break;
+      case ST_WAIT_ENTRY:
+         // Entry trigger is evaluated only on a newly closed M5 candle.
+         break;
+      default:
+         break;
+     }
+  }
+
+//------------------------------ MT5 events ---------------------------
+int OnInit()
+  {
+   if(InpRiskPercent<=0.0 || InpRewardRisk<=0.0 || InpRangeLookbackBars<InpRangeMinBars ||
+      InpRangeMinBars<10 || InpRangeMaxBars<InpRangeMinBars || InpRangeATRPeriod<2 ||
+      InpM5ATRPeriod<2 || InpEntryBreakLookback<1 || InpStopLookbackM5<2 ||
+      InpStrengthSwingLookback<2 || InpEntryExpiryBars<1 ||
+      InpMaxSpreadPoints<=0.0 || InpMaxStopATR<=0.0)
+     {
+      Print("[Wyckoff W0] Invalid input parameters. Check risk, range, ATR and entry settings.");
+      return INIT_PARAMETERS_INCORRECT;
+     }
+   g_symbol=(InpTradeSymbol=="" ? _Symbol : InpTradeSymbol);
+   g_initialBalance=AccountInfoDouble(ACCOUNT_BALANCE);
+   if(!SymbolSelect(g_symbol,true))
+     {
+      Print("[Wyckoff W0] Cannot select symbol: ",g_symbol);
+      return INIT_FAILED;
+     }
+   g_digits=(int)SymbolInfoInteger(g_symbol,SYMBOL_DIGITS);
+   g_point=SymbolInfoDouble(g_symbol,SYMBOL_POINT);
+   if(g_digits<0 || g_point<=0.0)
+     {
+      Print("[Wyckoff W0] Invalid symbol properties for ",g_symbol);
+      return INIT_FAILED;
+     }
+   g_atrSignalHandle=iATR(g_symbol,InpSignalTF,InpRangeATRPeriod);
+   g_atrEntryHandle=iATR(g_symbol,InpEntryTF,InpM5ATRPeriod);
+   if(InpUseH4ContextFilter)
+      g_emaStructureHandle=iMA(g_symbol,InpStructureTF,InpH4EMAPeriod,0,MODE_EMA,PRICE_CLOSE);
+   if(g_atrSignalHandle==INVALID_HANDLE || g_atrEntryHandle==INVALID_HANDLE ||
+      (InpUseH4ContextFilter && g_emaStructureHandle==INVALID_HANDLE))
+     {
+      Print("[Wyckoff W0] Failed to create indicator handle. Error=",GetLastError());
+      return INIT_FAILED;
+     }
+   trade.SetExpertMagicNumber(InpMagicNumber);
+   trade.SetDeviationInPoints(InpDeviationPoints);
+   g_csvFileName=EffectiveCSVFileName();
+   if(InpExportCSV && (bool)MQLInfoInteger(MQL_OPTIMIZATION))
+     {
+      // FILE_COMMON is shared by optimization agents; do not let concurrent passes
+      // overwrite or interleave each other's event streams.
+      Print("[Wyckoff W0] CSV export is disabled during Optimization. Run a single test to create the CSV.");
+     }
+   else if(InpExportCSV)
+     {
+      // Store the CSV in the common terminal Files directory. Start each single test
+      // with a fresh file so previous runs cannot be appended accidentally.
+      string commonFilesPath=TerminalInfoString(TERMINAL_COMMONDATA_PATH)+"\\Files\\"+g_csvFileName;
+      bool canStartCSV=true;
+      if(FileIsExist(g_csvFileName,FILE_COMMON))
+        {
+         ResetLastError();
+         if(!FileDelete(g_csvFileName,FILE_COMMON))
+           {
+            Print("[Wyckoff W0] CSV start aborted: previous file could not be removed. Error=",GetLastError(),
+                  "; close any program that may have the CSV open: ",commonFilesPath);
+            canStartCSV=false;
+           }
+        }
+      if(canStartCSV)
+        {
+         ResetLastError();
+         g_csvHandle=FileOpen(g_csvFileName,
+                              FILE_READ|FILE_WRITE|FILE_CSV|FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_ANSI|FILE_COMMON,',');
+         if(g_csvHandle==INVALID_HANDLE)
+            Print("[Wyckoff W0] CSV open failed. Error=",GetLastError(),"; expected path: ",commonFilesPath);
+         else
+           {
+            FileWrite(g_csvHandle,"ServerTime","EA_Version","Symbol","InitialBalance",
+                      "SetupID","Direction","Event","Details","RangeHigh","RangeLow","PositionID");
+            FileFlush(g_csvHandle);
+            Print("[Wyckoff W0] CSV logging enabled (fresh file). File: ",commonFilesPath);
+           }
+        }
+     }
+   g_lastSignalBar=iTime(g_symbol,InpSignalTF,0);
+   g_lastEntryBar=iTime(g_symbol,InpEntryTF,0);
+   ResetSetup("");
+   if(InpExportCSV && g_csvHandle!=INVALID_HANDLE)
+      LogEvent("EA_INIT","CSV logging started; initialBalance="+DoubleToString(g_initialBalance,2)+
+                "; accountCurrency="+AccountInfoString(ACCOUNT_CURRENCY)+
+                "; minVolume="+DoubleToString(SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_MIN),2)+
+                "; volumeStep="+DoubleToString(SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_STEP),2));
+   DebugPrint("v1.05 initialized on "+g_symbol+"; SignalTF="+EnumToString(InpSignalTF)+
+              "; EntryTF="+EnumToString(InpEntryTF)+
+              "; Risk="+DoubleToString(InpRiskPercent,2)+"%; RR="+DoubleToString(InpRewardRisk,2));
+   return INIT_SUCCEEDED;
+  }
+
+string DealReasonName(const long reason)
+  {
+   switch((ENUM_DEAL_REASON)reason)
+     {
+      case DEAL_REASON_SL: return "SL";
+      case DEAL_REASON_TP: return "TP";
+      case DEAL_REASON_SO: return "STOP_OUT";
+      case DEAL_REASON_EXPERT: return "EXPERT";
+      case DEAL_REASON_CLIENT: return "CLIENT";
+      case DEAL_REASON_MOBILE: return "MOBILE";
+      case DEAL_REASON_WEB: return "WEB";
+      case DEAL_REASON_ROLLOVER: return "ROLLOVER";
+      case DEAL_REASON_VMARGIN: return "VARIATION_MARGIN";
+      case DEAL_REASON_SPLIT: return "SPLIT";
+      default: return "OTHER";
+     }
+  }
+
+void OnTradeTransaction(const MqlTradeTransaction &trans,
+                        const MqlTradeRequest &request,
+                        const MqlTradeResult &result)
+  {
+   if(trans.type!=TRADE_TRANSACTION_DEAL_ADD || trans.deal==0)
+      return;
+   if(!HistoryDealSelect(trans.deal))
+      return;
+
+   string dealSymbol=HistoryDealGetString(trans.deal,DEAL_SYMBOL);
+   long dealMagic=HistoryDealGetInteger(trans.deal,DEAL_MAGIC);
+   if(dealSymbol!=g_symbol || (ulong)dealMagic!=InpMagicNumber)
+      return;
+
+   long entryType=HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
+   long positionId=HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
+   double dealPrice=HistoryDealGetDouble(trans.deal,DEAL_PRICE);
+   double dealVolume=HistoryDealGetDouble(trans.deal,DEAL_VOLUME);
+   long dealReason=HistoryDealGetInteger(trans.deal,DEAL_REASON);
+   long dealType=HistoryDealGetInteger(trans.deal,DEAL_TYPE);
+
+   if(entryType==DEAL_ENTRY_IN)
+     {
+      g_activePositionId=(ulong)positionId;
+      double stopPrice=g_pendingStopPrice;
+      if(PositionSelect(g_symbol) &&
+         (ulong)PositionGetInteger(POSITION_MAGIC)==InpMagicNumber)
+        {
+         double positionSL=PositionGetDouble(POSITION_SL);
+         if(positionSL>0.0) stopPrice=positionSL;
+        }
+      ENUM_ORDER_TYPE orderType=(dealType==DEAL_TYPE_BUY ? ORDER_TYPE_BUY : ORDER_TYPE_SELL);
+      double fillRisk=0.0;
+      bool riskOK=(stopPrice>0.0 &&
+                   OrderCalcProfit(orderType,g_symbol,dealVolume,dealPrice,stopPrice,fillRisk));
+      if(riskOK)
+         g_activeRiskMoney+=MathAbs(fillRisk);
+      else if(g_pendingOrderVolume>0.0)
+         g_activeRiskMoney+=g_plannedRiskMoney*(dealVolume/g_pendingOrderVolume);
+
+      double slipPoints=0.0;
+      if(g_point>0.0)
+        {
+         if(dealType==DEAL_TYPE_BUY)
+            slipPoints=(dealPrice-g_pendingRequestPrice)/g_point;
+         else if(dealType==DEAL_TYPE_SELL)
+            slipPoints=(g_pendingRequestPrice-dealPrice)/g_point;
+        }
+      g_weightedSlippagePoints+=slipPoints*dealVolume;
+      g_actualEntryVolume+=dealVolume;
+
+      LogEvent("TRADE_ENTRY_DEAL","positionID="+(string)positionId+
+               "; actualPrice="+DoubleToString(dealPrice,g_digits)+
+               "; volume="+DoubleToString(dealVolume,2)+
+               "; stopPrice="+DoubleToString(stopPrice,g_digits)+
+               "; actualRiskMoney="+DoubleToString(g_activeRiskMoney,2)+
+               "; riskCalc="+(riskOK ? "FILL_TO_SL" : "PLANNED_FALLBACK")+
+               "; quoteSpreadPoints="+DoubleToString(g_pendingSpreadPoints,1)+
+               "; slippagePoints="+DoubleToString(slipPoints,1));
+      return;
+     }
+
+   if(entryType==DEAL_ENTRY_OUT || entryType==DEAL_ENTRY_OUT_BY || entryType==DEAL_ENTRY_INOUT)
+     {
+      double grossProfit=0.0;
+      double totalSwap=0.0;
+      double totalCommission=0.0;
+      double totalFee=0.0;
+      if(HistorySelectByPosition((ulong)positionId))
+        {
+         int total=HistoryDealsTotal();
+         for(int i=0;i<total;i++)
+           {
+            ulong ticket=HistoryDealGetTicket(i);
+            if(ticket==0) continue;
+            if(HistoryDealGetInteger(ticket,DEAL_POSITION_ID)!=positionId) continue;
+            grossProfit+=HistoryDealGetDouble(ticket,DEAL_PROFIT);
+            totalSwap+=HistoryDealGetDouble(ticket,DEAL_SWAP);
+            totalCommission+=HistoryDealGetDouble(ticket,DEAL_COMMISSION);
+            totalFee+=HistoryDealGetDouble(ticket,DEAL_FEE);
+           }
+        }
+      double totalCosts=totalSwap+totalCommission+totalFee;
+      double netProfit=grossProfit+totalCosts;
+      bool stillOpen=HasOurPosition();
+      double realizedR=(g_activeRiskMoney>0.0 ? netProfit/g_activeRiskMoney : 0.0);
+      double avgSlippage=(g_actualEntryVolume>0.0 ?
+                          g_weightedSlippagePoints/g_actualEntryVolume : 0.0);
+      string eventName=(stillOpen ? "TRADE_PARTIAL_EXIT" : "TRADE_CLOSED");
+      LogEvent(eventName,"positionID="+(string)positionId+
+               "; exitDealPrice="+DoubleToString(dealPrice,g_digits)+
+               "; exitDealVolume="+DoubleToString(dealVolume,2)+
+               "; grossProfit="+DoubleToString(grossProfit,2)+
+               "; swap="+DoubleToString(totalSwap,2)+
+               "; commission="+DoubleToString(totalCommission,2)+
+               "; fee="+DoubleToString(totalFee,2)+
+               "; totalCosts="+DoubleToString(totalCosts,2)+
+               "; netProfit="+DoubleToString(netProfit,2)+
+               "; actualInitialRiskMoney="+DoubleToString(g_activeRiskMoney,2)+
+               "; realizedR="+DoubleToString(realizedR,3)+
+               "; quoteSpreadPoints="+DoubleToString(g_pendingSpreadPoints,1)+
+               "; avgEntrySlippagePoints="+DoubleToString(avgSlippage,1)+
+               "; reason="+DealReasonName(dealReason));
+      if(!stillOpen)
+        {
+         g_activePositionId=0;
+         g_activeRiskMoney=0.0;
+         g_plannedRiskMoney=0.0;
+         g_pendingStopPrice=0.0;
+         g_pendingRequestPrice=0.0;
+         g_pendingOrderVolume=0.0;
+         g_pendingSpreadPoints=0.0;
+         g_actualEntryVolume=0.0;
+         g_weightedSlippagePoints=0.0;
+        }
+     }
+  }
+
+void OnDeinit(const int reason)
+  {
+   if(g_atrSignalHandle!=INVALID_HANDLE) IndicatorRelease(g_atrSignalHandle);
+   if(g_atrEntryHandle!=INVALID_HANDLE) IndicatorRelease(g_atrEntryHandle);
+   if(g_emaStructureHandle!=INVALID_HANDLE) IndicatorRelease(g_emaStructureHandle);
+   if(g_csvHandle!=INVALID_HANDLE)
+     {
+      FileFlush(g_csvHandle);
+      FileClose(g_csvHandle);
+      g_csvHandle=INVALID_HANDLE;
+     }
+   DebugPrint("Deinitialized. Reason="+(string)reason);
+  }
+
+void OnTick()
+  {
+   if(HasOurPosition())
+     {
+      g_setup.stage=ST_IN_POSITION;
+      return;
+     }
+   if(IsNewBar(InpSignalTF,g_lastSignalBar))
+      ProcessSignalBar();
+   if(IsNewBar(InpEntryTF,g_lastEntryBar))
+      ProcessEntryBar();
+  }
+//+------------------------------------------------------------------+
