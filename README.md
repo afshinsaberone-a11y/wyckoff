@@ -1,2 +1,19 @@
-# wyckoff
-based on wyckoff strategy
+# Wyckoff W0 — XAUUSD / MetaTrader 5
+
+پروژه پژوهشی ساخت و ارزیابی اکسپرت مبتنی بر توالی وایکوف برای XAUUSD در MT5.
+
+> وضعیت: توسعه و اعتبارسنجی؛ نتایج ثبت‌شده تا این مرحله زیان‌ده‌اند. استفاده روی حساب واقعی تأیید نشده است.
+
+## مستندات
+- [وضعیت پروژه](docs/PROJECT_STATUS_FA.md)
+- [تاریخچه بک‌تست](docs/BACKTEST_HISTORY_FA.md)
+- [فهرست فایل‌ها و انتقال](docs/FILE_REGISTER_FA.md)
+- [قواعد توسعه و ممیزی](docs/DEVELOPMENT_RULES_FA.md)
+
+## ساختار راهبرد
+- زمینه H4 (اختیاری)، ساختار H1، ورود M5
+- خرید: Accumulation/Range → Spring → Test → SOS → LPS → تأیید M5
+- فروش: Distribution/Range → UTAD → Test → SOW → LPSY → تأیید M5
+
+## ایمنی
+هیچ نسخه‌ای در این مخزن به‌عنوان آماده معامله زنده معرفی نمی‌شود. سورس‌ها و نتایج باید به نسخه دقیق، تنظیمات و گزارش تست متناظر متصل باشند.
