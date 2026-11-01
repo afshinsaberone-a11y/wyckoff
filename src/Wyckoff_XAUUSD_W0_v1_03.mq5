@@ -998,3 +998,64 @@ int OnInit()
       bool canStartCSV=true;
       if(FileIsExist(InpCSVFileName,FILE_COMMON))
         {
+         ResetLastError();
+         if(!FileDelete(InpCSVFileName,FILE_COMMON))
+           {
+            Print("[Wyckoff W0] CSV start aborted: previous file could not be removed. Error=",GetLastError(),
+                  "; close any program that may have the CSV open: ",commonFilesPath);
+            canStartCSV=false;
+           }
+        }
+      if(canStartCSV)
+        {
+         ResetLastError();
+         g_csvHandle=FileOpen(InpCSVFileName,
+                              FILE_READ|FILE_WRITE|FILE_CSV|FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_ANSI|FILE_COMMON,',');
+         if(g_csvHandle==INVALID_HANDLE)
+            Print("[Wyckoff W0] CSV open failed. Error=",GetLastError(),"; expected path: ",commonFilesPath);
+         else
+           {
+            FileWrite(g_csvHandle,"ServerTime","SetupID","Direction","Event","Details","RangeHigh","RangeLow");
+            FileFlush(g_csvHandle);
+            Print("[Wyckoff W0] CSV logging enabled (fresh file). File: ",commonFilesPath);
+           }
+        }
+     }
+   g_lastSignalBar=iTime(g_symbol,InpSignalTF,0);
+   g_lastEntryBar=iTime(g_symbol,InpEntryTF,0);
+   ResetSetup("");
+   if(InpExportCSV && g_csvHandle!=INVALID_HANDLE)
+      LogEvent("EA_INIT","CSV logging started");
+   DebugPrint("v1.03 initialized on "+g_symbol+"; SignalTF="+EnumToString(InpSignalTF)+
+              "; EntryTF="+EnumToString(InpEntryTF)+
+              "; Risk="+DoubleToString(InpRiskPercent,2)+"%; RR="+DoubleToString(InpRewardRisk,2));
+   return INIT_SUCCEEDED;
+  }
+
+void OnDeinit(const int reason)
+  {
+   if(g_atrSignalHandle!=INVALID_HANDLE) IndicatorRelease(g_atrSignalHandle);
+   if(g_atrEntryHandle!=INVALID_HANDLE) IndicatorRelease(g_atrEntryHandle);
+   if(g_emaStructureHandle!=INVALID_HANDLE) IndicatorRelease(g_emaStructureHandle);
+   if(g_csvHandle!=INVALID_HANDLE)
+     {
+      FileFlush(g_csvHandle);
+      FileClose(g_csvHandle);
+      g_csvHandle=INVALID_HANDLE;
+     }
+   DebugPrint("Deinitialized. Reason="+(string)reason);
+  }
+
+void OnTick()
+  {
+   if(HasOurPosition())
+     {
+      g_setup.stage=ST_IN_POSITION;
+      return;
+     }
+   if(IsNewBar(InpSignalTF,g_lastSignalBar))
+      ProcessSignalBar();
+   if(IsNewBar(InpEntryTF,g_lastEntryBar))
+      ProcessEntryBar();
+  }
+//+------------------------------------------------------------------+
