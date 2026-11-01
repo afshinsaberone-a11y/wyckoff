@@ -1,0 +1,1000 @@
+﻿CS	0	00:31:38.447	127.0.0.1	login (build 6230)
+CS	0	00:31:38.468	Tester	account info found with currency USD
+CS	0	00:31:38.481	Network	1478 bytes of tester parameters loaded
+CS	0	00:31:38.483	Network	37572 bytes of input parameters loaded
+CS	0	00:31:38.487	Tester	expert file added: Experts\Wyckoff_XAUUSD_W0_v1_03.ex5. 79107 bytes loaded
+CS	0	00:31:38.622	Tester	initial deposit 10000.00 USD, leverage 1:100
+CS	0	00:31:38.626	Tester	successfully initialized
+CS	0	00:31:38.626	Network	76 Kb of total initialization data received
+CS	0	00:31:38.626	Tester	Intel Core i3-4100M  @ 2.50GHz, 6022 MB
+CS	0	00:31:38.673	Symbols	XAUUSD: symbol to be synchronized
+CS	0	00:31:38.675	Symbols	XAUUSD: symbol synchronized already, 18 bytes received
+CS	0	00:31:38.721	History	XAUUSD: history synchronization started
+CS	0	00:31:38.728	History	XAUUSD: load 27 bytes of history data to synchronize in 0:00:00.002
+CS	0	00:31:38.728	History	XAUUSD: history synchronized from 2023.01.03 to 2026.10.16
+CS	0	00:31:38.731	Ticks	XAUUSD: ticks synchronization started
+CS	0	00:31:38.732	Ticks	XAUUSD: load 34 bytes of tick data to synchronize in 0:00:00.000
+CS	0	00:31:38.732	Ticks	XAUUSD: history ticks synchronized from 2024.04.19 to 2026.10.16
+CS	0	00:31:38.790	History	XAUUSD,M5: history cache allocated for 280875 bars and contains 70635 bars from 2023.01.03 01:00 to 2023.12.29 23:55
+CS	0	00:31:38.790	History	XAUUSD,M5: history begins from 2023.01.03 01:00
+CS	0	00:31:38.793	Tester	XAUUSD,M5 (WMMarkets-Demo): generating based on real ticks
+CS	0	00:31:38.793	Tester	XAUUSD,M5: testing of Experts\Wyckoff_XAUUSD_W0_v1_03.ex5 from 2024.01.02 00:00 to 2026.10.17 00:00 started with inputs:
+CS	0	00:31:38.793	Tester	  === Symbol & Timeframes ====
+CS	0	00:31:38.793	Tester	  InpTradeSymbol=
+CS	0	00:31:38.793	Tester	  InpStructureTF=16388
+CS	0	00:31:38.793	Tester	  InpSignalTF=16385
+CS	0	00:31:38.793	Tester	  InpEntryTF=5
+CS	0	00:31:38.793	Tester	  InpUseH4ContextFilter=false
+CS	0	00:31:38.793	Tester	  InpH4EMAPeriod=50
+CS	0	00:31:38.793	Tester	  InpH4EMASlopeBars=5
+CS	0	00:31:38.793	Tester	  === Risk Management ====
+CS	0	00:31:38.793	Tester	  InpRiskPercent=0.5
+CS	0	00:31:38.793	Tester	  InpRewardRisk=2.0
+CS	0	00:31:38.793	Tester	  InpMagicNumber=31102026
+CS	0	00:31:38.793	Tester	  InpDeviationPoints=20
+CS	0	00:31:38.793	Tester	  InpMaxSpreadPoints=80.0
+CS	0	00:31:38.793	Tester	  InpMaxStopATR=4.0
+CS	0	00:31:38.793	Tester	  InpStopLookbackM5=12
+CS	0	00:31:38.793	Tester	  InpStopATRBuffer=0.2
+CS	0	00:31:38.793	Tester	  === Range Detection ====
+CS	0	00:31:38.793	Tester	  InpRangeLookbackBars=80
+CS	0	00:31:38.793	Tester	  InpRangeMinBars=24
+CS	0	00:31:38.793	Tester	  InpRangeMaxBars=120
+CS	0	00:31:38.793	Tester	  InpRangeATRPeriod=14
+CS	0	00:31:38.793	Tester	  InpRangeMinWidthATR=2.5
+CS	0	00:31:38.793	Tester	  InpRangeMaxWidthATR=10.0
+CS	0	00:31:38.793	Tester	  InpRangeMinTouches=2
+CS	0	00:31:38.793	Tester	  InpRangeTouchToleranceATR=0.25
+CS	0	00:31:38.793	Tester	  InpRangeMinTouchSpacing=5
+CS	0	00:31:38.793	Tester	  InpRangeMaxAgeBars=120
+CS	0	00:31:38.793	Tester	  === Spring / UTAD Detection ====
+CS	0	00:31:38.793	Tester	  InpSpringMinPenetrationATR=0.05
+CS	0	00:31:38.793	Tester	  InpSpringMaxPenetrationATR=0.75
+CS	0	00:31:38.793	Tester	  InpSpringReentryBars=3
+CS	0	00:31:38.793	Tester	  InpSpringMinClosePosition=0.65
+CS	0	00:31:38.793	Tester	  InpUTADMinPenetrationATR=0.05
+CS	0	00:31:38.793	Tester	  InpUTADMaxPenetrationATR=0.75
+CS	0	00:31:38.793	Tester	  InpUTADReentryBars=3
+CS	0	00:31:38.793	Tester	  InpUTADMaxClosePosition=0.35
+CS	0	00:31:38.793	Tester	  === Test Detection ====
+CS	0	00:31:38.793	Tester	  InpTestMinBarsAfterEvent=1
+CS	0	00:31:38.793	Tester	  InpTestMaxBarsAfterEvent=10
+CS	0	00:31:38.793	Tester	  InpTestMaxBreakBeyondEventATR=0.1
+CS	0	00:31:38.793	Tester	  InpTestSupportToleranceATR=0.3
+CS	0	00:31:38.793	Tester	  === SOS / SOW Detection ====
+CS	0	00:31:38.793	Tester	  InpStrengthSwingLookback=5
+CS	0	00:31:38.793	Tester	  InpSOSMinBodyATR=0.5
+CS	0	00:31:38.793	Tester	  InpSOSMinBodyShare=0.6
+CS	0	00:31:38.793	Tester	  InpSOSMinClosePosition=0.7
+CS	0	00:31:38.793	Tester	  InpSOWMinBodyATR=0.5
+CS	0	00:31:38.793	Tester	  InpSOWMinBodyShare=0.6
+CS	0	00:31:38.793	Tester	  InpSOWMaxClosePosition=0.3
+CS	0	00:31:38.793	Tester	  === LPS / LPSY Detection ====
+CS	0	00:31:38.793	Tester	  InpLPSMinPullbackATR=0.15
+CS	0	00:31:38.793	Tester	  InpLPSMaxPullbackATR=0.8
+CS	0	00:31:38.793	Tester	  InpLPSInvalidationATR=0.2
+CS	0	00:31:38.793	Tester	  InpLPSExpiryBars=12
+CS	0	00:31:38.793	Tester	  === M5 Entry ====
+CS	0	00:31:38.793	Tester	  InpEntryBreakLookback=3
+CS	0	00:31:38.793	Tester	  InpMinConfirmBodyShare=0.45
+CS	0	00:31:38.793	Tester	  InpEntryExpiryBars=12
+CS	0	00:31:38.793	Tester	  InpM5ATRPeriod=14
+CS	0	00:31:38.793	Tester	  === Chart Display ====
+CS	0	00:31:38.793	Tester	  InpDrawTradingRanges=true
+CS	0	00:31:38.793	Tester	  InpDrawWyckoffEvents=true
+CS	0	00:31:38.793	Tester	  InpDrawEntrySignals=true
+CS	0	00:31:38.793	Tester	  InpDrawStopTarget=true
+CS	0	00:31:38.793	Tester	  InpRangeColor=13458026
+CS	0	00:31:38.793	Tester	  InpBuyEventColor=3329330
+CS	0	00:31:38.793	Tester	  InpSellEventColor=4678655
+CS	0	00:31:38.793	Tester	  === Debug & Logging ====
+CS	0	00:31:38.793	Tester	  InpEnableDebug=true
+CS	0	00:31:38.793	Tester	  InpLogRejectedSetups=true
+CS	0	00:31:38.793	Tester	  InpExportCSV=true
+CS	0	00:31:38.793	Tester	  InpCSVFileName=Wyckoff_W0_events_v1_03.csv
+CS	0	00:31:38.861	History	XAUUSD,H1: history cache allocated for 23413 bars and contains 5893 bars from 2023.01.03 01:00 to 2023.12.29 23:00
+CS	0	00:31:38.861	History	XAUUSD,H1: history begins from 2023.01.03 01:00
+CS	0	00:31:38.864	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 00:00:00   [Wyckoff W0] CSV logging enabled (fresh file). File: C:\Users\Star\AppData\Roaming\MetaQuotes\Terminal\Common\Files\Wyckoff_W0_events_v1_03.csv
+CS	0	00:31:38.864	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 00:00:00   [Wyckoff W0] EA_INIT | NONE | CSV logging started
+CS	0	00:31:38.865	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 00:00:00   [Wyckoff W0] v1.03 initialized on XAUUSD; SignalTF=PERIOD_H1; EntryTF=PERIOD_M5; Risk=0.50%; RR=2.00
+CS	3	00:31:39.506	Ticks	XAUUSD : 2024.04.19 23:59 - real ticks absent for 818 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.506	Ticks	XAUUSD : 2024.04.19 23:59 - real ticks discarded for 562 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.506	Ticks	XAUUSD : 2024.04.19 23:59 - 107939 tick prices mismatch for 562 minute bars
+CS	3	00:31:39.568	Ticks	XAUUSD : 2024.04.22 23:59 - real ticks absent for 61 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.568	Ticks	XAUUSD : 2024.04.22 23:59 - real ticks discarded for 1319 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.568	Ticks	XAUUSD : 2024.04.22 23:59 - 339102 tick prices mismatch for 1319 minute bars
+CS	3	00:31:39.618	Ticks	XAUUSD : 2024.04.23 23:59 - real ticks absent for 61 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.618	Ticks	XAUUSD : 2024.04.23 23:59 - real ticks discarded for 1319 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.618	Ticks	XAUUSD : 2024.04.23 23:59 - 599722 tick prices mismatch for 1319 minute bars
+CS	3	00:31:39.659	Ticks	XAUUSD : 2024.04.24 23:59 - real ticks absent for 61 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.659	Ticks	XAUUSD : 2024.04.24 23:59 - real ticks discarded for 1319 minutes out of 1380 total minute bars within a day
+CS	3	00:31:39.659	Ticks	XAUUSD : 2024.04.24 23:59 - 801339 tick prices mismatch for 1319 minute bars
+CS	3	00:31:39.690	Ticks	XAUUSD : 2024.04.25 23:59 - real ticks absent for 62 minutes out of 1379 total minute bars within a day
+CS	3	00:31:39.690	Ticks	XAUUSD : 2024.04.25 23:59 - real ticks discarded for 1316 minutes out of 1379 total minute bars within a day
+CS	3	00:31:39.690	Ticks	XAUUSD : 2024.04.25 23:59 - 1012223 tick prices mismatch for 1316 minute bars
+CS	3	00:31:48.735	Ticks	XAUUSD : 2025.04.02 23:59 - real ticks discarded for 1309 minutes out of 1379 total minute bars within a day
+CS	3	00:31:48.735	Ticks	XAUUSD : 2025.04.02 23:59 - 1209482 tick prices mismatch for 1309 minute bars
+CS	3	00:31:48.785	Ticks	XAUUSD : 2025.04.03 23:59 - all the real ticks discarded within a day
+CS	3	00:31:48.785	Ticks	XAUUSD : 2025.04.03 23:59 - 1524110 tick prices mismatch for 1379 minute bars
+CS	3	00:31:48.835	Ticks	XAUUSD : 2025.04.04 23:59 - all the real ticks discarded within a day
+CS	3	00:31:48.836	Ticks	XAUUSD : 2025.04.04 23:59 - 1818507 tick prices mismatch for 1379 minute bars
+CS	3	00:31:48.875	Ticks	XAUUSD : 2025.04.07 23:59 - real ticks discarded for 1169 minutes out of 1379 total minute bars within a day
+CS	3	00:31:48.875	Ticks	XAUUSD : 2025.04.07 23:59 - 2138626 tick prices mismatch for 1169 minute bars
+CS	3	00:31:59.613	Ticks	XAUUSD : 2025.07.23 23:59 - real ticks discarded for 1223 minutes out of 1379 total minute bars within a day
+CS	3	00:31:59.613	Ticks	XAUUSD : 2025.07.23 23:59 - 2326620 tick prices mismatch for 1223 minute bars
+CS	3	00:31:59.651	Ticks	XAUUSD : 2025.07.24 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.651	Ticks	XAUUSD : 2025.07.24 23:59 - 2505249 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.677	Ticks	XAUUSD : 2025.07.25 23:59 - real ticks discarded for 1370 minutes out of 1379 total minute bars within a day
+CS	3	00:31:59.677	Ticks	XAUUSD : 2025.07.25 23:59 - 2660077 tick prices mismatch for 1370 minute bars
+CS	3	00:31:59.702	Ticks	XAUUSD : 2025.07.28 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.702	Ticks	XAUUSD : 2025.07.28 23:59 - 2829713 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.729	Ticks	XAUUSD : 2025.07.29 23:59 - real ticks discarded for 1378 minutes out of 1379 total minute bars within a day
+CS	3	00:31:59.729	Ticks	XAUUSD : 2025.07.29 23:59 - 2988744 tick prices mismatch for 1378 minute bars
+CS	3	00:31:59.758	Ticks	XAUUSD : 2025.07.30 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.758	Ticks	XAUUSD : 2025.07.30 23:59 - 3169966 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.790	Ticks	XAUUSD : 2025.07.31 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.790	Ticks	XAUUSD : 2025.07.31 23:59 - 3343054 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.817	Ticks	XAUUSD : 2025.08.01 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.817	Ticks	XAUUSD : 2025.08.01 23:59 - 3524015 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.839	Ticks	XAUUSD : 2025.08.04 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.839	Ticks	XAUUSD : 2025.08.04 23:59 - 3672996 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.859	Ticks	XAUUSD : 2025.08.05 23:59 - real ticks discarded for 1377 minutes out of 1379 total minute bars within a day
+CS	3	00:31:59.859	Ticks	XAUUSD : 2025.08.05 23:59 - 3805183 tick prices mismatch for 1377 minute bars
+CS	3	00:31:59.886	Ticks	XAUUSD : 2025.08.06 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.886	Ticks	XAUUSD : 2025.08.06 23:59 - 3933409 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.932	Ticks	XAUUSD : 2025.08.07 23:59 - all the real ticks discarded within a day
+CS	3	00:31:59.932	Ticks	XAUUSD : 2025.08.07 23:59 - 4172770 tick prices mismatch for 1379 minute bars
+CS	3	00:31:59.973	Ticks	XAUUSD : 2025.08.08 23:59 - real ticks discarded for 1278 minutes out of 1379 total minute bars within a day
+CS	3	00:31:59.973	Ticks	XAUUSD : 2025.08.08 23:59 - 4510065 tick prices mismatch for 1278 minute bars
+CS	3	00:32:00.911	Ticks	XAUUSD : 2025.09.16 23:59 - real ticks discarded for 1367 minutes out of 1379 total minute bars within a day
+CS	3	00:32:00.911	Ticks	XAUUSD : 2025.09.16 23:59 - 4734527 tick prices mismatch for 1367 minute bars
+CS	3	00:32:00.955	Ticks	XAUUSD : 2025.09.17 23:59 - all the real ticks discarded within a day
+CS	3	00:32:00.955	Ticks	XAUUSD : 2025.09.17 23:59 - 5004143 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.004	Ticks	XAUUSD : 2025.09.18 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.004	Ticks	XAUUSD : 2025.09.18 23:59 - 5260837 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.057	Ticks	XAUUSD : 2025.09.19 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.057	Ticks	XAUUSD : 2025.09.19 23:59 - 5498883 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.283	Ticks	XAUUSD : 2025.09.22 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.283	Ticks	XAUUSD : 2025.09.22 23:59 - 5755448 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.324	Ticks	XAUUSD : 2025.09.23 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.324	Ticks	XAUUSD : 2025.09.23 23:59 - 6056407 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.366	Ticks	XAUUSD : 2025.09.24 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.366	Ticks	XAUUSD : 2025.09.24 23:59 - 6302904 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.407	Ticks	XAUUSD : 2025.09.25 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.408	Ticks	XAUUSD : 2025.09.25 23:59 - 6582921 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.458	Ticks	XAUUSD : 2025.09.26 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.458	Ticks	XAUUSD : 2025.09.26 23:59 - 6832639 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.500	Ticks	XAUUSD : 2025.09.29 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.500	Ticks	XAUUSD : 2025.09.29 23:59 - 7104464 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.536	Ticks	XAUUSD : 2025.09.30 23:59 - real ticks absent for 10 minutes out of 1379 total minute bars within a day
+CS	3	00:32:01.536	Ticks	XAUUSD : 2025.09.30 23:59 - real ticks discarded for 1369 minutes out of 1379 total minute bars within a day
+CS	3	00:32:01.536	Ticks	XAUUSD : 2025.09.30 23:59 - 7354281 tick prices mismatch for 1369 minute bars
+CS	3	00:32:01.570	Ticks	XAUUSD : 2025.10.01 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.570	Ticks	XAUUSD : 2025.10.01 23:59 - 7609701 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.601	Ticks	XAUUSD : 2025.10.02 23:59 - real ticks discarded for 1378 minutes out of 1379 total minute bars within a day
+CS	3	00:32:01.601	Ticks	XAUUSD : 2025.10.02 23:59 - 7841688 tick prices mismatch for 1378 minute bars
+CS	3	00:32:01.642	Ticks	XAUUSD : 2025.10.03 23:59 - all the real ticks discarded within a day
+CS	3	00:32:01.642	Ticks	XAUUSD : 2025.10.03 23:59 - 8073972 tick prices mismatch for 1379 minute bars
+CS	3	00:32:01.961	Ticks	XAUUSD : 2025.10.09 23:59 - real ticks discarded for 1357 minutes out of 1379 total minute bars within a day
+CS	3	00:32:01.961	Ticks	XAUUSD : 2025.10.09 23:59 - 8424450 tick prices mismatch for 1357 minute bars
+CS	3	00:32:02.006	Ticks	XAUUSD : 2025.10.10 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.006	Ticks	XAUUSD : 2025.10.10 23:59 - 8792828 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.048	Ticks	XAUUSD : 2025.10.13 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.048	Ticks	XAUUSD : 2025.10.13 23:59 - 9087949 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.090	Ticks	XAUUSD : 2025.10.14 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.090	Ticks	XAUUSD : 2025.10.14 23:59 - 9433740 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.130	Ticks	XAUUSD : 2025.10.15 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.130	Ticks	XAUUSD : 2025.10.15 23:59 - 9698970 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.193	Ticks	XAUUSD : 2025.10.16 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.193	Ticks	XAUUSD : 2025.10.16 23:59 - 10036502 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.251	Ticks	XAUUSD : 2025.10.17 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.251	Ticks	XAUUSD : 2025.10.17 23:59 - 10558182 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.479	Ticks	XAUUSD : 2025.10.20 23:59 - real ticks absent for 2 minutes out of 1379 total minute bars within a day
+CS	3	00:32:02.479	Ticks	XAUUSD : 2025.10.20 23:59 - real ticks discarded for 1377 minutes out of 1379 total minute bars within a day
+CS	3	00:32:02.482	Ticks	XAUUSD : 2025.10.20 23:59 - 10950167 tick prices mismatch for 1377 minute bars
+CS	3	00:32:02.538	Ticks	XAUUSD : 2025.10.21 23:59 - real ticks absent for 1 minutes out of 1379 total minute bars within a day
+CS	3	00:32:02.538	Ticks	XAUUSD : 2025.10.21 23:59 - real ticks discarded for 1378 minutes out of 1379 total minute bars within a day
+CS	3	00:32:02.538	Ticks	XAUUSD : 2025.10.21 23:59 - 11339147 tick prices mismatch for 1378 minute bars
+CS	3	00:32:02.586	Ticks	XAUUSD : 2025.10.22 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.586	Ticks	XAUUSD : 2025.10.22 23:59 - 11717453 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.628	Ticks	XAUUSD : 2025.10.23 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.628	Ticks	XAUUSD : 2025.10.23 23:59 - 12015344 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.675	Ticks	XAUUSD : 2025.10.24 23:59 - all the real ticks discarded within a day
+CS	3	00:32:02.675	Ticks	XAUUSD : 2025.10.24 23:59 - 12301418 tick prices mismatch for 1379 minute bars
+CS	3	00:32:02.715	Ticks	XAUUSD : 2025.10.27 23:59 - real ticks discarded for 1174 minutes out of 1379 total minute bars within a day
+CS	3	00:32:02.715	Ticks	XAUUSD : 2025.10.27 23:59 - 12585851 tick prices mismatch for 1174 minute bars
+CS	3	00:32:03.857	Ticks	XAUUSD : 2025.11.24 23:59 - real ticks discarded for 1267 minutes out of 1379 total minute bars within a day
+CS	3	00:32:03.857	Ticks	XAUUSD : 2025.11.24 23:59 - 12841215 tick prices mismatch for 1267 minute bars
+CS	3	00:32:03.898	Ticks	XAUUSD : 2025.11.25 23:59 - all the real ticks discarded within a day
+CS	3	00:32:03.898	Ticks	XAUUSD : 2025.11.25 23:59 - 13140489 tick prices mismatch for 1379 minute bars
+CS	3	00:32:03.929	Ticks	XAUUSD : 2025.11.26 23:59 - all the real ticks discarded within a day
+CS	3	00:32:03.929	Ticks	XAUUSD : 2025.11.26 23:59 - 13410608 tick prices mismatch for 1379 minute bars
+CS	3	00:32:03.951	Ticks	XAUUSD : 2025.11.27 23:59 - real ticks discarded for 1229 minutes out of 1230 total minute bars within a day
+CS	3	00:32:03.951	Ticks	XAUUSD : 2025.11.27 23:59 - 13565192 tick prices mismatch for 1229 minute bars
+CS	3	00:32:03.985	Ticks	XAUUSD : 2025.11.28 23:59 - real ticks absent for 9 minutes out of 1244 total minute bars within a day
+CS	3	00:32:03.985	Ticks	XAUUSD : 2025.11.28 23:59 - real ticks discarded for 1225 minutes out of 1244 total minute bars within a day
+CS	3	00:32:03.985	Ticks	XAUUSD : 2025.11.28 23:59 - 13725950 tick prices mismatch for 1225 minute bars
+CS	3	00:32:04.030	Ticks	XAUUSD : 2025.12.01 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.030	Ticks	XAUUSD : 2025.12.01 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.030	Ticks	XAUUSD : 2025.12.01 23:59 - 14047652 tick prices mismatch for 1379 minute bars
+CS	3	00:32:04.333	Ticks	XAUUSD : 2025.12.02 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.333	Ticks	XAUUSD : 2025.12.02 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.333	Ticks	XAUUSD : 2025.12.02 23:59 - 14305577 tick prices mismatch for 1379 minute bars
+CS	3	00:32:04.374	Ticks	XAUUSD : 2025.12.03 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.374	Ticks	XAUUSD : 2025.12.03 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.374	Ticks	XAUUSD : 2025.12.03 23:59 - 14569618 tick prices mismatch for 1379 minute bars
+CS	3	00:32:04.412	Ticks	XAUUSD : 2025.12.04 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.412	Ticks	XAUUSD : 2025.12.04 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.412	Ticks	XAUUSD : 2025.12.04 23:59 - 14855579 tick prices mismatch for 1379 minute bars
+CS	3	00:32:04.447	Ticks	XAUUSD : 2025.12.05 23:59 - real ticks absent for 2 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.447	Ticks	XAUUSD : 2025.12.05 23:59 - real ticks discarded for 1378 minutes out of 1380 total minute bars within a day
+CS	3	00:32:04.447	Ticks	XAUUSD : 2025.12.05 23:59 - 15104945 tick prices mismatch for 1378 minute bars
+CS	3	00:32:04.479	Ticks	XAUUSD : 2025.12.08 23:59 - real ticks absent for 20 minutes out of 1369 total minute bars within a day
+CS	3	00:32:04.479	Ticks	XAUUSD : 2025.12.08 23:59 - real ticks discarded for 1303 minutes out of 1369 total minute bars within a day
+CS	3	00:32:04.479	Ticks	XAUUSD : 2025.12.08 23:59 - 15341039 tick prices mismatch for 1303 minute bars
+CS	0	00:32:22.422	Ticks	XAUUSD : real ticks begin from 2024.04.19 00:00:00
+CS	3	00:32:22.422	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  real ticks absent for 1111 minutes of 990925 total minute bars, every tick generation used
+CS	3	00:32:22.423	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  real ticks discarded for 80385 minutes of 990925 total minute bars, every tick generation used
+CS	3	00:32:22.423	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  real ticks discarded for 32 whole days
+CS	3	00:32:22.423	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  tick volumes not matched for 6497 minute bars
+CS	3	00:32:22.423	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  tick prices of 15341039 ticks not matched for 80385 minute bars
+CS	3	00:32:22.423	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  last prices absent for 7456 minute bars, bid prices used
+CS	0	00:32:22.837	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.96; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:22.892	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 18:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.26
+CS	0	00:32:22.899	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 19:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2066.09
+CS	0	00:32:22.913	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.02 23:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2057.96
+CS	0	00:32:23.087	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.04 09:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=2046.99; bodyATR=0.92
+CS	0	00:32:23.095	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.04 10:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.57
+CS	0	00:32:23.095	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.04 10:00:00   [Wyckoff W0] REJECT_ENTRY_OUTSIDE_RANGE | BUY | BUY close=2047.67; rangeLow=2057.33
+CS	0	00:32:23.095	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.01.04 10:00:00   [Wyckoff W0] SETUP_RESET | BUY | ENTRY_INVALIDATED_BELOW_RANGE_LOW
+CS	0	00:32:26.659	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.14 01:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.75; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:26.666	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.14 04:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.22
+CS	0	00:32:26.666	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.14 04:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=1992.85
+CS	0	00:32:26.668	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.14 05:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=1991.19
+CS	0	00:32:26.774	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.15 16:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=1999.07; bodyATR=2.25
+CS	0	00:32:26.805	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.15 21:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.41
+CS	0	00:32:26.805	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.15 21:05:00   [Wyckoff W0] M5_BUY_TRIGGER | BUY | close=2005.22
+CS	0	00:32:26.892	Trade	2024.02.15 21:05:00   market buy 0.18 XAUUSD sl: 2002.60 tp: 2010.58 (2005.23 / 2005.26 / 2005.23)
+CS	0	00:32:26.893	Trades	2024.02.15 21:05:00   deal #2 buy 0.18 XAUUSD at 2005.26 done (based on order #2)
+CS	0	00:32:26.893	Trade	2024.02.15 21:05:00   deal performed [#2 buy 0.18 XAUUSD at 2005.26]
+CS	0	00:32:26.893	Trade	2024.02.15 21:05:00   order performed buy 0.18 at 2005.26 [#2 buy 0.18 XAUUSD at 2005.26]
+CS	0	00:32:26.896	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.15 21:05:00   CTrade::OrderSend: market buy 0.18 XAUUSD sl: 2002.60 tp: 2010.58 [done at 2005.26]
+CS	0	00:32:26.896	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.15 21:05:00   [Wyckoff W0] ORDER_OPENED | BUY | volume=0.18; entry=2005.26; SL=2002.60; TP=2010.58; RR=2.00
+CS	0	00:32:26.963	Trade	2024.02.16 02:30:29   stop loss triggered #2 buy 0.18 XAUUSD 2005.26 sl: 2002.60 tp: 2010.58 [#3 sell 0.18 XAUUSD at 2002.60]
+CS	0	00:32:26.963	Trades	2024.02.16 02:30:29   deal #3 sell 0.18 XAUUSD at 2002.59 done (based on order #3)
+CS	0	00:32:26.963	Trade	2024.02.16 02:30:29   deal performed [#3 sell 0.18 XAUUSD at 2002.59]
+CS	0	00:32:26.963	Trade	2024.02.16 02:30:29   order performed sell 0.18 at 2002.59 [#3 sell 0.18 XAUUSD at 2002.60]
+CS	0	00:32:26.963	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.16 02:30:29   [Wyckoff W0] SETUP_RESET | BUY | POSITION_CLOSED
+CS	0	00:32:27.304	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.22 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.37; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:27.310	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.22 11:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.96
+CS	0	00:32:27.310	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.22 11:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:27.709	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.29 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.45; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:27.709	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.29 16:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=2.73
+CS	0	00:32:27.709	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.02.29 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:29.031	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.03.19 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.78; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:32:29.131	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.03.20 21:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.97
+CS	0	00:32:29.131	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.03.20 21:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:30.164	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.03.28 11:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.02; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:30.172	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.03.28 13:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=2.53
+CS	0	00:32:30.172	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.03.28 13:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:30.850	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.04.05 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.61; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:32:30.850	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.04.05 18:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.95
+CS	0	00:32:30.850	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.04.05 18:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:31.334	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.04.10 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.64; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:31.485	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.04.11 23:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.99
+CS	0	00:32:31.485	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.04.11 23:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:34.085	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.02 06:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.68; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:32:34.328	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.03 17:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.68
+CS	0	00:32:34.366	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.03 20:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2299.26
+CS	0	00:32:34.427	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.06 08:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	00:32:35.629	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 04:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.50; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:35.629	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 04:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.42
+CS	0	00:32:35.640	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 05:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | close=2391.55
+CS	0	00:32:35.649	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 06:00:00   [Wyckoff W0] TEST_CONFIRMED | SELL | high=2391.80
+CS	0	00:32:35.725	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 16:00:00   [Wyckoff W0] SOW_CONFIRMED | SELL | break=2380.96; bodyATR=1.04
+CS	0	00:32:35.750	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 18:00:00   [Wyckoff W0] LPSY_CONFIRMED | SELL | pullbackATR=0.17
+CS	0	00:32:35.758	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.16 19:00:00   [Wyckoff W0] SETUP_RESET | SELL | ENTRY_TRIGGER_EXPIRED
+CS	0	00:32:37.814	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.29 21:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.39; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:37.860	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.30 06:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.44
+CS	0	00:32:37.867	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.30 07:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2334.35
+CS	0	00:32:37.912	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.30 12:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2331.91
+CS	0	00:32:37.925	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.30 14:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=2338.01; bodyATR=1.26
+CS	0	00:32:37.932	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.30 15:00:00   [Wyckoff W0] REJECT_LPS_INVALIDATED | BUY | 
+CS	0	00:32:37.932	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.30 15:00:00   [Wyckoff W0] SETUP_RESET | BUY | LPS invalidated
+CS	0	00:32:38.188	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.31 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.67; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:38.193	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.31 23:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.24
+CS	0	00:32:38.193	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.05.31 23:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=2327.81
+CS	0	00:32:38.207	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 02:00:04   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2323.28
+CS	0	00:32:38.349	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 20:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=2345.73; bodyATR=0.93
+CS	0	00:32:38.357	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 21:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.55
+CS	0	00:32:38.360	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 21:25:00   [Wyckoff W0] M5_BUY_TRIGGER | BUY | close=2349.01
+CS	0	00:32:38.360	Trade	2024.06.03 21:25:00   market buy 0.14 XAUUSD sl: 2345.77 tp: 2355.85 (2349.03 / 2349.13)
+CS	0	00:32:38.360	Trades	2024.06.03 21:25:00   deal #4 buy 0.14 XAUUSD at 2349.13 done (based on order #4)
+CS	0	00:32:38.360	Trade	2024.06.03 21:25:00   deal performed [#4 buy 0.14 XAUUSD at 2349.13]
+CS	0	00:32:38.360	Trade	2024.06.03 21:25:00   order performed buy 0.14 at 2349.13 [#4 buy 0.14 XAUUSD at 2349.13]
+CS	0	00:32:38.362	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 21:25:00   CTrade::OrderSend: market buy 0.14 XAUUSD sl: 2345.77 tp: 2355.85 [done at 2349.13]
+CS	0	00:32:38.362	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 21:25:00   [Wyckoff W0] ORDER_OPENED | BUY | volume=0.14; entry=2349.13; SL=2345.77; TP=2355.85; RR=2.00
+CS	0	00:32:38.405	Trade	2024.06.03 22:28:02   stop loss triggered #4 buy 0.14 XAUUSD 2349.13 sl: 2345.77 tp: 2355.85 [#5 sell 0.14 XAUUSD at 2345.77]
+CS	0	00:32:38.405	Trades	2024.06.03 22:28:02   deal #5 sell 0.14 XAUUSD at 2345.75 done (based on order #5)
+CS	0	00:32:38.405	Trade	2024.06.03 22:28:02   deal performed [#5 sell 0.14 XAUUSD at 2345.75]
+CS	0	00:32:38.406	Trade	2024.06.03 22:28:02   order performed sell 0.14 at 2345.75 [#5 sell 0.14 XAUUSD at 2345.77]
+CS	0	00:32:38.406	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.06.03 22:28:02   [Wyckoff W0] SETUP_RESET | BUY | POSITION_CLOSED
+CS	0	00:32:42.460	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.03 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.25; rangeBars=80; upperTouches=2; lowerTouches=5
+CS	0	00:32:42.479	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.03 10:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.40
+CS	0	00:32:42.486	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.03 11:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.92
+CS	0	00:32:42.486	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.03 11:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:32:44.349	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.19 06:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.45; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:44.377	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.19 10:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.54
+CS	0	00:32:44.395	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.19 12:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2420.44
+CS	0	00:32:44.476	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.07.19 23:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	00:32:51.370	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.08.30 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.71; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:51.825	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.02 06:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.55
+CS	0	00:32:51.828	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.02 07:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2496.28
+CS	0	00:32:51.889	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.02 18:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	00:32:53.166	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.11 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.13; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:53.352	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.12 16:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.31
+CS	0	00:32:53.352	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.12 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:54.090	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.18 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.50; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:54.139	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.18 22:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.37
+CS	0	00:32:54.139	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.09.18 22:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:57.099	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.11 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.47; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:57.193	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.11 18:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.23
+CS	0	00:32:57.202	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.11 19:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=0.81
+CS	0	00:32:57.202	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.11 19:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:32:59.539	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.29 13:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.69; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:32:59.567	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.29 16:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.94
+CS	0	00:32:59.567	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.29 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:32:59.936	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.10.31 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.62; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:33:00.413	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.11.05 05:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.61
+CS	0	00:33:00.419	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.11.05 06:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2735.33
+CS	0	00:33:00.502	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.11.05 17:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	00:33:05.086	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.02 10:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.41; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:05.911	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.06 04:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.84
+CS	0	00:33:05.911	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.06 04:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:33:06.711	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.11 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.71; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:06.711	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.11 17:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.29
+CS	0	00:33:06.726	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.11 18:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.26
+CS	0	00:33:06.726	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.11 18:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:33:09.173	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.27 15:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.50; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:09.342	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.30 16:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.26
+CS	0	00:33:09.355	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.30 17:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2611.61
+CS	0	00:33:09.436	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 04:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2606.68
+CS	0	00:33:09.463	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 10:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=2609.63; bodyATR=1.41
+CS	0	00:33:09.469	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 11:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.29
+CS	0	00:33:09.473	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 11:35:00   [Wyckoff W0] M5_BUY_TRIGGER | BUY | close=2616.20
+CS	0	00:33:09.473	Trade	2024.12.31 11:35:00   market buy 0.14 XAUUSD sl: 2612.82 tp: 2623.23 (2616.21 / 2616.29)
+CS	0	00:33:09.473	Trades	2024.12.31 11:35:00   deal #6 buy 0.14 XAUUSD at 2616.29 done (based on order #6)
+CS	0	00:33:09.473	Trade	2024.12.31 11:35:00   deal performed [#6 buy 0.14 XAUUSD at 2616.29]
+CS	0	00:33:09.473	Trade	2024.12.31 11:35:00   order performed buy 0.14 at 2616.29 [#6 buy 0.14 XAUUSD at 2616.29]
+CS	0	00:33:09.475	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 11:35:00   CTrade::OrderSend: market buy 0.14 XAUUSD sl: 2612.82 tp: 2623.23 [done at 2616.29]
+CS	0	00:33:09.475	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 11:35:00   [Wyckoff W0] ORDER_OPENED | BUY | volume=0.14; entry=2616.29; SL=2612.82; TP=2623.23; RR=2.00
+CS	0	00:33:09.489	Trade	2024.12.31 12:30:31   stop loss triggered #6 buy 0.14 XAUUSD 2616.29 sl: 2612.82 tp: 2623.23 [#7 sell 0.14 XAUUSD at 2612.82]
+CS	0	00:33:09.489	Trades	2024.12.31 12:30:31   deal #7 sell 0.14 XAUUSD at 2612.54 done (based on order #7)
+CS	0	00:33:09.489	Trade	2024.12.31 12:30:31   deal performed [#7 sell 0.14 XAUUSD at 2612.54]
+CS	0	00:33:09.489	Trade	2024.12.31 12:30:31   order performed sell 0.14 at 2612.54 [#7 sell 0.14 XAUUSD at 2612.82]
+CS	0	00:33:09.489	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2024.12.31 12:30:31   [Wyckoff W0] SETUP_RESET | BUY | POSITION_CLOSED
+CS	0	00:33:13.556	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.01.24 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.06; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:13.556	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.01.24 05:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.76
+CS	0	00:33:13.556	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.01.24 05:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:33:15.583	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.05 01:00:01   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.93; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:15.594	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.05 03:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.40
+CS	0	00:33:15.624	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.05 05:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.15
+CS	0	00:33:15.624	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.05 05:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:33:18.852	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.24 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.20; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:18.852	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.24 17:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.14
+CS	0	00:33:18.853	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.24 17:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=2938.72
+CS	0	00:33:18.931	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.25 01:00:01   [Wyckoff W0] TEST_CONFIRMED | SELL | high=2953.06
+CS	0	00:33:18.977	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.25 06:00:00   [Wyckoff W0] SOW_CONFIRMED | SELL | break=2945.31; bodyATR=1.26
+CS	0	00:33:18.983	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.25 07:00:00   [Wyckoff W0] LPSY_CONFIRMED | SELL | pullbackATR=0.35
+CS	0	00:33:18.989	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.02.25 08:00:00   [Wyckoff W0] SETUP_RESET | SELL | ENTRY_TRIGGER_EXPIRED
+CS	0	00:33:20.948	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.06 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.14; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:21.121	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.07 18:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.06
+CS	0	00:33:21.121	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.07 18:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=2915.74
+CS	0	00:33:21.191	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.10 05:00:00   [Wyckoff W0] SETUP_RESET | SELL | TEST_EXPIRED
+CS	0	00:33:21.361	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.11 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.77; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:21.583	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.12 19:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.13
+CS	0	00:33:21.583	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.12 19:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:33:21.616	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.13 02:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.67; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:21.620	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.13 04:00:01   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.15
+CS	0	00:33:21.620	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.13 04:00:01   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=2937.90
+CS	0	00:33:21.635	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.13 09:00:00   [Wyckoff W0] TEST_CONFIRMED | SELL | high=2940.30
+CS	0	00:33:21.905	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.17 07:00:00   [Wyckoff W0] SOW_CONFIRMED | SELL | break=2985.34; bodyATR=0.76
+CS	0	00:33:21.911	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.17 09:00:00   [Wyckoff W0] REJECT_LPSY_INVALIDATED | SELL | 
+CS	0	00:33:21.911	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.17 09:00:00   [Wyckoff W0] SETUP_RESET | SELL | LPSY invalidated
+CS	0	00:33:23.451	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.28 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.21; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:23.451	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.28 17:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.09
+CS	0	00:33:23.451	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.28 17:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=3070.29
+CS	0	00:33:23.463	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.03.28 18:00:00   [Wyckoff W0] TEST_CONFIRMED | SELL | high=3085.77
+CS	0	00:33:23.830	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.04.01 19:00:00   [Wyckoff W0] SOW_CONFIRMED | SELL | break=3123.48; bodyATR=1.47
+CS	0	00:33:23.842	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.04.01 20:00:00   [Wyckoff W0] LPSY_CONFIRMED | SELL | pullbackATR=0.32
+CS	0	00:33:23.842	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.04.01 20:00:00   [Wyckoff W0] REJECT_ENTRY_OUTSIDE_RANGE | SELL | SELL close=3106.43; rangeHigh=3086.03
+CS	0	00:33:23.842	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.04.01 20:00:00   [Wyckoff W0] SETUP_RESET | SELL | ENTRY_INVALIDATED_ABOVE_RANGE_HIGH
+CS	0	00:33:28.769	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.04.29 07:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.09; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:29.121	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.05.01 04:00:01   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.38
+CS	0	00:33:29.121	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.05.01 04:00:01   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:33:32.921	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.05.26 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.49; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:33.330	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.05.29 01:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.14
+CS	0	00:33:33.345	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.05.29 03:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | BUY | candidatePenetrationATR=2.21
+CS	0	00:33:33.345	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.05.29 03:00:00   [Wyckoff W0] SETUP_RESET | BUY | RANGE_INVALIDATED_SPRING_CANDIDATE_TOO_DEEP
+CS	0	00:33:36.533	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.20 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.90; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:33:36.783	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.24 04:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.48
+CS	0	00:33:36.783	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.24 04:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=3351.04
+CS	0	00:33:36.791	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.24 05:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=3342.22
+CS	0	00:33:36.927	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.24 23:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=3321.23; bodyATR=0.55
+CS	0	00:33:36.936	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.25 01:00:01   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.34
+CS	0	00:33:36.936	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.25 01:00:01   [Wyckoff W0] REJECT_ENTRY_OUTSIDE_RANGE | BUY | BUY close=3322.99; rangeLow=3340.39
+CS	0	00:33:36.936	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.06.25 01:00:01   [Wyckoff W0] SETUP_RESET | BUY | ENTRY_INVALIDATED_BELOW_RANGE_LOW
+CS	0	00:33:38.171	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.03 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.37; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:38.960	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.11 04:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_EXPIRED
+CS	0	00:33:39.235	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.14 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.87; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:39.534	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.16 19:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.23
+CS	0	00:33:39.534	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.16 19:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=3344.14
+CS	0	00:33:39.603	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.17 07:00:00   [Wyckoff W0] SETUP_RESET | SELL | TEST_EXPIRED
+CS	0	00:33:39.605	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.17 08:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.42; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:39.650	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.17 16:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.21
+CS	0	00:33:39.650	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.07.17 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:33:52.053	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.02 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.86; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:52.522	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.06 02:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.48
+CS	0	00:33:52.533	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.06 03:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.87
+CS	0	00:33:52.533	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.06 03:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:33:53.556	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.09 20:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.28; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:33:54.076	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.13 09:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.82
+CS	0	00:33:54.076	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.13 09:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:33:55.272	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.17 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.98; rangeBars=80; upperTouches=2; lowerTouches=3
+CS	0	00:33:56.363	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.21 18:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.23
+CS	0	00:33:56.428	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.21 21:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=4111.10
+CS	0	00:33:56.465	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.21 23:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=4100.45
+CS	0	00:33:56.626	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.22 10:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=4146.96; bodyATR=0.61
+CS	0	00:33:56.643	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.22 11:00:00   [Wyckoff W0] REJECT_LPS_INVALIDATED | BUY | 
+CS	0	00:33:56.643	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.22 11:00:00   [Wyckoff W0] SETUP_RESET | BUY | LPS invalidated
+CS	0	00:33:56.737	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.22 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.76; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:33:57.766	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.27 17:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.92
+CS	0	00:33:57.766	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.10.27 17:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:33:59.561	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.11.05 15:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.11; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:00.039	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.11.10 04:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.83
+CS	0	00:34:00.039	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.11.10 04:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:34:01.169	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.11.14 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.29; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:01.169	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.11.14 16:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=2.34
+CS	0	00:34:01.169	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.11.14 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:34:07.614	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.12.16 19:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.79; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:08.477	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.12.18 19:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.65
+CS	0	00:34:08.477	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.12.18 19:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:34:09.984	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.12.29 08:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.88; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:10.152	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.12.29 17:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.70
+CS	0	00:34:10.152	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2025.12.29 17:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:34:14.108	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.15 19:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.55; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:34:14.360	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.16 18:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.54
+CS	0	00:34:14.360	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.16 18:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:34:16.265	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.27 11:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.34; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:16.477	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.27 23:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=2.66
+CS	0	00:34:16.477	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.27 23:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:34:17.262	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.29 12:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.70; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:17.704	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.30 12:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.37
+CS	0	00:34:17.722	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.30 13:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=5119.77
+CS	0	00:34:17.786	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.01.30 16:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=4992.22
+CS	0	00:34:18.331	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.02 12:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=4713.48; bodyATR=0.61
+CS	0	00:34:18.362	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.02 14:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.22
+CS	0	00:34:18.363	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.02 14:00:00   [Wyckoff W0] REJECT_ENTRY_OUTSIDE_RANGE | BUY | BUY close=4766.46; rangeLow=4978.09
+CS	0	00:34:18.363	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.02 14:00:00   [Wyckoff W0] SETUP_RESET | BUY | ENTRY_INVALIDATED_BELOW_RANGE_LOW
+CS	0	00:34:19.743	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.05 23:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.59; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:20.874	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.11 13:00:01   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.44
+CS	0	00:34:20.881	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.11 14:00:01   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.13
+CS	0	00:34:20.881	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.02.11 14:00:01   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:34:24.249	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.02 10:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.14; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:24.249	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.02 10:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.79
+CS	0	00:34:24.249	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.02 10:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:34:27.925	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.16 21:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.03; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:28.484	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.18 13:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.53
+CS	0	00:34:28.504	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.18 14:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | BUY | candidatePenetrationATR=2.19
+CS	0	00:34:28.504	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.18 14:00:00   [Wyckoff W0] SETUP_RESET | BUY | RANGE_INVALIDATED_SPRING_CANDIDATE_TOO_DEEP
+CS	0	00:34:29.683	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.23 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.54; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:34:29.683	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.23 09:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.86
+CS	0	00:34:29.683	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.03.23 09:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:34:33.222	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.02 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.19; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:33.975	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.08 02:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.48
+CS	0	00:34:33.990	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.08 03:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=0.92
+CS	0	00:34:33.990	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.08 03:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	00:34:37.969	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.23 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.18; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:38.120	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 08:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.29
+CS	0	00:34:38.121	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 08:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=4674.59
+CS	0	00:34:38.133	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 09:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=4669.60
+CS	0	00:34:38.220	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 15:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=4697.52; bodyATR=1.53
+CS	0	00:34:38.275	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 18:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.49
+CS	0	00:34:38.290	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 18:45:00   [Wyckoff W0] M5_BUY_TRIGGER | BUY | close=4728.08
+CS	0	00:34:38.290	Trade	2026.04.24 18:45:00   market buy 0.03 XAUUSD sl: 4714.02 tp: 4756.11 (4727.92 / 4728.05)
+CS	0	00:34:38.290	Trades	2026.04.24 18:45:00   deal #8 buy 0.03 XAUUSD at 4728.05 done (based on order #8)
+CS	0	00:34:38.290	Trade	2026.04.24 18:45:00   deal performed [#8 buy 0.03 XAUUSD at 4728.05]
+CS	0	00:34:38.290	Trade	2026.04.24 18:45:00   order performed buy 0.03 at 4728.05 [#8 buy 0.03 XAUUSD at 4728.05]
+CS	0	00:34:38.292	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 18:45:00   CTrade::OrderSend: market buy 0.03 XAUUSD sl: 4714.02 tp: 4756.11 [done at 4728.05]
+CS	0	00:34:38.292	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 18:45:00   [Wyckoff W0] ORDER_OPENED | BUY | volume=0.03; entry=4728.05; SL=4714.02; TP=4756.11; RR=2.00
+CS	0	00:34:38.398	Trade	2026.04.24 22:56:24   stop loss triggered #8 buy 0.03 XAUUSD 4728.05 sl: 4714.02 tp: 4756.11 [#9 sell 0.03 XAUUSD at 4714.02]
+CS	0	00:34:38.398	Trades	2026.04.24 22:56:24   deal #9 sell 0.03 XAUUSD at 4713.96 done (based on order #9)
+CS	0	00:34:38.398	Trade	2026.04.24 22:56:24   deal performed [#9 sell 0.03 XAUUSD at 4713.96]
+CS	0	00:34:38.398	Trade	2026.04.24 22:56:24   order performed sell 0.03 at 4713.96 [#9 sell 0.03 XAUUSD at 4714.02]
+CS	0	00:34:38.398	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.04.24 22:56:24   [Wyckoff W0] SETUP_RESET | BUY | POSITION_CLOSED
+CS	0	00:34:45.373	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.26 11:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.63; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	00:34:45.537	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.26 22:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.34
+CS	0	00:34:45.537	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.26 22:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=4499.36
+CS	0	00:34:45.624	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.27 09:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=4491.71
+CS	0	00:34:46.150	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.28 16:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=4404.42; bodyATR=1.95
+CS	0	00:34:46.179	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.28 17:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.66
+CS	0	00:34:46.179	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.28 17:00:00   [Wyckoff W0] REJECT_ENTRY_OUTSIDE_RANGE | BUY | BUY close=4430.43; rangeLow=4488.57
+CS	0	00:34:46.179	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.05.28 17:00:00   [Wyckoff W0] SETUP_RESET | BUY | ENTRY_INVALIDATED_BELOW_RANGE_LOW
+CS	0	00:34:47.468	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.04 15:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.03; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:47.686	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.05 16:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.04
+CS	0	00:34:47.686	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.05 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:34:53.049	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.24 15:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.02; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:53.049	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.24 15:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.60
+CS	0	00:34:53.069	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.24 16:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | BUY | candidatePenetrationATR=2.58
+CS	0	00:34:53.069	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.24 16:00:00   [Wyckoff W0] SETUP_RESET | BUY | RANGE_INVALIDATED_SPRING_CANDIDATE_TOO_DEEP
+CS	0	00:34:53.239	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.24 23:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.80; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:54.479	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.30 05:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.87
+CS	0	00:34:54.479	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.06.30 05:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:34:56.324	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.14 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.68; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:56.797	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.16 17:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.63
+CS	0	00:34:56.838	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.16 20:00:00   [Wyckoff W0] REJECT_NO_REENTRY | BUY | Spring did not close back inside range
+CS	0	00:34:56.846	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.16 21:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.16
+CS	0	00:34:56.874	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 01:00:00   [Wyckoff W0] REJECT_NO_REENTRY | BUY | Spring did not close back inside range
+CS	0	00:34:56.877	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 02:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.56
+CS	0	00:34:56.882	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 03:00:04   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=3985.95
+CS	0	00:34:56.890	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 04:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=3980.65
+CS	0	00:34:57.012	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 19:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=4004.57; bodyATR=0.98
+CS	0	00:34:57.020	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 20:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.56
+CS	0	00:34:57.026	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.07.17 21:00:00   [Wyckoff W0] SETUP_RESET | BUY | ENTRY_TRIGGER_EXPIRED
+CS	0	00:34:59.225	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.08.04 12:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.58; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:34:59.364	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.08.05 06:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.87
+CS	0	00:34:59.364	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.08.05 06:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	00:35:02.299	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.08.28 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.59; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:35:02.299	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.08.28 18:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.56
+CS	0	00:35:02.299	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.08.28 18:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:35:05.436	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.23 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.64; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:35:05.436	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.23 17:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.76
+CS	0	00:35:05.436	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.23 17:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:35:05.559	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.24 11:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.03; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:35:05.568	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.24 12:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.90
+CS	0	00:35:05.568	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.24 12:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:35:05.642	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.24 20:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.14; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:35:05.871	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.28 04:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.91
+CS	0	00:35:05.871	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.09.28 04:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	00:35:06.502	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.10.01 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.31; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	00:35:06.681	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.10.02 16:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.41
+CS	0	00:35:06.692	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.10.02 17:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | close=4191.28
+CS	0	00:35:06.774	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.10.05 05:00:00   [Wyckoff W0] SETUP_RESET | SELL | TEST_EXPIRED
+CS	0	00:35:08.363	Tester	final balance 9795.31 USD
+CS	0	00:35:08.364	Wyckoff_XAUUSD_W0_v1_03 (XAUUSD,M5)	2026.10.16 23:58:58   [Wyckoff W0] Deinitialized. Reason=1
+CS	0	00:35:08.438	Tester	XAUUSD,M5: 175676444 ticks, 198318 bars generated. Environment synchronized in 0:00:00.200. Test passed in 0:03:29.786 (including ticks preprocessing 0:00:43.547).
+CS	0	00:35:08.438	Tester	XAUUSD,M5: total time from login to stop testing 0:03:29.986 (including 0:00:00.200 for history data synchronization)
+CS	0	00:35:08.441	Tester	1194 Mb memory used including 17 Mb of history data, 1024 Mb of cached tick data (total memory for tick data 3519 Mb)
+CS	0	00:35:08.441	Tester	log file "C:\Users\Star\AppData\Roaming\MetaQuotes\Tester\D0E8209F77C8CF37AD8BF550E51FF075\Agent-127.0.0.1-3000\logs\20261101.log" written
+CS	0	00:35:08.443	Tester	test Experts\Wyckoff_XAUUSD_W0_v1_03.ex5 on XAUUSD,M5 thread finished
+CS	0	00:35:08.754	127.0.0.1	prepare for shutdown
+CS	0	00:35:08.754	127.0.0.1	shutdown finished
+CS	0	01:10:15.962	127.0.0.1	login (build 6230)
+CS	0	01:10:15.978	Tester	account info found with currency USD
+CS	0	01:10:15.988	Network	1478 bytes of tester parameters loaded
+CS	0	01:10:15.988	Network	37572 bytes of input parameters loaded
+CS	0	01:10:15.991	Tester	expert file added: Experts\Wyckoff_XAUUSD_W0_v1_04.ex5. 85313 bytes loaded
+CS	0	01:10:16.134	Tester	initial deposit 10000.00 USD, leverage 1:100
+CS	0	01:10:16.136	Tester	successfully initialized
+CS	0	01:10:16.136	Network	82 Kb of total initialization data received
+CS	0	01:10:16.136	Tester	Intel Core i3-4100M  @ 2.50GHz, 6022 MB
+CS	0	01:10:16.185	Symbols	XAUUSD: symbol to be synchronized
+CS	0	01:10:16.187	Symbols	XAUUSD: symbol synchronized already, 18 bytes received
+CS	0	01:10:16.543	History	XAUUSD: history synchronization started
+CS	0	01:10:16.591	History	XAUUSD: load 27 bytes of history data to synchronize in 0:00:00.001
+CS	0	01:10:16.591	History	XAUUSD: history synchronized from 2023.01.03 to 2026.10.16
+CS	0	01:10:16.593	Ticks	XAUUSD: ticks synchronization started
+CS	0	01:10:16.594	Ticks	XAUUSD: load 34 bytes of tick data to synchronize in 0:00:00.000
+CS	0	01:10:16.594	Ticks	XAUUSD: history ticks synchronized from 2024.04.19 to 2026.10.16
+CS	0	01:10:16.652	History	XAUUSD,M5: history cache allocated for 280875 bars and contains 70635 bars from 2023.01.03 01:00 to 2023.12.29 23:55
+CS	0	01:10:16.652	History	XAUUSD,M5: history begins from 2023.01.03 01:00
+CS	0	01:10:16.656	Tester	XAUUSD,M5 (WMMarkets-Demo): generating based on real ticks
+CS	0	01:10:16.656	Tester	XAUUSD,M5: testing of Experts\Wyckoff_XAUUSD_W0_v1_04.ex5 from 2024.01.02 00:00 to 2026.10.17 00:00 started with inputs:
+CS	0	01:10:16.656	Tester	  === Symbol & Timeframes ====
+CS	0	01:10:16.656	Tester	  InpTradeSymbol=
+CS	0	01:10:16.656	Tester	  InpStructureTF=16388
+CS	0	01:10:16.656	Tester	  InpSignalTF=16385
+CS	0	01:10:16.656	Tester	  InpEntryTF=5
+CS	0	01:10:16.656	Tester	  InpUseH4ContextFilter=false
+CS	0	01:10:16.656	Tester	  InpH4EMAPeriod=50
+CS	0	01:10:16.656	Tester	  InpH4EMASlopeBars=5
+CS	0	01:10:16.656	Tester	  === Risk Management ====
+CS	0	01:10:16.656	Tester	  InpRiskPercent=0.5
+CS	0	01:10:16.656	Tester	  InpRewardRisk=2.0
+CS	0	01:10:16.656	Tester	  InpMagicNumber=31102026
+CS	0	01:10:16.656	Tester	  InpDeviationPoints=20
+CS	0	01:10:16.656	Tester	  InpMaxSpreadPoints=80.0
+CS	0	01:10:16.656	Tester	  InpMaxStopATR=4.0
+CS	0	01:10:16.656	Tester	  InpStopLookbackM5=12
+CS	0	01:10:16.656	Tester	  InpStopATRBuffer=0.2
+CS	0	01:10:16.656	Tester	  === Range Detection ====
+CS	0	01:10:16.656	Tester	  InpRangeLookbackBars=80
+CS	0	01:10:16.656	Tester	  InpRangeMinBars=24
+CS	0	01:10:16.656	Tester	  InpRangeMaxBars=120
+CS	0	01:10:16.656	Tester	  InpRangeATRPeriod=14
+CS	0	01:10:16.656	Tester	  InpRangeMinWidthATR=2.5
+CS	0	01:10:16.656	Tester	  InpRangeMaxWidthATR=10.0
+CS	0	01:10:16.656	Tester	  InpRangeMinTouches=2
+CS	0	01:10:16.656	Tester	  InpRangeTouchToleranceATR=0.25
+CS	0	01:10:16.656	Tester	  InpRangeMinTouchSpacing=5
+CS	0	01:10:16.656	Tester	  InpRangeMaxAgeBars=120
+CS	0	01:10:16.656	Tester	  === Spring / UTAD Detection ====
+CS	0	01:10:16.656	Tester	  InpSpringMinPenetrationATR=0.05
+CS	0	01:10:16.656	Tester	  InpSpringMaxPenetrationATR=0.75
+CS	0	01:10:16.656	Tester	  InpSpringReentryBars=3
+CS	0	01:10:16.656	Tester	  InpSpringMinClosePosition=0.65
+CS	0	01:10:16.656	Tester	  InpUTADMinPenetrationATR=0.05
+CS	0	01:10:16.656	Tester	  InpUTADMaxPenetrationATR=0.75
+CS	0	01:10:16.656	Tester	  InpUTADReentryBars=3
+CS	0	01:10:16.656	Tester	  InpUTADMaxClosePosition=0.35
+CS	0	01:10:16.656	Tester	  === Test Detection ====
+CS	0	01:10:16.656	Tester	  InpTestMinBarsAfterEvent=1
+CS	0	01:10:16.656	Tester	  InpTestMaxBarsAfterEvent=10
+CS	0	01:10:16.656	Tester	  InpTestMaxBreakBeyondEventATR=0.1
+CS	0	01:10:16.656	Tester	  InpTestSupportToleranceATR=0.3
+CS	0	01:10:16.656	Tester	  === SOS / SOW Detection ====
+CS	0	01:10:16.656	Tester	  InpStrengthSwingLookback=5
+CS	0	01:10:16.656	Tester	  InpSOSMinBodyATR=0.5
+CS	0	01:10:16.656	Tester	  InpSOSMinBodyShare=0.6
+CS	0	01:10:16.656	Tester	  InpSOSMinClosePosition=0.7
+CS	0	01:10:16.656	Tester	  InpSOWMinBodyATR=0.5
+CS	0	01:10:16.656	Tester	  InpSOWMinBodyShare=0.6
+CS	0	01:10:16.656	Tester	  InpSOWMaxClosePosition=0.3
+CS	0	01:10:16.656	Tester	  === LPS / LPSY Detection ====
+CS	0	01:10:16.656	Tester	  InpLPSMinPullbackATR=0.15
+CS	0	01:10:16.656	Tester	  InpLPSMaxPullbackATR=0.8
+CS	0	01:10:16.656	Tester	  InpLPSInvalidationATR=0.2
+CS	0	01:10:16.656	Tester	  InpLPSExpiryBars=12
+CS	0	01:10:16.656	Tester	  === M5 Entry ====
+CS	0	01:10:16.656	Tester	  InpEntryBreakLookback=3
+CS	0	01:10:16.656	Tester	  InpMinConfirmBodyShare=0.45
+CS	0	01:10:16.656	Tester	  InpEntryExpiryBars=12
+CS	0	01:10:16.656	Tester	  InpM5ATRPeriod=14
+CS	0	01:10:16.656	Tester	  === Chart Display ====
+CS	0	01:10:16.656	Tester	  InpDrawTradingRanges=true
+CS	0	01:10:16.656	Tester	  InpDrawWyckoffEvents=true
+CS	0	01:10:16.656	Tester	  InpDrawEntrySignals=true
+CS	0	01:10:16.656	Tester	  InpDrawStopTarget=true
+CS	0	01:10:16.656	Tester	  InpRangeColor=13458026
+CS	0	01:10:16.656	Tester	  InpBuyEventColor=3329330
+CS	0	01:10:16.656	Tester	  InpSellEventColor=4678655
+CS	0	01:10:16.656	Tester	  === Debug & Logging ====
+CS	0	01:10:16.656	Tester	  InpEnableDebug=true
+CS	0	01:10:16.656	Tester	  InpLogRejectedSetups=true
+CS	0	01:10:16.656	Tester	  InpExportCSV=true
+CS	0	01:10:16.656	Tester	  InpCSVFileName=Wyckoff_W0_events_v1_04.csv
+CS	0	01:10:16.724	History	XAUUSD,H1: history cache allocated for 23413 bars and contains 5893 bars from 2023.01.03 01:00 to 2023.12.29 23:00
+CS	0	01:10:16.724	History	XAUUSD,H1: history begins from 2023.01.03 01:00
+CS	0	01:10:16.725	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 00:00:00   [Wyckoff W0] CSV logging enabled (fresh file). File: C:\Users\Star\AppData\Roaming\MetaQuotes\Terminal\Common\Files\Wyckoff_W0_events_v1_04.csv
+CS	0	01:10:16.725	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 00:00:00   [Wyckoff W0] EA_INIT | NONE | CSV logging started; initialBalance=10000.00; accountCurrency=USD; minVolume=0.01; volumeStep=0.01
+CS	0	01:10:16.726	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 00:00:00   [Wyckoff W0] v1.04 initialized on XAUUSD; SignalTF=PERIOD_H1; EntryTF=PERIOD_M5; Risk=0.50%; RR=2.00
+CS	3	01:10:17.366	Ticks	XAUUSD : 2024.04.19 23:59 - real ticks absent for 818 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.366	Ticks	XAUUSD : 2024.04.19 23:59 - real ticks discarded for 562 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.366	Ticks	XAUUSD : 2024.04.19 23:59 - 107939 tick prices mismatch for 562 minute bars
+CS	3	01:10:17.401	Ticks	XAUUSD : 2024.04.22 23:59 - real ticks absent for 61 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.401	Ticks	XAUUSD : 2024.04.22 23:59 - real ticks discarded for 1319 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.401	Ticks	XAUUSD : 2024.04.22 23:59 - 339102 tick prices mismatch for 1319 minute bars
+CS	3	01:10:17.431	Ticks	XAUUSD : 2024.04.23 23:59 - real ticks absent for 61 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.431	Ticks	XAUUSD : 2024.04.23 23:59 - real ticks discarded for 1319 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.431	Ticks	XAUUSD : 2024.04.23 23:59 - 599722 tick prices mismatch for 1319 minute bars
+CS	3	01:10:17.460	Ticks	XAUUSD : 2024.04.24 23:59 - real ticks absent for 61 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.460	Ticks	XAUUSD : 2024.04.24 23:59 - real ticks discarded for 1319 minutes out of 1380 total minute bars within a day
+CS	3	01:10:17.460	Ticks	XAUUSD : 2024.04.24 23:59 - 801339 tick prices mismatch for 1319 minute bars
+CS	3	01:10:17.496	Ticks	XAUUSD : 2024.04.25 23:59 - real ticks absent for 62 minutes out of 1379 total minute bars within a day
+CS	3	01:10:17.496	Ticks	XAUUSD : 2024.04.25 23:59 - real ticks discarded for 1316 minutes out of 1379 total minute bars within a day
+CS	3	01:10:17.496	Ticks	XAUUSD : 2024.04.25 23:59 - 1012223 tick prices mismatch for 1316 minute bars
+CS	3	01:10:27.545	Ticks	XAUUSD : 2025.04.02 23:59 - real ticks discarded for 1309 minutes out of 1379 total minute bars within a day
+CS	3	01:10:27.549	Ticks	XAUUSD : 2025.04.02 23:59 - 1209482 tick prices mismatch for 1309 minute bars
+CS	3	01:10:27.620	Ticks	XAUUSD : 2025.04.03 23:59 - all the real ticks discarded within a day
+CS	3	01:10:27.620	Ticks	XAUUSD : 2025.04.03 23:59 - 1524110 tick prices mismatch for 1379 minute bars
+CS	3	01:10:27.684	Ticks	XAUUSD : 2025.04.04 23:59 - all the real ticks discarded within a day
+CS	3	01:10:27.684	Ticks	XAUUSD : 2025.04.04 23:59 - 1818507 tick prices mismatch for 1379 minute bars
+CS	3	01:10:27.734	Ticks	XAUUSD : 2025.04.07 23:59 - real ticks discarded for 1169 minutes out of 1379 total minute bars within a day
+CS	3	01:10:27.734	Ticks	XAUUSD : 2025.04.07 23:59 - 2138626 tick prices mismatch for 1169 minute bars
+CS	3	01:10:32.447	Ticks	XAUUSD : 2025.07.23 23:59 - real ticks discarded for 1223 minutes out of 1379 total minute bars within a day
+CS	3	01:10:32.447	Ticks	XAUUSD : 2025.07.23 23:59 - 2326620 tick prices mismatch for 1223 minute bars
+CS	3	01:10:32.475	Ticks	XAUUSD : 2025.07.24 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.475	Ticks	XAUUSD : 2025.07.24 23:59 - 2505249 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.503	Ticks	XAUUSD : 2025.07.25 23:59 - real ticks discarded for 1370 minutes out of 1379 total minute bars within a day
+CS	3	01:10:32.503	Ticks	XAUUSD : 2025.07.25 23:59 - 2660077 tick prices mismatch for 1370 minute bars
+CS	3	01:10:32.536	Ticks	XAUUSD : 2025.07.28 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.536	Ticks	XAUUSD : 2025.07.28 23:59 - 2829713 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.578	Ticks	XAUUSD : 2025.07.29 23:59 - real ticks discarded for 1378 minutes out of 1379 total minute bars within a day
+CS	3	01:10:32.578	Ticks	XAUUSD : 2025.07.29 23:59 - 2988744 tick prices mismatch for 1378 minute bars
+CS	3	01:10:32.607	Ticks	XAUUSD : 2025.07.30 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.607	Ticks	XAUUSD : 2025.07.30 23:59 - 3169966 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.639	Ticks	XAUUSD : 2025.07.31 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.639	Ticks	XAUUSD : 2025.07.31 23:59 - 3343054 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.666	Ticks	XAUUSD : 2025.08.01 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.666	Ticks	XAUUSD : 2025.08.01 23:59 - 3524015 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.690	Ticks	XAUUSD : 2025.08.04 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.690	Ticks	XAUUSD : 2025.08.04 23:59 - 3672996 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.712	Ticks	XAUUSD : 2025.08.05 23:59 - real ticks discarded for 1377 minutes out of 1379 total minute bars within a day
+CS	3	01:10:32.712	Ticks	XAUUSD : 2025.08.05 23:59 - 3805183 tick prices mismatch for 1377 minute bars
+CS	3	01:10:32.739	Ticks	XAUUSD : 2025.08.06 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.739	Ticks	XAUUSD : 2025.08.06 23:59 - 3933409 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.789	Ticks	XAUUSD : 2025.08.07 23:59 - all the real ticks discarded within a day
+CS	3	01:10:32.789	Ticks	XAUUSD : 2025.08.07 23:59 - 4172770 tick prices mismatch for 1379 minute bars
+CS	3	01:10:32.830	Ticks	XAUUSD : 2025.08.08 23:59 - real ticks discarded for 1278 minutes out of 1379 total minute bars within a day
+CS	3	01:10:32.830	Ticks	XAUUSD : 2025.08.08 23:59 - 4510065 tick prices mismatch for 1278 minute bars
+CS	3	01:10:34.109	Ticks	XAUUSD : 2025.09.16 23:59 - real ticks discarded for 1367 minutes out of 1379 total minute bars within a day
+CS	3	01:10:34.109	Ticks	XAUUSD : 2025.09.16 23:59 - 4734527 tick prices mismatch for 1367 minute bars
+CS	3	01:10:34.156	Ticks	XAUUSD : 2025.09.17 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.156	Ticks	XAUUSD : 2025.09.17 23:59 - 5004143 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.207	Ticks	XAUUSD : 2025.09.18 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.207	Ticks	XAUUSD : 2025.09.18 23:59 - 5260837 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.259	Ticks	XAUUSD : 2025.09.19 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.259	Ticks	XAUUSD : 2025.09.19 23:59 - 5498883 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.536	Ticks	XAUUSD : 2025.09.22 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.536	Ticks	XAUUSD : 2025.09.22 23:59 - 5755448 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.581	Ticks	XAUUSD : 2025.09.23 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.581	Ticks	XAUUSD : 2025.09.23 23:59 - 6056407 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.625	Ticks	XAUUSD : 2025.09.24 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.625	Ticks	XAUUSD : 2025.09.24 23:59 - 6302904 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.670	Ticks	XAUUSD : 2025.09.25 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.670	Ticks	XAUUSD : 2025.09.25 23:59 - 6582921 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.712	Ticks	XAUUSD : 2025.09.26 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.712	Ticks	XAUUSD : 2025.09.26 23:59 - 6832639 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.746	Ticks	XAUUSD : 2025.09.29 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.746	Ticks	XAUUSD : 2025.09.29 23:59 - 7104464 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.781	Ticks	XAUUSD : 2025.09.30 23:59 - real ticks absent for 10 minutes out of 1379 total minute bars within a day
+CS	3	01:10:34.781	Ticks	XAUUSD : 2025.09.30 23:59 - real ticks discarded for 1369 minutes out of 1379 total minute bars within a day
+CS	3	01:10:34.781	Ticks	XAUUSD : 2025.09.30 23:59 - 7354281 tick prices mismatch for 1369 minute bars
+CS	3	01:10:34.814	Ticks	XAUUSD : 2025.10.01 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.814	Ticks	XAUUSD : 2025.10.01 23:59 - 7609701 tick prices mismatch for 1379 minute bars
+CS	3	01:10:34.846	Ticks	XAUUSD : 2025.10.02 23:59 - real ticks discarded for 1378 minutes out of 1379 total minute bars within a day
+CS	3	01:10:34.846	Ticks	XAUUSD : 2025.10.02 23:59 - 7841688 tick prices mismatch for 1378 minute bars
+CS	3	01:10:34.879	Ticks	XAUUSD : 2025.10.03 23:59 - all the real ticks discarded within a day
+CS	3	01:10:34.879	Ticks	XAUUSD : 2025.10.03 23:59 - 8073972 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.194	Ticks	XAUUSD : 2025.10.09 23:59 - real ticks discarded for 1357 minutes out of 1379 total minute bars within a day
+CS	3	01:10:35.194	Ticks	XAUUSD : 2025.10.09 23:59 - 8424450 tick prices mismatch for 1357 minute bars
+CS	3	01:10:35.259	Ticks	XAUUSD : 2025.10.10 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.259	Ticks	XAUUSD : 2025.10.10 23:59 - 8792828 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.318	Ticks	XAUUSD : 2025.10.13 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.318	Ticks	XAUUSD : 2025.10.13 23:59 - 9087949 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.360	Ticks	XAUUSD : 2025.10.14 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.360	Ticks	XAUUSD : 2025.10.14 23:59 - 9433740 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.402	Ticks	XAUUSD : 2025.10.15 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.402	Ticks	XAUUSD : 2025.10.15 23:59 - 9698970 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.466	Ticks	XAUUSD : 2025.10.16 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.466	Ticks	XAUUSD : 2025.10.16 23:59 - 10036502 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.528	Ticks	XAUUSD : 2025.10.17 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.528	Ticks	XAUUSD : 2025.10.17 23:59 - 10558182 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.740	Ticks	XAUUSD : 2025.10.20 23:59 - real ticks absent for 2 minutes out of 1379 total minute bars within a day
+CS	3	01:10:35.740	Ticks	XAUUSD : 2025.10.20 23:59 - real ticks discarded for 1377 minutes out of 1379 total minute bars within a day
+CS	3	01:10:35.742	Ticks	XAUUSD : 2025.10.20 23:59 - 10950167 tick prices mismatch for 1377 minute bars
+CS	3	01:10:35.796	Ticks	XAUUSD : 2025.10.21 23:59 - real ticks absent for 1 minutes out of 1379 total minute bars within a day
+CS	3	01:10:35.796	Ticks	XAUUSD : 2025.10.21 23:59 - real ticks discarded for 1378 minutes out of 1379 total minute bars within a day
+CS	3	01:10:35.796	Ticks	XAUUSD : 2025.10.21 23:59 - 11339147 tick prices mismatch for 1378 minute bars
+CS	3	01:10:35.844	Ticks	XAUUSD : 2025.10.22 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.844	Ticks	XAUUSD : 2025.10.22 23:59 - 11717453 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.891	Ticks	XAUUSD : 2025.10.23 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.891	Ticks	XAUUSD : 2025.10.23 23:59 - 12015344 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.937	Ticks	XAUUSD : 2025.10.24 23:59 - all the real ticks discarded within a day
+CS	3	01:10:35.937	Ticks	XAUUSD : 2025.10.24 23:59 - 12301418 tick prices mismatch for 1379 minute bars
+CS	3	01:10:35.977	Ticks	XAUUSD : 2025.10.27 23:59 - real ticks discarded for 1174 minutes out of 1379 total minute bars within a day
+CS	3	01:10:35.977	Ticks	XAUUSD : 2025.10.27 23:59 - 12585851 tick prices mismatch for 1174 minute bars
+CS	3	01:10:37.008	Ticks	XAUUSD : 2025.11.24 23:59 - real ticks discarded for 1267 minutes out of 1379 total minute bars within a day
+CS	3	01:10:37.008	Ticks	XAUUSD : 2025.11.24 23:59 - 12841215 tick prices mismatch for 1267 minute bars
+CS	3	01:10:37.052	Ticks	XAUUSD : 2025.11.25 23:59 - all the real ticks discarded within a day
+CS	3	01:10:37.052	Ticks	XAUUSD : 2025.11.25 23:59 - 13140489 tick prices mismatch for 1379 minute bars
+CS	3	01:10:37.085	Ticks	XAUUSD : 2025.11.26 23:59 - all the real ticks discarded within a day
+CS	3	01:10:37.085	Ticks	XAUUSD : 2025.11.26 23:59 - 13410608 tick prices mismatch for 1379 minute bars
+CS	3	01:10:37.110	Ticks	XAUUSD : 2025.11.27 23:59 - real ticks discarded for 1229 minutes out of 1230 total minute bars within a day
+CS	3	01:10:37.110	Ticks	XAUUSD : 2025.11.27 23:59 - 13565192 tick prices mismatch for 1229 minute bars
+CS	3	01:10:37.145	Ticks	XAUUSD : 2025.11.28 23:59 - real ticks absent for 9 minutes out of 1244 total minute bars within a day
+CS	3	01:10:37.145	Ticks	XAUUSD : 2025.11.28 23:59 - real ticks discarded for 1225 minutes out of 1244 total minute bars within a day
+CS	3	01:10:37.145	Ticks	XAUUSD : 2025.11.28 23:59 - 13725950 tick prices mismatch for 1225 minute bars
+CS	3	01:10:37.191	Ticks	XAUUSD : 2025.12.01 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	01:10:37.191	Ticks	XAUUSD : 2025.12.01 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	01:10:37.191	Ticks	XAUUSD : 2025.12.01 23:59 - 14047652 tick prices mismatch for 1379 minute bars
+CS	3	01:10:40.488	Ticks	XAUUSD : 2025.12.02 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.488	Ticks	XAUUSD : 2025.12.02 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.488	Ticks	XAUUSD : 2025.12.02 23:59 - 14305577 tick prices mismatch for 1379 minute bars
+CS	3	01:10:40.531	Ticks	XAUUSD : 2025.12.03 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.531	Ticks	XAUUSD : 2025.12.03 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.531	Ticks	XAUUSD : 2025.12.03 23:59 - 14569618 tick prices mismatch for 1379 minute bars
+CS	3	01:10:40.569	Ticks	XAUUSD : 2025.12.04 23:59 - real ticks absent for 1 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.569	Ticks	XAUUSD : 2025.12.04 23:59 - real ticks discarded for 1379 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.569	Ticks	XAUUSD : 2025.12.04 23:59 - 14855579 tick prices mismatch for 1379 minute bars
+CS	3	01:10:40.606	Ticks	XAUUSD : 2025.12.05 23:59 - real ticks absent for 2 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.606	Ticks	XAUUSD : 2025.12.05 23:59 - real ticks discarded for 1378 minutes out of 1380 total minute bars within a day
+CS	3	01:10:40.606	Ticks	XAUUSD : 2025.12.05 23:59 - 15104945 tick prices mismatch for 1378 minute bars
+CS	3	01:10:40.638	Ticks	XAUUSD : 2025.12.08 23:59 - real ticks absent for 20 minutes out of 1369 total minute bars within a day
+CS	3	01:10:40.638	Ticks	XAUUSD : 2025.12.08 23:59 - real ticks discarded for 1303 minutes out of 1369 total minute bars within a day
+CS	3	01:10:40.638	Ticks	XAUUSD : 2025.12.08 23:59 - 15341039 tick prices mismatch for 1303 minute bars
+CS	0	01:11:16.747	Ticks	XAUUSD : real ticks begin from 2024.04.19 00:00:00
+CS	3	01:11:16.747	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  real ticks absent for 1111 minutes of 990925 total minute bars, every tick generation used
+CS	3	01:11:16.748	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  real ticks discarded for 80385 minutes of 990925 total minute bars, every tick generation used
+CS	3	01:11:16.748	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  real ticks discarded for 32 whole days
+CS	3	01:11:16.748	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  tick volumes not matched for 6497 minute bars
+CS	3	01:11:16.748	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  tick prices of 15341039 ticks not matched for 80385 minute bars
+CS	3	01:11:16.748	Ticks	XAUUSD : 2024.01.02 00:00 - 2026.10.17 00:00  last prices absent for 7456 minute bars, bid prices used
+CS	0	01:11:17.223	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.96; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:17.284	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 18:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.26
+CS	0	01:11:17.291	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 19:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2066.09
+CS	0	01:11:17.302	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.02 23:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2057.96
+CS	0	01:11:17.438	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.03 23:00:00   [Wyckoff W0] REJECT_SOS_WRONG_SIDE_OF_RANGE | BUY | break=2048.77; close=2041.00; rangeLow=2057.33
+CS	0	01:11:17.438	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.01.03 23:00:00   [Wyckoff W0] SETUP_RESET | BUY | SOS_WRONG_SIDE_OF_RANGE
+CS	0	01:11:21.512	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.14 01:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.75; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:21.518	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.14 04:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.22
+CS	0	01:11:21.518	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.14 04:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=1992.85
+CS	0	01:11:21.521	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.14 05:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=1991.19
+CS	0	01:11:21.633	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.15 16:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=1999.07; bodyATR=2.25
+CS	0	01:11:21.663	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.15 21:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.41
+CS	0	01:11:21.663	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.15 21:05:00   [Wyckoff W0] M5_BUY_TRIGGER | BUY | close=2005.22; priorHigh=2004.80; bodyShare=0.767
+CS	0	01:11:21.671	Trade	2024.02.15 21:05:00   market buy 0.18 XAUUSD sl: 2002.60 tp: 2010.58 (2005.23 / 2005.26 / 2005.23)
+CS	0	01:11:21.671	Trades	2024.02.15 21:05:00   deal #2 buy 0.18 XAUUSD at 2005.26 done (based on order #2)
+CS	0	01:11:21.671	Trade	2024.02.15 21:05:00   deal performed [#2 buy 0.18 XAUUSD at 2005.26]
+CS	0	01:11:21.672	Trade	2024.02.15 21:05:00   order performed buy 0.18 at 2005.26 [#2 buy 0.18 XAUUSD at 2005.26]
+CS	0	01:11:21.675	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.15 21:05:00   CTrade::OrderSend: market buy 0.18 XAUUSD sl: 2002.60 tp: 2010.58 [done at 2005.26]
+CS	0	01:11:21.675	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.15 21:05:00   [Wyckoff W0] ORDER_OPENED | BUY | volume=0.18; entry=2005.26; SL=2002.60; TP=2010.58; RR=2.00
+CS	0	01:11:21.676	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.15 21:05:00   [Wyckoff W0] TRADE_ENTRY_DEAL | BUY | positionID=2; price=2005.26; volume=0.18
+CS	0	01:11:21.697	Trade	2024.02.16 02:30:29   stop loss triggered #2 buy 0.18 XAUUSD 2005.26 sl: 2002.60 tp: 2010.58 [#3 sell 0.18 XAUUSD at 2002.60]
+CS	0	01:11:21.697	Trades	2024.02.16 02:30:29   deal #3 sell 0.18 XAUUSD at 2002.59 done (based on order #3)
+CS	0	01:11:21.697	Trade	2024.02.16 02:30:29   deal performed [#3 sell 0.18 XAUUSD at 2002.59]
+CS	0	01:11:21.697	Trade	2024.02.16 02:30:29   order performed sell 0.18 at 2002.59 [#3 sell 0.18 XAUUSD at 2002.60]
+CS	0	01:11:21.697	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.16 02:30:29   [Wyckoff W0] SETUP_RESET | BUY | POSITION_CLOSED
+CS	0	01:11:21.697	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.16 02:30:29   [Wyckoff W0] TRADE_CLOSED | NONE | positionID=2; exitDealPrice=2002.59; exitDealVolume=0.18; netProfit=-57.64; initialRiskMoney=47.88; realizedR=-1.204; reason=SL
+CS	0	01:11:22.038	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.22 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.37; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:22.045	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.22 11:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.96
+CS	0	01:11:22.045	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.22 11:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:22.421	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.29 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.45; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:22.421	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.29 16:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=2.73
+CS	0	01:11:22.421	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.02.29 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:23.701	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.03.19 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.78; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	01:11:23.803	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.03.20 21:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.97
+CS	0	01:11:23.803	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.03.20 21:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:24.677	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.03.28 11:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.02; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:24.683	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.03.28 13:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=2.53
+CS	0	01:11:24.683	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.03.28 13:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:25.448	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.04.05 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.61; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	01:11:25.448	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.04.05 18:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.95
+CS	0	01:11:25.448	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.04.05 18:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:26.021	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.04.10 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.64; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:26.192	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.04.11 23:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.99
+CS	0	01:11:26.192	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.04.11 23:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:28.953	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.02 06:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.68; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	01:11:29.229	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.03 17:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.68
+CS	0	01:11:29.268	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.03 20:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2299.26
+CS	0	01:11:29.337	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.06 08:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	01:11:30.663	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 04:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.50; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:30.663	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 04:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.42
+CS	0	01:11:30.680	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 05:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | close=2391.55
+CS	0	01:11:30.695	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 06:00:00   [Wyckoff W0] TEST_CONFIRMED | SELL | high=2391.80
+CS	0	01:11:30.825	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 16:00:00   [Wyckoff W0] SOW_CONFIRMED | SELL | break=2380.96; bodyATR=1.04
+CS	0	01:11:30.882	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 18:00:00   [Wyckoff W0] LPSY_CONFIRMED | SELL | pullbackATR=0.17
+CS	0	01:11:30.896	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 19:00:00   [Wyckoff W0] ENTRY_TRIGGER_EXPIRED | SELL | checked=12; directionalBars=4; bodyPassBars=8; breakPassBars=0; lastClose=2381.75; lastBreakLevel=2380.19; lastBodyShare=0.067
+CS	0	01:11:30.896	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.16 19:00:00   [Wyckoff W0] SETUP_RESET | SELL | ENTRY_TRIGGER_EXPIRED
+CS	0	01:11:32.995	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.29 21:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.39; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:33.058	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.30 06:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.44
+CS	0	01:11:33.063	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.30 07:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2334.35
+CS	0	01:11:33.103	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.30 12:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2331.91
+CS	0	01:11:33.116	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.30 14:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=2338.01; bodyATR=1.26
+CS	0	01:11:33.124	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.30 15:00:00   [Wyckoff W0] REJECT_LPS_INVALIDATED | BUY | 
+CS	0	01:11:33.124	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.30 15:00:00   [Wyckoff W0] SETUP_RESET | BUY | LPS invalidated
+CS	0	01:11:33.425	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.31 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.67; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:33.432	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.31 23:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.24
+CS	0	01:11:33.432	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.05.31 23:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=2327.81
+CS	0	01:11:33.447	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 02:00:04   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2323.28
+CS	0	01:11:33.598	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 20:00:00   [Wyckoff W0] SOS_CONFIRMED | BUY | break=2345.73; bodyATR=0.93
+CS	0	01:11:33.609	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 21:00:00   [Wyckoff W0] LPS_CONFIRMED | BUY | pullbackATR=0.55
+CS	0	01:11:33.611	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 21:25:00   [Wyckoff W0] M5_BUY_TRIGGER | BUY | close=2349.01; priorHigh=2348.65; bodyShare=0.657
+CS	0	01:11:33.611	Trade	2024.06.03 21:25:00   market buy 0.14 XAUUSD sl: 2345.77 tp: 2355.85 (2349.03 / 2349.13)
+CS	0	01:11:33.611	Trades	2024.06.03 21:25:00   deal #4 buy 0.14 XAUUSD at 2349.13 done (based on order #4)
+CS	0	01:11:33.611	Trade	2024.06.03 21:25:00   deal performed [#4 buy 0.14 XAUUSD at 2349.13]
+CS	0	01:11:33.611	Trade	2024.06.03 21:25:00   order performed buy 0.14 at 2349.13 [#4 buy 0.14 XAUUSD at 2349.13]
+CS	0	01:11:33.613	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 21:25:00   CTrade::OrderSend: market buy 0.14 XAUUSD sl: 2345.77 tp: 2355.85 [done at 2349.13]
+CS	0	01:11:33.613	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 21:25:00   [Wyckoff W0] ORDER_OPENED | BUY | volume=0.14; entry=2349.13; SL=2345.77; TP=2355.85; RR=2.00
+CS	0	01:11:33.613	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 21:25:00   [Wyckoff W0] TRADE_ENTRY_DEAL | BUY | positionID=4; price=2349.13; volume=0.14
+CS	0	01:11:33.633	Trade	2024.06.03 22:28:02   stop loss triggered #4 buy 0.14 XAUUSD 2349.13 sl: 2345.77 tp: 2355.85 [#5 sell 0.14 XAUUSD at 2345.77]
+CS	0	01:11:33.633	Trades	2024.06.03 22:28:02   deal #5 sell 0.14 XAUUSD at 2345.75 done (based on order #5)
+CS	0	01:11:33.633	Trade	2024.06.03 22:28:02   deal performed [#5 sell 0.14 XAUUSD at 2345.75]
+CS	0	01:11:33.633	Trade	2024.06.03 22:28:02   order performed sell 0.14 at 2345.75 [#5 sell 0.14 XAUUSD at 2345.77]
+CS	0	01:11:33.633	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 22:28:02   [Wyckoff W0] SETUP_RESET | BUY | POSITION_CLOSED
+CS	0	01:11:33.633	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.06.03 22:28:02   [Wyckoff W0] TRADE_CLOSED | NONE | positionID=4; exitDealPrice=2345.75; exitDealVolume=0.14; netProfit=-49.56; initialRiskMoney=47.04; realizedR=-1.054; reason=SL
+CS	0	01:11:38.974	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.03 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.25; rangeBars=80; upperTouches=2; lowerTouches=5
+CS	0	01:11:39.024	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.03 10:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.40
+CS	0	01:11:39.066	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.03 11:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.92
+CS	0	01:11:39.066	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.03 11:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	01:11:42.118	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.19 06:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.45; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:42.152	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.19 10:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.54
+CS	0	01:11:42.174	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.19 12:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2420.44
+CS	0	01:11:42.291	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.07.19 23:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	01:11:52.331	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.08.30 22:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.71; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:52.991	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.02 06:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.55
+CS	0	01:11:52.998	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.02 07:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2496.28
+CS	0	01:11:53.128	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.02 18:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	01:11:54.997	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.11 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.13; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:55.258	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.12 16:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.31
+CS	0	01:11:55.258	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.12 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:11:56.309	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.18 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.50; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:11:56.462	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.18 22:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.37
+CS	0	01:11:56.462	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.09.18 22:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:12:02.156	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.11 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.47; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:02.276	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.11 18:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.23
+CS	0	01:12:02.284	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.11 19:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=0.81
+CS	0	01:12:02.284	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.11 19:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	01:12:05.025	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.29 13:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.69; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:05.067	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.29 16:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=0.94
+CS	0	01:12:05.067	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.29 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:12:05.560	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.10.31 16:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.62; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	01:12:06.081	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.11.05 05:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.61
+CS	0	01:12:06.087	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.11.05 06:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2735.33
+CS	0	01:12:06.170	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.11.05 17:00:00   [Wyckoff W0] SETUP_RESET | BUY | TEST_EXPIRED
+CS	0	01:12:11.981	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.02 10:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.41; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:12.930	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.06 04:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=0.84
+CS	0	01:12:12.930	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.06 04:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	01:12:14.097	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.11 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.71; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:14.097	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.11 17:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.29
+CS	0	01:12:14.156	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.11 18:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.26
+CS	0	01:12:14.156	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.11 18:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	01:12:17.759	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.27 15:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=6.50; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:17.937	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.30 16:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.26
+CS	0	01:12:17.964	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.30 17:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | close=2611.61
+CS	0	01:12:18.039	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.31 04:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=2606.68
+CS	0	01:12:18.069	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.31 09:00:00   [Wyckoff W0] REJECT_SOS_WRONG_SIDE_OF_RANGE | BUY | break=2611.66; close=2607.90; rangeLow=2608.19
+CS	0	01:12:18.069	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2024.12.31 09:00:00   [Wyckoff W0] SETUP_RESET | BUY | SOS_WRONG_SIDE_OF_RANGE
+CS	0	01:12:22.078	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.01.24 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.06; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:22.078	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.01.24 05:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.76
+CS	0	01:12:22.078	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.01.24 05:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:12:24.223	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.05 01:00:01   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.93; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:24.239	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.05 03:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.40
+CS	0	01:12:24.263	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.05 05:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.15
+CS	0	01:12:24.263	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.05 05:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
+CS	0	01:12:27.517	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.24 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=4.20; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:27.517	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.24 17:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.14
+CS	0	01:12:27.517	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.24 17:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=2938.72
+CS	0	01:12:27.767	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.25 01:00:01   [Wyckoff W0] TEST_CONFIRMED | SELL | high=2953.06
+CS	0	01:12:27.843	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.25 06:00:00   [Wyckoff W0] SOW_CONFIRMED | SELL | break=2945.31; bodyATR=1.26
+CS	0	01:12:27.851	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.25 07:00:00   [Wyckoff W0] LPSY_CONFIRMED | SELL | pullbackATR=0.35
+CS	0	01:12:27.894	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.25 08:00:00   [Wyckoff W0] ENTRY_TRIGGER_EXPIRED | SELL | checked=12; directionalBars=4; bodyPassBars=5; breakPassBars=0; lastClose=2939.47; lastBreakLevel=2937.82; lastBodyShare=0.305
+CS	0	01:12:27.894	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.02.25 08:00:00   [Wyckoff W0] SETUP_RESET | SELL | ENTRY_TRIGGER_EXPIRED
+CS	0	01:12:30.277	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.06 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.14; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:30.483	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.07 18:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.06
+CS	0	01:12:30.483	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.07 18:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=2915.74
+CS	0	01:12:30.572	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.10 05:00:00   [Wyckoff W0] SETUP_RESET | SELL | TEST_EXPIRED
+CS	0	01:12:30.779	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.11 05:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.77; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:31.068	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.12 19:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.13
+CS	0	01:12:31.068	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.12 19:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:12:31.095	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.13 02:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.67; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:31.100	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.13 04:00:01   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.15
+CS	0	01:12:31.100	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.13 04:00:01   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=2937.90
+CS	0	01:12:31.119	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.13 09:00:00   [Wyckoff W0] TEST_CONFIRMED | SELL | high=2940.30
+CS	0	01:12:31.315	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.14 07:00:00   [Wyckoff W0] REJECT_SOW_WRONG_SIDE_OF_RANGE | SELL | break=2981.74; close=2985.44; rangeHigh=2940.50
+CS	0	01:12:31.315	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.14 07:00:00   [Wyckoff W0] SETUP_RESET | SELL | SOW_WRONG_SIDE_OF_RANGE
+CS	0	01:12:33.451	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.28 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.21; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:33.451	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.28 17:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.09
+CS	0	01:12:33.451	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.28 17:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=3070.29
+CS	0	01:12:33.468	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.28 18:00:00   [Wyckoff W0] TEST_CONFIRMED | SELL | high=3085.77
+CS	0	01:12:33.611	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.31 13:00:01   [Wyckoff W0] REJECT_SOW_WRONG_SIDE_OF_RANGE | SELL | break=3105.93; close=3115.00; rangeHigh=3086.03
+CS	0	01:12:33.611	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.31 13:00:01   [Wyckoff W0] SETUP_RESET | SELL | SOW_WRONG_SIDE_OF_RANGE
+CS	0	01:12:33.654	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.03.31 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.90; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:33.775	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.04.01 05:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | NONE | penetrationATR=1.19
+CS	0	01:12:33.775	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.04.01 05:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_UTAD_BREAK_TOO_DEEP
+CS	0	01:12:40.540	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.04.29 07:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.09; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:40.869	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.05.01 04:00:01   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.38
+CS	0	01:12:40.869	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.05.01 04:00:01   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	01:12:44.475	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.05.26 09:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.49; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:44.906	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.05.29 01:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.14
+CS	0	01:12:44.928	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.05.29 03:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | BUY | candidatePenetrationATR=2.21
+CS	0	01:12:44.928	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.05.29 03:00:00   [Wyckoff W0] SETUP_RESET | BUY | RANGE_INVALIDATED_SPRING_CANDIDATE_TOO_DEEP
+CS	0	01:12:48.398	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.06.20 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.90; rangeBars=80; upperTouches=3; lowerTouches=2
+CS	0	01:12:48.634	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.06.24 04:00:00   [Wyckoff W0] SPRING_CANDIDATE | BUY | penetrationATR=0.48
+CS	0	01:12:48.635	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.06.24 04:00:00   [Wyckoff W0] SPRING_CONFIRMED | BUY | same-bar re-entry; close=3351.04
+CS	0	01:12:48.643	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.06.24 05:00:00   [Wyckoff W0] TEST_CONFIRMED | BUY | low=3342.22
+CS	0	01:12:48.695	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.06.24 14:00:00   [Wyckoff W0] REJECT_SOS_WRONG_SIDE_OF_RANGE | BUY | break=3348.83; close=3325.59; rangeLow=3340.39
+CS	0	01:12:48.695	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.06.24 14:00:00   [Wyckoff W0] SETUP_RESET | BUY | SOS_WRONG_SIDE_OF_RANGE
+CS	0	01:12:49.952	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.03 17:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=8.37; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:50.712	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.11 04:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_EXPIRED
+CS	0	01:12:50.962	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.14 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=9.87; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:51.229	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.16 19:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.23
+CS	0	01:12:51.230	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.16 19:00:00   [Wyckoff W0] UTAD_CONFIRMED | SELL | same-bar re-entry; close=3344.14
+CS	0	01:12:51.290	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.17 07:00:00   [Wyckoff W0] SETUP_RESET | SELL | TEST_EXPIRED
+CS	0	01:12:51.294	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.17 08:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=5.42; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:12:51.340	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.17 16:00:00   [Wyckoff W0] REJECT_SPRING_TOO_DEEP | NONE | penetrationATR=1.21
+CS	0	01:12:51.340	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.07.17 16:00:00   [Wyckoff W0] SETUP_RESET | NONE | RANGE_INVALIDATED_SPRING_BREAK_TOO_DEEP
+CS	0	01:13:04.892	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.10.02 18:00:00   [Wyckoff W0] RANGE_FOUND | NONE | widthATR=7.86; rangeBars=80; upperTouches=2; lowerTouches=2
+CS	0	01:13:05.977	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.10.06 02:00:00   [Wyckoff W0] UTAD_CANDIDATE | SELL | penetrationATR=0.48
+CS	0	01:13:06.014	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.10.06 03:00:00   [Wyckoff W0] REJECT_UTAD_TOO_DEEP | SELL | candidatePenetrationATR=1.87
+CS	0	01:13:06.014	Wyckoff_XAUUSD_W0_v1_04 (XAUUSD,M5)	2025.10.06 03:00:00   [Wyckoff W0] SETUP_RESET | SELL | RANGE_INVALIDATED_UTAD_CANDIDATE_TOO_DEEP
