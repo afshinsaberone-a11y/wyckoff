@@ -98,7 +98,7 @@ sinput bool           InpEnableDebug             = true;
 sinput bool           InpLogRejectedSetups       = true;
 sinput bool           InpExportCSV               = true;
 sinput bool           InpLogEntryEvaluation     = true;
-sinput string          InpCSVFileName             = "Wyckoff_W0_events_v1_07.csv";
+sinput string          InpCSVFileName             = "Wyckoff_W0_events_v1_08.csv";
 
 //------------------------------ Types --------------------------------
 enum ENUM_WYCKOFF_DIRECTION
@@ -197,7 +197,7 @@ double   g_activeRiskMoney = 0.0;       // Actual fill-to-SL risk, account curre
 long     g_setupCounter = 0;
 SWyckoffSetup g_setup;
 
-#define EA_VERSION "1.07"
+#define EA_VERSION "1.08"
 
 //------------------------------ Utilities ----------------------------
 string EffectiveCSVFileName()
@@ -1450,7 +1450,7 @@ int OnInit()
                 "; accountCurrency="+AccountInfoString(ACCOUNT_CURRENCY)+
                 "; minVolume="+DoubleToString(SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_MIN),2)+
                 "; volumeStep="+DoubleToString(SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_STEP),2));
-   DebugPrint("v1.07 initialized on "+g_symbol+"; SignalTF="+EnumToString(InpSignalTF)+
+   DebugPrint("v1.08 initialized on "+g_symbol+"; SignalTF="+EnumToString(InpSignalTF)+
               "; EntryTF="+EnumToString(InpEntryTF)+
               "; Risk="+DoubleToString(InpRiskPercent,2)+"%; RR="+DoubleToString(InpRewardRisk,2));
    return INIT_SUCCEEDED;
