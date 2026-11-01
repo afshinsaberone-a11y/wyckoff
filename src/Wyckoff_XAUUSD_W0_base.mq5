@@ -998,3 +998,4 @@ void OnTick()
    if(IsNewBar(InpEntryTF,g_lastEntryBar))
       ProcessEntryBar();
   }
+//+------------------------------------------------------------------+
