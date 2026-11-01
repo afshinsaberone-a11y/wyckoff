@@ -998,3 +998,19 @@ void OnDeinit(const int reason)
       FileClose(g_csvHandle);
       g_csvHandle=INVALID_HANDLE;
      }
+   DebugPrint("Deinitialized. Reason="+(string)reason);
+  }
+
+void OnTick()
+  {
+   if(HasOurPosition())
+     {
+      g_setup.stage=ST_IN_POSITION;
+      return;
+     }
+   if(IsNewBar(InpSignalTF,g_lastSignalBar))
+      ProcessSignalBar();
+   if(IsNewBar(InpEntryTF,g_lastEntryBar))
+      ProcessEntryBar();
+  }
+//+------------------------------------------------------------------+
