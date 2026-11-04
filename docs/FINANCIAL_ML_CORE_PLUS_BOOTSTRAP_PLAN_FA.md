@@ -72,8 +72,8 @@
 |---:|---|---|---|
 | 1 | BOOT-001 Baseline Identity | اسناد و فایل‌های تست موجود | CONDITIONAL؛ تطبیق اولیه ثبت شد، Freeze نهایی باز است |
 | 2 | BOOT-002 MultiAudit Compile/Test | دسترسی به MT5/MetaEditor | نیازمند اجرای محیطی |
-| 3 | BOOT-003 Event Ledger | هویت W0 و schema | پس از طراحی/هم‌زمان با آماده‌سازی |
-| 4 | BOOT-004 Data/Execution Audit | فایل‌های داده و tick | آماده ممیزی با داده در دسترس |
+| 3 | BOOT-003 Event Ledger | هویت W0 و schema | قرارداد ID به‌روزرسانی شد؛ instrumentation در سورس هنوز اجرا نشده |
+| 4 | BOOT-004 Data/Execution Audit | فایل‌های داده و tick | ممیزی Event Log انجام شد؛ OHLC/Tick خام در مخزن یافت نشد؛ CONDITIONAL/BLOCKED |
 | 5 | BOOT-005 Label/Fold Freeze | Ledger اولیه | وابسته به تعریف outcome |
 | 6 | BOOT-006 W1/W2 readiness | BOOT-001 تا 005 | قفل تا عبور Gate |
 | 7 | BOOT-007 W3 | W1 و W2 معتبر | قفل |
@@ -82,3 +82,17 @@
 اگر فایل خام، دسترسی MetaEditor، تیک، یا خروجی تستر در اختیار Agent نیست، باید BLOCKED ثبت کند. هیچ Agent نباید Compile، Backtest، یا خواندن فایل‌هایی را که واقعاً اجرا/دریافت نکرده، ادعا کند.
 
 این برنامه، صف کار است و ثبت آن در GitHub به معنی انجام هیچ‌یک از BOOT taskها نیست.
+
+
+## نتیجه ممیزی آمادگی داده و اصلاح قرارداد شناسه — 2026-11-04
+
+[گزارش ممیزی آمادگی داده Financial ML](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md) ثبت شد. Event CSV اجرای C2 مورخ 2026-11-03 دارای 346 ردیف داده و 65 Range است؛ این اجرای مشخص تا 2026-10-17 ادامه دارد و نباید با اجرای جداگانه‌ای که گزارش C2 مورخ 2026-11-04 تا 2026-11-04 توصیف می‌کند ادغام شود. CSV جداگانه‌ای که در گزارش دوم نام برده شده، در مخزن حاضر نیست.
+
+بررسی سورس نشان داد `g_setupCounter` هنگام RANGE_FOUND افزایش می‌یابد؛ پس SetupID قدیمی شناسه Range/ماشین حالت است، نه شناسه یکتای هر Candidate. قراردادهای Event/Candidate و Feature/Label به schema نسخه 1.1-draft ارتقا یافتند: `range_id`، `cycle_id`، `attempt_id`، `candidate_id` و `legacy_setup_id` جدا هستند. W2 در نسخه اول باید نقطه تصمیم M5_ENTRY را Freeze کند.
+
+### وضعیت Gateها پس از این ممیزی
+- BOOT-001: CONDITIONAL؛ تطبیق اولیه انجام شد، SET دقیق و زنجیره binary/build تاریخی هنوز کامل نیست.
+- BOOT-002: BLOCKED تا Compile و اجرای واقعی MultiAudit در MetaEditor/MT5.
+- BOOT-003: طراحی قرارداد/شناسه بهتر شد؛ instrumentation در سورس و Compile/Replay هنوز انجام نشده.
+- BOOT-004: Event Log بررسی شد؛ داده خام M1/Tick و بسته کامل CSV اجرای 2026-11-04 در مخزن موجود نیست.
+- BOOT-005 تا BOOT-007: قفل؛ W1/W2/W3 هنوز نباید روی این Event CSV آموزش/ارزیابی شوند.
