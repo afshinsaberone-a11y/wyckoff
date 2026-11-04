@@ -41,12 +41,13 @@ def valid_candidate_rows():
     return [
         make_row(1, "RANGE_FOUND", SourceTimeframe="PERIOD_H1",
                  SourceBarOpenServer="2026.11.04 10:00:00"),
-        make_row(2, "CANDIDATE_CREATED", CycleID=CYCLE, AttemptID=ATTEMPT,
+        make_row(2, "M5_BUY_RECOVERY_CONFIRMED", CycleID=CYCLE, AttemptID=ATTEMPT),
+        make_row(3, "CANDIDATE_CREATED", CycleID=CYCLE, AttemptID=ATTEMPT,
                  CandidateID=CANDIDATE),
-        make_row(3, "REJECT_SPREAD_TOO_HIGH", CycleID=CYCLE, AttemptID=ATTEMPT,
+        make_row(4, "REJECT_SPREAD_TOO_HIGH", CycleID=CYCLE, AttemptID=ATTEMPT,
                  CandidateID=CANDIDATE, DecisionID=CANDIDATE + ":D1",
                  DecisionStatus="REJECTED", ReasonCode="REJECT_SPREAD_TOO_HIGH"),
-        make_row(4, "M5_ENTRY_EVALUATION", CycleID=CYCLE, AttemptID=ATTEMPT,
+        make_row(5, "M5_ENTRY_EVALUATION", CycleID=CYCLE, AttemptID=ATTEMPT,
                  CandidateID=CANDIDATE),
     ]
 
@@ -83,7 +84,7 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
 
     def test_candidate_must_have_exactly_one_creation_event(self):
         rows = valid_candidate_rows()
-        rows.append(make_row(5, "CANDIDATE_CREATED", CycleID=CYCLE,
+        rows.append(make_row(6, "CANDIDATE_CREATED", CycleID=CYCLE,
                              AttemptID=ATTEMPT, CandidateID=CANDIDATE))
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
@@ -91,23 +92,23 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
 
     def test_event_sequence_must_be_strictly_increasing(self):
         rows = valid_candidate_rows()
-        rows[2]["EventSequence"] = "2"
-        rows[2]["EventID"] = f"{RUN}:EV2"
+        rows[3]["EventSequence"] = "3"
+        rows[3]["EventID"] = f"{RUN}:EV3"
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
         self.assertTrue(any("not contiguous" in error for error in report["errors"]))
 
     def test_event_sequence_gap_is_detected(self):
         rows = valid_candidate_rows()
-        rows[2]["EventSequence"] = "4"
-        rows[2]["EventID"] = f"{RUN}:EV4"
+        rows[3]["EventSequence"] = "6"
+        rows[3]["EventID"] = f"{RUN}:EV6"
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
         self.assertTrue(any("not contiguous" in error for error in report["errors"]))
 
     def test_decision_sequence_is_contiguous_per_candidate(self):
         rows = valid_candidate_rows()
-        rows[2]["DecisionID"] = CANDIDATE + ":D2"
+        rows[3]["DecisionID"] = CANDIDATE + ":D2"
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
         self.assertTrue(any("DecisionID sequence should be" in error for error in report["errors"]))
@@ -121,7 +122,7 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
 
     def test_trade_deal_event_must_link_to_created_candidate(self):
         rows = valid_candidate_rows()
-        rows.append(make_row(5, "TRADE_ENTRY_DEAL", CycleID=CYCLE,
+        rows.append(make_row(6, "TRADE_ENTRY_DEAL", CycleID=CYCLE,
                              AttemptID=ATTEMPT, CandidateID="",
                              OrderID="50001", DealID="60001", PositionID="70001"))
         report = validate_rows(SCHEMA_COLUMNS, rows)
@@ -139,7 +140,7 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
 
     def test_decision_id_must_belong_to_candidate(self):
         rows = valid_candidate_rows()
-        rows[2]["DecisionID"] = "OTHER-CANDIDATE:D1"
+        rows[3]["DecisionID"] = "OTHER-CANDIDATE:D1"
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
         self.assertTrue(any("DecisionID is not nested" in error for error in report["errors"]))
@@ -152,6 +153,35 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
         self.assertTrue(any("missing DealID or PositionID" in error for error in report["errors"]))
+
+    def test_candidate_must_follow_matching_recovery_event(self):
+        rows = [
+            make_row(1, "RANGE_FOUND"),
+            make_row(2, "M5_SELL_RECOVERY_CONFIRMED", Direction="SELL",
+                     CycleID=CYCLE, AttemptID=ATTEMPT),
+            make_row(3, "CANDIDATE_CREATED", Direction="BUY",
+                     CycleID=CYCLE, AttemptID=ATTEMPT, CandidateID=CANDIDATE),
+        ]
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("immediately follow" in error for error in report["errors"]))
+
+    def test_extra_csv_field_is_rejected(self):
+        rows = valid_candidate_rows()
+        rows[0][None] = ["unexpected"]
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("extra fields" in error for error in report["errors"]))
+
+    def test_accepted_order_event_requires_order_ticket(self):
+        rows = valid_candidate_rows()
+        rows.append(make_row(6, "ORDER_OPENED", CycleID=CYCLE, AttemptID=ATTEMPT,
+                             CandidateID=CANDIDATE, DecisionID=CANDIDATE + ":D1",
+                             DecisionStatus="ACCEPTED", ReasonCode="ORDER_ACCEPTED",
+                             OrderID=""))
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("accepted ORDER_OPENED" in error for error in report["errors"]))
 
     def test_evaluation_without_candidate_is_a_valid_path_event(self):
         rows = [make_row(1, "M5_ENTRY_EVALUATION", CycleID=CYCLE, AttemptID=ATTEMPT,
