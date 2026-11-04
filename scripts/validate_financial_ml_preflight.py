@@ -172,14 +172,14 @@ def main() -> int:
     c2_journal = read_text("events/20261103.log")
     journal_lines = c2_journal.splitlines()
     c2_start = next((i for i, line in enumerate(journal_lines)
-                     if r"testing of Experts\\Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.ex5" in line), -1)
+                     if r"testing of Experts\Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.ex5" in line), -1)
     c2_end = next((i for i, line in enumerate(journal_lines)
                    if i > c2_start and "XAUUSD,H1: history cache allocated" in line), -1)
     c2_journal_inputs: dict[str, str] = {}
     if c2_start >= 0:
         section = journal_lines[c2_start:c2_end if c2_end > c2_start else c2_start + 180]
         for line in section:
-            match = re.search(r"Tester\\s+(Inp[A-Za-z0-9_]+)=(.*)$", line)
+            match = re.search(r"Tester\s+(Inp[A-Za-z0-9_]+)=(.*)$", line)
             if match:
                 c2_journal_inputs[match.group(1)] = match.group(2)
 
