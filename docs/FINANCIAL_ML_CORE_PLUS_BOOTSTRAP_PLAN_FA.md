@@ -124,3 +124,12 @@ Preflight یک کنترل ایستای repository است؛ حتی در صورت 
 گزارش ماشین‌خوان: [BOOT_002_STATIC_PREFLIGHT_RUN_001.json](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json).
 
 این نتیجه فقط تأیید می‌کند کنترل‌های repository/static در آن Commit پاس شده‌اند: هویت v1.084، حفظ خطوط مبنای v1.083، تابع تشخیصی بدون سفارش، شناسه رویدادها، تطابق 67 ورودی با SETها و اختلاف مجاز فقط Lookback/نام CSV. این موفقیت هیچ Compile MQL5 یا اجرای MT5 را تأیید نمی‌کند؛ BOOT-002 هنوز باز است.
+
+
+## تکرارپذیری Preflight — دو اجرای موفق
+
+گزارش [دو اجرای موفق GitHub Actions](../reports/20261104_BOOT_002_CI_VERIFICATION_FA.md) ثبت شد:
+- Run 41856290720 روی Commit `ec3f92cb94737f63f73c9276827b5f5dac934aaf`.
+- Run 41856507674 روی Commit `3e2a6138131ef08531ea743378906a31ef35232c`.
+
+هر دو Job با conclusion=success پایان یافتند. این فقط تکرارپذیری کنترل‌های repository/static را تأیید می‌کند؛ BOOT-002 تا Compile واقعی و سه MT5 Run باز است.
