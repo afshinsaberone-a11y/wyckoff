@@ -38,7 +38,8 @@
 هیچ نسخه‌ای در این مخزن به‌عنوان آماده معامله زنده معرفی نمی‌شود. سورس‌ها و نتایج باید به نسخه دقیق، تنظیمات و گزارش تست متناظر متصل باشند. نتیجهٔ یک معامله برای اثبات edge کافی نیست.
 
 
-## Financial ML Core+\n- [گزارش تطبیق هویت Baseline W0 و BOOT-001](reports/20261104_W0_BASELINE_IDENTITY_FA.md)
+## Financial ML Core+
+- [گزارش تطبیق هویت Baseline W0 و BOOT-001](reports/20261104_W0_BASELINE_IDENTITY_FA.md)
 - [پروتکل رسمی Financial ML Core+](docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
 - [رجیستری ۹ نقش ایجنت‌ها](agents/README_FA.md)
 - [قرارداد Event و Candidate](contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md)
