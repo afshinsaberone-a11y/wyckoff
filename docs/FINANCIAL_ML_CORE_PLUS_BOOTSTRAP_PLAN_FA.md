@@ -137,3 +137,14 @@ Preflight یک کنترل ایستای repository است؛ حتی در صورت 
 [Manifest ماشینی این Run](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json).
 
 این فقط Static Preflight است. BOOT-002 همچنان نیازمند دو Compile واقعی و چهار MT5 Run است.
+
+
+## Preflight نهایی کارت چهار Run — 27/27
+
+پس از ارتقای Run Card و Validator، دو اجرای متوالی GitHub Actions هر دو 27 PASS و 0 FAIL داشتند:
+- [Run 41858805308](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858805308) روی Commit `021089b2378170da7cfc2bf1e841dd2eb613cc9c`.
+- [Run 41858859791](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858859791) روی Commit `29ca36b3ed1b0e8d8efb7d94d53e504a31d9fecf).
+
+[Manifest ماشینی](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json).
+
+کنترل‌ها شامل چهار شناسه A/B/C/D، Freeze بازه مشترک پیش از Run A، شفافیت Lookback فعال SOS/SOW، بازسازی SET و تطبیق 67 مقدار Journal هستند. نتیجه همچنان Static Preflight است؛ دو Compile و چهار MT5 Run هنوز انجام نشده‌اند.
