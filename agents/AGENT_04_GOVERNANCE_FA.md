@@ -45,3 +45,7 @@ Experiment Registry، protocol version، decision log، gate decisions، change 
 
 ## معیار پذیرش
 هر نتیجه به فرضیه و پروتکل قبل از آزمایش متصل باشد؛ هر انحراف افشا شده باشد؛ و هیچ نتیجه‌ای با تنظیمات یا داده متفاوت به‌صورت مقایسه منصفانه معرفی نشود.
+
+
+## Gate instrumentation v2
+مشخصات [BOOT-003 MQL5 Event Ledger v2](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) باید پیش از پیاده‌سازی Freeze شود. Candidate ID در M5 Recovery و پیش از PlaceTrade ایجاد می‌شود؛ هر تغییر در این نقطه یا تعریف label یک Experiment مستقل است. C2 baseline و MultiAudit diagnostics نباید درجا تغییر کنند.
