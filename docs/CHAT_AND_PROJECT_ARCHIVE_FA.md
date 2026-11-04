@@ -207,3 +207,10 @@ Baseline ثبت‌شده در آخرین اجرای پایش قبلی: commit `4
 داشبورد به‌روز: [گزارش فارسی](../reports/20261104_AGENT_PROGRESS_DASHBOARD_FA.md)، [JSON](../experiments/AGENT_PROGRESS_DASHBOARD_20261104.json). میانگین سادهٔ تکمیل تحویل ۹ مسیر 47.8% است.
 
 BOOT-002 هنوز به دو Compile واقعی و چهار MT5 Strategy Tester run نیاز دارد. CIها تست Python/contract هستند و هیچ آموزش واقعی XAUUSD یا مجوز Live ایجاد نکرده‌اند.
+
+
+### تکمیل AGENT_02 CLI — 2026-11-04
+
+در Branch `agent/02-execution-backtest` ابزار `research/validate_boot002_bundle.py` اضافه شد. این CLI چهار manifest مستقل Runهای A/B/C/D را می‌خواند و با `boot002_bundle_validator.py` از نظر هویت Expert/EA_VERSION، SET/Lookback، تنظیمات مشترک، هش artifactها، Compile evidence و کامل‌بودن خروجی‌ها اعتبارسنجی می‌کند.
+
+آخرین CI مربوط به commit این CLI: [Run 41870032644](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41870032644) — 16 تست موفق و `py_compile` موفق. این ابزار اجرای تستر را انجام نمی‌دهد و فقط شواهد واقعی ثبت‌شده در JSON را کنترل می‌کند.

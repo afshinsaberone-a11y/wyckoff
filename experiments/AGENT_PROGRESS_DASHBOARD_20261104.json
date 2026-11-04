@@ -2,7 +2,7 @@
   "snapshot_date": "2026-11-04",
   "repo": "afshinsaberone-a11y/wyckoff",
   "metric": "weighted_deliverable_completion_estimate",
-  "mean_workstream_progress_pct": 47.8,
+  "mean_workstream_progress_pct": 48.3,
   "note": "Simple arithmetic mean of nine evidence-based workstream deliverable estimates; not overall project completion, not runtime telemetry, and not financial performance.",
   "weights_pct": {
     "scope_issue_branch": 10,
@@ -21,7 +21,7 @@
       "branch": "agent/00-orchestrator-parallel-sprint",
       "progress_pct": 30,
       "branch_ahead": 0,
-      "branch_behind_main": 16,
+      "branch_behind_main": 18,
       "evidence": [
         "nine role-based issues and branches",
         "sprint plan, orchestration report and manifest"
@@ -37,7 +37,7 @@
       "branch": "agent/01-data-engineering",
       "progress_pct": 45,
       "branch_ahead": 1,
-      "branch_behind_main": 16,
+      "branch_behind_main": 18,
       "evidence": [
         "OHLCV quality validator implemented",
         "12 synthetic tests passed in CI run 41868381224"
@@ -54,21 +54,31 @@
       "role": "AGENT_02",
       "issue": 4,
       "branch": "agent/02-execution-backtest",
-      "progress_pct": 45,
-      "branch_ahead": 2,
-      "branch_behind_main": 16,
+      "progress_pct": 50,
+      "branch_ahead": 3,
+      "branch_behind_main": 18,
       "evidence": [
-        "BOOT-002 A/B/C/D evidence bundle validator",
-        "16 synthetic tests passed in final CI run 41869388009",
-        "Git blob SHA and artifact SHA-256 validated separately"
+        "BOOT-002 A/B/C/D evidence bundle validator implemented",
+        "16 synthetic unit tests passed in final CI run 41870032644",
+        "command-line tool reads four manifests and validates bundle; py_compile step passed"
       ],
       "prior_project_evidence_not_attributed": [
         "BOOT-002 Run Card and static preparation"
       ],
       "blockers": [
-        "no actual Compile or MT5 Tester artifacts submitted",
-        "two MetaEditor compiles and four real Tester runs still required"
-      ]
+        "no actual MetaEditor Compile or MT5 Tester artifacts submitted",
+        "two compiles and four real Tester runs still required"
+      ],
+      "ci_runs": [
+        {
+          "id": 41870032644,
+          "status": "completed",
+          "conclusion": "success",
+          "tests": 16,
+          "syntax_check": "passed"
+        }
+      ],
+      "readme_path": "research/AGENT_02_BOOT002_VALIDATOR_README.md"
     },
     {
       "role": "AGENT_03",
@@ -76,7 +86,7 @@
       "branch": "agent/03-independent-audit",
       "progress_pct": 35,
       "branch_ahead": 2,
-      "branch_behind_main": 16,
+      "branch_behind_main": 18,
       "evidence": [
         "independent W1/W2/W3 audit and follow-up after fixes"
       ],
@@ -92,7 +102,7 @@
       "branch": "agent/04-governance",
       "progress_pct": 45,
       "branch_ahead": 2,
-      "branch_behind_main": 16,
+      "branch_behind_main": 18,
       "evidence": [
         "chronological Fold manifest validator",
         "13 synthetic tests passed in run 41868015500"
@@ -111,7 +121,7 @@
       "branch": "agent/w0-wyckoff-ledger",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 16,
+      "branch_behind_main": 18,
       "evidence": [
         "Issue and branch created",
         "Event Ledger v2 specification available"
@@ -129,7 +139,7 @@
       "branch": "agent/w1-hmm-regime-learning",
       "progress_pct": 75,
       "branch_ahead": 8,
-      "branch_behind_main": 23,
+      "branch_behind_main": 25,
       "evidence": [
         "causal HMM forward filter",
         "overflow-safe prior normalization and multi-cutoff future invariance",
@@ -157,7 +167,7 @@
       "branch": "agent/w2-ml-scoring-learning",
       "progress_pct": 75,
       "branch_ahead": 10,
-      "branch_behind_main": 23,
+      "branch_behind_main": 25,
       "evidence": [
         "Candidate point-in-time validator and purge primitive",
         "strict integer sequence validation",
@@ -184,7 +194,7 @@
       "branch": "agent/w3-hybrid-integration",
       "progress_pct": 70,
       "branch_ahead": 7,
-      "branch_behind_main": 23,
+      "branch_behind_main": 25,
       "evidence": [
         "versioned HMM-to-ML interface",
         "schema parity fixes",
@@ -225,17 +235,13 @@
     },
     "run_ids": [
       41868381224,
-      41869388009,
+      41870032644,
       41868015500,
       41867674205,
       41867641271,
       41867566930
     ],
-    "historical_corrected_failure": {
-      "run_id": 41869345179,
-      "conclusion": "failure",
-      "reason": "Git blob SHA was initially validated as SHA-256; fixed and rerun succeeded."
-    }
+    "notes": "AGENT_02 latest run also passed Python syntax compilation for the CLI and validator."
   },
   "gates": {
     "boot_001_baseline": "CONDITIONAL",
@@ -246,8 +252,8 @@
     "real_xauusd_ml_training": "BLOCKED",
     "w3_operational_integration": "BLOCKED"
   },
-  "main_comparison_ref": "2565b32e742aca60ee989e5bcdc0ba19b70cb221",
-  "snapshot_commit": "2565b32e742aca60ee989e5bcdc0ba19b70cb221",
+  "main_comparison_ref": "c59762e551c30d3455ca76e415314971749afee5",
+  "snapshot_commit": "c59762e551c30d3455ca76e415314971749afee5",
   "independent_audit": {
     "branch": "agent/03-independent-audit",
     "commit": "317fab4788e25b4e8bbbc69f31b645076ac0c151",
@@ -267,6 +273,15 @@
       "ci_run_id": 41868015500,
       "ci_conclusion": "success",
       "report": "research/AGENT_04_FOLD_VALIDATOR_README_FA.md"
+    },
+    "AGENT_02": {
+      "branch_head": "c73121001d2bce0f127e0e74fbd6886e82f4e85",
+      "ci_run_id": 41870032644,
+      "ci_conclusion": "success",
+      "tests": 16,
+      "cli_syntax_check": "passed",
+      "initial_failed_run": 41869345179,
+      "corrected_run": 41869388009
     }
   }
 }
