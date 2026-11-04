@@ -4,7 +4,12 @@ on:
   push:
     paths:
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5"
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
+      - "events/20261103.log"
+      - "sets/Wyckoff_C2_T030_SB050_RECONSTRUCTED_FROM_20261103_JOURNAL.set"
+      - "sets/Wyckoff_C2_H1StructureAudit_2024_2026.set"
       - "sets/Wyckoff_C2_H1StructureMultiAudit_2024_2026.set"
       - "sets/Wyckoff_C2_H1STRUCT_SL10_2024_2026.set"
       - "sets/Wyckoff_C2_H1STRUCT_SL20_2024_2026.set"
@@ -16,7 +21,12 @@ on:
   pull_request:
     paths:
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5"
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
+      - "events/20261103.log"
+      - "sets/Wyckoff_C2_T030_SB050_RECONSTRUCTED_FROM_20261103_JOURNAL.set"
+      - "sets/Wyckoff_C2_H1StructureAudit_2024_2026.set"
       - "sets/Wyckoff_C2_H1StructureMultiAudit_2024_2026.set"
       - "sets/Wyckoff_C2_H1STRUCT_SL10_2024_2026.set"
       - "sets/Wyckoff_C2_H1STRUCT_SL20_2024_2026.set"
