@@ -156,3 +156,12 @@ Preflight یک کنترل ایستای repository است؛ حتی در صورت 
 مهاجرت CSV اجرای C2 در GitHub Actions Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41859743204) موفق بود: 5 unit tests passed، 346/346 event rows normalized، 65 legacy range groups، صفر candidate_id و صفر label. [گزارش](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md) و [manifest](../experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json).
 
 این فقط گام نخست BOOT-003 است. برای Event/Candidate Ledger کامل، instrumentation جدید با شناسه‌های مستقل و زمان‌های point-in-time باید در branch جدا اضافه، Compile و Replay شود. Event log normalized به‌تنهایی داده آموزشی نیست.
+
+
+## BOOT-003 — گام بعد از Legacy Migration
+
+مهاجرت Legacy Event CSV در Run 41859743204 موفق شد؛ اما فقط گام اولیه Event Ledger است. [مشخصات instrumentation MQL5 Event Ledger v2](BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) و قراردادهای داده schema 1.2-draft اکنون تعریف شده‌اند.
+
+نقطه ساخت candidate_id در M5، بعد از Recovery و پیش از PlaceTrade است تا Candidateهای ردشده به‌علت Spread، Stop، Volume یا OrderSend نیز ثبت شوند. M5_ENTRY_EVALUATIONهای تکراری Candidate مستقل نیستند. پیاده‌سازی باید در branch جدا، با RunID، Range/Cycle/Attempt/Candidate/Decision IDs، زمان‌های server/source bar و اتصال Order/Deal انجام شود.
+
+**وضعیت:** Legacy Event Migration = PASS؛ instrumentation کد = NOT IMPLEMENTED؛ Compile/Replay = NOT RUN؛ W1/W2/W3 = BLOCKED.
