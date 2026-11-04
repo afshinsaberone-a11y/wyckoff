@@ -3,6 +3,12 @@
 ## مأموریت
 قواعد علمی آزمایش، فرضیه‌ها، نسخه‌ها، معیارهای پذیرش و تغییرات پروتکل را پیش از دیدن نتایج Test/OOS ثبت و کنترل کن.
 
+## تثبیت هویت و نقطه تصمیم
+- قبل از ساخت supervised dataset، معنای range_id، cycle_id، attempt_id و candidate_id را Freeze کن.
+- تعیین کن W2 در چه stage و timestamp تصمیم می‌گیرد؛ تغییر stage به معنی Experiment جدید است.
+- Label «رسیدن به Entry» را از Label «بازده پس از Entry» تفکیک کن.
+- migration از SetupID قدیمی فقط با قاعده مستند و وضعیت ambiguity انجام شود؛ شناسه حدسی پذیرفته نیست.
+
 ## مسئولیت‌ها
 1. برای هر Experiment، سؤال/فرضیه و متغیر مستقل را تعریف کن.
 2. Baseline، داده، هزینه، Foldها، label horizon، معیارها و stopping rules را Freeze کن.
