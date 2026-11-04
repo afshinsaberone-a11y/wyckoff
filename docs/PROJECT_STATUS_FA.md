@@ -97,3 +97,10 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 **وضعیت دقیق:** این فایل‌ها مشخصات طراحی و Prompt هستند؛ ایجنت‌ها هنوز به‌عنوان سرویس/عامل مستقل مستقر یا فعال نشده‌اند. هیچ بک‌تست، Compile، آموزش HMM/ML یا Forward Demo جدیدی صرفاً با ثبت این اسناد انجام نشده است.
 
 **Gateهای فعلی:** ابتدا Compile و اجرای واقعی MultiAudit؛ سپس تکمیل Event/Candidate Ledger؛ پس از آن Freeze برچسب‌ها و Purged Walk-Forward/Embargo؛ فقط بعد از عبور این مراحل W1 و W2 و سپس W3 وارد آزمایش شوند. W0 باید Baseline ثابت باقی بماند. هیچ نسخه‌ای برای Live تأیید نشده است.
+
+
+- [برنامه راه‌اندازی و بسته‌های کاری BOOT-001 تا BOOT-007](FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md)
+- [مدل استقرار و تحویل Agentها](../agents/EXECUTION_AND_HANDOFF_MODEL_FA.md)
+- [قرارداد تحویل Agentها](../contracts/AGENT_HANDOFF_SCHEMA_FA.md)
+
+اولین اقدام اجرایی، BOOT-001 یعنی تطبیق هویت دقیق Baseline است؛ پس از آن BOOT-002 نیازمند Compile و اجرای واقعی MultiAudit در محیط MT5/MetaEditor خواهد بود.
