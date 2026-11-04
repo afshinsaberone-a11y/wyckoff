@@ -1,0 +1,33 @@
+{
+  "task_id": "BOOT-002",
+  "check_id": "STATIC_PREFLIGHT_002",
+  "workflow": ".github/workflows/financial-ml-preflight.yml",
+  "workflow_run_id": 41858327181,
+  "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858327181",
+  "job_name": "static-preflight",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "started_at_utc": "2026-11-04T15:29:47Z",
+  "head_sha": "eb43035187a2f4e2ab2dfbd8aebea838c555949a",
+  "checks_passed": 24,
+  "checks_failed": 0,
+  "verified_checks": [
+    "UTF-16 BOM support for MT5 Tester Journal.",
+    "C2 source EA_VERSION matches 1.08-C2-TIMING-SB050-T030.",
+    "Reconstructed C2 SET and archived Journal are readable.",
+    "C2 source, reconstructed SET, and Journal have identical 67 input keys.",
+    "All reconstructed C2 SET values exactly match the archived Journal.",
+    "H1STRUCT v1.083 SET and MultiAudit lookback-5 SET match except CSV filename.",
+    "H1STRUCT and MultiAudit control SETs both use Strength Lookback 5.",
+    "InpStrengthSwingLookback controls active SOS/SOW priorHigh/priorLow break levels.",
+    "All MultiAudit source/diagnostic/67-key SET checks pass."
+  ],
+  "limitations": [
+    "Repository/static validation only.",
+    "No MetaEditor MQL5 compilation.",
+    "No MT5 Strategy Tester runs.",
+    "No profitability or edge claim."
+  ],
+  "gate_effect": "STATIC_PREFLIGHT_PASS_ONLY; BOOT-002 remains open for two MetaEditor compiles and four matched MT5 runs."
+}
