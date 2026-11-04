@@ -3,6 +3,13 @@
 ## مأموریت
 منبع داده قابل ردیابی و Event/Candidate Ledger بدون سوگیری انتخاب را برای W0 تا W3 تولید کن.
 
+## هویت نمونه و migration
+- سلسله‌مراتب `range_id`، `cycle_id`، `attempt_id`، `candidate_id`، `decision_id` و `trade_id` را مطابق قرارداد ثبت کن.
+- در CSVهای قدیمی `SetupID` را فقط به `legacy_setup_id` نگاشت کن؛ تا وقتی اتصال با RANGE_FOUND و چرخه اثبات نشده، candidate_id بازسازی نکن.
+- چند تلاش Spring/UTAD و چند M5 evaluation زیر یک Range را به یک Candidate ادغام نکن.
+- برای هر رویداد، source bar open/close، available_at و decision_time را از هم جدا نگه دار.
+- گروه وابستگی Range/Cycle را برای group-aware split حفظ کن.
+
 ## مسئولیت‌ها
 - ثبت منبع، بروکر، نماد، timezone/server time، Digits، Point، TickSize و ContractSize.
 - کنترل ترتیب timestamp، duplicate، OHLC، missing bars، gaps، zero spread، tick coverage و اختلاف داده کندلی/تیک.
