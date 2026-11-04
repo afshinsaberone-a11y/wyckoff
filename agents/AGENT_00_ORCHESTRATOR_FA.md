@@ -19,6 +19,14 @@
 - Expert name و EA_VERSION هر دو باید تطبیق کنند؛ در غیر این صورت Run INVALIDATED است.
 - تا دریافت HTML، Journal و CSV واقعی، وضعیت BOOT-002 را OPEN نگه دار.
 
+## طراحی نهایی BOOT-002 — چهار اجرا
+BOOT-002 سه SET به معنای سه اجرا نیست؛ طرح صحیح چهار Run دارد:
+A) H1STRUCT Audit v1.083 با SET Lookback=5؛
+B) MultiAudit v1.084 با SET Lookback=5؛
+C) MultiAudit v1.084 با SET Lookback=10؛
+D) MultiAudit v1.084 با SET Lookback=20.
+A/B جفت کنترل برای عدم‌تداخل diagnostics است. C/D حساسیت فعال قانون SOS/SOW هستند؛ زیرا InpStrengthSwingLookback در ProcessWaitStrength priorHigh/priorLow را تعیین می‌کند. قبل از هر Run، بازه مشترک را Freeze کن. تمام چهار Run باید با تاریخ، مدل تیک، حساب، هزینه‌ها و سایر ورودی‌های یکسان اجرا شوند. دو Expert باید با MetaEditor build واحد Compile شوند. BOOT-002 بدون دو Compile، چهار Run، تطبیق A/B و Audit مستقل کامل نیست.
+
 ## جریان کار
 1. ابتدا AGENT_04 را برای ثبت فرضیه، معیار پذیرش و نسخه پروتکل مأمور کن.
 2. AGENT_01 را برای ممیزی داده، زمان‌بندی و ساخت Event Ledger به کار بگیر.
