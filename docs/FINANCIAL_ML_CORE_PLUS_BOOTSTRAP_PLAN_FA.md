@@ -115,3 +115,12 @@
 اسکریپت [validate_financial_ml_preflight.py](../scripts/validate_financial_ml_preflight.py) و workflow [financial-ml-preflight.yml](../.github/workflows/financial-ml-preflight.yml) اضافه شده‌اند. این کنترل‌ها حفظ خطوط پایه v1.083 در v1.084، شناسه نسخه، وجود توابع Audit و تطابق 67 ورودی با سه SET و تفاوت مجاز فقط Lookback/CSV filename را بررسی می‌کنند.
 
 Preflight یک کنترل ایستای repository است؛ حتی در صورت PASS، BOOT-002 تا وقتی MetaEditor Compile و سه اجرای MT5 ثبت نشده‌اند COMPLETE نخواهد شد.
+
+
+## شاهد اجرای خودکار Preflight — 2026-11-04
+
+اولین GitHub Actions workflow با شناسه Run `41856290720` روی Commit `ec3f92cb94737f63f73c9276827b5f5dac934aaf` با نتیجه `success` تمام شد. Job: `static-preflight`. [مشاهده اجرای CI](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720).
+
+گزارش ماشین‌خوان: [BOOT_002_STATIC_PREFLIGHT_RUN_001.json](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json).
+
+این نتیجه فقط تأیید می‌کند کنترل‌های repository/static در آن Commit پاس شده‌اند: هویت v1.084، حفظ خطوط مبنای v1.083، تابع تشخیصی بدون سفارش، شناسه رویدادها، تطابق 67 ورودی با SETها و اختلاف مجاز فقط Lookback/نام CSV. این موفقیت هیچ Compile MQL5 یا اجرای MT5 را تأیید نمی‌کند؛ BOOT-002 هنوز باز است.
