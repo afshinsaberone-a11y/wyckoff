@@ -1805,6 +1805,17 @@ int OnInit()
      }
    trade.SetExpertMagicNumber(InpMagicNumber);
    trade.SetDeviationInPoints(InpDeviationPoints);
+   if((bool)MQLInfoInteger(MQL_OPTIMIZATION))
+     {
+      Print("[Wyckoff W0] Event Ledger v2 requires a single Tester run; FILE_COMMON optimization output is disabled.");
+      return INIT_PARAMETERS_INCORRECT;
+     }
+   g_ledgerFileName=LedgerBuildFileName();
+   if(FileIsExist(g_ledgerFileName,FILE_COMMON))
+     {
+      Print("[Wyckoff W0] Ledger file already exists; use a new unique RunID. File=",g_ledgerFileName);
+      return INIT_FAILED;
+     }
    g_csvFileName=EffectiveCSVFileName();
    if(InpExportCSV && (bool)MQLInfoInteger(MQL_OPTIMIZATION))
      {
@@ -1843,17 +1854,6 @@ int OnInit()
             Print("[Wyckoff W0] CSV logging enabled (fresh file). File: ",commonFilesPath);
            }
         }
-     }
-   if((bool)MQLInfoInteger(MQL_OPTIMIZATION))
-     {
-      Print("[Wyckoff W0] Event Ledger v2 requires a single Tester run; FILE_COMMON optimization output is disabled.");
-      return INIT_PARAMETERS_INCORRECT;
-     }
-   g_ledgerFileName=LedgerBuildFileName();
-   if(FileIsExist(g_ledgerFileName,FILE_COMMON))
-     {
-      Print("[Wyckoff W0] Ledger file already exists; use a new unique RunID. File=",g_ledgerFileName);
-      return INIT_FAILED;
      }
    ResetLastError();
    g_ledgerHandle=FileOpen(g_ledgerFileName,
