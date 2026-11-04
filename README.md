@@ -42,6 +42,8 @@
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [بازبینی ایستای مستقل MultiAudit v1.084](reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md)
+- [کارت اجرای MT5 برای BOOT-002](docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)
+- [قالب JSON ثبت Runهای BOOT-002](experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json)
 - [گزارش تطبیق هویت Baseline W0 و BOOT-001](reports/20261104_W0_BASELINE_IDENTITY_FA.md)
 - [پروتکل رسمی Financial ML Core+](docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
 - [رجیستری ۹ نقش ایجنت‌ها](agents/README_FA.md)
