@@ -1,0 +1,62 @@
+# رجیستری ایجنت‌های Financial ML Core+
+
+آخرین بازبینی: 2026-11-04  
+وضعیت: مشخصات طراحی‌شده؛ ایجنت‌ها هنوز به‌صورت سرویس یا عامل اجرایی مستقل مستقر نشده‌اند.
+
+## شمارش صحیح
+
+این معماری **۹ نقش** دارد:
+- یک هماهنگ‌کننده: AGENT_00
+- چهار ایجنت نسخه‌ای: W0، W1، W2، W3
+- چهار ایجنت زیرساختی/کنترلی: AGENT_01 تا AGENT_04
+
+این‌ها نقش‌های منطقی مستقل‌اند؛ لزوماً به معنی ۹ مدل هوش مصنوعی یا ۹ پردازش مستقل نیستند. ممکن است در پیاده‌سازی با یک مدل پایه و ابزارها/دسترسی‌های تفکیک‌شده اجرا شوند. استقلال ممیزی نیز با جداسازی دسترسی، خروجی خام و آزمون خودکار تقویت می‌شود، نه صرفاً با نام‌گذاری Agent.
+
+## فهرست
+
+| شناسه | نام | مالکیت | مجوز اصلی |
+|---|---|---|---|
+| AGENT_00 | Orchestrator | جریان کار | تخصیص کار و کنترل وابستگی‌ها |
+| W0 | Wyckoff Baseline | نسخه مرجع | توسعه در شاخه آزمایشی و ثبت رویداد |
+| W1 | HMM Regime | نسخه رژیم | آموزش HMM فقط در Train |
+| W2 | ML Scoring | نسخه امتیازدهی | آموزش و امتیازدهی ستاپ‌ها |
+| W3 | Hybrid | نسخه ترکیبی | ادغام کنترل‌شده خروجی W1 و W2 |
+| AGENT_01 | Data & Event Engineering | داده | کیفیت، ثبت رویداد و Dataset |
+| AGENT_02 | Execution & Backtesting | اجرا | شبیه‌سازی هزینه/سفارش و تطبیق |
+| AGENT_03 | Independent Auditor | ممیزی | بررسی مستقل و گزارش PASS/CONDITIONAL/REJECT |
+| AGENT_04 | Research Governance | پروتکل | Freeze فرضیه، معیار، Fold و تغییرات |
+
+## ترتیب وابستگی
+
+`AGENT_04` پروتکل و فرضیه را Freeze می‌کند. `AGENT_01` داده و Event Ledger را آماده می‌کند. `W0` منبع فرصت‌های ساختاری است. `AGENT_02` رفتار اجرای مشترک را تثبیت می‌کند. `AGENT_03` Gateهای مربوط را ممیزی می‌کند. پس از تأیید دیتاست و قرارداد برچسب، `W1` و `W2` می‌توانند موازی کار کنند؛ `W3` بعد از تثبیت خروجی‌های آن دو آغاز می‌شود.
+
+## قاعده اختیار
+
+هیچ Agent مجاز به:
+- ارسال سفارش واقعی یا دسترسی به اعتبارنامه حساب معاملاتی نیست.
+- تغییر خاموش W0، قواعد ریسک یا موتور اجرا نیست.
+- آموزش یا تنظیم روی Test/OOS نیست.
+- تأیید مستقل کار خودش نیست.
+- حذف فرصت نامطلوب از Event Ledger نیست.
+
+هر تغییر باید با شناسه آزمایش، Commit، نسخه داده و تنظیمات ثبت شود. تصمیم‌های Gate و تغییر پروتکل در اختیار AGENT_04 و تأیید انسانی است.
+
+## فایل‌های اختصاصی
+
+- [AGENT_00 — Orchestrator](AGENT_00_ORCHESTRATOR_FA.md)
+- [W0 — Wyckoff Baseline](AGENT_W0_WYCKOFF_FA.md)
+- [W1 — HMM Regime](AGENT_W1_HMM_FA.md)
+- [W2 — ML Scoring](AGENT_W2_ML_FA.md)
+- [W3 — Hybrid](AGENT_W3_HYBRID_FA.md)
+- [AGENT_01 — Data & Event Engineering](AGENT_01_DATA_ENGINEERING_FA.md)
+- [AGENT_02 — Execution & Backtesting](AGENT_02_EXECUTION_BACKTEST_FA.md)
+- [AGENT_03 — Independent Auditor](AGENT_03_AUDITOR_FA.md)
+- [AGENT_04 — Research Governance](AGENT_04_GOVERNANCE_FA.md)
+
+## قراردادهای مشترک
+
+- [Event و Candidate Schema](../contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md)
+- [Feature و Label Schema](../contracts/FEATURE_LABEL_SCHEMA_FA.md)
+- [Experiment و Fold Schema](../contracts/EXPERIMENT_AND_FOLD_SCHEMA_FA.md)
+- [Result و Audit Schema](../contracts/RESULT_AND_AUDIT_SCHEMA_FA.md)
+- [پروتکل کلان Financial ML Core+](../docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
