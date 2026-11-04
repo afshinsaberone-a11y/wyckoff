@@ -43,7 +43,7 @@
 
 `SchemaVersion, RunID, EventID, EventSequence, EventTimeServer, ObservedAtServer, TimeBasis, SourceTimeframe, SourceBarOpenServer, Symbol, EA_Version, RangeID, CycleID, AttemptID, CandidateID, DecisionID, OrderID, DealID, PositionID, LegacySetupID, Direction, Event, DecisionStatus, ReasonCode, Details, RangeHigh, RangeLow, InitialBalance`
 
-برای Eventهای H1/M5، `SourceBarOpenServer` از `MqlRates.time` همان کندل می‌آید و `ObservedAtServer` از `TimeCurrent()` زمان مشاهده/پردازش را ثبت می‌کند. هیچ زمان پایان کندل به‌صورت مصنوعی ساخته یا UTC حدس زده نمی‌شود. `TimeBasis` ثابت `BROKER_SERVER_RAW` است. برای رخدادهای معاملاتی که bar source ندارند، ستون‌های Source خالی می‌مانند و زمان Event/Observed از زمان واقعی اجرای handler گرفته می‌شود.
+شناسه‌هایی که هنوز ساخته نشده‌اند (از جمله OrderID/DealID/PositionID یا LegacySetupID قبل از Range) خالی نوشته می‌شوند، نه `0` یا رشتهٔ ساختگی. برای Eventهای H1/M5، `SourceBarOpenServer` از `MqlRates.time` همان کندل می‌آید و `ObservedAtServer` از `TimeCurrent()` زمان مشاهده/پردازش را ثبت می‌کند. هیچ زمان پایان کندل به‌صورت مصنوعی ساخته یا UTC حدس زده نمی‌شود. `TimeBasis` ثابت `BROKER_SERVER_RAW` است. برای رخدادهای معاملاتی که bar source ندارند، ستون‌های Source خالی می‌مانند و زمان Event/Observed از زمان واقعی اجرای handler گرفته می‌شود.
 
 ## 4. Candidate و Execution funnel
 
