@@ -7,6 +7,7 @@ on:
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
       - "events/20261103.log"
+      - "events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv"
       - "sets/Wyckoff_C2_T030_SB050_RECONSTRUCTED_FROM_20261103_JOURNAL.set"
       - "sets/Wyckoff_C2_H1StructureAudit_2024_2026.set"
       - "sets/Wyckoff_C2_H1StructureMultiAudit_2024_2026.set"
@@ -16,6 +17,8 @@ on:
       - "experiments/**"
       - "docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md"
       - "scripts/validate_financial_ml_preflight.py"
+      - "scripts/migrate_legacy_event_csv.py"
+      - "scripts/test_legacy_event_migration.py"
       - ".github/workflows/financial-ml-preflight.yml"
   pull_request:
     paths:
@@ -23,6 +26,7 @@ on:
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
       - "events/20261103.log"
+      - "events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv"
       - "sets/Wyckoff_C2_T030_SB050_RECONSTRUCTED_FROM_20261103_JOURNAL.set"
       - "sets/Wyckoff_C2_H1StructureAudit_2024_2026.set"
       - "sets/Wyckoff_C2_H1StructureMultiAudit_2024_2026.set"
@@ -32,6 +36,8 @@ on:
       - "experiments/**"
       - "docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md"
       - "scripts/validate_financial_ml_preflight.py"
+      - "scripts/migrate_legacy_event_csv.py"
+      - "scripts/test_legacy_event_migration.py"
       - ".github/workflows/financial-ml-preflight.yml"
   workflow_dispatch:
 
@@ -51,3 +57,34 @@ jobs:
           python-version: "3.12"
       - name: Validate Financial ML Core+ contracts and MultiAudit source delta
         run: python scripts/validate_financial_ml_preflight.py
+      - name: Test conservative legacy Event CSV migration
+        run: python -m unittest discover -s scripts -p "test_legacy_event_migration.py"
+      - name: Build normalized legacy Event Ledger
+        run: |
+          python scripts/migrate_legacy_event_csv.py \
+            --input events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv \
+            --output-dir "$RUNNER_TEMP/legacy-event-migration"
+      - name: Verify migrated ledger is conservative
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("${{ runner.temp }}/legacy-event-migration/migration_manifest.json")
+          m = json.loads(p.read_text(encoding="utf-8"))
+          assert m["source_rows"] == 346, m["source_rows"]
+          assert m["normalized_rows"] == 346, m["normalized_rows"]
+          assert m["unique_legacy_range_ids"] == 65, m["unique_legacy_range_ids"]
+          assert m["candidate_ids_created"] == 0
+          assert m["labels_created"] == 0
+          assert m["timestamp_policy"]["event_time_utc_created"] is False
+          print("PASS: 346 legacy events normalized; 65 legacy range groups; no candidates or labels fabricated.")
+          PY
+      - name: Upload normalized Event Ledger artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-event-ledger-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/legacy-event-migration/events_normalized.csv
+            ${{ runner.temp }}/legacy-event-migration/migration_manifest.json
+          if-no-files-found: error
+          retention-days: 30
