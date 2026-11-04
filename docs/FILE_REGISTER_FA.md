@@ -108,3 +108,8 @@
 - docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md — قواعد نگاشت، زمان و محدودیت‌های مهاجرت.
 - scripts/migrate_legacy_event_csv.py — مبدل محافظه‌کار Event CSV به CSV normalized + manifest.
 - scripts/test_legacy_event_migration.py — تست واحد شناسه‌ها، timestamp و عدم جعل Candidate/Label.
+
+
+- reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md — گزارش 346/346 ردیف، 65 Range group و 5 تست واحد موفق.
+- experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json — جزئیات CI و Artifact اجرای BOOT-003.
+- docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md — راهنمای مهاجرت، شناسه‌ها و محدودیت زمان.
