@@ -18,9 +18,12 @@
   "legacy_csv_separate": true,
   "optimization_mode": "BLOCKED_FOR_SHARED_FILE_SAFETY",
   "no_profitability_claim": true,
-  "static_checks": "18_TESTS_PENDING_FINAL_RUN",
-  "csv_output_validator": "16_SYNTHETIC_TESTS_PENDING_FINAL_RUN",
+  "static_checks": "19_STATIC_SOURCE_TESTS_PENDING_CI",
+  "csv_output_validator": "19_SYNTHETIC_VALIDATOR_TESTS_PENDING_CI",
   "trade_link_strategy": "ORDER_ID_AND_POSITION_ID_MAP_WITH_POSITION_HISTORY_FALLBACK",
   "unlinked_trade_transaction": "EXPLICIT_EVENT_AND_HARD_VALIDATION_FAILURE",
-  "final_ci_commit": "PENDING"
+  "final_ci_commit": "PENDING",
+  "event_sequence_policy": "CONTIGUOUS_PER_RUN",
+  "candidate_creation_policy": "MUST_IMMEDIATELY_FOLLOW_DIRECTIONAL_M5_RECOVERY",
+  "row_schema_policy": "EXACT_28_FIELDS_EACH_ROW"
 }
