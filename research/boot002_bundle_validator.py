@@ -48,6 +48,7 @@ _VARIANTS = {
     },
 }
 
+_HEX_40 = re.compile(r"^[0-9a-fA-F]{40}$")
 _HEX_64 = re.compile(r"^[0-9a-fA-F]{64}$")
 _REQUIRED_CHECKS = (
     "compile_no_errors",
@@ -92,6 +93,13 @@ def _text(value: Any, name: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise RunBundleRejected(f"{name} must be a non-empty string.")
     return value
+
+
+def _git_object_sha(value: Any, name: str) -> str:
+    text = _text(value, name)
+    if not _HEX_40.fullmatch(text):
+        raise RunBundleRejected(f"{name} must be a 40-character Git object SHA.")
+    return text.lower()
 
 
 def _sha256(value: Any, name: str) -> str:
@@ -143,14 +151,14 @@ def validate_run_manifest(manifest: Mapping[str, Any]) -> None:
         raise RunBundleRejected("source_ea_version_expected does not match variant.")
     if source["compile_result"].upper() not in {"SUCCESS", "0_ERRORS"}:
         raise RunBundleRejected("compile_result must indicate a successful compile.")
-    _sha256(source.get("source_git_blob_sha"), "source.source_git_blob_sha")
+    _git_object_sha(source.get("source_git_blob_sha"), "source.source_git_blob_sha")
     _sha256(source.get("ex5_sha256"), "source.ex5_sha256")
 
     settings = _mapping(manifest.get("set"), "set")
     _text(settings.get("path"), "set.path")
     if settings["path"] != expected["set_path"]:
         raise RunBundleRejected("set.path does not match variant.")
-    _sha256(settings.get("git_blob_sha"), "set.git_blob_sha")
+    _git_object_sha(settings.get("git_blob_sha"), "set.git_blob_sha")
     if settings.get("expected_strength_swing_lookback") != expected["lookback"]:
         raise RunBundleRejected("SET Lookback does not match variant.")
     _text(settings.get("csv_input_name"), "set.csv_input_name")
