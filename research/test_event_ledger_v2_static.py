@@ -104,6 +104,12 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn("LedgerWriteEvent(eventName,details,tradeLinkIndex,transactionContext,", SOURCE)
         self.assertIn("rowCandidateID=g_ledgerTradeLinks[tradeLinkIndex].candidateID;", SOURCE)
 
+    def test_deal_fields_are_read_before_position_history_lookup(self):
+        deal_read = SOURCE.index('double dealPrice=HistoryDealGetDouble(trans.deal,DEAL_PRICE);')
+        link_lookup = SOURCE.index('int ledgerTradeLinkIndex=LedgerFindTradeLink(trans.order,(ulong)positionId);')
+        self.assertLess(deal_read, link_lookup)
+        self.assertIn('HistorySelectByPosition(positionID)', SOURCE)
+
     def test_order_deal_position_linkage_uses_mt5_transaction_values(self):
         self.assertIn('ulong resultOrderTicket=trade.ResultOrder();', SOURCE)
         self.assertIn('g_ledgerOrderID=(resultOrderTicket>0 ? (string)resultOrderTicket : "");', SOURCE)
