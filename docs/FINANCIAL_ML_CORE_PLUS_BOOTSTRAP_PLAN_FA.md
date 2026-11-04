@@ -35,6 +35,7 @@
 
 ### BOOT-003 — طراحی و پیاده‌سازی Event/Candidate Ledger
 **مالک:** AGENT_01 و W0  
+**گام آغازین اضافه‌شده:** مهاجرت محافظه‌کارانه Event CSV قدیمی با [راهنمای Ledger](LEGACY_EVENT_LEDGER_MIGRATION_FA.md)، [اسکریپت](../scripts/migrate_legacy_event_csv.py) و [تست واحد](../scripts/test_legacy_event_migration.py). این خروجی فقط Event Ledger Legacy است و Event/Candidate Ledger کامل محسوب نمی‌شود.
 **کار:** افزودن شناسه‌های پایدار و ثبت Range، Spring/UTAD، Test، SOS/SOW، LPS/LPSY، Candidateهای M5، ردها، انقضاها، ابطال‌ها، سفارش‌ها و Dealها.  
 **پذیرش:** Candidate اجرا‌نشده هم در Ledger وجود داشته باشد؛ هر Candidate تا تصمیم و outcome قابل ردیابی باشد؛ feature snapshot از label جدا باشد.  
 **خروجی:** schema-validated CSV/Parquet و نمونه audit trail.
