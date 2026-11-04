@@ -3,7 +3,6 @@ name: Financial ML Core+ preflight
 on:
   push:
     paths:
-      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
@@ -20,7 +19,6 @@ on:
       - ".github/workflows/financial-ml-preflight.yml"
   pull_request:
     paths:
-      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
       - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
