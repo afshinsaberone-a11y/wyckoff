@@ -356,6 +356,7 @@ void LedgerWriteEvent(const string eventName,const string details="")
                      TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS) : "");
    string rangeHigh=(g_setup.rangeHigh>0.0 ? DoubleToString(g_setup.rangeHigh,g_digits) : "");
    string rangeLow=(g_setup.rangeLow>0.0 ? DoubleToString(g_setup.rangeLow,g_digits) : "");
+   string legacySetupID=(g_setupCounter>0 ? (string)g_setupCounter : "");
 
    FileWrite(g_ledgerHandle,
              "2",g_ledgerRunID,eventID,(string)g_ledgerEventSequence,
@@ -365,7 +366,7 @@ void LedgerWriteEvent(const string eventName,const string details="")
              g_symbol,EA_VERSION,g_ledgerRangeID,g_ledgerCycleID,
              g_ledgerAttemptID,g_ledgerCandidateID,decisionID,
              g_ledgerOrderID,g_ledgerDealID,g_ledgerPositionID,
-             (string)g_setupCounter,direction,eventName,status,reasonCode,details,
+             legacySetupID,direction,eventName,status,reasonCode,details,
              rangeHigh,rangeLow,DoubleToString(g_initialBalance,2));
    FileFlush(g_ledgerHandle);
   }
@@ -1155,7 +1156,8 @@ bool PlaceTrade(const ENUM_WYCKOFF_DIRECTION dir,const MqlRates &entryBar)
    else
       sent=trade.Sell(volume,g_symbol,0.0,stop,target,"Wyckoff W0 SELL");
 
-   g_ledgerOrderID=(string)trade.ResultOrder();
+   ulong resultOrderTicket=trade.ResultOrder();
+   g_ledgerOrderID=(resultOrderTicket>0 ? (string)resultOrderTicket : "");
    uint retcode=trade.ResultRetcode();
    bool accepted=(retcode==TRADE_RETCODE_DONE ||
                   retcode==TRADE_RETCODE_DONE_PARTIAL ||
@@ -1770,7 +1772,7 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    LedgerSetSource(PERIOD_CURRENT,0);
    if(trans.order>0) g_ledgerOrderID=(string)trans.order;
    g_ledgerDealID=(string)trans.deal;
-   g_ledgerPositionID=(string)positionId;
+   g_ledgerPositionID=(positionId>0 ? (string)positionId : "");
    double dealPrice=HistoryDealGetDouble(trans.deal,DEAL_PRICE);
    double dealVolume=HistoryDealGetDouble(trans.deal,DEAL_VOLUME);
    long dealReason=HistoryDealGetInteger(trans.deal,DEAL_REASON);
