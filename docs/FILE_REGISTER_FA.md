@@ -58,3 +58,26 @@
 - گزارش‌های عمیق H1STRUCT، MultiAudit و Range-edge در reports/ و docs/ فهرست شده‌اند.
 
 محدودیت انتقال: این به‌روزرسانی مستندات را ثبت می‌کند. پیوست‌های باینریِ موجود در چت، از جمله HTML/Journal خام، فقط در صورت دسترسی به محتوای فایل و انتقال باینری مستقل باید به مخزن افزوده شوند؛ هیچ فایل خامی صرفاً بر اساس نام فرضاً آپلودشده تلقی نشده است.
+
+
+## اسناد و شواهد Financial ML Core+ — نشست 2026-11-04
+
+### مشخصات Agent و قراردادها
+- agents/README_FA.md و فایل‌های AGENT_00، W0 تا W3 و AGENT_01 تا AGENT_04.
+- agents/EXECUTION_AND_HANDOFF_MODEL_FA.md — محیط، مجوز و چرخه تحویل.
+- contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md — نسخه 1.1-draft با سلسله‌مراتب شناسه‌ها.
+- contracts/FEATURE_LABEL_SCHEMA_FA.md — نسخه 1.1-draft با نقطه تصمیم و جداسازی دو نوع label.
+- contracts/EXPERIMENT_AND_FOLD_SCHEMA_FA.md، RESULT_AND_AUDIT_SCHEMA_FA.md و AGENT_HANDOFF_SCHEMA_FA.md.
+
+### پروتکل و گزارش‌ها
+- docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md
+- docs/FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md
+- reports/20261104_W0_BASELINE_IDENTITY_FA.md — تطبیق اولیه Baseline، CONDITIONAL.
+- reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md — ممیزی Event CSV، شناسه‌ها و آمادگی داده.
+
+### شواهد اجرای C2 که در مخزن بررسی شدند
+- events/20261103.log — اجرای C2 از 2024-01-02 تا 2026-10-17 و چند اجرای تشخیصی.
+- events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv — Event CSV همان C2؛ 346 ردیف داده.
+- گزارش C2 تا 2026-11-04 به CSV دیگری اشاره می‌کند که هنوز با همان نام در مخزن حاضر نیست.
+
+هیچ‌یک از اسناد جدید به معنی کامپایل، تست یا آموزش مدل جدید نیست.
