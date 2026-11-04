@@ -81,3 +81,6 @@
 - گزارش C2 تا 2026-11-04 به CSV دیگری اشاره می‌کند که هنوز با همان نام در مخزن حاضر نیست.
 
 هیچ‌یک از اسناد جدید به معنی کامپایل، تست یا آموزش مدل جدید نیست.
+
+
+- reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md — مقایسه ایستای مستقل سورس H1STRUCT Audit v1.083 و MultiAudit v1.084؛ نتیجه Static Review PASS WITH LIMITATIONS، بدون Compile/Tester.
