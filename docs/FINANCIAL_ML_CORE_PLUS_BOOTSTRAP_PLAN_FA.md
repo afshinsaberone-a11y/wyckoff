@@ -71,7 +71,7 @@
 | ترتیب | Task | وابستگی | وضعیت شروع |
 |---:|---|---|---|
 | 1 | BOOT-001 Baseline Identity | اسناد و فایل‌های تست موجود | CONDITIONAL؛ تطبیق اولیه ثبت شد، Freeze نهایی باز است |
-| 2 | BOOT-002 MultiAudit Compile/Test | دسترسی به MT5/MetaEditor | نیازمند اجرای محیطی |
+| 2 | BOOT-002 MultiAudit Compile/Test | دسترسی به MT5/MetaEditor | بازبینی ایستای سورس PASS؛ Compile/Tester هنوز BLOCKED تا اجرای محیطی |
 | 3 | BOOT-003 Event Ledger | هویت W0 و schema | قرارداد ID به‌روزرسانی شد؛ instrumentation در سورس هنوز اجرا نشده |
 | 4 | BOOT-004 Data/Execution Audit | فایل‌های داده و tick | ممیزی Event Log انجام شد؛ OHLC/Tick خام در مخزن یافت نشد؛ CONDITIONAL/BLOCKED |
 | 5 | BOOT-005 Label/Fold Freeze | Ledger اولیه | وابسته به تعریف outcome |
@@ -96,3 +96,14 @@
 - BOOT-003: طراحی قرارداد/شناسه بهتر شد؛ instrumentation در سورس و Compile/Replay هنوز انجام نشده.
 - BOOT-004: Event Log بررسی شد؛ داده خام M1/Tick و بسته کامل CSV اجرای 2026-11-04 در مخزن موجود نیست.
 - BOOT-005 تا BOOT-007: قفل؛ W1/W2/W3 هنوز نباید روی این Event CSV آموزش/ارزیابی شوند.
+
+
+## نتیجه بازبینی ایستای MultiAudit v1.084 — 2026-11-04
+
+[گزارش بازبینی مستقل سورس MultiAudit](../reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md) اضافه شد. مقایسه خطی v1.083 با v1.084 نشان داد 117 خط افزوده و فقط 4 خط حذف شده‌اند؛ چهار حذف فقط metadata نسخه/نام/توضیح/EA_VERSION هستند. در این مقایسه هیچ خط اجرایی پایه حذف نشده است. افزوده‌ها شامل تابع تشخیصی Lookback/Pivot، دو فراخوانی در مسیر Strength و افزایش تعداد barهای درخواستی هنگام ST_WAIT_STRENGTH هستند.
+
+وضعیت Gate:
+- Static source review: PASS WITH LIMITATIONS.
+- MetaEditor Compile: NOT RUN.
+- MT5 Strategy Tester: NOT RUN.
+- BOOT-002: همچنان باز/مسدود تا Compile و سه اجرای 5/10/20.
