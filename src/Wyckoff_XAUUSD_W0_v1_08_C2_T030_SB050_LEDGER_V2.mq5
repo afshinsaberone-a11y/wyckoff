@@ -2055,7 +2055,7 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                "; quoteSpreadPoints="+DoubleToString(g_pendingSpreadPoints,1)+
                "; avgEntrySlippagePoints="+DoubleToString(avgEntrySlippage,1)+
                "; reason="+DealReasonName(dealReason),
-               ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId);
+               ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId,dealTime);
       if(!stillOpen)
         {
          g_activePositionId=0;
