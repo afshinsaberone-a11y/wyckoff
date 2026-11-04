@@ -92,3 +92,9 @@
 
 
 - reports/20261104_BOOT_002_CI_VERIFICATION_FA.md — ثبت دو اجرای موفق GitHub Actions static preflight؛ بدون ادعای Compile/Tester.
+
+
+- reports/20261104_W0_C2_SET_RECONSTRUCTION_FA.md — بازسازی SET اجرای C2 از 67 مقدار Journal و تطبیق کامل با سورس/Journal.
+- experiments/W0_C2_BASELINE_RUN_20261103.json — manifest شواهد اجرای تاریخی C2 و محدودیت‌های EX5/SET اصلی.
+- experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json — GitHub Actions Preflight پیشرفته، 24 PASS / 0 FAIL.
+- docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md — نسخه 2.0، چهار Run A/B/C/D با جفت کنترل و دو حساسیت Lookback.
