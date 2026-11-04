@@ -48,3 +48,12 @@
 
 ## خروجی
 Audit Report، فهرست یافته‌ها، تست‌های بازتولید، وضعیت هر Gate و توضیح اینکه کدام ادعاها با شواهد پشتیبانی نمی‌شوند.
+
+
+## ممیزی BOOT-003 MQL5 instrumentation v2
+- Candidate باید پیش از Spread/Stop/Volume/OrderSend ایجاد شده باشد.
+- M5_ENTRY_EVALUATION تکراری نباید Candidate مستقل شود.
+- Range/Cycle/Attempt/Candidate/Decision و Order/Deal/Position به‌صورت جدا نگهداری شوند.
+- Predicateهای معاملاتی در Diff نباید تغییر کنند.
+- زمان‌های server raw و source bar باید جدا باشند؛ UTC یا close time حدسی ممنوع است.
+- مرجع: [BOOT-003 MQL5 instrumentation v2](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md).
