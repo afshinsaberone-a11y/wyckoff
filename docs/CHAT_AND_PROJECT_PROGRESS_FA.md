@@ -362,3 +362,12 @@ Baseline اولیه‌ای که کاربر در دستور پایش ارائه �
 در سورس C2، شمارنده g_setupCounter هنگام RANGE_FOUND افزایش می‌یابد و به‌عنوان SetupID در Event CSV ثبت می‌شود. در نتیجه SetupID معرف Range/ماشین حالت است، نه Candidate یکتای ML. قرارداد Event/Candidate و Feature/Label به schema 1.1-draft ارتقا یافتند و سلسله‌مراتب range_id/cycle_id/attempt_id/candidate_id/legacy_setup_id را اجباری کردند.
 
 گزارش [ممیزی آمادگی داده](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md) ثبت شد. Event Funnel Audit قابل انجام است؛ اما Candidate/Feature/Label dataset و آموزش HMM/ML هنوز BLOCKED هستند، زیرا OHLC M1/Tick، snapshotهای point-in-time، label outcome و Fold manifest در مخزن حاضر نیستند. هیچ آموزش مدل یا بک‌تست جدیدی در این مرحله انجام نشد.
+
+
+## 2026-11-04 — بازبینی مستقل سورس MultiAudit v1.084
+
+سورس MultiAudit v1.084 مستقیماً با H1STRUCT Audit v1.083 مقایسه شد. مقایسه ترتیبی خطوط LCS برابر 1,767 خط مشترک از 1,771 خط مبنا بود؛ 117 خط افزوده و 4 خط حذف‌شده که همگی فقط metadata (نام فایل، property version، description و EA_VERSION) بودند. هیچ خط اجرایی پایه در مقایسه حذف نشده است.
+
+افزوده‌ها: تابع LogStrengthStructureAudit برای Lookbackهای 5/10/20/40 و Pivotهای تأییدشده 2-left/2-right، دو فراخوانی پس از معیار اولیه کندل قوی، و افزایش تعداد بارهای دریافتی فقط در ST_WAIT_STRENGTH. بررسی ایستا نشان داد Pivot با دو کندل بسته‌شده جدیدتر تأیید می‌شود و فیلتر یا سفارش جدید اضافه نشده است. چون Audit روی کندل قوی پیش از بعضی ردهای مکانی ثبت می‌شود، event count آن نباید تعداد SOS/SOW confirmed یا Candidateهای مستقل شمرده شود.
+
+گزارش [بازبینی ایستای مستقل MultiAudit](../reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md) ثبت شد. Compile و Strategy Tester هنوز اجرا نشده‌اند؛ بنابراین BOOT-002 همچنان باز است.
