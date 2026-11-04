@@ -149,3 +149,10 @@ Preflight یک کنترل ایستای repository است؛ حتی در صورت 
 [Manifest ماشینی](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json).
 
 کنترل‌ها شامل چهار شناسه A/B/C/D، Freeze بازه مشترک پیش از Run A، شفافیت Lookback فعال SOS/SOW، بازسازی SET و تطبیق 67 مقدار Journal هستند. نتیجه همچنان Static Preflight است؛ دو Compile و چهار MT5 Run هنوز انجام نشده‌اند.
+
+
+## نتیجه اولیه BOOT-003 — Legacy Event Ledger
+
+مهاجرت CSV اجرای C2 در GitHub Actions Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41859743204) موفق بود: 5 unit tests passed، 346/346 event rows normalized، 65 legacy range groups، صفر candidate_id و صفر label. [گزارش](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md) و [manifest](../experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json).
+
+این فقط گام نخست BOOT-003 است. برای Event/Candidate Ledger کامل، instrumentation جدید با شناسه‌های مستقل و زمان‌های point-in-time باید در branch جدا اضافه، Compile و Replay شود. Event log normalized به‌تنهایی داده آموزشی نیست.
