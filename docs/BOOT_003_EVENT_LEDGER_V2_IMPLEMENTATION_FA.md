@@ -37,13 +37,13 @@
 
 `Wyckoff_W0_event_ledger_v2_<RunID>.csv`
 
-فایل در مسیر Common Files ترمینال MT5 ذخیره می‌شود. اگر نام فایل از قبل وجود داشته باشد، Init متوقف می‌شود تا دادهٔ یک Run قبلی overwrite نشود. اجرای Optimization نیز عمداً متوقف می‌شود؛ برای این نسخه فقط Single Tester Run مجاز است، چون FILE_COMMON بین Optimization Agentها مشترک است.
+فایل در مسیر Common Files ترمینال MT5 ذخیره می‌شود. پیش از دست‌زدن به CSV قدیمی، EA اول Optimization و سپس تکراری‌بودن نام فایل v2 را کنترل می‌کند. اگر نام فایل از قبل وجود داشته باشد، Init متوقف می‌شود تا فایل قدیمی یا دادهٔ آن Run overwrite/delete نشود. اجرای Optimization نیز عمداً متوقف می‌شود؛ برای این نسخه فقط Single Tester Run مجاز است، چون FILE_COMMON بین Optimization Agentها مشترک است.
 
 ستون‌های v2 دقیقاً ۲۸ فیلد دارند و با ترتیب زیر نوشته می‌شوند:
 
 `SchemaVersion, RunID, EventID, EventSequence, EventTimeServer, ObservedAtServer, TimeBasis, SourceTimeframe, SourceBarOpenServer, Symbol, EA_Version, RangeID, CycleID, AttemptID, CandidateID, DecisionID, OrderID, DealID, PositionID, LegacySetupID, Direction, Event, DecisionStatus, ReasonCode, Details, RangeHigh, RangeLow, InitialBalance`
 
-شناسه‌هایی که هنوز ساخته نشده‌اند (از جمله OrderID/DealID/PositionID یا LegacySetupID قبل از Range) خالی نوشته می‌شوند، نه `0` یا رشتهٔ ساختگی. برای Eventهای H1/M5، `SourceBarOpenServer` از `MqlRates.time` همان کندل می‌آید و `ObservedAtServer` از `TimeCurrent()` زمان مشاهده/پردازش را ثبت می‌کند. هیچ زمان پایان کندل به‌صورت مصنوعی ساخته یا UTC حدس زده نمی‌شود. `TimeBasis` ثابت `BROKER_SERVER_RAW` است. برای رخدادهای معاملاتی که bar source ندارند، ستون‌های Source خالی می‌مانند و زمان Event/Observed از زمان واقعی اجرای handler گرفته می‌شود.
+شناسه‌هایی که هنوز ساخته نشده‌اند (از جمله OrderID/DealID/PositionID یا LegacySetupID قبل از Range) خالی نوشته می‌شوند، نه `0` یا رشتهٔ ساختگی. برای Eventهای H1/M5، `SourceBarOpenServer` از `MqlRates.time` همان کندل می‌آید؛ `EventTimeServer` زمان واقعی ثبت رویداد در سمت بروکر را می‌گیرد و `ObservedAtServer` زمان مشاهده/پردازش EA از `TimeCurrent()` است. در رویدادهای مربوط به Deal، `EventTimeServer` از `DEAL_TIME` خوانده می‌شود تا زمان اجرای Deal از زمان رسیدن callback جدا بماند. هیچ زمان پایان کندل به‌صورت مصنوعی ساخته یا UTC حدس زده نمی‌شود. `TimeBasis` ثابت `BROKER_SERVER_RAW` است. برای رخدادهای معاملاتی که bar source ندارند، ستون‌های Source خالی می‌مانند.
 
 ## 4. Candidate و Execution funnel
 
