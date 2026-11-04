@@ -81,3 +81,18 @@
 - تفاوت research/synthetic با نتیجه production.
 
 این Sprint به معنی شروع موازی کارهای مستقل است؛ نه تأیید استراتژی، نه آموزش موفق مدل و نه اجازه معامله زنده.
+
+
+## 8. Prototypeهای اولیه W1/W2/W3
+
+سه مسیر یادگیری، علاوه بر Research Note، کد مستقل در branch خود دارند:
+- W1: `research/w1_forward_filter.py` و `research/test_w1_forward_filter.py`؛ تست آینده‌ناپذیری و ادامه filtering.
+- W2: `research/w2_candidate_validator.py` و `research/test_w2_candidate_validator.py`؛ کنترل feature availability، duplicate IDs، purge و embargo.
+- W3: `contracts/W3_HMM_ML_INTERFACE_V1.schema.json`، `research/w3_interface_validator.py` و `research/test_w3_interface_validator.py`؛ کنترل probability vector و fail-closed.
+
+Workflow مستقل `.github/workflows/parallel-agent-learning-tests.yml` روی سه branch تعریف شده است. Runهای فعلی:
+- W1: 41864331424 و 41864325081 — QUEUED.
+- W2: 41864363747 و 41864355912 — QUEUED.
+- W3: 41864218329 — QUEUED.
+
+تا پایان این گزارش هیچ‌یک از این Runها PASS اعلام نشده‌اند. هر سه مسیر باید Job Log را بررسی و در صورت خطا اصلاح کنند.
