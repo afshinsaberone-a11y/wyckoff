@@ -1,0 +1,31 @@
+Static validation — H1STRUCT MultiLookback Audit v1.084
+
+Source: Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5
+Source line count: 1884
+Source bytes: 78587
+SET key count: 67
+Input declaration count (input + sinput): 67
+Missing SET keys: []
+Extra SET keys: []
+
+Added diagnostic events:
+- SOS_STRENGTH_BAR_AUDIT
+- SOW_STRENGTH_BAR_AUDIT
+
+Each strong directional H1 bar is logged with:
+- Prior swing levels and pass/fail for lookbacks 5, 10, 20, 40.
+- Count of confirmed 2-left/2-right pivot highs and lows in the recent H1 scan window.
+- The latest three confirmed pivot values and timestamps on the relevant side.
+- Band width of those three pivots in ATR and whether the candle close clears the entire band.
+- Distance to the fixed RangeHigh/RangeLow in ATR.
+- BodyATR, body share and close position.
+
+Trade logic preservation review:
+- No SOS/SOW acceptance predicate changed.
+- No Spring/UTAD, Test, LPS/LPSY, M5 trigger, SL/TP, risk, order-send or expiry predicate changed.
+- The only data request change is that, while waiting for Strength, the EA loads enough closed H1 bars for 5/10/20/40 lookbacks and the pivot diagnostic scan.
+- Diagnostic labels explicitly call pivot levels candidates, not authoritative Creek/Ice lines.
+
+Static delimiter scan: passed.
+Input / SET correspondence: PASS.
+Not compiled in MetaEditor here. Not run in MT5 Strategy Tester here.
