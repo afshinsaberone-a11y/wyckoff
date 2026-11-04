@@ -1,0 +1,37 @@
+{
+  "task_id": "BOOT-002",
+  "check_id": "STATIC_PREFLIGHT_001",
+  "workflow": ".github/workflows/financial-ml-preflight.yml",
+  "workflow_run_id": 41856290720,
+  "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720",
+  "job_name": "static-preflight",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "started_at_utc": "2026-11-04T15:18:11Z",
+  "completed_at_utc": "2026-11-04T15:18:16Z",
+  "head_sha": "ec3f92cb94737f63f73c9276827b5f5dac934aaf",
+  "checks": [
+    "Both H1STRUCT source files are present.",
+    "MultiAudit property version is 1.084.",
+    "MultiAudit EA_VERSION matches the registered identifier.",
+    "All non-metadata v1.083 source lines are preserved in order.",
+    "Diagnostic function contains no order/position execution calls.",
+    "Both SOS/SOW diagnostic event labels are present.",
+    "Diagnostic function is called once for each directional Strength branch.",
+    "All three SET files contain the same keys.",
+    "MultiAudit inputs and SET keys match (67 inputs).",
+    "SET lookbacks are exactly 5, 10, and 20.",
+    "Only Lookback and CSV output filename differ among SET files.",
+    "Each SET has a distinct CSV input filename.",
+    "BOOT-002 manifest is a valid unexecuted template.",
+    "BOOT-002 run card identifies the correct Expert and EA_VERSION."
+  ],
+  "limitations": [
+    "This was repository/static validation only.",
+    "No MetaEditor MQL5 compile was performed by this workflow.",
+    "No MT5 Strategy Tester run was performed by this workflow.",
+    "No trading performance or profitability conclusion can be drawn."
+  ],
+  "gate_effect": "STATIC_PREFLIGHT_PASS_ONLY; BOOT-002 remains open until MetaEditor compile and MT5 runs for lookbacks 5, 10, and 20 are documented."
+}
