@@ -67,3 +67,19 @@ GitHub Actions Artifact:
 - instrumentation جدید MQL5: **انجام نشده**.
 
 پس فقط گام نخست BOOT-003 انجام شده است. برای کامل‌شدن آن، W0 و AGENT_01 باید در یک نسخه instrumentation جداگانه، range_id/cycle_id/attempt_id/candidate_id و زمان‌های source_bar/available_at/decision_time را ثبت کنند؛ سپس Replay و Auditor باید نگاشت‌ها را بررسی کنند. تا آن زمان W1/W2/W3 مجاز به آموزش رسمی نیستند.
+
+
+## 6. بازاعتبارسنجی پس از schema 1.2
+
+پس از ارتقای قراردادهای Event/Candidate و Feature/Label به schema 1.2-draft، دو CI Run دیگر نیز همان migration را با موفقیت اجرا کردند:
+- [Run 41861001416](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41861001416)، Commit `b82970156265330c969715a35704af917d15bf55`؛ 27 Preflight PASS، پنج Unit Test، Artifact ID `13339413481`.
+- [Run 41861010642](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41861010642)، Commit `5003c1c8c87e99c743b0e151a5a940869a54683a`؛ 27 Preflight PASS، پنج Unit Test، Artifact ID `13338794451`.
+
+هر دو خروجی normalized همان SHA-256 `5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e` را داشتند؛ بنابراین تغییر schema، نتیجه مهاجرت Event CSV را تغییر نداده است.
+
+## 7. وضعیت پس از این مرحله
+
+- Legacy Event migration: PASS و دوباره‌پذیر.
+- Event/Candidate instrumentation v2: SPECIFIED، ولی در MQL5 پیاده‌سازی نشده.
+- Compile/Replay برای نسخه instrumentation: NOT RUN.
+- Candidate/Feature/Label dataset: هنوز BLOCKED.
