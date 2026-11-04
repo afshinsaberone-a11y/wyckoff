@@ -41,6 +41,7 @@
 ## Financial ML Core+
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
+- [بازبینی ایستای مستقل MultiAudit v1.084](reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md)
 - [گزارش تطبیق هویت Baseline W0 و BOOT-001](reports/20261104_W0_BASELINE_IDENTITY_FA.md)
 - [پروتکل رسمی Financial ML Core+](docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
 - [رجیستری ۹ نقش ایجنت‌ها](agents/README_FA.md)
