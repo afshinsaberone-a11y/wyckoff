@@ -52,6 +52,36 @@ class HybridInterfaceTests(unittest.TestCase):
         with self.assertRaises(InterfaceRejected):
             validate_hmm_payload(payload, expected_states=3, max_staleness_bars=1)
 
+    def test_rejects_unexpected_payload_fields(self):
+        payload = valid_payload()
+        payload["unversioned_extra"] = "must not pass schema additionalProperties=false"
+        with self.assertRaises(InterfaceRejected):
+            validate_hmm_payload(payload, expected_states=3)
+
+    def test_rejects_expected_state_count_below_schema_minimum(self):
+        with self.assertRaises(InterfaceRejected):
+            validate_hmm_payload(valid_payload(), expected_states=1)
+
+    def test_rejects_invalid_staleness_configuration(self):
+        with self.assertRaises(InterfaceRejected):
+            validate_hmm_payload(valid_payload(), expected_states=3, max_staleness_bars=-1)
+
+    def test_rejects_invalid_probability_tolerance(self):
+        with self.assertRaises(InterfaceRejected):
+            validate_hmm_payload(valid_payload(), expected_states=3, probability_tolerance=float("nan"))
+
+    def test_validates_optional_timestamp_field_types(self):
+        payload = valid_payload()
+        payload["observed_at_server"] = 123
+        with self.assertRaises(InterfaceRejected):
+            validate_hmm_payload(payload, expected_states=3)
+
+    def test_allows_schema_optional_timestamp_fields(self):
+        payload = valid_payload()
+        payload["source_bar_open_server"] = None
+        payload["observed_at_server"] = "2026-11-04T12:00:00"
+        validate_hmm_payload(payload, expected_states=3)
+
     def test_rejects_wrong_state_dimension(self):
         payload = valid_payload()
         payload["filtered_probabilities"] = [0.4, 0.6]
