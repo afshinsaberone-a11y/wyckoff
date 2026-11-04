@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "workstream": "BOOT-003",
+  "experiment": "C2_BASELINE_VS_EVENT_LEDGER_V2_REPLAY_AB",
+  "status": "PLANNED",
+  "acceptance_status": "NOT_RUN",
+  "source_identity": {
+    "baseline": {
+      "branch": "main",
+      "path": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5",
+      "git_blob_sha_expected": "7e6e7ddaf6dd8ef976e53f611018815a4874dd60",
+      "ea_version_expected": "1.08-C2-TIMING-SB050-T030"
+    },
+    "ledger_v2": {
+      "branch": "feature/w0-event-ledger-v2",
+      "path": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5",
+      "git_blob_sha_expected": "0366568d082af3e4fa5854e8ddf9790c94be25c8",
+      "ea_version_expected": "1.083-C2-TIMING-SB050-T030-LEDGER-V2"
+    },
+    "compile": {
+      "metaeditor_build": null,
+      "baseline_compile_result": null,
+      "ledger_compile_result": null,
+      "baseline_ex5_sha256": null,
+      "ledger_ex5_sha256": null,
+      "compile_logs_archived": false
+    }
+  },
+  "tester_common": {
+    "broker_server": "WMMarkets-Demo",
+    "symbol": "XAUUSD",
+    "period": "M5",
+    "model": "Every tick based on real ticks",
+    "start_server_time": null,
+    "end_server_time": null,
+    "initial_deposit": null,
+    "deposit_currency": null,
+    "leverage": null,
+    "spread_mode_and_value": null,
+    "commission_assumption": null,
+    "swap_assumption": null,
+    "execution_delay": null,
+    "optimization": false,
+    "forward": false,
+    "history_coverage_notes": null,
+    "metadata_evidence_paths": []
+  },
+  "run_a_baseline": {
+    "run_label": "A_C2_BASELINE",
+    "set_path": null,
+    "set_sha256": null,
+    "legacy_csv_path": null,
+    "legacy_csv_sha256": null,
+    "tester_html_path": null,
+    "tester_html_sha256": null,
+    "journal_path": null,
+    "journal_sha256": null,
+    "tester_completed": false
+  },
+  "run_b_ledger_v2": {
+    "run_label": "B_C2_LEDGER_V2",
+    "run_id": null,
+    "set_path": null,
+    "set_sha256": null,
+    "legacy_csv_path": null,
+    "legacy_csv_sha256": null,
+    "event_ledger_v2_path": null,
+    "event_ledger_v2_sha256": null,
+    "event_ledger_validation_json_path": null,
+    "tester_html_path": null,
+    "tester_html_sha256": null,
+    "journal_path": null,
+    "journal_sha256": null,
+    "tester_completed": false
+  },
+  "comparator": {
+    "script": "research/replay_ab_compare.py",
+    "script_git_blob_sha": null,
+    "report_path": null,
+    "report_sha256": null,
+    "shared_set_inputs_equal": null,
+    "legacy_event_stream_equal": null,
+    "first_difference": null,
+    "comparator_exit_code": null
+  },
+  "trade_history_audit": {
+    "baseline_trade_count": null,
+    "ledger_v2_trade_count": null,
+    "order_deal_position_links_checked": false,
+    "partial_fills_checked": false,
+    "partial_exits_checked": false,
+    "net_profit_match": null,
+    "gross_profit_match": null,
+    "commission_swap_fee_match": null,
+    "balance_equity_match": null
+  },
+  "hashes": {
+    "baseline_mq5_sha256": null,
+    "ledger_v2_mq5_sha256": null,
+    "baseline_ex5_sha256": null,
+    "ledger_v2_ex5_sha256": null,
+    "baseline_set_sha256": null,
+    "ledger_v2_set_sha256": null,
+    "baseline_legacy_csv_sha256": null,
+    "ledger_v2_legacy_csv_sha256": null,
+    "ledger_v2_28_column_csv_sha256": null
+  },
+  "gates": {
+    "same_tester_configuration": null,
+    "same_shared_ea_inputs": null,
+    "both_single_runs_completed": null,
+    "both_legacy_csv_schemas_valid": null,
+    "legacy_event_stream_exact_match": null,
+    "trade_history_reconciled": null,
+    "artifact_hashes_archived": null,
+    "independent_audit_pass": null
+  },
+  "verdict": "NOT_REVIEWED",
+  "next_action": "Run matched A/B Strategy Tester passes on the same frozen interval; archive all reports, CSVs, SET files, logs and hashes.",
+  "limitations": [
+    "CSV parity alone does not establish identical tester data/model or profitability.",
+    "The shared legacy CSV comparator ignores only EA_Version and compares all other ten columns and row order.",
+    "The 28-column Ledger v2 CSV is independently validated and is not compared directly to the 11-column baseline CSV.",
+    "Do not edit, delete or hand-normalize raw tester CSVs before comparison."
+  ]
+}
