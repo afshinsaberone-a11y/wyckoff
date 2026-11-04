@@ -1,0 +1,56 @@
+name: Parallel agent learning prototypes
+
+on:
+  push:
+    branches:
+      - "agent/w1-hmm-regime-learning"
+      - "agent/w2-ml-scoring-learning"
+      - "agent/w3-hybrid-integration"
+    paths:
+      - "research/**"
+      - "contracts/W3_HMM_ML_INTERFACE_V1.schema.json"
+      - ".github/workflows/parallel-agent-learning-tests.yml"
+  pull_request:
+    paths:
+      - "research/**"
+      - "contracts/W3_HMM_ML_INTERFACE_V1.schema.json"
+      - ".github/workflows/parallel-agent-learning-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  branch-specific-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout agent branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run role-specific research tests
+        env:
+          SOURCE_BRANCH: ${{ github.head_ref || github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$SOURCE_BRANCH" in
+            agent/w1-hmm-regime-learning)
+              python -m pip install --disable-pip-version-check "numpy>=1.26"
+              python -m unittest discover -s research -p "test_w1_forward_filter.py" -v
+              ;;
+            agent/w2-ml-scoring-learning)
+              python -m unittest discover -s research -p "test_w2_candidate_validator.py" -v
+              ;;
+            agent/w3-hybrid-integration)
+              python -m unittest discover -s research -p "test_w3_interface_validator.py" -v
+              python -m json.tool contracts/W3_HMM_ML_INTERFACE_V1.schema.json > /dev/null
+              ;;
+            *)
+              echo "No role-specific research test mapped for branch: $SOURCE_BRANCH"
+              exit 1
+              ;;
+          esac
