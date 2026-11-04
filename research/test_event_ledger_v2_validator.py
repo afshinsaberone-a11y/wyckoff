@@ -112,6 +112,13 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
         self.assertFalse(report["valid"])
         self.assertTrue(any("DecisionID sequence should be" in error for error in report["errors"]))
 
+    def test_unlinked_trade_transaction_is_rejected(self):
+        rows = [make_row(1, "LEDGER_UNLINKED_TRADE_TRANSACTION",
+                         OrderID="50001", DealID="60001", PositionID="70001")]
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("could not be linked" in error for error in report["errors"]))
+
     def test_trade_deal_event_must_link_to_created_candidate(self):
         rows = valid_candidate_rows()
         rows.append(make_row(5, "TRADE_ENTRY_DEAL", CycleID=CYCLE,
