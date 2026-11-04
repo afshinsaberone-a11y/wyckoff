@@ -37,6 +37,12 @@ class CandidateValidatorTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_unique_candidates(rows)
 
+    def test_rejects_same_candidate_in_train_and_test(self):
+        train = [sample("c1", "r1", 10, [9], 11, 15)]
+        test = [sample("c1", "r1", 10, [9], 11, 15)]
+        with self.assertRaises(ValueError):
+            purge_training_candidates(train, test)
+
     def test_purges_overlapping_label_intervals(self):
         train = [
             sample("tr_before", "r1", 5, [4], 6, 9),
