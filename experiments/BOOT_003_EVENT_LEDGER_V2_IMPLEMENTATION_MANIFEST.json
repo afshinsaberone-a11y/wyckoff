@@ -8,7 +8,7 @@
   "ea_version": "1.083-C2-TIMING-SB050-T030-LEDGER-V2",
   "schema_version": 2,
   "schema_columns": 28,
-  "implementation_status": "SOURCE_AND_STATIC_VALIDATION_PASS_MT5_VALIDATION_PENDING",
+  "implementation_status": "SOURCE_IMPLEMENTED_STATIC_CI_PASS_MT5_VALIDATION_PENDING",
   "metaeditor_compile": "NOT_RUN",
   "strategy_tester": "NOT_RUN",
   "replay_ab": "NOT_RUN",
@@ -18,8 +18,8 @@
   "legacy_csv_separate": true,
   "optimization_mode": "BLOCKED_FOR_SHARED_FILE_SAFETY",
   "no_profitability_claim": true,
-  "static_checks": "PASS_23_TESTS_RUN_48",
-  "csv_output_validator": "PASS_19_SYNTHETIC_TESTS_RUN_48",
+  "static_checks": "PASS_23_TESTS",
+  "csv_output_validator": "PASS_19_SYNTHETIC_TESTS",
   "trade_link_strategy": "ORDER_ID_AND_POSITION_ID_MAP_WITH_POSITION_HISTORY_FALLBACK",
   "unlinked_trade_transaction": "EXPLICIT_EVENT_AND_HARD_VALIDATION_FAILURE",
   "final_ci_commit": "a506f0eda1531244cd5b104053ef9e572e399de9",
@@ -31,6 +31,7 @@
   "order_link_policy": "REGISTER_ONLY_AFTER_ACCEPTED_RETCODE",
   "file_safety_policy": "CHECK_RUNID_AND_OPEN_V2_LEDGER_BEFORE_TOUCHING_LEGACY_CSV",
   "ci_validation": "STATIC_TESTS_VALIDATOR_TESTS_AND_PY_COMPILE",
-  "python_syntax": "PASS_PY_COMPILE_RUN_48",
-  "final_ci_run": 41883785499
+  "python_syntax": "PASS_PY_COMPILE",
+  "final_ci_run": 41883785499,
+  "mql5_compile_warning": "PYTHON_STATIC_TESTS_DO_NOT_COMPILE_MQL5"
 }
