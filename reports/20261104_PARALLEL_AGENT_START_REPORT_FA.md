@@ -101,3 +101,8 @@ W0/W1/W2/W3 به‌صورت طرح 2×2 باقی می‌مانند. HMM output �
 3. AGENT_03 نتایج W1/W2/W3 synthetic tests را ممیزی کند.
 4. Compile/Tester واقعی BOOT-002 و داده خام M1/Tick را جداگانه پیگیری کن.
 5. تا تکمیل Gateها، W1/W2/W3 صرفاً در مرحله research/synthetic باقی بمانند.
+
+
+## داشبورد درصد پیشرفت واقعی مسیرها
+
+آخرین درصدهای شواهد-محور، وضعیت Commit شاخه‌ها و نتیجه فعلی CI در [داشبورد پیشرفت Agentها](reports/20261104_AGENT_PROGRESS_DASHBOARD_FA.md) و [Snapshot ماشینی](experiments/AGENT_PROGRESS_DASHBOARD_20261104.json) ثبت شده‌اند. این درصدها بر مبنای تحویل‌های قابل‌مشاهده‌اند؛ شش مسیر هنوز Commit اختصاصی ندارند و CI پنج اجرای W1/W2/W3 هنوز queued است.
