@@ -83,3 +83,10 @@
 ## BOOT-003 Event Ledger v2
 - [مشخصات instrumentation MQL5](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md)
 - قراردادهای Event/Candidate و Feature/Label اکنون schema 1.2-draft هستند؛ Event Ledger legacy به‌تنهایی داده آموزشی محسوب نمی‌شود.
+
+
+## شروع موازی Sprint — 2026-11-04
+
+برای ۹ نقش، Issueهای GitHub #2 تا #10 و branchهای مستقل ایجاد شده‌اند. [برنامه موازی](../docs/PARALLEL_AGENT_LEARNING_SPRINT_FA.md) و [Manifest](../experiments/PARALLEL_AGENT_SPRINT_20261104.json).
+
+W1/W2/W3 بسته‌های شروع پژوهشی مستقل دارند. این‌ها role-based workspaces و دستورکارهای قابل اجرا هستند؛ سرویس‌های Agent مستقل و دائماً فعال نیستند. همه کارها باید با artifact و evidence گزارش شوند.
