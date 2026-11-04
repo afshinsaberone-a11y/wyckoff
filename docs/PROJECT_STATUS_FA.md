@@ -206,3 +206,16 @@ Legacy Event Migration با 346 ردیف و 65 Range group موفق شده اس�
 - [W3 Hybrid starter](W3_HYBRID_INTEGRATION_STARTER_FA.md)
 
 **شفافیت اجرا:** Issue و branchها مسیرهای role-based tracking هستند؛ ۹ پردازه مستقل Agent به‌صورت سرویس خودکار مستقر نشده‌اند. یادگیری پژوهشی و prototypeهای synthetic مجازند؛ fit روی XAUUSD واقعی تا تکمیل Candidate/Feature/Label dataset، داده خام معتبر و Gateهای MT5 مسدود است.
+
+
+## به‌روزرسانی شروع موازی W1/W2/W3 — 2026-11-04
+
+- W1: forward-filter HMM و تست‌های causal invariance در branch اختصاصی اضافه شده‌اند.
+- W2: Candidate point-in-time validator و purging/embargo prototype اضافه شده‌اند.
+- W3: schema و fail-closed HMM→ML interface validator اضافه شده‌اند.
+- سه Workflow اختصاصی پژوهش و تست‌های واحد برای هر branch ثبت شده‌اند.
+- Runهای نهایی CI در زمان این گزارش هنوز QUEUED هستند؛ هیچ‌کدام PASS اعلام نشده‌اند.
+
+[گزارش کامل Sprint](../reports/20261104_PARALLEL_AGENT_START_REPORT_FA.md) و [manifest ماشینی](../experiments/PARALLEL_AGENT_SPRINT_20261104.json).
+
+این prototypeها پژوهشی/آزمایشی‌اند؛ HMM/ML fit روی XAUUSD واقعی ممنوع تا آماده‌شدن Candidate/Feature/Label dataset، داده خام معتبر و Gateهای قبلی.
