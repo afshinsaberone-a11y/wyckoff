@@ -754,7 +754,7 @@ void LogStrengthStructureAudit(const bool isBuy,const MqlRates &rates[],
    int pivotHighCount=0,pivotLowCount=0;
    double ph1=0.0,ph2=0.0,ph3=0.0,pl1=0.0,pl2=0.0,pl3=0.0;
    datetime pht1=0,pht2=0,pht3=0,plt1=0,plt2=0,plt3=0;
-   int maxIndex=MathMin(InpRangeLookbackBars,ArraySize(rates)-3);
+   int maxIndex=MathMin(InpRangeLookbackBars-2,ArraySize(rates)-3);
    for(int i=3;i<=maxIndex;i++)
      {
       bool pivotHigh=(rates[i].high>rates[i-1].high &&
