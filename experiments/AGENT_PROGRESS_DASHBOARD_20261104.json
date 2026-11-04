@@ -2,7 +2,7 @@
   "snapshot_date": "2026-11-04",
   "repo": "afshinsaberone-a11y/wyckoff",
   "metric": "weighted_deliverable_completion_estimate",
-  "mean_workstream_progress_pct": 26.7,
+  "mean_workstream_progress_pct": 33.3,
   "note": "Simple arithmetic mean across nine role workstreams; not overall project completion and not runtime/activity telemetry.",
   "weights_pct": {
     "scope_issue_branch": 10,
@@ -21,7 +21,7 @@
       "branch": "agent/00-orchestrator-parallel-sprint",
       "progress_pct": 30,
       "branch_ahead": 0,
-      "branch_behind_main": 8,
+      "branch_behind_main": 10,
       "evidence": [
         "parallel sprint plan",
         "start report",
@@ -39,7 +39,7 @@
       "branch": "agent/01-data-engineering",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 8,
+      "branch_behind_main": 10,
       "evidence": [
         "issue and branch created"
       ],
@@ -57,7 +57,7 @@
       "branch": "agent/02-execution-backtest",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 8,
+      "branch_behind_main": 10,
       "evidence": [
         "issue and branch created"
       ],
@@ -73,16 +73,19 @@
       "role": "AGENT_03",
       "issue": 5,
       "branch": "agent/03-independent-audit",
-      "progress_pct": 10,
-      "branch_ahead": 0,
-      "branch_behind_main": 8,
+      "progress_pct": 25,
+      "branch_ahead": 1,
+      "branch_behind_main": 10,
       "evidence": [
-        "issue and branch created"
+        "issue and branch created",
+        "independent W1/W2/W3 prototype audit committed to dedicated branch",
+        "five CI workflow jobs and their logs independently checked"
       ],
       "blockers": [
-        "no dedicated branch commit",
-        "independent audit report not delivered"
-      ]
+        "audit findings W2 strict sequence types and W3 schema parity require follow-up",
+        "branch remains divergent from main; rebase/PR review pending"
+      ],
+      "audit_report": "reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md"
     },
     {
       "role": "AGENT_04",
@@ -90,7 +93,7 @@
       "branch": "agent/04-governance",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 8,
+      "branch_behind_main": 10,
       "evidence": [
         "issue and branch created"
       ],
@@ -108,7 +111,7 @@
       "branch": "agent/w0-wyckoff-ledger",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 8,
+      "branch_behind_main": 10,
       "evidence": [
         "issue and branch created"
       ],
@@ -124,9 +127,9 @@
       "role": "W1",
       "issue": 8,
       "branch": "agent/w1-hmm-regime-learning",
-      "progress_pct": 55,
+      "progress_pct": 70,
       "branch_ahead": 6,
-      "branch_behind_main": 15,
+      "branch_behind_main": 17,
       "evidence": [
         "HMM forward-filter research note",
         "research/w1_forward_filter.py",
@@ -137,26 +140,31 @@
       "ci_runs": [
         {
           "id": 41864325081,
-          "status": "queued"
+          "status": "completed",
+          "conclusion": "success",
+          "tests": 8
         },
         {
           "id": 41864331424,
-          "status": "queued"
+          "status": "completed",
+          "conclusion": "success",
+          "tests": 8
         }
       ],
       "blockers": [
-        "CI not yet executed",
-        "no real XAUUSD training",
-        "no independent audit or freeze"
-      ]
+        "fold-local fit harness and model fitting not implemented",
+        "no real XAUUSD training; blocked pending dataset/gates",
+        "independent audit follow-up and integration freeze pending"
+      ],
+      "tests_executed": 16
     },
     {
       "role": "W2",
       "issue": 9,
       "branch": "agent/w2-ml-scoring-learning",
-      "progress_pct": 55,
+      "progress_pct": 70,
       "branch_ahead": 8,
-      "branch_behind_main": 15,
+      "branch_behind_main": 17,
       "evidence": [
         "Candidate point-in-time validator",
         "purge/group/embargo logic",
@@ -167,26 +175,31 @@
       "ci_runs": [
         {
           "id": 41864355912,
-          "status": "queued"
+          "status": "completed",
+          "conclusion": "success",
+          "tests": 7
         },
         {
           "id": 41864363747,
-          "status": "queued"
+          "status": "completed",
+          "conclusion": "success",
+          "tests": 7
         }
       ],
       "blockers": [
-        "CI not yet executed",
-        "no real Candidate/Feature/Label dataset",
-        "no fitted scorer or after-cost OOS evaluation"
-      ]
+        "strict sequence type validation incomplete",
+        "Fold/feature-window controls and real candidate labels absent",
+        "no fitted scorer or after-cost OOS evaluation; real fit blocked"
+      ],
+      "tests_executed": 14
     },
     {
       "role": "W3",
       "issue": 10,
       "branch": "agent/w3-hybrid-integration",
-      "progress_pct": 50,
+      "progress_pct": 65,
       "branch_ahead": 5,
-      "branch_behind_main": 15,
+      "branch_behind_main": 17,
       "evidence": [
         "versioned HMM/ML JSON interface contract",
         "research/w3_interface_validator.py",
@@ -197,21 +210,26 @@
       "ci_runs": [
         {
           "id": 41864218329,
-          "status": "queued"
+          "status": "completed",
+          "conclusion": "success",
+          "tests": 6
         }
       ],
       "blockers": [
-        "CI not yet executed",
+        "schema/Python validator parity gap needs correction",
         "operational integration blocked pending W1/W2 freeze and Ledger readiness"
-      ]
+      ],
+      "tests_executed": 6
     }
   ],
   "ci_summary": {
     "runs_total": 5,
-    "completed": 0,
-    "queued": 5,
-    "passed": 0,
-    "failed": 0
+    "completed": 5,
+    "queued": 0,
+    "passed": 5,
+    "failed": 0,
+    "unique_test_cases": 21,
+    "test_case_executions": 36
   },
   "gates": {
     "boot_001_baseline": "CONDITIONAL",
@@ -222,5 +240,12 @@
     "real_xauusd_ml_training": "BLOCKED",
     "w3_operational_integration": "BLOCKED"
   },
-  "main_comparison_ref": "b5a104fa7f1558b9a0d068ac77a12b0964ab4678"
+  "main_comparison_ref": "fb1afdf45d62dc8a155792a4954922aa710a4411",
+  "snapshot_commit": "fb1afdf45d62dc8a155792a4954922aa710a4411",
+  "independent_audit": {
+    "branch": "agent/03-independent-audit",
+    "commit": "044e3ccbb28b7dc1bd3545c48b20aba69aee4b85",
+    "verdict": "CONDITIONAL_PASS_SYNTHETIC_ONLY",
+    "report_path": "reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md"
+  }
 }
