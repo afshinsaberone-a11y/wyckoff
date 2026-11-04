@@ -107,3 +107,19 @@ CI پس از اصلاح موفق بود: 24 تست ساختاری، 20 تست م
 این نتیجه، صحت ساختاری و پیوند هویتی خروجی همین Single Run را تأیید می‌کند؛ نه صحت سودآوری یا برابری رفتار C2. چون Hash فایل‌های محلی MQ5/EX5/SET و لاگ Compile ارسال نشده‌اند، هویت باینری دقیق اجرای A002 هنوز به‌طور رمزنگاری‌شده آرشیو نشده است.
 
 **Gateهای باز:** آرشیو فایل/لاگ Compile و Hashهای MQ5/EX5/SET؛ تطبیق دقیق Dealها با History و جزئیات مالی؛ Replay A/B نسخهٔ C2 پایه در برابر Ledger v2 با تنظیمات یکسان؛ ممیزی مستقل partial fill و callbackها. تا پایان این Gateها، BOOT-003 برای آموزش W1/W2/W3 تأیید نهایی نشده است.
+
+
+## 9. ابزار و پروتکل Replay A/B
+
+برای مقایسهٔ رفتار C2 پایه و C2+Ledger v2، دو CSV مشترک 11 ستونی استفاده می‌شوند؛ نه CSV اختصاصی 28 ستونی Ledger. ستون `EA_Version` به علت متفاوت بودن برچسب Build کنار گذاشته می‌شود و 10 ستون دیگر، ترتیب رویدادها و تعداد ردیف‌ها دقیقاً مقایسه می‌شوند. فایل‌های SET نیز از نظر تمام ورودی‌های مشترک مقایسه می‌شوند؛ فقط ورودی‌های دارای پیشوند `InpLedger` در نسخهٔ B استثنا هستند.
+
+ابزار:
+- `research/replay_ab_compare.py`
+- تست‌ها: `research/test_replay_ab_compare.py`
+- Runbook فارسی: `docs/BOOT_003_REPLAY_AB_RUNBOOK_FA.md`
+- Manifest template: `experiments/BOOT_003_REPLAY_AB_MANIFEST_TEMPLATE.json`
+
+CI پس از افزودن ابزار و تست parity برای Header مشترک C2/v2 موفق شد: 25 تست ساختاری، 20 تست مصنوعی Validator، 14 تست Comparator و `py_compile` همگی Pass شدند.
+گزارش: https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41906255179
+
+**وضعیت Replay A/B همچنان NOT RUN است.** عبور تست‌های Comparator فقط خود ابزار را اعتبارسنجی می‌کند؛ هیچ A/B واقعی در MT5 انجام نشده است. اجرای A و B روی بازهٔ منجمد و تنظیمات یکسان، تطبیق HTML/Journal/History و ثبت SHA-256 فایل‌های MQ5/EX5/SET/CSV باید قبل از پذیرش نهایی انجام شوند.
