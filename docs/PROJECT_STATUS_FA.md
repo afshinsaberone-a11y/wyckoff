@@ -80,3 +80,20 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 - [تاریخچه بک‌تست](BACKTEST_HISTORY_FA.md)
 - [مرور عمیق H1STRUCT](../reports/20261104_H1STRUCT_MULTI_LOOKBACK_DEEP_REVIEW_FA.md)
 - [تحلیل اجرای H1STRUCT](../reports/20261104_H1STRUCT_AUDIT_RUN_ANALYSIS_FA.md)
+
+
+## Financial ML Core+ و معماری ایجنت‌ها — ثبت 2026-11-04
+
+پروتکل پژوهشی Financial ML Core+ و مشخصات **۹ نقش منطقی** در مخزن ثبت شده‌اند:
+- یک هماهنگ‌کننده (AGENT_00)
+- چهار ایجنت نسخه‌ای (W0، W1، W2، W3)
+- چهار ایجنت پشتیبان (AGENT_01 تا AGENT_04)
+
+مستندات:
+- [پروتکل Financial ML Core+](FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
+- [رجیستری و System Promptها](../agents/README_FA.md)
+- [قراردادهای داده و آزمایش](../contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md)
+
+**وضعیت دقیق:** این فایل‌ها مشخصات طراحی و Prompt هستند؛ ایجنت‌ها هنوز به‌عنوان سرویس/عامل مستقل مستقر یا فعال نشده‌اند. هیچ بک‌تست، Compile، آموزش HMM/ML یا Forward Demo جدیدی صرفاً با ثبت این اسناد انجام نشده است.
+
+**Gateهای فعلی:** ابتدا Compile و اجرای واقعی MultiAudit؛ سپس تکمیل Event/Candidate Ledger؛ پس از آن Freeze برچسب‌ها و Purged Walk-Forward/Embargo؛ فقط بعد از عبور این مراحل W1 و W2 و سپس W3 وارد آزمایش شوند. W0 باید Baseline ثابت باقی بماند. هیچ نسخه‌ای برای Live تأیید نشده است.
