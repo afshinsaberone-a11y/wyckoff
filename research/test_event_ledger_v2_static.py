@@ -124,6 +124,19 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID)', SOURCE)
         self.assertIn('positionId>0 ? (string)positionId : ""', SOURCE)
 
+    def test_deal_event_time_uses_history_deal_time_and_observed_time_is_separate(self):
+        self.assertIn('datetime dealTime=(datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME);', SOURCE)
+        self.assertIn('eventTimeOverride>0 ? eventTimeOverride : TimeCurrent()', SOURCE)
+        self.assertIn('TimeToString(TimeCurrent(),TIME_DATE|TIME_SECONDS)', SOURCE)
+        self.assertEqual(SOURCE.count('ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId,dealTime);'), 2)
+
+    def test_order_link_is_registered_only_after_server_acceptance(self):
+        place = SOURCE[SOURCE.index('bool PlaceTrade('):SOURCE.index('//------------------------------ M5 entry')]
+        accepted_check = place.index('if(!sent || !accepted)')
+        register_link = place.index('LedgerRegisterOrderLink(resultOrderTicket);')
+        self.assertLess(accepted_check, register_link)
+        self.assertIn('g_ledgerOrderID="";', place)
+
     def test_event_time_is_observation_time_not_relabelled_bar_open(self):
         self.assertIn('datetime eventTime=TimeCurrent();', SOURCE)
         self.assertIn('TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS)', SOURCE)
