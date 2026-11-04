@@ -89,3 +89,6 @@
 - docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md — دستور اجرای تکرارپذیر MultiAudit v1.084 در MT5.
 - experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json — قالب ماشین‌خوان برای هویت Compile، SET، Tester و خروجی‌ها.
 - reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md — مقایسه مستقل ایستای سورس v1.083/v1.084.
+
+
+- reports/20261104_BOOT_002_CI_VERIFICATION_FA.md — ثبت دو اجرای موفق GitHub Actions static preflight؛ بدون ادعای Compile/Tester.
