@@ -417,3 +417,10 @@ Preflight جدید، شامل کنترل چهار variant، بازه مشترک�
 ## 2026-11-04 — مهاجرت محافظه‌کارانه Legacy Event CSV
 
 برای BOOT-003، اسکریپت `scripts/migrate_legacy_event_csv.py` و تست‌های واحد `scripts/test_legacy_event_migration.py` ایجاد شدند. این مهاجرت از Event CSV اجرای C2 فقط Event Ledger می‌سازد: SetupID به legacy_setup_id و Range-level group نگاشت می‌شود؛ candidate/cycle/attempt/trade ID، UTC time، feature یا outcome label حدس زده نمی‌شود. Workflow GitHub Actions به اجرای unit tests، مهاجرت واقعی CSV و تولید Artifact با CSV normalized و migration manifest گسترش یافت. نتیجه CI این گام هنوز در انتظار است.
+
+
+## 2026-11-04 — BOOT-003 migration واقعی Event CSV موفق شد
+
+GitHub Actions Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41859743204) اجرا شد: 27 Preflight checks، پنج تست واحد و مهاجرت واقعی CSV با 346 ورودی/346 خروجی و 65 Range group. Candidate/Cycle/Attempt/Feature/Label ساخته نشد؛ زمان خام ServerTime حفظ شد و به UTC تبدیل نشد. CSV normalized با SHA-256 `5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e` به‌صورت GitHub Actions Artifact ذخیره شد.
+
+گزارش [Legacy Event Ledger Migration](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md) و [Run Manifest](../experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json) ثبت شدند. این فقط مهاجرت Event Log است و Event/Candidate instrumentation MQL5 هنوز نیازمند کار است.
