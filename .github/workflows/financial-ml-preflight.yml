@@ -1,0 +1,45 @@
+name: Financial ML Core+ preflight
+
+on:
+  push:
+    paths:
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
+      - "sets/Wyckoff_C2_H1StructureMultiAudit_2024_2026.set"
+      - "sets/Wyckoff_C2_H1STRUCT_SL10_2024_2026.set"
+      - "sets/Wyckoff_C2_H1STRUCT_SL20_2024_2026.set"
+      - "contracts/**"
+      - "experiments/**"
+      - "docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md"
+      - "scripts/validate_financial_ml_preflight.py"
+      - ".github/workflows/financial-ml-preflight.yml"
+  pull_request:
+    paths:
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5"
+      - "src/Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5"
+      - "sets/Wyckoff_C2_H1StructureMultiAudit_2024_2026.set"
+      - "sets/Wyckoff_C2_H1STRUCT_SL10_2024_2026.set"
+      - "sets/Wyckoff_C2_H1STRUCT_SL20_2024_2026.set"
+      - "contracts/**"
+      - "experiments/**"
+      - "docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md"
+      - "scripts/validate_financial_ml_preflight.py"
+      - ".github/workflows/financial-ml-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate Financial ML Core+ contracts and MultiAudit source delta
+        run: python scripts/validate_financial_ml_preflight.py
