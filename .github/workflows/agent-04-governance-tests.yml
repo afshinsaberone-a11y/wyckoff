@@ -1,0 +1,26 @@
+name: AGENT_04 governance tests
+
+on:
+  push:
+    branches:
+      - agent/04-governance
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "research/fold_manifest_validator.py"
+      - "research/test_fold_manifest_validator.py"
+      - ".github/workflows/agent-04-governance-tests.yml"
+
+jobs:
+  fold-contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run governance fold tests
+        run: python -m unittest discover -s research -p "test_fold_manifest_validator.py" -v
