@@ -78,3 +78,8 @@
 - [GitHub Actions workflow](../.github/workflows/financial-ml-preflight.yml)
 
 این workflow فقط قراردادها، هویت سورس و تطابق SETها را به‌صورت ایستا بررسی می‌کند؛ Compile/Tester را انجام نمی‌دهد.
+
+
+## BOOT-003 Event Ledger v2
+- [مشخصات instrumentation MQL5](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md)
+- قراردادهای Event/Candidate و Feature/Label اکنون schema 1.2-draft هستند؛ Event Ledger legacy به‌تنهایی داده آموزشی محسوب نمی‌شود.
