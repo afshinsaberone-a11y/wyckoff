@@ -21,6 +21,7 @@ REQUIRED = {
     "posterior_entropy",
     "data_version",
 }
+ALLOWED_KEYS = REQUIRED | {"source_bar_open_server", "observed_at_server"}
 
 
 class InterfaceRejected(ValueError):
@@ -41,9 +42,27 @@ def validate_hmm_payload(
     """
     if not isinstance(payload, Mapping):
         raise InterfaceRejected("Payload must be a mapping.")
+    if isinstance(expected_states, bool) or not isinstance(expected_states, int) or expected_states < 2:
+        raise InterfaceRejected("expected_states must be an integer >= 2.")
+    if isinstance(max_staleness_bars, bool) or not isinstance(max_staleness_bars, int) or max_staleness_bars < 0:
+        raise InterfaceRejected("max_staleness_bars must be a non-negative integer.")
+    if (
+        isinstance(probability_tolerance, bool)
+        or not isinstance(probability_tolerance, (int, float))
+        or not math.isfinite(float(probability_tolerance))
+        or probability_tolerance < 0
+    ):
+        raise InterfaceRejected("probability_tolerance must be finite and non-negative.")
+
+    extra = set(payload.keys()) - ALLOWED_KEYS
+    if extra:
+        raise InterfaceRejected(f"Unexpected fields: {sorted(extra)}")
     missing = REQUIRED - set(payload.keys())
     if missing:
         raise InterfaceRejected(f"Missing required fields: {sorted(missing)}")
+    for key in ("source_bar_open_server", "observed_at_server"):
+        if key in payload and payload[key] is not None and not isinstance(payload[key], str):
+            raise InterfaceRejected(f"{key} must be a string or null.")
     if payload["schema_version"] != "W3_HMM_ML_INTERFACE_V1":
         raise InterfaceRejected("Unsupported schema_version.")
     if payload["time_basis"] != "BROKER_SERVER_RAW_SEQUENCE":
