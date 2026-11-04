@@ -46,6 +46,8 @@
 - [اسکریپت Preflight خودکار](scripts/validate_financial_ml_preflight.py)
 - [GitHub Actions Preflight workflow](.github/workflows/financial-ml-preflight.yml)
 - [قالب JSON ثبت Runهای BOOT-002](experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json)
+- [گزارش اولین Preflight موفق](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json)
+- [اجرای GitHub Actions](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720)
 - [گزارش تطبیق هویت Baseline W0 و BOOT-001](reports/20261104_W0_BASELINE_IDENTITY_FA.md)
 - [پروتکل رسمی Financial ML Core+](docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
 - [رجیستری ۹ نقش ایجنت‌ها](agents/README_FA.md)
