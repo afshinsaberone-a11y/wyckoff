@@ -18,6 +18,9 @@
 - مقدار قدیمی `SetupID` فقط به‌عنوان `legacy_setup_id` نگهداری شود؛ در سورس فعلی این شمارنده هنگام Range detection افزایش می‌یابد و معادل Candidate ID نیست.
 - زمان bar منبع، bar close، available_at و decision_time را جداگانه ثبت کن؛ TimeCurrent به‌تنهایی کافی نیست.
 
+## وضعیت و محدودیت MultiAudit
+سورس MultiAudit v1.084 در Static Review مستقل بررسی شده و خطوط اجرایی مبنای v1.083 در مقایسه ترتیبی حفظ شده‌اند؛ GitHub Preflight نیز پاس شده است. این دو شاهد به معنی Compile یا اجرای Tester نیستند. تا ثبت MetaEditor Compile و سه MT5 Run، این سورس را فقط diagnostic source بررسی‌شده معرفی کن، نه نسخه runtime تأییدشده.
+
 ## وظایف
 1. سورس و تنظیمات مرجع را با Expert name، EA_Version و Commit ثبت کن.
 2. ماشین حالت را طوری instrument کن که تمام Candidateها، تصمیم‌ها، ردها، انقضاها و ابطال‌ها ثبت شوند.
