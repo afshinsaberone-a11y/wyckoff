@@ -113,3 +113,8 @@
 - reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md — گزارش 346/346 ردیف، 65 Range group و 5 تست واحد موفق.
 - experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json — جزئیات CI و Artifact اجرای BOOT-003.
 - docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md — راهنمای مهاجرت، شناسه‌ها و محدودیت زمان.
+
+
+- docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md — قرارداد اجرایی instrumentation v2 برای Run/Range/Cycle/Attempt/Candidate/Decision و زمان‌های point-in-time.
+- contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md v1.2-draft — هویت و event/candidate row schema.
+- contracts/FEATURE_LABEL_SCHEMA_FA.md v1.2-draft — feature/label point-in-time و server time basis.
