@@ -139,3 +139,6 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 اولین Preflight مخزن در GitHub Actions با نتیجه success اجرا شده است: [Run 41856290720](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720)، Commit `ec3f92cb94737f63f73c9276827b5f5dac934aaf`. [manifest نتیجه](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json).
 
 این نتیجه محدود به بررسی ایستای کد/SET/قراردادها است و نه Compile یا Strategy Tester. BOOT-002 تا اجرای واقعی MetaEditor و MT5 باز می‌ماند.
+
+
+گزارش [دو اجرای موفق Preflight](../reports/20261104_BOOT_002_CI_VERIFICATION_FA.md) نیز ثبت شد. این کنترل فقط static repository validation است؛ BOOT-002 هنوز نیازمند MetaEditor Compile و Strategy Tester برای Lookbackهای 5/10/20 است.
