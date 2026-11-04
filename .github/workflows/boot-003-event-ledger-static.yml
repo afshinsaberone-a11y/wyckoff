@@ -1,0 +1,25 @@
+name: BOOT-003 Event Ledger v2 static checks
+
+on:
+  push:
+    branches:
+      - feature/w0-event-ledger-v2
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  ledger-v2-static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Event Ledger v2 static tests
+        run: python research/test_event_ledger_v2_static.py
