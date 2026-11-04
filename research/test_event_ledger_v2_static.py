@@ -28,6 +28,12 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertEqual(actual, EXPECTED_HEADER)
         self.assertEqual(len(actual), 28)
 
+    def test_run_id_collision_is_checked_before_legacy_csv_delete(self):
+        collision = SOURCE.index('if(FileIsExist(g_ledgerFileName,FILE_COMMON))')
+        legacy_delete = SOURCE.index('if(FileIsExist(g_csvFileName,FILE_COMMON))')
+        self.assertLess(collision, legacy_delete)
+        self.assertIn('use a new unique RunID', SOURCE)
+
     def test_unique_run_id_is_mandatory_and_filename_is_run_scoped(self):
         self.assertIn('InpLedgerRunID              = "UNASSIGNED"', SOURCE)
         self.assertIn('requestedRunID!="UNASSIGNED"', SOURCE)
