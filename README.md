@@ -39,6 +39,7 @@
 
 
 ## Financial ML Core+\n- [گزارش اجرای موفق مهاجرت 346 Event](reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md)
+- [مشخصات instrumentation نسخه Event Ledger v2](docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md)
 - [راهنمای مهاجرت Legacy Event CSV](docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md)\n- [اسکریپت مهاجرت Event Ledger](scripts/migrate_legacy_event_csv.py)
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [بازبینی ایستای مستقل MultiAudit v1.084](reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md)
