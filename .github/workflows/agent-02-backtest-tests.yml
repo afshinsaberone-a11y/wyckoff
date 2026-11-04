@@ -1,0 +1,26 @@
+name: AGENT_02 BOOT-002 evidence tests
+
+on:
+  push:
+    branches:
+      - agent/02-execution-backtest
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "research/boot002_bundle_validator.py"
+      - "research/test_boot002_bundle_validator.py"
+      - ".github/workflows/agent-02-backtest-tests.yml"
+
+jobs:
+  boot002-evidence-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run BOOT-002 evidence tests
+        run: python -m unittest discover -s research -p "test_boot002_bundle_validator.py" -v
