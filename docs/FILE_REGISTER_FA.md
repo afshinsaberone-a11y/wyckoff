@@ -118,3 +118,11 @@
 - docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md — قرارداد اجرایی instrumentation v2 برای Run/Range/Cycle/Attempt/Candidate/Decision و زمان‌های point-in-time.
 - contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md v1.2-draft — هویت و event/candidate row schema.
 - contracts/FEATURE_LABEL_SCHEMA_FA.md v1.2-draft — feature/label point-in-time و server time basis.
+
+
+## شروع موازی ایجنت‌ها — 2026-11-04
+- docs/PARALLEL_AGENT_LEARNING_SPRINT_FA.md — ماتریس ۹ مسیر کاری، وابستگی‌ها و Gateها.
+- experiments/PARALLEL_AGENT_SPRINT_20261104.json — Manifest ماشین‌خوان Issueها/Branchها و وضعیت اجرا.
+- docs/W1_HMM_REGIME_RESEARCH_STARTER_FA.md — بسته یادگیری HMM و forward filtering.
+- docs/W2_ML_CANDIDATE_SCORING_STARTER_FA.md — بسته یادگیری Candidate Scoring.
+- docs/W3_HYBRID_INTEGRATION_STARTER_FA.md — معماری W3 و طرح آزمایش 2×2.
