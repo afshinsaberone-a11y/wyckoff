@@ -19,7 +19,7 @@ EXPECTED_HEADER = [
 class EventLedgerV2StaticTests(unittest.TestCase):
     def test_schema_header_has_exact_order_and_width(self):
         match = re.search(
-            r'FileWrite\\(g_ledgerHandle,"SchemaVersion",(.*?)\\);\\s*FileFlush',
+            r'FileWrite\(g_ledgerHandle,"SchemaVersion",(.*?)\);\s*FileFlush',
             SOURCE,
             flags=re.DOTALL,
         )
