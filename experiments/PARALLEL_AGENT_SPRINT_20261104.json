@@ -1,0 +1,78 @@
+{
+  "sprint_id": "FINANCIAL_ML_CORE_PLUS_PARALLEL_2026_11_04",
+  "created_at": "2026-11-04",
+  "repository": "afshinsaberone-a11y/wyckoff",
+  "baseline_main_sha_when_branches_created": "9e0002dfaeae04e8a9bb2ad70fbd9b769316cf7e",
+  "current_docs_head_sha": "d683dd9b72d8aa8325dcc3231bdb1e560bec9858",
+  "execution_mode": "role_based_parallel_workstreams_with_github_issues_and_branches",
+  "autonomous_agent_processes_deployed": false,
+  "branches": [
+    {
+      "role": "AGENT_00",
+      "branch": "agent/00-orchestrator-parallel-sprint",
+      "issue": 2
+    },
+    {
+      "role": "AGENT_01",
+      "branch": "agent/01-data-engineering",
+      "issue": 3
+    },
+    {
+      "role": "AGENT_02",
+      "branch": "agent/02-execution-backtest",
+      "issue": 4
+    },
+    {
+      "role": "AGENT_03",
+      "branch": "agent/03-independent-audit",
+      "issue": 5
+    },
+    {
+      "role": "AGENT_04",
+      "branch": "agent/04-governance",
+      "issue": 6
+    },
+    {
+      "role": "W0",
+      "branch": "agent/w0-wyckoff-ledger",
+      "issue": 7
+    },
+    {
+      "role": "W1",
+      "branch": "agent/w1-hmm-regime-learning",
+      "issue": 8
+    },
+    {
+      "role": "W2",
+      "branch": "agent/w2-ml-scoring-learning",
+      "issue": 9
+    },
+    {
+      "role": "W3",
+      "branch": "agent/w3-hybrid-integration",
+      "issue": 10
+    }
+  ],
+  "research_starters": [
+    "docs/W1_HMM_REGIME_RESEARCH_STARTER_FA.md",
+    "docs/W2_ML_CANDIDATE_SCORING_STARTER_FA.md",
+    "docs/W3_HYBRID_INTEGRATION_STARTER_FA.md"
+  ],
+  "coordination_plan": "docs/PARALLEL_AGENT_LEARNING_SPRINT_FA.md",
+  "gates": {
+    "baseline_identity": "CONDITIONAL",
+    "boot_002_mt5": "OPEN_NOT_RUN",
+    "boot_003_legacy_migration": "PASS",
+    "boot_003_mql5_instrumentation": "SPECIFIED_NOT_IMPLEMENTED",
+    "real_xauusd_hmm_training": "BLOCKED",
+    "real_xauusd_ml_training": "BLOCKED",
+    "w3_operational_integration": "BLOCKED"
+  },
+  "parallel_learning_policy": {
+    "synthetic_prototypes_allowed": true,
+    "real_market_model_fit_allowed": false,
+    "production_ea_changes_allowed": false,
+    "baseline_mutation_allowed": false,
+    "reason": "Candidate/Feature/Label dataset, raw M1/Tick coverage and BOOT-002 MT5 evidence are incomplete."
+  }
+}
