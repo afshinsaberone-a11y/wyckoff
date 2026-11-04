@@ -21,7 +21,7 @@
       "branch": "agent/00-orchestrator-parallel-sprint",
       "progress_pct": 30,
       "branch_ahead": 0,
-      "branch_behind_main": 6,
+      "branch_behind_main": 8,
       "evidence": [
         "parallel sprint plan",
         "start report",
@@ -39,7 +39,7 @@
       "branch": "agent/01-data-engineering",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 6,
+      "branch_behind_main": 8,
       "evidence": [
         "issue and branch created"
       ],
@@ -57,7 +57,7 @@
       "branch": "agent/02-execution-backtest",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 6,
+      "branch_behind_main": 8,
       "evidence": [
         "issue and branch created"
       ],
@@ -75,7 +75,7 @@
       "branch": "agent/03-independent-audit",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 6,
+      "branch_behind_main": 8,
       "evidence": [
         "issue and branch created"
       ],
@@ -90,7 +90,7 @@
       "branch": "agent/04-governance",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 6,
+      "branch_behind_main": 8,
       "evidence": [
         "issue and branch created"
       ],
@@ -108,7 +108,7 @@
       "branch": "agent/w0-wyckoff-ledger",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 6,
+      "branch_behind_main": 8,
       "evidence": [
         "issue and branch created"
       ],
@@ -126,7 +126,7 @@
       "branch": "agent/w1-hmm-regime-learning",
       "progress_pct": 55,
       "branch_ahead": 6,
-      "branch_behind_main": 13,
+      "branch_behind_main": 15,
       "evidence": [
         "HMM forward-filter research note",
         "research/w1_forward_filter.py",
@@ -156,7 +156,7 @@
       "branch": "agent/w2-ml-scoring-learning",
       "progress_pct": 55,
       "branch_ahead": 8,
-      "branch_behind_main": 13,
+      "branch_behind_main": 15,
       "evidence": [
         "Candidate point-in-time validator",
         "purge/group/embargo logic",
@@ -186,7 +186,7 @@
       "branch": "agent/w3-hybrid-integration",
       "progress_pct": 50,
       "branch_ahead": 5,
-      "branch_behind_main": 13,
+      "branch_behind_main": 15,
       "evidence": [
         "versioned HMM/ML JSON interface contract",
         "research/w3_interface_validator.py",
@@ -221,5 +221,6 @@
     "real_xauusd_hmm_training": "BLOCKED",
     "real_xauusd_ml_training": "BLOCKED",
     "w3_operational_integration": "BLOCKED"
-  }
+  },
+  "main_comparison_ref": "b5a104fa7f1558b9a0d068ac77a12b0964ab4678"
 }
