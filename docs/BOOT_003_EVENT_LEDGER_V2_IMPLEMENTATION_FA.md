@@ -51,7 +51,7 @@ Candidate دقیقاً در دو محل ساخته می‌شود: پس از `M5_
 
 Rejectهای ساختاریافته شامل موارد زیرند: Spread بالا/دریافت‌نشدن Tick، محاسبه یا فاصلهٔ Stop، حداقل فاصلهٔ Stop بروکر، بودجهٔ ریسک، زیان هر لات، گام/حداقل حجم، Filling Mode، محاسبهٔ ریسک برنامه‌ریزی‌شده و شکست OrderSend. DecisionID فقط وقتی ساخته می‌شود که Candidate موجود باشد و Event نتیجهٔ رد یا پذیرش اجرایی داشته باشد.
 
-پس از سفارش، `OrderID` از ResultOrder/transaction order، `DealID` از `trans.deal` و `PositionID` از `DEAL_POSITION_ID` ثبت می‌شوند. چند Deal برای یک Candidate (از جمله partial fill) می‌توانند تکرار شوند؛ PositionID با trade_id یکی فرض نمی‌شود.
+پس از سفارش، `OrderID` از ResultOrder/transaction order، `DealID` از `trans.deal` و `PositionID` از `DEAL_POSITION_ID` ثبت می‌شوند. برای اینکه خروج SL/TP به Candidate اشتباه متصل نشود، نسخهٔ فعلی یک جدول link در حافظه نگه می‌دارد: ابتدا OrderID به Candidate متصل می‌شود؛ پس از اولین Deal ورود، PositionID نیز به همان Candidate وصل می‌شود. اگر order تیکت Deal خروج با order ورود متفاوت باشد، نگاشت PositionID و در صورت نیاز History position برای بازیابی order ورود استفاده می‌شود. هر تراکنش غیرقابل‌اتصال با رویداد `LEDGER_UNLINKED_TRADE_TRANSACTION` علامت می‌خورد و اعتبارسنج CSV آن را خطای سخت می‌داند. چند Deal برای یک Candidate (از جمله partial fill و خروج جزئی) می‌توانند تکرار شوند؛ PositionID با trade_id یکی فرض نمی‌شود.
 
 ## 5. راه اجرای MT5
 
@@ -63,9 +63,23 @@ Rejectهای ساختاریافته شامل موارد زیرند: Spread با�
 6. برای سفارش‌های پذیرفته‌شده، OrderID → DealID → PositionID و partial fill/close را با History/OnTradeTransaction تطبیق دهید.
 7. سپس Replay A/B انجام شود: C2 پایه در برابر C2+Ledger v2 با داده، تنظیمات و مدل اجرای یکسان. تعداد/زمان/جهت سیگنال‌ها و سفارش‌ها باید برابر باشند.
 
-## 6. تست‌های ایستا و محدودیت
+## 6. اعتبارسنج مستقل خروجی CSV
 
-فایل `research/test_event_ledger_v2_static.py` ترتیب Schema، محل Candidate creation، ReasonCodeها، joinهای معاملاتی، زمان‌های خام و حضور predicateهای اصلی C2 را کنترل می‌کند. Workflow اختصاصی GitHub Actions این تست را اجرا می‌کند.
+اسکریپت `research/event_ledger_v2_validator.py` فایل خروجی MT5 را با schema دقیق ۲۸ ستونی کنترل می‌کند: یکتایی و پیوستگی EventSequence/EventID، ترتیب ساخت Candidate، تو در تو بودن Range/Cycle/Attempt/Candidate/Decision ID، تعداد دقیق یک `CANDIDATE_CREATED` برای هر Candidate، زمان‌های broker-server، وضعیت Decision، و اتصال Deal/Position به Candidate. تراکنش بدون اتصال به Candidate خطای سخت است؛ OrderID ناموجود در یک Deal warning است و به‌صورت خودکار جعل نمی‌شود.
+
+پس از کپی CSV از Common Files ترمینال MT5 به پوشهٔ پروژه، اجرا کنید:
+
+```powershell
+python research/event_ledger_v2_validator.py `
+  runs/BOOT-003/WM20261104A001_event_ledger_v2.csv `
+  --expected-run-id WM20261104A001 `
+  --output-json runs/BOOT-003/WM20261104A001_ledger_validation.json
+```
+
+خروجی با کد ۰ معتبر، کد ۲ نامعتبر و کد ۳ خطای نوشتن گزارش JSON را اعلام می‌کند. این Validator فقط ساختار و پیوند هویتی را می‌سنجد؛ درست‌بودن قیمت، منطق و نتیجهٔ معامله را اثبات نمی‌کند.
+## 7. تست‌های ایستا و محدودیت
+
+فایل `research/test_event_ledger_v2_static.py` ترتیب Schema، محل Candidate creation، ReasonCodeها، نگاشت پایدار Order/Position، زمان‌های خام و حضور predicateهای اصلی C2 را کنترل می‌کند. فایل `research/test_event_ledger_v2_validator.py` نیز Validator خروجی را با داده‌های مصنوعی مثبت/منفی می‌آزماید. Workflow اختصاصی GitHub Actions هر دو مجموعه را اجرا می‌کند.
 
 **این تست‌ها Compile MQL5 نیستند.** در این Commit هنوز موارد زیر PASS نشده‌اند:
 
