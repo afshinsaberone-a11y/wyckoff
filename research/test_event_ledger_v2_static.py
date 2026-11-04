@@ -94,7 +94,7 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('g_ledgerOrderID=(string)trans.order;', SOURCE)
         self.assertIn('g_ledgerDealID=(string)trans.deal;', SOURCE)
         self.assertIn('HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID)', SOURCE)
-        self.assertIn('g_ledgerPositionID=(string)positionId;', SOURCE)
+        self.assertIn('positionId>0 ? (string)positionId : ""', SOURCE)
 
     def test_unavailable_identifiers_are_blank_not_zero(self):
         self.assertIn('string legacySetupID=(g_setupCounter>0 ? (string)g_setupCounter : "");', SOURCE)
