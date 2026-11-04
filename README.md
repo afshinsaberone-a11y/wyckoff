@@ -48,6 +48,7 @@
 - [قالب JSON ثبت Runهای BOOT-002](experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json)
 - [گزارش اولین Preflight موفق](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json)
 - [گزارش Preflight پیشرفته 24/24](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json)
+- [گزارش دو Preflight متوالی 27/27](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json)
 - [گزارش دو اجرای موفق GitHub Actions](reports/20261104_BOOT_002_CI_VERIFICATION_FA.md)
 - [اجرای GitHub Actions](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720)
 - [گزارش بازسازی SET مرجع C2 از Journal](reports/20261104_W0_C2_SET_RECONSTRUCTION_FA.md)
