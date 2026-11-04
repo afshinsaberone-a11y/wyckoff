@@ -1,0 +1,26 @@
+name: AGENT_01 data quality tests
+
+on:
+  push:
+    branches:
+      - agent/01-data-engineering
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "research/ohlcv_quality.py"
+      - "research/test_ohlcv_quality.py"
+      - ".github/workflows/agent-01-data-tests.yml"
+
+jobs:
+  ohlcv-quality-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run data quality tests
+        run: python -m unittest discover -s research -p "test_ohlcv_quality.py" -v
