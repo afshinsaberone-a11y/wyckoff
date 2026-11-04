@@ -171,3 +171,18 @@ BOOT-002 به چهار Run A/B/C/D تغییر کرده است: v1.083/LB5، v1.0
 اسکریپت محافظه‌کارانه [migrate_legacy_event_csv.py](../scripts/migrate_legacy_event_csv.py) و تست‌های واحد آن در مخزن ثبت شده‌اند. هدف تبدیل Event CSV اجرای C2 به Event Ledger استاندارد است؛ هیچ candidate_id، cycle_id، attempt_id، UTC یا Label حدس زده نمی‌شود. GitHub Actions آن را به‌صورت تست واحد + مهاجرت واقعی اجرا و خروجی CSV/manifest را به‌صورت Artifact ذخیره خواهد کرد.
 
 این فقط گام آغازین BOOT-003 است؛ instrumentation جدید MQL5 و Candidate Ledger کامل هنوز انجام نشده‌اند. W1/W2/W3 همچنان BLOCKED هستند.
+
+
+## نتیجه BOOT-003 — Legacy Event Ledger اولیه
+
+Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41859743204) با موفقیت:
+- Preflight: 27 PASS / 0 FAIL
+- Unit tests: 5/5 موفق
+- ورودی و خروجی normalized: 346 / 346 ردیف
+- Range groups مبتنی بر شناسه legacy: 65
+- Candidate/Cycle/Attempt ID و Label ساخته‌شده: صفر
+- SHA-256 خروجی CSV: `5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e`
+
+[گزارش مهاجرت](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md) و [manifest ماشینی](../experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json).
+
+Artifact با نام `legacy-event-ledger-1efbb979e031898521aab9ccab799f1fc143fa71` در صفحه Run بالا برای 30 روز قابل دریافت است. این فقط Event Ledger قدیمی است؛ Event/Candidate instrumentation جدید MQL5 همچنان باز است و Dataset آموزشی W1/W2/W3 هنوز آماده نیست.
