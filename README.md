@@ -36,3 +36,14 @@
 
 ## ایمنی و کیفیت
 هیچ نسخه‌ای در این مخزن به‌عنوان آماده معامله زنده معرفی نمی‌شود. سورس‌ها و نتایج باید به نسخه دقیق، تنظیمات و گزارش تست متناظر متصل باشند. نتیجهٔ یک معامله برای اثبات edge کافی نیست.
+
+
+## Financial ML Core+
+- [پروتکل رسمی Financial ML Core+](docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
+- [رجیستری ۹ نقش ایجنت‌ها](agents/README_FA.md)
+- [قرارداد Event و Candidate](contracts/EVENT_AND_CANDIDATE_SCHEMA_FA.md)
+- [قرارداد Feature و Label](contracts/FEATURE_LABEL_SCHEMA_FA.md)
+- [قرارداد Experiment و Walk-Forward](contracts/EXPERIMENT_AND_FOLD_SCHEMA_FA.md)
+- [قرارداد Result و Audit](contracts/RESULT_AND_AUDIT_SCHEMA_FA.md)
+
+وضعیت: مشخصات و System Prompt نقش‌ها ثبت شده‌اند؛ ایجنت‌ها هنوز به‌صورت سرویس مستقل مستقر نشده‌اند. W1/W2/W3 تا تکمیل W0، Event Ledger و Label/Fold validation نباید وارد آموزش/آزمون نهایی شوند.
