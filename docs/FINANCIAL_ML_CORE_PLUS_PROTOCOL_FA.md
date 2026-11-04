@@ -170,3 +170,14 @@ Dataset از معاملات اجراشده تنها ساخته نمی‌شود. 
 مشخصات اجرا و مجوزهای Agentها در [مدل استقرار و تحویل](../agents/EXECUTION_AND_HANDOFF_MODEL_FA.md) آمده است. قالب استاندارد تحویل در [Agent Handoff Schema](../contracts/AGENT_HANDOFF_SCHEMA_FA.md) قرار دارد. بسته‌های کاری و معیار پذیرش هر مرحله در [برنامه راه‌اندازی](FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md) ثبت شده‌اند.
 
 اولین بسته کاری BOOT-001 باید هویت دقیق Baseline را با Expert name، EA_Version، سورس، Commit، SET و گزارش تست تطبیق دهد. تا پیش از آن نباید C2 پایه، H1STRUCT Audit و MultiAudit یک نسخه واحد تلقی شوند.
+
+
+## 15. ممیزی آمادگی داده و شناسه نمونه
+
+گزارش [ممیزی آمادگی داده Financial ML](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md) وضعیت فعلی را برای Event Funnel قابل استفاده، اما برای آموزش W1/W2/W3 مسدود اعلام می‌کند.
+
+قرارداد Event/Candidate و Feature/Label به نسخه 1.1-draft ارتقا یافته‌اند. در سورس C2، `g_setupCounter` هنگام Range detection افزایش می‌یابد؛ بنابراین `SetupID` قدیمی به `legacy_setup_id` نگاشت می‌شود و نباید شناسه Candidate فرض شود. سلسله‌مراتب مستقل `range_id`، `cycle_id`، `attempt_id`، `candidate_id` و `trade_id` الزامی است.
+
+نقطه تصمیم نسخه اول W2 باید `M5_ENTRY` باشد؛ یک نمونه برای هر candidate_id در لحظه‌ای که W0 اجازه ارسال سفارش می‌دهد. مدل‌های تصمیم‌گیری زودتر مانند پس از LPS/LPSY باید label جداگانه‌ای برای احتمال رسیدن به Entry و سپس بازده پس از Entry داشته باشند.
+
+تا زمان وجود M1/Tick قابل ردیابی، Feature Snapshot، Label Outcome و Fold Manifest، آموزش رسمی W1/W2/W3 ممنوع است.
