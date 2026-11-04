@@ -1,0 +1,225 @@
+{
+  "snapshot_date": "2026-11-04",
+  "repo": "afshinsaberone-a11y/wyckoff",
+  "metric": "weighted_deliverable_completion_estimate",
+  "mean_workstream_progress_pct": 26.7,
+  "note": "Simple arithmetic mean across nine role workstreams; not overall project completion and not runtime/activity telemetry.",
+  "weights_pct": {
+    "scope_issue_branch": 10,
+    "research_design": 15,
+    "implementation_artifact": 30,
+    "tests_authored": 10,
+    "tests_passed": 15,
+    "independent_audit_handoff": 10,
+    "integration_freeze_acceptance": 10
+  },
+  "autonomous_agents_deployed": false,
+  "workstreams": [
+    {
+      "role": "AGENT_00",
+      "issue": 2,
+      "branch": "agent/00-orchestrator-parallel-sprint",
+      "progress_pct": 30,
+      "branch_ahead": 0,
+      "branch_behind_main": 1,
+      "evidence": [
+        "parallel sprint plan",
+        "start report",
+        "sprint manifest",
+        "nine issues and branches registered"
+      ],
+      "blockers": [
+        "no dedicated branch commit ahead of main",
+        "ongoing handoff and decision log not yet evidenced"
+      ]
+    },
+    {
+      "role": "AGENT_01",
+      "issue": 3,
+      "branch": "agent/01-data-engineering",
+      "progress_pct": 10,
+      "branch_ahead": 0,
+      "branch_behind_main": 1,
+      "evidence": [
+        "issue and branch created"
+      ],
+      "prior_project_evidence_not_attributed": [
+        "legacy migration 346/346 rows and historical CI pass"
+      ],
+      "blockers": [
+        "no dedicated branch commit",
+        "raw M1/Tick inventory and deterministic pipeline incomplete"
+      ]
+    },
+    {
+      "role": "AGENT_02",
+      "issue": 4,
+      "branch": "agent/02-execution-backtest",
+      "progress_pct": 10,
+      "branch_ahead": 0,
+      "branch_behind_main": 1,
+      "evidence": [
+        "issue and branch created"
+      ],
+      "prior_project_evidence_not_attributed": [
+        "BOOT-002 Run Card and static preparation"
+      ],
+      "blockers": [
+        "no dedicated branch commit",
+        "two MetaEditor compiles and four MT5 runs not completed"
+      ]
+    },
+    {
+      "role": "AGENT_03",
+      "issue": 5,
+      "branch": "agent/03-independent-audit",
+      "progress_pct": 10,
+      "branch_ahead": 0,
+      "branch_behind_main": 1,
+      "evidence": [
+        "issue and branch created"
+      ],
+      "blockers": [
+        "no dedicated branch commit",
+        "independent audit report not delivered"
+      ]
+    },
+    {
+      "role": "AGENT_04",
+      "issue": 6,
+      "branch": "agent/04-governance",
+      "progress_pct": 10,
+      "branch_ahead": 0,
+      "branch_behind_main": 1,
+      "evidence": [
+        "issue and branch created"
+      ],
+      "prior_project_evidence_not_attributed": [
+        "schema 1.2-draft and fold contracts"
+      ],
+      "blockers": [
+        "no dedicated branch commit",
+        "contract freeze and independent leakage tests incomplete"
+      ]
+    },
+    {
+      "role": "W0",
+      "issue": 7,
+      "branch": "agent/w0-wyckoff-ledger",
+      "progress_pct": 10,
+      "branch_ahead": 0,
+      "branch_behind_main": 1,
+      "evidence": [
+        "issue and branch created"
+      ],
+      "prior_project_evidence_not_attributed": [
+        "Event Ledger v2 specification"
+      ],
+      "blockers": [
+        "no dedicated branch commit",
+        "MQL5 instrumentation, compile and replay not done"
+      ]
+    },
+    {
+      "role": "W1",
+      "issue": 8,
+      "branch": "agent/w1-hmm-regime-learning",
+      "progress_pct": 55,
+      "branch_ahead": 6,
+      "branch_behind_main": 8,
+      "evidence": [
+        "HMM forward-filter research note",
+        "research/w1_forward_filter.py",
+        "research/test_w1_forward_filter.py",
+        "dedicated CI workflow"
+      ],
+      "tests_authored": 8,
+      "ci_runs": [
+        {
+          "id": 41864325081,
+          "status": "queued"
+        },
+        {
+          "id": 41864331424,
+          "status": "queued"
+        }
+      ],
+      "blockers": [
+        "CI not yet executed",
+        "no real XAUUSD training",
+        "no independent audit or freeze"
+      ]
+    },
+    {
+      "role": "W2",
+      "issue": 9,
+      "branch": "agent/w2-ml-scoring-learning",
+      "progress_pct": 55,
+      "branch_ahead": 8,
+      "branch_behind_main": 8,
+      "evidence": [
+        "Candidate point-in-time validator",
+        "purge/group/embargo logic",
+        "research/test_w2_candidate_validator.py",
+        "dedicated CI workflow"
+      ],
+      "tests_authored": 7,
+      "ci_runs": [
+        {
+          "id": 41864355912,
+          "status": "queued"
+        },
+        {
+          "id": 41864363747,
+          "status": "queued"
+        }
+      ],
+      "blockers": [
+        "CI not yet executed",
+        "no real Candidate/Feature/Label dataset",
+        "no fitted scorer or after-cost OOS evaluation"
+      ]
+    },
+    {
+      "role": "W3",
+      "issue": 10,
+      "branch": "agent/w3-hybrid-integration",
+      "progress_pct": 50,
+      "branch_ahead": 5,
+      "branch_behind_main": 8,
+      "evidence": [
+        "versioned HMM/ML JSON interface contract",
+        "research/w3_interface_validator.py",
+        "research/test_w3_interface_validator.py",
+        "dedicated CI workflow"
+      ],
+      "tests_authored": 6,
+      "ci_runs": [
+        {
+          "id": 41864218329,
+          "status": "queued"
+        }
+      ],
+      "blockers": [
+        "CI not yet executed",
+        "operational integration blocked pending W1/W2 freeze and Ledger readiness"
+      ]
+    }
+  ],
+  "ci_summary": {
+    "runs_total": 5,
+    "completed": 0,
+    "queued": 5,
+    "passed": 0,
+    "failed": 0
+  },
+  "gates": {
+    "boot_001_baseline": "CONDITIONAL",
+    "boot_002_mt5": "OPEN_NOT_RUN",
+    "boot_003_legacy_migration": "PASS_HISTORICAL",
+    "boot_003_mql5_instrumentation": "SPECIFIED_NOT_IMPLEMENTED",
+    "real_xauusd_hmm_training": "BLOCKED",
+    "real_xauusd_ml_training": "BLOCKED",
+    "w3_operational_integration": "BLOCKED"
+  }
+}
