@@ -35,3 +35,11 @@ Data Quality Report، data manifest، raw/processed lineage، Event Ledger، Can
 
 ## معیار پذیرش
 تعداد و هش فایل‌ها قابل تکرار باشد؛ timestampها و provenance روشن باشند؛ رکوردهای خام حفظ شوند؛ تمام Candidateها ثبت شوند؛ و هیچ feature snapshot آینده‌نگر نباشد.
+
+
+## مهاجرت Legacy Event Log
+- از `scripts/migrate_legacy_event_csv.py` برای ساخت Event Ledger اولیه از CSV قدیمی استفاده کن.
+- `legacy_setup_id` را به عنوان Range-level حفظ کن؛ candidate_id، cycle_id و attempt_id را حدس نزن.
+- زمان ServerTime را raw نگه دار؛ بدون timezone/offset به UTC تبدیل نکن.
+- فقط بعد از اجرای تست واحد و بررسی migration_manifest، خروجی را COMPLETE اعلام کن.
+- [راهنمای مهاجرت](../docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md).
