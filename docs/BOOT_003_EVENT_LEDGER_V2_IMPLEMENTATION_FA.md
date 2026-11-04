@@ -90,3 +90,10 @@ python research/event_ledger_v2_validator.py `
 - ممیزی مستقل ترتیب callbackها، خصوصاً partial fills.
 
 تا عبور این Gateها BOOT-003 کامل نیست و Event Ledger v2 نباید برای آموزش W1/W2/W3 استفاده شود.
+## 8. آخرین نتیجهٔ CI — 2026-11-04
+
+اجرای GitHub Actions شمارهٔ 48 روی Commit تأییدشده، موفق بود: 23 تست ساختاری MQL5/قرارداد Ledger، 19 تست مصنوعی CSV Validator و مرحلهٔ `py_compile` هر سه Pass شدند.
+
+گزارش اجرا: https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41883785499
+
+این Gate به معنی Compile شدن MQL5، تولید CSV واقعی، تست در Strategy Tester، Replay A/B یا اثبات سودآوری نیست. این مراحل همچنان باز هستند.
