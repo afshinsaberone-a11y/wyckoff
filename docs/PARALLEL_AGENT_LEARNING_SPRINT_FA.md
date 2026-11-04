@@ -96,3 +96,8 @@ Workflow مستقل `.github/workflows/parallel-agent-learning-tests.yml` روی
 - W3: 41864218329 — QUEUED.
 
 تا پایان این گزارش هیچ‌یک از این Runها PASS اعلام نشده‌اند. هر سه مسیر باید Job Log را بررسی و در صورت خطا اصلاح کنند.
+
+
+## داشبورد درصد پیشرفت واقعی مسیرها
+
+آخرین درصدهای شواهد-محور، وضعیت Commit شاخه‌ها و نتیجه فعلی CI در [داشبورد پیشرفت Agentها](reports/20261104_AGENT_PROGRESS_DASHBOARD_FA.md) و [Snapshot ماشینی](experiments/AGENT_PROGRESS_DASHBOARD_20261104.json) ثبت شده‌اند. این درصدها بر مبنای تحویل‌های قابل‌مشاهده‌اند؛ شش مسیر هنوز Commit اختصاصی ندارند و CI پنج اجرای W1/W2/W3 هنوز queued است.
