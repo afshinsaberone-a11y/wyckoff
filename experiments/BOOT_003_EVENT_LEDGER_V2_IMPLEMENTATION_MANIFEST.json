@@ -8,7 +8,7 @@
   "ea_version": "1.083-C2-TIMING-SB050-T030-LEDGER-V2",
   "schema_version": 2,
   "schema_columns": 28,
-  "implementation_status": "SOURCE_INSTRUMENTED_STATIC_TESTS_PENDING",
+  "implementation_status": "SOURCE_INSTRUMENTED_OUTPUT_VALIDATOR_ADDED_CI_PENDING",
   "metaeditor_compile": "NOT_RUN",
   "strategy_tester": "NOT_RUN",
   "replay_ab": "NOT_RUN",
@@ -17,5 +17,9 @@
   "time_basis": "BROKER_SERVER_RAW",
   "legacy_csv_separate": true,
   "optimization_mode": "BLOCKED_FOR_SHARED_FILE_SAFETY",
-  "no_profitability_claim": true
+  "no_profitability_claim": true,
+  "static_checks": "PENDING_LATEST_COMMIT",
+  "csv_output_validator": "ADDED_WITH_SYNTHETIC_TESTS",
+  "trade_link_strategy": "ORDER_ID_AND_POSITION_ID_MAP_WITH_POSITION_HISTORY_FALLBACK",
+  "unlinked_trade_transaction": "EXPLICIT_EVENT_AND_HARD_VALIDATION_FAILURE"
 }
