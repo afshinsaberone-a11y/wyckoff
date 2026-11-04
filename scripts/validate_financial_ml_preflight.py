@@ -166,7 +166,7 @@ def main() -> int:
     # Reconstructed C2 baseline: every SET value must equal the archived Tester Journal.
     c2_source = read_text("src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5")
     c2_source_inputs = parse_mql_inputs(c2_source)
-    c2_ea_version = re.search(r'^\\s*#define\\s+EA_VERSION\\s+"([^"]+)"', c2_source, re.MULTILINE)
+    c2_ea_version = re.search(r"^\s*#define\s+EA_VERSION\s+\"([^\"]+)\"", c2_source, re.MULTILINE)
     check(bool(c2_ea_version and c2_ea_version.group(1) == "1.08-C2-TIMING-SB050-T030"),
           "C2 baseline source EA_VERSION is the registered 1.08 timing build.",
           "C2 baseline source EA_VERSION mismatch.")
