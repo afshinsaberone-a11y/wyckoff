@@ -387,3 +387,17 @@ GitHub Actions workflow دو بار با conclusion=success اجرا شد:
 - Run 41856507674 روی Commit `3e2a6138131ef08531ea743378906a31ef35232c`.
 
 گزارش [BOOT-002 CI verification](../reports/20261104_BOOT_002_CI_VERIFICATION_FA.md) ثبت شد. این کنترل فقط بررسی ایستای فایل‌ها، ورودی‌های SET، شناسه نسخه و حفظ خطوط مبنا را انجام می‌دهد؛ MQL5 compile یا MT5 Tester در آن اجرا نمی‌شود.
+
+
+## 2026-11-04 — بازسازی SET مرجع C2 و طراحی چهار Run BOOT-002
+
+Journal اجرای کامل C2 در events/20261103.log بررسی شد. هر 67 ورودی Tester از بازه 2024-01-02 تا 2026-10-17 استخراج شد؛ فایل SET بازسازی‌شده با تمام 67 مقدار سورس C2 v1.082 و Journal دقیقاً منطبق است. فایل اصلی SET تاریخی و EX5 hash تاریخی در دسترس نیستند؛ پس Baseline نهایی همچنان CONDITIONAL است. گزارش: [W0 C2 SET Reconstruction](../reports/20261104_W0_C2_SET_RECONSTRUCTION_FA.md).
+
+طراحی BOOT-002 اصلاح شد. InpStrengthSwingLookback فقط Diagnostics نیست؛ در ProcessWaitStrength سطح priorHigh/priorLow فعال SOS/SOW را تعیین می‌کند. بنابراین چهار Run تعریف شد:
+A) H1STRUCT v1.083/LB5؛
+B) MultiAudit v1.084/LB5؛
+C) MultiAudit v1.084/LB10؛
+D) MultiAudit v1.084/LB20.
+A/B جفت کنترل عدم‌تداخل diagnostics هستند؛ C/D sensitivity واقعی شرط SOS/SOW. بازه مشترک باید پیش از Run A انتخاب و برای هر چهار Run Freeze شود.
+
+Preflight پیشرفته با پشتیبانی Journal UTF-16 و تطبیق 67 ورودی C2 در GitHub Actions موفق شد: Run 41858327181، Commit eb43035187a2f4e2ab2dfbd8aebea838c555949a، 24 PASS و 0 FAIL. [اجرای CI](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858327181). این Static validation است؛ هیچ Compile MQL5 یا Tester جدیدی اجرا نشده است.
