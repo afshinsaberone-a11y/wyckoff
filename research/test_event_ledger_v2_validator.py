@@ -75,6 +75,14 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
         self.assertFalse(report["valid"])
         self.assertTrue(any("without CandidateID" in error for error in report["errors"]))
 
+    def test_non_candidate_rejection_is_a_regular_event_not_a_decision(self):
+        rows = [make_row(1, "REJECT_SPRING_TOO_DEEP",
+                         CandidateID="", DecisionID="",
+                         DecisionStatus="", ReasonCode="")]
+        report = validate_rows(SCHEMA_COLUMNS, rows, RUN)
+        self.assertTrue(report["valid"], report["errors"])
+        self.assertEqual(report["stats"]["decisions"], 0)
+
     def test_candidate_cannot_precede_created_event(self):
         rows = [make_row(1, "M5_ENTRY_EVALUATION", CycleID=CYCLE,
                          AttemptID=ATTEMPT, CandidateID=CANDIDATE)]
