@@ -89,7 +89,8 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");', SOURCE)
 
     def test_order_deal_position_linkage_uses_mt5_transaction_values(self):
-        self.assertIn('g_ledgerOrderID=(string)trade.ResultOrder();', SOURCE)
+        self.assertIn('ulong resultOrderTicket=trade.ResultOrder();', SOURCE)
+        self.assertIn('g_ledgerOrderID=(resultOrderTicket>0 ? (string)resultOrderTicket : "");', SOURCE)
         self.assertIn('g_ledgerOrderID=(string)trans.order;', SOURCE)
         self.assertIn('g_ledgerDealID=(string)trans.deal;', SOURCE)
         self.assertIn('HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID)', SOURCE)
