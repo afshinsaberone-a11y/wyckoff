@@ -62,7 +62,13 @@ def validate_rows(
     decision_count = 0
     deal_event_count = 0
 
+    previous_event = ""
+    previous_direction = ""
     for line, row in enumerate(rows, start=2):
+        if None in row:
+            errors.append(f"line {line}: row contains extra fields beyond the 28-column schema")
+        if any(row.get(column) is None for column in SCHEMA_COLUMNS):
+            errors.append(f"line {line}: row has fewer than 28 fields")
         run_id = (row.get("RunID") or "").strip()
         run_ids.add(run_id)
         if not _RUN_ID_RE.fullmatch(run_id):
@@ -105,6 +111,9 @@ def validate_rows(
 
         event = row.get("Event", "")
         event_counts[event] = event_counts.get(event, 0) + 1
+        direction_value = row.get("Direction", "")
+        if direction_value not in ("BUY", "SELL", "NONE"):
+            errors.append(f"line {line}: invalid Direction {direction_value!r}")
         range_id = row.get("RangeID", "")
         cycle_id = row.get("CycleID", "")
         attempt_id = row.get("AttemptID", "")
@@ -123,6 +132,13 @@ def validate_rows(
             errors.append(f"line {line}: CandidateID is not nested under AttemptID")
 
         if event == "CANDIDATE_CREATED":
+            expected_recovery = (
+                "M5_BUY_RECOVERY_CONFIRMED" if direction_value == "BUY"
+                else "M5_SELL_RECOVERY_CONFIRMED" if direction_value == "SELL"
+                else ""
+            )
+            if previous_event != expected_recovery:
+                errors.append(f"line {line}: CANDIDATE_CREATED must immediately follow its matching M5 recovery event")
             if not candidate_id:
                 errors.append(f"line {line}: CANDIDATE_CREATED has blank CandidateID")
             else:
@@ -176,6 +192,17 @@ def validate_rows(
             if not row.get("OrderID"):
                 warnings.append(f"line {line}: trade deal event has no OrderID from transaction")
 
+        if event == "ORDER_OPENED" and not row.get("OrderID"):
+            errors.append(f"line {line}: accepted ORDER_OPENED event has blank OrderID")
+
+        for price_field in ("RangeHigh", "RangeLow"):
+            value = row.get(price_field, "")
+            if value:
+                try:
+                    float(value)
+                except ValueError:
+                    errors.append(f"line {line}: {price_field} is not numeric: {value!r}")
+
         legacy_id = row.get("LegacySetupID", "")
         if legacy_id:
             try:
@@ -183,6 +210,9 @@ def validate_rows(
                     raise ValueError
             except ValueError:
                 errors.append(f"line {line}: LegacySetupID must be a positive integer or blank")
+
+        previous_event = event
+        previous_direction = direction_value
 
     if len(run_ids) > 1:
         errors.append("CSV contains more than one RunID")
