@@ -40,7 +40,6 @@
 
 ## Financial ML Core+
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
-- [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [بازبینی ایستای مستقل MultiAudit v1.084](reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md)
 - [کارت اجرای MT5 برای BOOT-002](docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)
 - [اسکریپت Preflight خودکار](scripts/validate_financial_ml_preflight.py)
@@ -49,6 +48,7 @@
 - [گزارش اولین Preflight موفق](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json)
 - [گزارش Preflight پیشرفته 24/24](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json)
 - [گزارش دو Preflight متوالی 27/27](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json)
+- [آخرین اجرای CI با 27/27](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858859791)
 - [گزارش دو اجرای موفق GitHub Actions](reports/20261104_BOOT_002_CI_VERIFICATION_FA.md)
 - [اجرای GitHub Actions](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720)
 - [گزارش بازسازی SET مرجع C2 از Journal](reports/20261104_W0_C2_SET_RECONSTRUCTION_FA.md)
