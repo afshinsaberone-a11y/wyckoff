@@ -84,6 +84,29 @@
   "notes": [
     "GitHub Action artifact was downloaded and inspected; its normalized CSV contains 346 rows, 65 distinct non-empty range_id values and no candidate_id values.",
     "M5_ENTRY_EVALUATION (57) and M5_ENTRY_SKIPPED_PRE_READY (6) are event log categories, not a count of independent entry candidates or trades.",
-    "Output SHA-256 was recalculated from the extracted artifact and matches migration_manifest.json."
+    "Output SHA-256 was recalculated from the extracted artifact and matches migration_manifest.json.",
+    "After the Event/Candidate and Feature/Label schemas were upgraded to v1.2-draft, CI re-ran twice successfully with 27 preflight checks, 5 migration unit tests, and identical normalized output SHA-256."
+  ],
+  "revalidation_runs": [
+    {
+      "workflow_run_id": 41861001416,
+      "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41861001416",
+      "head_sha": "b82970156265330c969715a35704af917d15bf55",
+      "conclusion": "success",
+      "preflight_checks_passed": 27,
+      "unit_tests_passed": 5,
+      "artifact_id": 13339413481,
+      "artifact_sha256": "00482187a859e1284e9fc0dbacd2d676d017538129a708082d1846fe9a50e7c0"
+    },
+    {
+      "workflow_run_id": 41861010642,
+      "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41861010642",
+      "head_sha": "5003c1c8c87e99c743b0e151a5a940869a54683a",
+      "conclusion": "success",
+      "preflight_checks_passed": 27,
+      "unit_tests_passed": 5,
+      "artifact_id": 13338794451,
+      "artifact_sha256": "00482187a859e1284e9fc0dbacd2d676d017538129a708082d1846fe9a50e7c0"
+    }
   ]
 }
