@@ -1026,7 +1026,11 @@ bool CalculateRiskVolume(const ENUM_ORDER_TYPE orderType,const double entry,
   {
    double equity=AccountInfoDouble(ACCOUNT_EQUITY);
    double riskMoney=equity*InpRiskPercent/100.0;
-   if(riskMoney<=0.0) return false;
+   if(riskMoney<=0.0)
+     {
+      LogReject("REJECT_RISK_BUDGET_INVALID","Equity-derived risk budget is not positive");
+      return false;
+     }
    double oneLotProfit=0.0;
    if(!OrderCalcProfit(orderType,g_symbol,1.0,entry,stop,oneLotProfit))
      {
@@ -1034,12 +1038,20 @@ bool CalculateRiskVolume(const ENUM_ORDER_TYPE orderType,const double entry,
       return false;
      }
    double lossPerLot=MathAbs(oneLotProfit);
-   if(lossPerLot<=0.0) return false;
+   if(lossPerLot<=0.0)
+     {
+      LogReject("REJECT_RISK_PER_LOT_INVALID","Calculated loss per lot is not positive");
+      return false;
+     }
    double rawVolume=riskMoney/lossPerLot;
    double minVol=SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_MIN);
    double maxVol=SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_MAX);
    double step=SymbolInfoDouble(g_symbol,SYMBOL_VOLUME_STEP);
-   if(step<=0.0) return false;
+   if(step<=0.0)
+     {
+      LogReject("REJECT_VOLUME_STEP_INVALID","Broker volume step is not positive");
+      return false;
+     }
    double normalized=MathFloor(rawVolume/step)*step;
    if(normalized>maxVol) normalized=maxVol;
    if(normalized<minVol)
@@ -1588,7 +1600,7 @@ int OnInit()
    string requestedRunID=InpLedgerRunID;
    StringTrimLeft(requestedRunID);
    StringTrimRight(requestedRunID);
-   bool validRunID=(StringLen(requestedRunID)>=8 && requestedRunID!="UNASSIGNED");
+   bool validRunID=(StringLen(requestedRunID)>=8 && StringLen(requestedRunID)<=64 && requestedRunID!="UNASSIGNED");
    for(int ridx=0;ridx<StringLen(requestedRunID);ridx++)
      {
       ushort ch=StringGetCharacter(requestedRunID,ridx);
