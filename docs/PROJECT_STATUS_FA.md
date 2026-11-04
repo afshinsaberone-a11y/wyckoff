@@ -153,3 +153,14 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 - Lookback10/20 صرفاً diagnostics نیستند؛ مقدار Lookback سطح priorHigh/priorLow فعال در ProcessWaitStrength را تغییر می‌دهد.
 
 **وضعیت اجرا:** دو Compile واقعی و چهار Strategy Tester Run هنوز انجام نشده‌اند. W1/W2/W3 همچنان BLOCKED هستند.
+
+
+## نتیجه نهایی Preflight و طراحی چهار Run — 2026-11-04
+
+دو اجرای متوالی Preflight پس از ارتقای Validator و Run Card هر دو 27 PASS و 0 FAIL داشتند:
+- [Run 41858805308](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858805308)
+- [Run 41858859791](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858859791)
+
+[Manifest ماشینی](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json).
+
+BOOT-002 به چهار Run A/B/C/D تغییر کرده است: v1.083/LB5، v1.084/LB5، v1.084/LB10 و v1.084/LB20. Lookback10/20 شرط فعال SOS/SOW را تغییر می‌دهند و sensitivity آزمایشی‌اند. Preflight فقط کنترل ایستای مخزن است؛ دو Compile و چهار MT5 Tester Run هنوز NOT RUN هستند.
