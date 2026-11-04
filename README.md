@@ -38,7 +38,7 @@
 هیچ نسخه‌ای در این مخزن به‌عنوان آماده معامله زنده معرفی نمی‌شود. سورس‌ها و نتایج باید به نسخه دقیق، تنظیمات و گزارش تست متناظر متصل باشند. نتیجهٔ یک معامله برای اثبات edge کافی نیست.
 
 
-## Financial ML Core+
+## Financial ML Core+\n- [راهنمای مهاجرت Legacy Event CSV](docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md)\n- [اسکریپت مهاجرت Event Ledger](scripts/migrate_legacy_event_csv.py)
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [بازبینی ایستای مستقل MultiAudit v1.084](reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md)
 - [کارت اجرای MT5 برای BOOT-002](docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)
