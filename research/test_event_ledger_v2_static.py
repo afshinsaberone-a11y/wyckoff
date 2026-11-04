@@ -95,6 +95,11 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID)', SOURCE)
         self.assertIn('g_ledgerPositionID=(string)positionId;', SOURCE)
 
+    def test_unavailable_identifiers_are_blank_not_zero(self):
+        self.assertIn('string legacySetupID=(g_setupCounter>0 ? (string)g_setupCounter : "");', SOURCE)
+        self.assertIn('resultOrderTicket>0 ? (string)resultOrderTicket : ""', SOURCE)
+        self.assertIn('positionId>0 ? (string)positionId : ""', SOURCE)
+
     def test_h1_and_m5_source_bar_context_is_explicit(self):
         self.assertIn('LedgerSetSource(InpSignalTF,bar.time);', SOURCE)
         self.assertIn('LedgerSetSource(InpEntryTF,bar.time);', SOURCE)
