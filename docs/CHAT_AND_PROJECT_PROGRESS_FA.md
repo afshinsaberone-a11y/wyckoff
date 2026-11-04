@@ -329,3 +329,18 @@ Baseline اولیه‌ای که کاربر در دستور پایش ارائه �
 نکتهٔ اصلاحی: اجرای H1STRUCT Audit را از اجرای C2-TIMING پایه جدا نگه دارید؛ یکسان بودن زیان نهایی به معنی یکسان بودن Expert یا CSV نیست. هویت هر اجرا باید از HTML/Journal و ستون `EA_Version` در CSV تأیید شود.
 
 محدودیت آرشیو: این سند تاریخچهٔ فنی و تصمیم‌ها را به‌صورت خلاصه نگه می‌دارد و transcript خام تمام پیام‌های حساب ChatGPT نیست. برای transcript کامل، Export رسمی ChatGPT باید جداگانه و پس از بازبینی حریم خصوصی بارگذاری شود.
+
+
+## 2026-11-04 — طراحی Financial ML Core+ Agents
+
+در ادامه طراحی پژوهش، شمارش معماری اصلاح شد: طرح شامل ۹ نقش است، نه ۸ نقش (یک هماهنگ‌کننده + چهار ایجنت نسخه‌ای + چهار ایجنت پشتیبان). مشخصات نقش‌ها و System Promptها در `agents/` و قراردادهای Event/Candidate، Feature/Label، Experiment/Fold و Result/Audit در `contracts/` ثبت شدند.
+
+پروتکل [Financial ML Core+](FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md) نیز اضافه شد و لینک آن در README و Project Status قرار گرفت. این ثبت مستندات به معنی استقرار یا اجرای ایجنت‌ها نیست. وضعیت MultiAudit، تعداد محدود معاملات H1STRUCT، محدودیت پوشش تیک و نبود OOS/Forward Demo تغییری نکرده‌اند.
+
+تصمیم‌های جدید:
+1. W0 به‌عنوان Baseline ثابت و منبع Candidate universe حفظ شود.
+2. هیچ آموزش ML/HMM پیش از تکمیل Event Ledger و Label/Fold contracts آغاز نشود.
+3. W1 از filtered probability استفاده کند؛ smoothed probability در تصمیم تاریخی ممنوع است.
+4. W3 اصلی ترکیب دو خروجی Freezeشده W1 و W2 باشد؛ مدل تعاملی در آزمایش مجزا ثبت شود.
+5. Auditor مستقل باشد و خودش نتواند خروجی تولیدی خود را تأیید کند.
+6. هیچ نقشی مجوز ارسال سفارش واقعی ندارد.
