@@ -52,3 +52,14 @@ Job: `static-preflight`
 - Forward Demo / Live: **NOT APPROVED**
 
 Run Manifestها و گزارش‌ها باید با Commit و فایل‌های خام همان اجرا تطبیق داده شوند. هیچ عدد یا هش مفقودی نباید از روی نام فایل حدس زده شود.
+
+
+## تکمیل Preflight پس از ارتقای BOOT-002 به چهار Run
+
+نسخه Validator و Run Card گسترش یافت تا طراحی چهار Run، بازه مشترک پیش از Run A و اثر فعال Lookback روی SOS/SOW بررسی شود. دو اجرای متوالی موفق:
+- Run 41858805308، Commit `021089b2378170da7cfc2bf1e841dd2eb613cc9c`: 27 PASS / 0 FAIL.
+- Run 41858859791، Commit `29ca36b3ed1b0e8d8efb7d94d53e504a31d9fecf`: 27 PASS / 0 FAIL.
+
+[Manifest دو اجرا](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json).
+
+این نتایج صرفاً Static Repository Validation هستند. BOOT-002 هنوز به دو MetaEditor Compile و چهار MT5 Strategy Tester Run نیاز دارد.
