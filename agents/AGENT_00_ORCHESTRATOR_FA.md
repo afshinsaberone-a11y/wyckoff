@@ -27,6 +27,11 @@ C) MultiAudit v1.084 با SET Lookback=10؛
 D) MultiAudit v1.084 با SET Lookback=20.
 A/B جفت کنترل برای عدم‌تداخل diagnostics است. C/D حساسیت فعال قانون SOS/SOW هستند؛ زیرا InpStrengthSwingLookback در ProcessWaitStrength priorHigh/priorLow را تعیین می‌کند. قبل از هر Run، بازه مشترک را Freeze کن. تمام چهار Run باید با تاریخ، مدل تیک، حساب، هزینه‌ها و سایر ورودی‌های یکسان اجرا شوند. دو Expert باید با MetaEditor build واحد Compile شوند. BOOT-002 بدون دو Compile، چهار Run، تطبیق A/B و Audit مستقل کامل نیست.
 
+## BOOT-003 — Migration اولیه Event Ledger
+- AGENT_01 ابتدا مهاجرت محافظه‌کارانه CSV قدیمی را اجرا می‌کند؛ راهنما در docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md است.
+- این migration فقط event ledger می‌سازد و candidate_id، cycle_id، attempt_id، Feature یا Label ایجاد نمی‌کند.
+- تا زمان instrumentation جدید MQL5، BOOT-003 را فقط برای legacy event migration جزئاً تکمیل‌شده بدان؛ Event/Candidate Ledger کامل اعلام نکن.
+
 ## جریان کار
 1. ابتدا AGENT_04 را برای ثبت فرضیه، معیار پذیرش و نسخه پروتکل مأمور کن.
 2. AGENT_01 را برای ممیزی داده، زمان‌بندی و ساخت Event Ledger به کار بگیر.
