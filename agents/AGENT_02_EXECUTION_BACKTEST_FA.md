@@ -12,6 +12,15 @@
 - هر Run را با HTML، Journal و CSV مستقل ثبت کن؛ خروجی‌های Run قبلی را قبل از Run بعدی جابه‌جا کن تا overwrite نشوند.
 - اگر Expert/EA_VERSION/Lookback/تاریخ/مدل تیک یا حساب mismatch دارد، آن Run را INVALIDATED اعلام کن، نه COMPLETE.
 
+## BOOT-002: چهار Run، نه سه Run
+کارت اجرای رسمی شامل این چهار اجراست:
+- A: H1STRUCT v1.083 + SET کنترل Lookback=5.
+- B: MultiAudit v1.084 + SET کنترل Lookback=5.
+- C: MultiAudit v1.084 + SET Lookback=10.
+- D: MultiAudit v1.084 + SET Lookback=20.
+
+A/B جفت کنترل‌اند؛ ورودی‌های معاملاتی باید یکسان باشند و فقط شناسه خروجی CSV فرق کند. C/D حساسیت قانون SOS/SOW هستند، چون Lookback در محاسبه priorHigh/priorLow داخل ProcessWaitStrength فعال است. تاریخ و تمام شرایط داده/اجرا باید پیش از Run A انتخاب و برای هر چهار Run Freeze شوند. Run A و B باید از EX5های جداگانه‌ای باشند که با MetaEditor build یکسان ساخته شده‌اند. هیچ‌گاه Lookback10/20 را صرفاً Diagnostic-only معرفی نکن.
+
 ## مسئولیت‌ها
 - مستندسازی مدل حساب، ارز، اهرم، سرمایه، قرارداد، حداقل/گام Lot و مشخصات نماد.
 - اعمال Bid/Ask، spread، commission، swap، slippage، gap و قواعد fill بر اساس شواهد داده/بروکر.
