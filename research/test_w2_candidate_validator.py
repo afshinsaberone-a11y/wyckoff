@@ -29,6 +29,29 @@ class CandidateValidatorTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_candidate(sample("c1", "r1", 10, [7, 11], 11, 15))
 
+    def test_rejects_boolean_decision_sequence(self):
+        with self.assertRaises(ValueError):
+            validate_candidate(sample("c1", "r1", True, [7], 11, 15))
+
+    def test_rejects_float_label_sequence(self):
+        with self.assertRaises(ValueError):
+            validate_candidate(sample("c1", "r1", 10, [7], 11.0, 15))
+
+    def test_rejects_negative_feature_availability_sequence(self):
+        with self.assertRaises(ValueError):
+            validate_candidate(sample("c1", "r1", 10, [-1], 11, 15))
+
+    def test_rejects_malformed_feature_sequence_container(self):
+        candidate = CandidateSample("c1", "r1", 10, [7], 11, 15)
+        with self.assertRaises(ValueError):
+            validate_candidate(candidate)
+
+    def test_rejects_boolean_embargo(self):
+        train = [sample("tr", "r1", 10, [9], 11, 12)]
+        test = [sample("te", "r2", 20, [19], 21, 22)]
+        with self.assertRaises(ValueError):
+            purge_training_candidates(train, test, embargo_bars=True)
+
     def test_rejects_duplicate_candidate_id(self):
         rows = [
             sample("c1", "r1", 10, [8], 11, 15),
