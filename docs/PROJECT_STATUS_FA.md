@@ -128,3 +128,7 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 [گزارش مقایسه مستقیم v1.083 و v1.084](../reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md) ثبت شد. LCS خطی: 1,767 خط مشترک به‌ترتیب؛ 117 خط افزوده و 4 خط حذف‌شده که فقط metadata هستند. در بازبینی ایستا هیچ خط اجرایی موجود حذف نشده است؛ افزوده‌ها مربوط به لاگ Lookback/Pivot و افزایش history request در حالت انتظار Strength هستند.
 
 این PASS فقط برای Static Review است. Compile در MetaEditor و اجرای MT5 Strategy Tester هنوز انجام/تأیید نشده‌اند؛ وضعیت MultiAudit همچنان منتظر اجرای محیطی است.
+
+
+- [کارت اجرای MT5 برای BOOT-002](BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)
+- [قالب manifest ماشینی هر Run](../experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json)
