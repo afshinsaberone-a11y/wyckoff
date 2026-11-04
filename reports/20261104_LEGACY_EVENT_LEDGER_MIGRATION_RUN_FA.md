@@ -27,6 +27,10 @@
 - نام: `events_normalized.csv`
 - SHA-256: `5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e`
 
+SHA-256 بایت‌های CSV منبع که در خود migration manifest ثبت شده: `c515eb7ce43d7a542ab944e5a385adfccbaad8070c7a792f97adb497a443204f`. این مقدار با Git blob SHA متفاوت است؛ اولی hash محتوای فایل است و دومی شناسه Git object.
+
+در میان 346 رخداد، 57 ردیف `M5_ENTRY_EVALUATION` و 6 ردیف `M5_ENTRY_SKIPPED_PRE_READY` وجود دارد. این‌ها ارزیابی‌های رویدادی‌اند و نباید به‌عنوان 63 Candidate یا معامله مستقل شمارش شوند.
+
 ## 3. کنترل ضدجعل Candidate و Label
 
 مهاجر به‌صورت عمدی این موارد را ایجاد نکرد:
