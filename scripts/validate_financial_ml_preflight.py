@@ -160,6 +160,64 @@ def main() -> int:
               "Each SET has a distinct non-empty CSV input filename.",
               f"CSV input filenames are not unique: {csv_names}")
 
+    # Reconstructed C2 baseline: every SET value must equal the archived Tester Journal.
+    c2_source = read_text("src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5")
+    c2_source_inputs = parse_mql_inputs(c2_source)
+    c2_ea_version = re.search(r'^\\s*#define\\s+EA_VERSION\\s+"([^"]+)"', c2_source, re.MULTILINE)
+    check(bool(c2_ea_version and c2_ea_version.group(1) == "1.08-C2-TIMING-SB050-T030"),
+          "C2 baseline source EA_VERSION is the registered 1.08 timing build.",
+          "C2 baseline source EA_VERSION mismatch.")
+
+    c2_set = parse_set("sets/Wyckoff_C2_T030_SB050_RECONSTRUCTED_FROM_20261103_JOURNAL.set")
+    c2_journal = read_text("events/20261103.log")
+    journal_lines = c2_journal.splitlines()
+    c2_start = next((i for i, line in enumerate(journal_lines)
+                     if r"testing of Experts\\Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.ex5" in line), -1)
+    c2_end = next((i for i, line in enumerate(journal_lines)
+                   if i > c2_start and "XAUUSD,H1: history cache allocated" in line), -1)
+    c2_journal_inputs: dict[str, str] = {}
+    if c2_start >= 0:
+        section = journal_lines[c2_start:c2_end if c2_end > c2_start else c2_start + 180]
+        for line in section:
+            match = re.search(r"Tester\\s+(Inp[A-Za-z0-9_]+)=(.*)$", line)
+            if match:
+                c2_journal_inputs[match.group(1)] = match.group(2)
+
+    check(bool(c2_set and c2_journal_inputs),
+          "Reconstructed C2 SET and archived Tester Journal are present.",
+          "Could not read reconstructed C2 SET or archived Tester Journal inputs.")
+    if c2_set and c2_journal_inputs:
+        check(set(c2_set) == c2_source_inputs == set(c2_journal_inputs),
+              "C2 source, reconstructed SET, and Journal have identical 67 input keys.",
+              f"C2 input-key mismatch: source={len(c2_source_inputs)}, set={len(c2_set)}, journal={len(c2_journal_inputs)}")
+        value_diffs = {key: (c2_set.get(key), c2_journal_inputs.get(key))
+                       for key in set(c2_set) | set(c2_journal_inputs)
+                       if c2_set.get(key) != c2_journal_inputs.get(key)}
+        check(not value_diffs,
+              "All reconstructed C2 SET values exactly match the archived Journal.",
+              "C2 reconstructed SET value mismatch: " + repr(value_diffs))
+
+    h1struct_set = parse_set("sets/Wyckoff_C2_H1StructureAudit_2024_2026.set")
+    if h1struct_set and sets:
+        h1_multi_diffs = {key for key in h1struct_set
+                          if h1struct_set.get(key) != sets[0].get(key)}
+        check(set(h1struct_set) == set(sets[0]) and h1_multi_diffs == {"InpCSVFileName"},
+              "H1STRUCT v1.083 SET and MultiAudit lookback-5 SET match except CSV filename.",
+              f"H1STRUCT/MultiAudit lookback-5 SET differences: {sorted(h1_multi_diffs)}")
+        check(h1struct_set.get("InpStrengthSwingLookback") == "5" and
+              sets[0].get("InpStrengthSwingLookback") == "5",
+              "H1STRUCT and MultiAudit control SETs both use Strength Lookback 5.",
+              "H1STRUCT/MultiAudit control Lookback is not 5.")
+
+    process_start = multi.find("void ProcessWaitStrength(")
+    process_end = multi.find("//------------------------------ LPS / LPSY", process_start)
+    process_strength = multi[process_start:process_end] if process_start >= 0 and process_end > process_start else ""
+    active_lookback = ("for(int i=1;i<=lookback;i++) priorHigh=" in process_strength and
+                       "for(int i=1;i<=lookback;i++) priorLow=" in process_strength)
+    check(active_lookback,
+          "InpStrengthSwingLookback controls the active SOS/SOW prior-swing break levels.",
+          "Could not verify active SOS/SOW use of Strength Lookback.")
+
     manifest_path = "experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json"
     manifest_text = read_text(manifest_path)
     try:
