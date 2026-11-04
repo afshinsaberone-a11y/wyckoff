@@ -39,6 +39,7 @@
 
 
 ## Financial ML Core+
+- [گزارش شروع موازی ۹ ایجنت و prototypeها](reports/20261104_PARALLEL_AGENT_START_REPORT_FA.md)
 - [برنامه شروع موازی ۹ ایجنت](docs/PARALLEL_AGENT_LEARNING_SPRINT_FA.md)
 - [Manifest شروع موازی ایجنت‌ها](experiments/PARALLEL_AGENT_SPRINT_20261104.json)
 - [W1 — شروع یادگیری HMM](docs/W1_HMM_REGIME_RESEARCH_STARTER_FA.md)
