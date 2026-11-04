@@ -95,7 +95,7 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
         rows[2]["EventID"] = f"{RUN}:EV2"
         report = validate_rows(SCHEMA_COLUMNS, rows)
         self.assertFalse(report["valid"])
-        self.assertTrue(any("not strictly increasing" in error for error in report["errors"]))
+        self.assertTrue(any("not contiguous" in error for error in report["errors"]))
 
     def test_event_sequence_gap_is_detected(self):
         rows = valid_candidate_rows()
