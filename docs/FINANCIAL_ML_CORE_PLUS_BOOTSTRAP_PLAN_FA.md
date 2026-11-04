@@ -6,7 +6,7 @@
 
 ## نتیجه اولیه BOOT-001
 
-[گزارش تطبیق هویت Baseline W0 و نسخه‌های تشخیصی](../reports/20261104_W0_BASELINE_IDENTITY_FA.md) ثبت شده است. C2-T030-SB050 به‌عنوان Baseline candidate شناخته شد؛ تطبیق نهایی تا دریافت SET دقیق اجرای تاریخی و زنجیره Build/EX5 باز است.
+[گزارش تطبیق هویت Baseline W0](../reports/20261104_W0_BASELINE_IDENTITY_FA.md) و [گزارش بازسازی SET مرجع C2](../reports/20261104_W0_C2_SET_RECONSTRUCTION_FA.md) ثبت شده‌اند. C2-T030-SB050 به‌عنوان Baseline candidate شناسایی شده؛ هر 67 مقدار ورودی از Journal بازسازی و با سورس/Journal دقیقاً منطبق است. فایل اصلی SET و hash باینری EX5 تاریخی در دسترس نیستند؛ بنابراین Freeze نهایی هنوز CONDITIONAL است.
 
 ## تصمیم پیش از شروع: هویت Baseline را اشتباه نگیریم
 
@@ -26,17 +26,12 @@
 **پذیرش:** هیچ گزارش یا CSV به نسخه اشتباه نسبت داده نشده باشد؛ Baseline candidate و موارد تشخیصی از هم جدا باشند.  
 **خروجی:** reports/W0_BASELINE_IDENTITY_FA.md و manifest ماشین‌خوان.
 
-### BOOT-002 — Compile و اجرای واقعی MultiAudit
-**کارت اجرای دقیق:** [BOOT-002 MultiAudit v1.084 Run Card](BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)؛ قالب manifest ماشینی: [BOOT_002_RUN_MANIFEST_TEMPLATE.json](../experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json).
-**مالک:** W0؛ اجرا/شواهد با AGENT_02؛ ممیزی AGENT_03  
-**کار:**
-1. Compile در MetaEditor با ثبت build و log.
-2. در صورت Compile موفق، اجرای SET مبنا=5.
-3. اجرای SET=10 و SET=20 با همان بازه، نماد، Expert build، مدل تیک، سرمایه، اهرم و هزینه‌ها؛ فقط متغیر مورد آزمایش عوض شود.
-4. ذخیره HTML، Journal و CSV هر اجرا.
-5. تطبیق نام Expert و EA_Version هر فایل خروجی.
-**پذیرش:** سه خروجی قابل ردیابی و بدون mismatch هویت.  
-**نکته:** اگر Compile شکست خورد، SETها اجرا نمی‌شوند و کار BLOCKED/FAILED با خطای دقیق بسته می‌شود.
+### BOOT-002 — Compile و چهار اجرای کنترل/حساسیت H1STRUCT
+**کارت اجرای دقیق:** [BOOT-002 چهار Run](BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)؛ قالب manifest ماشینی: [BOOT_002_RUN_MANIFEST_TEMPLATE.json](../experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json).
+**مالک:** W0؛ اجرا/شواهد با AGENT_02؛ ممیزی AGENT_03.  
+**کار:** دو Compile با MetaEditor build یکسان (v1.083 و v1.084)، سپس چهار Run در یک بازه و شرایط ثابت: A) H1STRUCT v1.083/LB5، B) MultiAudit v1.084/LB5، C) MultiAudit/LB10، D) MultiAudit/LB20. A/B جفت کنترل عدم‌تداخل diagnostics هستند؛ C/D حساسیت قانون فعال SOS/SOW هستند، چون Lookback در priorHigh/priorLow استفاده می‌شود.  
+**پذیرش:** دو EX5 با SHA-256، چهار بسته HTML/Journal/CSV، تطبیق Expert/EA_VERSION، یکسانی تاریخ و شرایط، و Audit مستقل A/B و C/D.  
+**نکته:** اگر Compile شکست خورد، Testerها اجرا نمی‌شوند. Preflight موفق فقط static validation است و جای Compile/Tester را نمی‌گیرد.
 
 ### BOOT-003 — طراحی و پیاده‌سازی Event/Candidate Ledger
 **مالک:** AGENT_01 و W0  
@@ -71,8 +66,8 @@
 
 | ترتیب | Task | وابستگی | وضعیت شروع |
 |---:|---|---|---|
-| 1 | BOOT-001 Baseline Identity | اسناد و فایل‌های تست موجود | CONDITIONAL؛ تطبیق اولیه ثبت شد، Freeze نهایی باز است |
-| 2 | BOOT-002 MultiAudit Compile/Test | دسترسی به MT5/MetaEditor | بازبینی ایستای سورس PASS؛ Compile/Tester هنوز BLOCKED تا اجرای محیطی |
+| 1 | BOOT-001 Baseline Identity | Journal، سورس، SET بازسازی‌شده | CONDITIONAL؛ 67/67 ورودی بازیابی شد؛ EX5 hash تاریخی در دسترس نیست |
+| 2 | BOOT-002 H1STRUCT/MultiAudit | دسترسی MT5/MetaEditor | Static Preflight پیشرفته PASS؛ دو Compile و چهار MT5 Run هنوز NOT RUN |
 | 3 | BOOT-003 Event Ledger | هویت W0 و schema | قرارداد ID به‌روزرسانی شد؛ instrumentation در سورس هنوز اجرا نشده |
 | 4 | BOOT-004 Data/Execution Audit | فایل‌های داده و tick | ممیزی Event Log انجام شد؛ OHLC/Tick خام در مخزن یافت نشد؛ CONDITIONAL/BLOCKED |
 | 5 | BOOT-005 Label/Fold Freeze | Ledger اولیه | وابسته به تعریف outcome |
@@ -92,8 +87,8 @@
 بررسی سورس نشان داد `g_setupCounter` هنگام RANGE_FOUND افزایش می‌یابد؛ پس SetupID قدیمی شناسه Range/ماشین حالت است، نه شناسه یکتای هر Candidate. قراردادهای Event/Candidate و Feature/Label به schema نسخه 1.1-draft ارتقا یافتند: `range_id`، `cycle_id`، `attempt_id`، `candidate_id` و `legacy_setup_id` جدا هستند. W2 در نسخه اول باید نقطه تصمیم M5_ENTRY را Freeze کند.
 
 ### وضعیت Gateها پس از این ممیزی
-- BOOT-001: CONDITIONAL؛ تطبیق اولیه انجام شد، SET دقیق و زنجیره binary/build تاریخی هنوز کامل نیست.
-- BOOT-002: BLOCKED تا Compile و اجرای واقعی MultiAudit در MetaEditor/MT5.
+- BOOT-001: CONDITIONAL؛ SET بازسازی‌شده 67/67 با Journal و سورس منطبق است؛ EX5 hash/Build تاریخی موجود نیست.
+- BOOT-002: Static Preflight پیشرفته PASS؛ دو Compile و چهار Run (v1.083/LB5، v1.084/LB5/10/20) در MT5 هنوز انجام نشده‌اند.
 - BOOT-003: طراحی قرارداد/شناسه بهتر شد؛ instrumentation در سورس و Compile/Replay هنوز انجام نشده.
 - BOOT-004: Event Log بررسی شد؛ داده خام M1/Tick و بسته کامل CSV اجرای 2026-11-04 در مخزن موجود نیست.
 - BOOT-005 تا BOOT-007: قفل؛ W1/W2/W3 هنوز نباید روی این Event CSV آموزش/ارزیابی شوند.
@@ -107,14 +102,14 @@
 - Static source review: PASS WITH LIMITATIONS.
 - MetaEditor Compile: NOT RUN.
 - MT5 Strategy Tester: NOT RUN.
-- BOOT-002: همچنان باز/مسدود تا Compile و سه اجرای 5/10/20.
+- BOOT-002: هنوز باز است؛ طراحی چهار Run A/B/C/D در Run Card v2 ثبت شده است.
 
 
 ## Preflight خودکار مخزن
 
 اسکریپت [validate_financial_ml_preflight.py](../scripts/validate_financial_ml_preflight.py) و workflow [financial-ml-preflight.yml](../.github/workflows/financial-ml-preflight.yml) اضافه شده‌اند. این کنترل‌ها حفظ خطوط پایه v1.083 در v1.084، شناسه نسخه، وجود توابع Audit و تطابق 67 ورودی با سه SET و تفاوت مجاز فقط Lookback/CSV filename را بررسی می‌کنند.
 
-Preflight یک کنترل ایستای repository است؛ حتی در صورت PASS، BOOT-002 تا وقتی MetaEditor Compile و سه اجرای MT5 ثبت نشده‌اند COMPLETE نخواهد شد.
+Preflight یک کنترل ایستای repository است؛ حتی در صورت PASS، BOOT-002 تا وقتی دو MetaEditor Compile و چهار اجرای MT5 ثبت نشده‌اند COMPLETE نخواهد شد.
 
 
 ## شاهد اجرای خودکار Preflight — 2026-11-04
@@ -133,3 +128,12 @@ Preflight یک کنترل ایستای repository است؛ حتی در صورت 
 - Run 41856507674 روی Commit `3e2a6138131ef08531ea743378906a31ef35232c`.
 
 هر دو Job با conclusion=success پایان یافتند. این فقط تکرارپذیری کنترل‌های repository/static را تأیید می‌کند؛ BOOT-002 تا Compile واقعی و سه MT5 Run باز است.
+
+
+## Preflight پیشرفته با 24 کنترل — PASS
+
+در Run [41858327181](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858327181) روی Commit `eb43035187a2f4e2ab2dfbd8aebea838c555949a`، Job `static-preflight` با نتیجه success پایان یافت: 24 کنترل PASS و صفر FAIL. این نسخه علاوه بر کنترل‌های MultiAudit، Journal UTF-16، C2 source/SET/Journal با 67 ورودی، برابری SET کنترل H1STRUCT و MultiAudit/LB5 به‌جز CSV filename، و استفاده فعال Lookback در SOS/SOW را کنترل می‌کند.
+
+[Manifest ماشینی این Run](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json).
+
+این فقط Static Preflight است. BOOT-002 همچنان نیازمند دو Compile واقعی و چهار MT5 Run است.
