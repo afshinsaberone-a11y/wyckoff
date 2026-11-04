@@ -142,3 +142,14 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 
 
 گزارش [دو اجرای موفق Preflight](../reports/20261104_BOOT_002_CI_VERIFICATION_FA.md) نیز ثبت شد. این کنترل فقط static repository validation است؛ BOOT-002 هنوز نیازمند MetaEditor Compile و Strategy Tester برای Lookbackهای 5/10/20 است.
+
+
+## به‌روزرسانی BOOT-001 و BOOT-002 — 2026-11-04
+
+- C2-T030-SB050 به‌عنوان Baseline candidate شناسایی شده است. از Journal اجرای 2026-11-03 هر 67 ورودی استخراج و SET بازسازی‌شده ساخته شده؛ 67/67 مقدار با سورس v1.082 و Journal منطبق است. [گزارش بازسازی SET](../reports/20261104_W0_C2_SET_RECONSTRUCTION_FA.md) و [manifest اجرای تاریخی](../experiments/W0_C2_BASELINE_RUN_20261103.json).
+- فایل اصلی SET تاریخی و hash باینری EX5 آن اجرا در دسترس نیستند؛ Freeze نهایی Baseline هنوز CONDITIONAL است.
+- Preflight پیشرفته GitHub Actions با 24 کنترل، 24 PASS و صفر FAIL روی Commit eb43035187a2f4e2ab2dfbd8aebea838c555949a اجرا شد: [Run 41858327181](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858327181). این فقط Static Repository Validation است.
+- BOOT-002 اکنون چهار Run دارد: H1STRUCT v1.083/LB5، MultiAudit v1.084/LB5 (جفت کنترل)، و MultiAudit/LB10 و LB20 (حساسیت قانون SOS/SOW).
+- Lookback10/20 صرفاً diagnostics نیستند؛ مقدار Lookback سطح priorHigh/priorLow فعال در ProcessWaitStrength را تغییر می‌دهد.
+
+**وضعیت اجرا:** دو Compile واقعی و چهار Strategy Tester Run هنوز انجام نشده‌اند. W1/W2/W3 همچنان BLOCKED هستند.
