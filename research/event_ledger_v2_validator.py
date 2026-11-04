@@ -58,6 +58,7 @@ def validate_rows(
     previous_sequence = 0
     event_counts: dict[str, int] = {}
     candidate_ids_seen: set[str] = set()
+    decision_sequence_by_candidate: dict[str, int] = {}
     decision_count = 0
     deal_event_count = 0
 
@@ -75,8 +76,8 @@ def validate_rows(
         sequence_raw = row.get("EventSequence", "")
         try:
             sequence = int(sequence_raw)
-            if sequence <= previous_sequence:
-                errors.append(f"line {line}: EventSequence is not strictly increasing")
+            if sequence != previous_sequence + 1:
+                errors.append(f"line {line}: EventSequence is not contiguous (expected {previous_sequence + 1})")
             previous_sequence = sequence
         except (TypeError, ValueError):
             errors.append(f"line {line}: invalid EventSequence {sequence_raw!r}")
@@ -146,6 +147,12 @@ def validate_rows(
                 errors.append(f"line {line}: accepted/rejected decision needs DecisionID and ReasonCode")
             if decision_id and candidate_id and not re.fullmatch(re.escape(candidate_id) + r":D[1-9][0-9]*", decision_id):
                 errors.append(f"line {line}: DecisionID is not nested under CandidateID")
+            if decision_id and candidate_id:
+                expected_decision = decision_sequence_by_candidate.get(candidate_id, 0) + 1
+                expected_id = f"{candidate_id}:D{expected_decision}"
+                if decision_id != expected_id:
+                    errors.append(f"line {line}: DecisionID sequence should be {expected_id!r}")
+                decision_sequence_by_candidate[candidate_id] = expected_decision
             if decision_id in seen_decision_ids:
                 errors.append(f"line {line}: duplicate DecisionID {decision_id!r}")
             seen_decision_ids.add(decision_id)
@@ -161,6 +168,8 @@ def validate_rows(
             deal_event_count += 1
             if not row.get("DealID") or not row.get("PositionID"):
                 errors.append(f"line {line}: trade deal event is missing DealID or PositionID")
+            if not candidate_id or candidate_id not in candidate_created:
+                errors.append(f"line {line}: trade deal event is not linked to a created CandidateID")
             if not row.get("OrderID"):
                 warnings.append(f"line {line}: trade deal event has no OrderID from transaction")
 
