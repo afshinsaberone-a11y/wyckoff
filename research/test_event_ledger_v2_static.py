@@ -88,6 +88,22 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('decisionID=g_ledgerCandidateID+":D"+(string)g_ledgerDecisionSequence;', SOURCE)
         self.assertIn('reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");', SOURCE)
 
+    def test_trade_links_are_persisted_by_order_and_position(self):
+        self.assertIn("struct SLedgerTradeLink", SOURCE)
+        self.assertIn("int LedgerFindOrderLink(const ulong orderTicket)", SOURCE)
+        self.assertIn("int LedgerFindPositionLink(const ulong positionID)", SOURCE)
+        self.assertIn("int LedgerFindTradeLink(const ulong orderTicket,const ulong positionID)", SOURCE)
+        self.assertIn("void LedgerRegisterOrderLink(const ulong orderTicket)", SOURCE)
+        self.assertIn("void LedgerBindPosition(const int index,const ulong positionID)", SOURCE)
+        self.assertIn("LedgerRegisterOrderLink(resultOrderTicket);", SOURCE)
+        self.assertIn("LedgerBindPosition(ledgerTradeLinkIndex,(ulong)positionId);", SOURCE)
+
+    def test_unlinked_transactions_are_never_attached_to_current_candidate(self):
+        self.assertIn("LEDGER_UNLINKED_TRADE_TRANSACTION", SOURCE)
+        self.assertIn("Never attach an unrelated currently-active Candidate to an unmatched deal.", SOURCE)
+        self.assertIn("LedgerWriteEvent(eventName,details,tradeLinkIndex,transactionContext,", SOURCE)
+        self.assertIn("rowCandidateID=g_ledgerTradeLinks[tradeLinkIndex].candidateID;", SOURCE)
+
     def test_order_deal_position_linkage_uses_mt5_transaction_values(self):
         self.assertIn('ulong resultOrderTicket=trade.ResultOrder();', SOURCE)
         self.assertIn('g_ledgerOrderID=(resultOrderTicket>0 ? (string)resultOrderTicket : "");', SOURCE)
