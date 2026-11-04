@@ -132,3 +132,30 @@ Lookbackهای 5/10/20/40 نیز از `rates[1..N]` استفاده می‌کنن
 - شمارش Audit events، رویدادهای معاملاتی و معاملات واقعی به‌صورت جدا.
 
 این بازبینی صرفاً سورس را از نظر ایستا مقایسه می‌کند؛ هیچ Compile، بک‌تست جدید یا تأیید معامله‌ای انجام نشده است.
+
+
+## 8. اثر پارامتر Lookback بر منطق فعال SOS/SOW
+
+بازبینی جداگانه تابع `ProcessWaitStrength()` روشن می‌کند که `InpStrengthSwingLookback` فقط برای محاسبه لاگ Audit استفاده نمی‌شود:
+- در BUY، `priorHigh` از بیشینه High کندل‌های قبلی تا Lookback ساخته می‌شود و شرط فعال SOS، بسته‌شدن کندل بالاتر از آن است.
+- در SELL، `priorLow` از کمینه Low کندل‌های قبلی تا Lookback ساخته می‌شود و شرط فعال SOW، بسته‌شدن کندل پایین‌تر از آن است.
+
+بنابراین حفظ predicateهای سورس در مقایسه v1.083/v1.084 به معنی یکسان‌بودن رفتار برای SETهای 5/10/20 نیست. با SET=5، مسیر اصلی SOS/SOW با v1.083 هم‌ارز مورد انتظار است؛ با 10/20، سطح شکست عوض می‌شود و state machine می‌تواند مسیر متفاوتی بسازد.
+
+این تمایز در طراحی BOOT-002 اعمال شده است:
+- Run A: H1STRUCT v1.083 / Lookback=5.
+- Run B: MultiAudit v1.084 / Lookback=5؛ جفت کنترل A/B برای عدم‌تداخل diagnostics.
+- Run C: MultiAudit / Lookback=10؛ حساسیت قانون فعال.
+- Run D: MultiAudit / Lookback=20؛ حساسیت قانون فعال.
+
+کارت اجرایی به [نسخه 2.0 Run Card](../docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md) ارتقا یافته است. همه چهار Run باید از یک بازه مشترک، دو EX5 با MetaEditor build یکسان، و شرایط داده/اجرا یکسان استفاده کنند. تاریخ باید پیش از Run A Freeze شود.
+
+## 9. Preflight مخزن پس از اصلاح طراحی
+
+Preflight پیشرفته اکنون 27 کنترل دارد و دو بار متوالی موفق شده است:
+- Run 41858805308: 27 PASS / 0 FAIL؛ Commit `021089b2378170da7cfc2bf1e841dd2eb613cc9c`.
+- Run 41858859791: 27 PASS / 0 FAIL؛ Commit `29ca36b3ed1b0e8d8efb7d94d53e504a31d9fecf`.
+
+[گزارش ماشین‌خوان دو اجرا](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json).
+
+این Preflight کنترل ایستای کد، SET، Journal، manifest و Run Card است؛ MQL5 را Compile نمی‌کند و MT5 Strategy Tester را اجرا نمی‌کند.
