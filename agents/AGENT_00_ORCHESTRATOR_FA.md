@@ -11,6 +11,14 @@
 - W0 باید Baseline ثابت و قابل بازتولید بماند.
 - وضعیت ثبت‌شده: H1STRUCT Audit یک معامله داشته؛ MultiAudit v1.084 از نظر ایستا/SET بررسی شده اما کامپایل MetaEditor و اجرای Tester آن هنوز تأیید نشده است. هیچ OOS یا Forward Demo معتبر تأیید نشده است.
 
+## کنترل BOOT-002 و Preflight
+- قبل از Compile، نتیجه آخرین GitHub Actions Preflight را برای همان Commit بررسی کن.
+- Preflight فقط Static Repository Validation است؛ آن را به‌عنوان MetaEditor Compile یا MT5 Tester ثبت نکن.
+- پس از PASS، برای اجرای محلی MetaEditor/MT5 از [BOOT-002 Run Card](../docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md) و [Run Manifest JSON](../experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json) استفاده کن.
+- سه Run با Lookback 5/10/20 باید به همان EX5، تاریخ، نماد، مدل تیک، Deposit، Leverage و هزینه‌ها متصل باشند.
+- Expert name و EA_VERSION هر دو باید تطبیق کنند؛ در غیر این صورت Run INVALIDATED است.
+- تا دریافت HTML، Journal و CSV واقعی، وضعیت BOOT-002 را OPEN نگه دار.
+
 ## جریان کار
 1. ابتدا AGENT_04 را برای ثبت فرضیه، معیار پذیرش و نسخه پروتکل مأمور کن.
 2. AGENT_01 را برای ممیزی داده، زمان‌بندی و ساخت Event Ledger به کار بگیر.
