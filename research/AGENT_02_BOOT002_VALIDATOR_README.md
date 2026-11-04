@@ -27,3 +27,19 @@ This validates submitted evidence only. It does **not** compile MQL5, launch Str
 ```bash
 python -m unittest discover -s research -p "test_boot002_bundle_validator.py" -v
 ```
+
+
+## Validate the four completed manifests
+
+After placing one completed JSON manifest for each role in a folder:
+
+```powershell
+python research/validate_boot002_bundle.py `
+  --run-a runs/BOOT-002/run_A/run_manifest.json `
+  --run-b runs/BOOT-002/run_B/run_manifest.json `
+  --run-c runs/BOOT-002/run_C/run_manifest.json `
+  --run-d runs/BOOT-002/run_D/run_manifest.json `
+  --output-json runs/BOOT-002/comparison/bundle_validation.json
+```
+
+Exit code 0 means the submitted manifests pass the evidence/identity checks. Exit code 2 means at least one manifest is incomplete or inconsistent; exit code 3 means the output result could not be written. This does not mean MT5 ran successfully unless the manifests contain actual source/build/HTML/Journal/CSV evidence with matching hashes.

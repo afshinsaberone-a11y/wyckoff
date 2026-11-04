@@ -24,3 +24,5 @@ jobs:
           python-version: "3.12"
       - name: Run BOOT-002 evidence tests
         run: python -m unittest discover -s research -p "test_boot002_bundle_validator.py" -v
+      - name: Check BOOT-002 CLI syntax
+        run: python -m py_compile research/validate_boot002_bundle.py research/boot002_bundle_validator.py
