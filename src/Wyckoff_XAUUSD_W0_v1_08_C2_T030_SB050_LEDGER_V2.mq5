@@ -436,7 +436,7 @@ string LedgerDecisionStatus(const string eventName)
 void LedgerWriteEvent(const string eventName,const string details="",
                       const int tradeLinkIndex=-1,const bool transactionContext=false,
                       const ulong eventOrderTicket=0,const ulong eventDealTicket=0,
-                      const ulong eventPositionTicket=0)
+                      const ulong eventPositionTicket=0,const datetime eventTimeOverride=0)
   {
    if(g_ledgerHandle==INVALID_HANDLE)
       return;
@@ -497,7 +497,7 @@ void LedgerWriteEvent(const string eventName,const string details="",
       decisionID=rowCandidateID+":D"+(string)g_ledgerDecisionSequence;
       reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");
      }
-   datetime eventTime=TimeCurrent(); // Actual broker-server event time; source bar open is a separate field
+   datetime eventTime=(eventTimeOverride>0 ? eventTimeOverride : TimeCurrent()); // Deal time when available; otherwise observed broker-server time
    string sourceTF=(g_ledgerSourceBarOpen>0 ? EnumToString(g_ledgerSourceTF) : "");
    string sourceBar=(g_ledgerSourceBarOpen>0 ?
                      TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS) : "");
@@ -520,10 +520,10 @@ void LedgerWriteEvent(const string eventName,const string details="",
 
 void LogEvent(const string eventName,const string details="",const int tradeLinkIndex=-1,
               const bool transactionContext=false,const ulong eventOrderTicket=0,
-              const ulong eventDealTicket=0,const ulong eventPositionTicket=0)
+              const ulong eventDealTicket=0,const ulong eventPositionTicket=0,const datetime eventTimeOverride=0)
   {
    LedgerWriteEvent(eventName,details,tradeLinkIndex,transactionContext,
-                    eventOrderTicket,eventDealTicket,eventPositionTicket);
+                    eventOrderTicket,eventDealTicket,eventPositionTicket,eventTimeOverride);
    string dir = (g_setup.direction==WYCKOFF_BUY ? "BUY" :
                  g_setup.direction==WYCKOFF_SELL ? "SELL" : "NONE");
    string msg = eventName+" | "+dir+" | "+details;
@@ -1922,6 +1922,7 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
 
    long entryType=HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
    long positionId=HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
+   datetime dealTime=(datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME);
    double dealPrice=HistoryDealGetDouble(trans.deal,DEAL_PRICE);
    double dealVolume=HistoryDealGetDouble(trans.deal,DEAL_VOLUME);
    long dealReason=HistoryDealGetInteger(trans.deal,DEAL_REASON);
@@ -1935,7 +1936,7 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
       LedgerWriteEvent("LEDGER_UNLINKED_TRADE_TRANSACTION",
                        "order="+(string)trans.order+"; deal="+(string)trans.deal+
                        "; position="+(string)positionId,
-                       -1,true,trans.order,trans.deal,(ulong)positionId);
+                       -1,true,trans.order,trans.deal,(ulong)positionId,dealTime);
       Print("[Wyckoff W0] Unlinked trade transaction. Order=",trans.order,
             "; Deal=",trans.deal,"; Position=",positionId);
      }
@@ -1980,7 +1981,7 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                "; riskCalc="+(riskOK ? "FILL_TO_SL" : "PLANNED_FALLBACK")+
                "; quoteSpreadPoints="+DoubleToString(g_pendingSpreadPoints,1)+
                "; slippagePoints="+DoubleToString(slipPoints,1),
-               ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId);
+               ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId,dealTime);
       return;
      }
 
