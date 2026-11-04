@@ -3,7 +3,7 @@
   "created_at": "2026-11-04",
   "repository": "afshinsaberone-a11y/wyckoff",
   "baseline_main_sha_when_branches_created": "9e0002dfaeae04e8a9bb2ad70fbd9b769316cf7e",
-  "current_docs_head_sha": "d683dd9b72d8aa8325dcc3231bdb1e560bec9858",
+  "current_docs_head_sha": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
   "execution_mode": "role_based_parallel_workstreams_with_github_issues_and_branches",
   "autonomous_agent_processes_deployed": false,
   "branches": [
@@ -76,12 +76,12 @@
     "reason": "Candidate/Feature/Label dataset, raw M1/Tick coverage and BOOT-002 MT5 evidence are incomplete."
   },
   "branch_heads": {
-    "agent/00-orchestrator-parallel-sprint": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
-    "agent/01-data-engineering": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
-    "agent/02-execution-backtest": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
-    "agent/03-independent-audit": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
-    "agent/04-governance": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
-    "agent/w0-wyckoff-ledger": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/00-orchestrator-parallel-sprint": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
+    "agent/01-data-engineering": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
+    "agent/02-execution-backtest": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
+    "agent/03-independent-audit": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
+    "agent/04-governance": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
+    "agent/w0-wyckoff-ledger": "3db32350f59b014c1d518c2be7671917e2bdd7b4",
     "agent/w1-hmm-regime-learning": "281cb9a77f6e080f726d8faa271d0f40b0db04d9",
     "agent/w2-ml-scoring-learning": "062f1c582f73fdf7c775285b7bc3a7ddd7600d52",
     "agent/w3-hybrid-integration": "248bb7db5595633a68ad2c4ab1ddf3887d1efbb1"
@@ -102,6 +102,10 @@
         "train-test filtering continuation",
         "unreachable states",
         "impossible observation"
+      ],
+      "ci_run_ids": [
+        41864325081,
+        41864331424
       ]
     },
     {
@@ -120,6 +124,10 @@
         "label interval purging",
         "group purging",
         "embargo after each test interval"
+      ],
+      "ci_run_ids": [
+        41864355912,
+        41864363747
       ]
     },
     {
@@ -138,6 +146,9 @@
         "causal availability",
         "staleness",
         "fail-closed behavior"
+      ],
+      "ci_run_ids": [
+        41864218329
       ]
     }
   ],
@@ -150,5 +161,5 @@
     "https://www.sciencedirect.com/science/article/abs/pii/S0950705124011110",
     "https://probml.github.io/ssm-book/chapters/hmm/hmm_filter.html"
   ],
-  "status_note": "Nine role-based issues and branches exist. W1/W2/W3 research prototypes and branch-specific CI have been added. The three research CI runs are queued, not yet passed. Real market HMM/ML fitting remains blocked."
+  "status_note": "Nine role-based issues and branches exist. W1/W2/W3 prototypes are committed on dedicated branches. Dedicated CI runs are queued, not yet passed. Real-market HMM/ML fitting remains blocked; no autonomous agent services have been deployed."
 }
