@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "W3 causal HMM-to-ML feature interface",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "candidate_id",
+    "decision_seq",
+    "as_of_seq",
+    "available_at_seq",
+    "time_basis",
+    "hmm_model_version",
+    "fold_id",
+    "state_mapping_version",
+    "filtered_probabilities",
+    "posterior_entropy",
+    "data_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "W3_HMM_ML_INTERFACE_V1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "as_of_seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "available_at_seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "time_basis": {
+      "const": "BROKER_SERVER_RAW_SEQUENCE"
+    },
+    "hmm_model_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fold_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_mapping_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "filtered_probabilities": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "posterior_entropy": {
+      "type": "number",
+      "minimum": 0
+    },
+    "data_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_bar_open_server": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_at_server": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
