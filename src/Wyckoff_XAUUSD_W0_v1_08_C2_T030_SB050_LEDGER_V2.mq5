@@ -486,8 +486,8 @@ void LedgerWriteEvent(const string eventName,const string details="",
         }
      }
 
-   string direction=(rowDirectionCode==WYCKOFF_BUY ? "BUY" :
-                     rowDirectionCode==WYCKOFF_SELL ? "SELL" : "NONE");
+   string direction=(rowDirectionCode==(int)WYCKOFF_BUY ? "BUY" :
+                     rowDirectionCode==(int)WYCKOFF_SELL ? "SELL" : "NONE");
    string status=LedgerDecisionStatus(eventName);
    string decisionID="";
    string reasonCode="";
@@ -1921,6 +1921,10 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
 
    long entryType=HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
    long positionId=HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
+   double dealPrice=HistoryDealGetDouble(trans.deal,DEAL_PRICE);
+   double dealVolume=HistoryDealGetDouble(trans.deal,DEAL_VOLUME);
+   long dealReason=HistoryDealGetInteger(trans.deal,DEAL_REASON);
+   long dealType=HistoryDealGetInteger(trans.deal,DEAL_TYPE);
    LedgerSetSource(PERIOD_CURRENT,0);
    int ledgerTradeLinkIndex=LedgerFindTradeLink(trans.order,(ulong)positionId);
    if(ledgerTradeLinkIndex>=0)
@@ -1937,11 +1941,6 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    if(trans.order>0) g_ledgerOrderID=(string)trans.order;
    g_ledgerDealID=(string)trans.deal;
    g_ledgerPositionID=(positionId>0 ? (string)positionId : "");
-   double dealPrice=HistoryDealGetDouble(trans.deal,DEAL_PRICE);
-   double dealVolume=HistoryDealGetDouble(trans.deal,DEAL_VOLUME);
-   long dealReason=HistoryDealGetInteger(trans.deal,DEAL_REASON);
-   long dealType=HistoryDealGetInteger(trans.deal,DEAL_TYPE);
-
    if(entryType==DEAL_ENTRY_IN)
      {
       g_activePositionId=(ulong)positionId;
