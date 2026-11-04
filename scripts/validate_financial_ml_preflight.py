@@ -243,6 +243,21 @@ def main() -> int:
           "1.08-C2-H1STRUCT-ML-AUDIT-SB050-T030" in run_card,
           "BOOT-002 run card identifies the correct Expert and EA_VERSION.",
           "BOOT-002 run card does not contain the expected Expert/EA_VERSION.")
+    four_run_variants = (
+        "H1STRUCT_1083_CONTROL_LB5",
+        "MULTIAUDIT_1084_CONTROL_LB5",
+        "MULTIAUDIT_1084_SENSITIVITY_LB10",
+        "MULTIAUDIT_1084_SENSITIVITY_LB20",
+    )
+    check(all(item in run_card for item in four_run_variants),
+          "BOOT-002 run card specifies all four matched control/sensitivity runs.",
+          "BOOT-002 run card is missing one or more of the four run variant identifiers.")
+    check("پیش از Run A" in run_card and "هر چهار Run" in run_card,
+          "BOOT-002 freezes one common date window before the first run.",
+          "BOOT-002 run card does not explicitly require one common frozen date window.")
+    check("priorHigh" in run_card and "priorLow" in run_card,
+          "BOOT-002 documents that Lookback changes the active SOS/SOW rule.",
+          "BOOT-002 run card does not disclose active priorHigh/priorLow sensitivity.")
 
     print("Financial ML Core+ static preflight")
     for item in PASSES:
