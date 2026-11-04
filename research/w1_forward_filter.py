@@ -38,9 +38,10 @@ def _probability_vector(values: np.ndarray, name: str, size: int) -> np.ndarray:
         raise ValueError(f"{name} must have shape ({size},), got {vector.shape}.")
     if not np.all(np.isfinite(vector)) or np.any(vector < 0.0):
         raise ValueError(f"{name} must contain finite non-negative values.")
-    total = float(vector.sum())
-    if total <= 0.0:
-        raise ValueError(f"{name} must have positive total mass.")
+    with np.errstate(over="ignore", invalid="ignore"):
+        total = float(vector.sum())
+    if not np.isfinite(total) or total <= 0.0:
+        raise ValueError(f"{name} must have finite positive total mass.")
     return vector / total
 
 
