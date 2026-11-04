@@ -488,11 +488,13 @@ void LedgerWriteEvent(const string eventName,const string details="",
 
    string direction=(rowDirectionCode==(int)WYCKOFF_BUY ? "BUY" :
                      rowDirectionCode==(int)WYCKOFF_SELL ? "SELL" : "NONE");
-   string status=LedgerDecisionStatus(eventName);
+   string status="";
    string decisionID="";
    string reasonCode="";
-   if(rowCandidateID!="" && status!="")
+   string eventDecisionStatus=LedgerDecisionStatus(eventName);
+   if(rowCandidateID!="" && eventDecisionStatus!="")
      {
+      status=eventDecisionStatus;
       g_ledgerDecisionSequence++;
       decisionID=rowCandidateID+":D"+(string)g_ledgerDecisionSequence;
       reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");
