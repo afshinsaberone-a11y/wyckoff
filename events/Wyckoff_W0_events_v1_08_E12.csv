@@ -1,0 +1,2 @@
+ServerTime,EA_Version,Symbol,InitialBalance,SetupID,Direction,Event,Details,RangeHigh,RangeLow,PositionID
+2026.10.30 22:59:53,1.08,XAUUSD,2166.03,0,NONE,EA_INIT,CSV logging started; initialBalance=2166.03; accountCurrency=USD; minVolume=0.01; volumeStep=0.01,0.00,0.00,0
