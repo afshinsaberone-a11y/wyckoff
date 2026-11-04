@@ -60,3 +60,9 @@
 - [Experiment و Fold Schema](../contracts/EXPERIMENT_AND_FOLD_SCHEMA_FA.md)
 - [Result و Audit Schema](../contracts/RESULT_AND_AUDIT_SCHEMA_FA.md)
 - [پروتکل کلان Financial ML Core+](../docs/FINANCIAL_ML_CORE_PLUS_PROTOCOL_FA.md)
+
+
+## استقرار و گردش کار
+- [مدل استقرار، مجوزها و چرخه Job](EXECUTION_AND_HANDOFF_MODEL_FA.md)
+- [قرارداد تحویل بین ایجنت‌ها](../contracts/AGENT_HANDOFF_SCHEMA_FA.md)
+- [برنامه راه‌اندازی BOOT-001 تا BOOT-007](../docs/FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md)
