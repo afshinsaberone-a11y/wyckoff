@@ -47,3 +47,7 @@
 - [قرارداد Result و Audit](contracts/RESULT_AND_AUDIT_SCHEMA_FA.md)
 
 وضعیت: مشخصات و System Prompt نقش‌ها ثبت شده‌اند؛ ایجنت‌ها هنوز به‌صورت سرویس مستقل مستقر نشده‌اند. W1/W2/W3 تا تکمیل W0، Event Ledger و Label/Fold validation نباید وارد آموزش/آزمون نهایی شوند.
+
+- [برنامه راه‌اندازی و بسته‌های کاری BOOT-001 تا BOOT-007](docs/FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md)
+- [مدل استقرار و تحویل بین ایجنت‌ها](agents/EXECUTION_AND_HANDOFF_MODEL_FA.md)
+- [قرارداد Agent Handoff](contracts/AGENT_HANDOFF_SCHEMA_FA.md)
