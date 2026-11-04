@@ -371,3 +371,10 @@ Baseline اولیه‌ای که کاربر در دستور پایش ارائه �
 افزوده‌ها: تابع LogStrengthStructureAudit برای Lookbackهای 5/10/20/40 و Pivotهای تأییدشده 2-left/2-right، دو فراخوانی پس از معیار اولیه کندل قوی، و افزایش تعداد بارهای دریافتی فقط در ST_WAIT_STRENGTH. بررسی ایستا نشان داد Pivot با دو کندل بسته‌شده جدیدتر تأیید می‌شود و فیلتر یا سفارش جدید اضافه نشده است. چون Audit روی کندل قوی پیش از بعضی ردهای مکانی ثبت می‌شود، event count آن نباید تعداد SOS/SOW confirmed یا Candidateهای مستقل شمرده شود.
 
 گزارش [بازبینی ایستای مستقل MultiAudit](../reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md) ثبت شد. Compile و Strategy Tester هنوز اجرا نشده‌اند؛ بنابراین BOOT-002 همچنان باز است.
+
+
+## 2026-11-04 — نخستین GitHub Actions Preflight
+
+Workflow با نام Financial ML Core+ preflight در Commit `ec3f92cb94737f63f73c9276827b5f5dac934aaf` اجرا شد؛ Job `static-preflight` در Run `41856290720` با نتیجه `success` پایان یافت. [لینک Run](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720).
+
+اسکریپت، حفظ خطوط غیرmetadata نسخه H1STRUCT v1.083 در MultiAudit v1.084، شناسه نسخه، عدم وجود tokenهای سفارش در تابع تشخیصی، وجود رویدادهای SOS/SOW audit، تعداد ورودی‌ها و تطابق SETهای Lookback 5/10/20 را کنترل کرد. این نتیجه صرفاً Preflight استاتیک مخزن است؛ Compile در MetaEditor و Strategy Tester اجرا نشده‌اند.
