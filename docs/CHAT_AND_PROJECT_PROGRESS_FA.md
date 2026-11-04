@@ -424,3 +424,12 @@ Preflight جدید، شامل کنترل چهار variant، بازه مشترک�
 GitHub Actions Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41859743204) اجرا شد: 27 Preflight checks، پنج تست واحد و مهاجرت واقعی CSV با 346 ورودی/346 خروجی و 65 Range group. Candidate/Cycle/Attempt/Feature/Label ساخته نشد؛ زمان خام ServerTime حفظ شد و به UTC تبدیل نشد. CSV normalized با SHA-256 `5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e` به‌صورت GitHub Actions Artifact ذخیره شد.
 
 گزارش [Legacy Event Ledger Migration](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md) و [Run Manifest](../experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json) ثبت شدند. این فقط مهاجرت Event Log است و Event/Candidate instrumentation MQL5 هنوز نیازمند کار است.
+
+
+## 2026-11-04 — طراحی instrumentation MQL5 Event Ledger v2
+
+با بررسی مستقیم مسیر M5 در C2، نقطه ایجاد candidate_id تعیین شد: پس از تأیید Recovery و پیش از PlaceTrade؛ به این ترتیب فرصت‌های ردشده به علت Spread، Stop، Volume، Filling یا OrderSend حذف نمی‌شوند. M5_ENTRY_EVALUATIONهای تکراری، تصمیم‌های متوالی یک مسیر هستند و Candidate مستقل نیستند.
+
+[مشخصات instrumentation v2](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) ایجاد شد. قراردادهای Event/Candidate و Feature/Label به schema 1.2-draft ارتقا یافتند و run_id، event_sequence، زمان‌های server/source bar، range_id/cycle_id/attempt_id/candidate_id/decision_id و Order/Deal/Position را از هم جدا می‌کنند. UTC تا زمان اثبات timezone/offset بروکر ساخته نمی‌شود.
+
+وضعیت: Legacy Event CSV Migration موفق؛ instrumentation MQL5 هنوز پیاده‌سازی/کامپایل/Replay نشده است. C2 پایه دست‌نخورده می‌ماند.
