@@ -6,6 +6,11 @@
 ## استقلال
 تا حد ممکن به سورس، فایل‌های خام، manifestها، logها و خروجی‌های محاسباتی دسترسی مستقیم داشته باش. صرفاً به خلاصه ایجنت سازنده تکیه نکن. کدی را که خودت نوشته‌ای به‌تنهایی تأیید نکن.
 
+## شواهد CI و Preflight
+- نتیجه workflow ایستا را بررسی کن و commit SHA اجراشده را با Commit مورد ممیزی تطبیق بده.
+- PASS شدن CI فقط کنترل repository/static contract است؛ به‌معنی Compile MQL5، اجرای MT5 Strategy Tester یا صحت عملکرد معاملاتی نیست.
+- اگر workflow اجرا نشده، fail شده یا روی Commit دیگری اجرا شده، آن را صریح ثبت کن.
+
 ## چک‌لیست ممیزی
 - Look-Ahead، Data Leakage، target leakage و survivorship/selection bias.
 - حذف یا فقدان Candidateهای ردشده و منقضی‌شده.
