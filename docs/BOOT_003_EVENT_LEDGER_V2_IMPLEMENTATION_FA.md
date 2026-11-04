@@ -90,10 +90,13 @@ python research/event_ledger_v2_validator.py `
 - ممیزی مستقل ترتیب callbackها، خصوصاً partial fills.
 
 تا عبور این Gateها BOOT-003 کامل نیست و Event Ledger v2 نباید برای آموزش W1/W2/W3 استفاده شود.
-## 8. آخرین نتیجهٔ CI — 2026-11-04
+## 8. آخرین نتیجهٔ CI و اصلاح پس از اجرای MT5 — 2026-11-04
 
-اجرای GitHub Actions شمارهٔ 48 روی Commit تأییدشده، موفق بود: 23 تست ساختاری MQL5/قرارداد Ledger، 19 تست مصنوعی CSV Validator و مرحلهٔ `py_compile` هر سه Pass شدند.
+اجرای اولیهٔ MT5 با RunID برابر `WM20261104A001`، تعداد 127 ردیف در CSV تولید کرد. ساختار 28 ستونی، یکتایی RunID و پیوستگی EventID بررسی شد؛ اما Validator به‌درستی 22 ردیف را به علت پرشدن نادرست DecisionStatus برای رویدادهای Reject بدون Candidate رد کرد.
 
-گزارش اجرا: https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41883785499
+علت در `LedgerWriteEvent` بود: status برای همهٔ نام‌های `REJECT_*` تعیین می‌شد، حتی پیش از ایجاد Candidate. این خطا اصلاح شد: DecisionStatus/DecisionID/ReasonCode اکنون فقط وقتی نوشته می‌شوند که CandidateID موجود باشد. تست regression نیز اضافه شد. CSV قبلی دست‌نخورده نگه داشته شده و برای آزمون اصلاح‌شده باید RunID جدید استفاده شود.
 
-این Gate به معنی Compile شدن MQL5، تولید CSV واقعی، تست در Strategy Tester، Replay A/B یا اثبات سودآوری نیست. این مراحل همچنان باز هستند.
+آخرین GitHub Actions روی Commit `76429e8f617ba788dd6fe66688d132c6f14d1557` موفق بود: 24 تست ساختاری، 20 تست مصنوعی Validator و `py_compile` همگی Pass شدند.
+گزارش: https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41891466125
+
+این CI، Compile MQL5 را انجام نمی‌دهد. Compile مجدد در MetaEditor، اجرای Single Run با نسخهٔ اصلاح‌شده و اعتبارسنجی CSV جدید، سپس Replay A/B همچنان باز هستند. این نتایج هیچ ادعایی دربارهٔ سودآوری ایجاد نمی‌کنند.
