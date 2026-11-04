@@ -38,7 +38,8 @@
 هیچ نسخه‌ای در این مخزن به‌عنوان آماده معامله زنده معرفی نمی‌شود. سورس‌ها و نتایج باید به نسخه دقیق، تنظیمات و گزارش تست متناظر متصل باشند. نتیجهٔ یک معامله برای اثبات edge کافی نیست.
 
 
-## Financial ML Core+\n- [راهنمای مهاجرت Legacy Event CSV](docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md)\n- [اسکریپت مهاجرت Event Ledger](scripts/migrate_legacy_event_csv.py)
+## Financial ML Core+\n- [گزارش اجرای موفق مهاجرت 346 Event](reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md)
+- [راهنمای مهاجرت Legacy Event CSV](docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md)\n- [اسکریپت مهاجرت Event Ledger](scripts/migrate_legacy_event_csv.py)
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - [بازبینی ایستای مستقل MultiAudit v1.084](reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md)
 - [کارت اجرای MT5 برای BOOT-002](docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)
@@ -48,6 +49,7 @@
 - [گزارش اولین Preflight موفق](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_001.json)
 - [گزارش Preflight پیشرفته 24/24](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json)
 - [گزارش دو Preflight متوالی 27/27](experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json)
+- [Manifest اجرای BOOT-003 Legacy Event Migration](experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json)
 - [آخرین اجرای CI با 27/27](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858859791)
 - [گزارش دو اجرای موفق GitHub Actions](reports/20261104_BOOT_002_CI_VERIFICATION_FA.md)
 - [اجرای GitHub Actions](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720)
