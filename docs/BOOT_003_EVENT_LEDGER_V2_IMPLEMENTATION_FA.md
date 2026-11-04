@@ -49,7 +49,7 @@
 
 Candidate دقیقاً در دو محل ساخته می‌شود: پس از `M5_BUY_RECOVERY_CONFIRMED` یا `M5_SELL_RECOVERY_CONFIRMED` و پیش از `PlaceTrade()`. در نتیجه Candidate پیش از Spread، Tick، Stop، Volume، Filling و OrderSend وجود دارد.
 
-Rejectهای ساختاریافته شامل موارد زیرند: Spread بالا/دریافت‌نشدن Tick، محاسبه یا فاصلهٔ Stop، حداقل فاصلهٔ Stop بروکر، بودجهٔ ریسک، زیان هر لات، گام/حداقل حجم، Filling Mode، محاسبهٔ ریسک برنامه‌ریزی‌شده و شکست OrderSend. DecisionID فقط وقتی ساخته می‌شود که Candidate موجود باشد و Event نتیجهٔ رد یا پذیرش اجرایی داشته باشد.
+Rejectهای ساختاریافته شامل موارد زیرند: Spread بالا/دریافت‌نشدن Tick، محاسبه یا فاصلهٔ Stop، حداقل فاصلهٔ Stop بروکر، بودجهٔ ریسک، زیان هر لات، گام/حداقل حجم، Filling Mode، محاسبهٔ ریسک برنامه‌ریزی‌شده و شکست OrderSend. DecisionStatus/DecisionID/ReasonCode فقط وقتی ثبت می‌شوند که Candidate موجود باشد و Event نتیجهٔ رد یا پذیرش اجرایی داشته باشد؛ رویدادهای رد تحلیلی مانند REJECT_SPRING_TOO_DEEP که پیش از Candidate رخ می‌دهند، فقط با نام Event و Details ثبت می‌شوند و DecisionStatus آن‌ها خالی می‌ماند.
 
 پس از سفارش، `OrderID` از ResultOrder/transaction order، `DealID` از `trans.deal` و `PositionID` از `DEAL_POSITION_ID` ثبت می‌شوند. برای اینکه خروج SL/TP به Candidate اشتباه متصل نشود، نسخهٔ فعلی یک جدول link در حافظه نگه می‌دارد: ابتدا OrderID به Candidate متصل می‌شود؛ پس از اولین Deal ورود، PositionID نیز به همان Candidate وصل می‌شود. اگر order تیکت Deal خروج با order ورود متفاوت باشد، نگاشت PositionID و در صورت نیاز History position برای بازیابی order ورود استفاده می‌شود. هر تراکنش غیرقابل‌اتصال با رویداد `LEDGER_UNLINKED_TRADE_TRANSACTION` علامت می‌خورد و اعتبارسنج CSV آن را خطای سخت می‌داند. چند Deal برای یک Candidate (از جمله partial fill و خروج جزئی) می‌توانند تکرار شوند؛ PositionID با trade_id یکی فرض نمی‌شود.
 
@@ -71,7 +71,7 @@ Rejectهای ساختاریافته شامل موارد زیرند: Spread با�
 
 ```powershell
 python research/event_ledger_v2_validator.py `
-  runs/BOOT-003/WM20261104A001_event_ledger_v2.csv `
+  runs/BOOT-003/Wyckoff_W0_event_ledger_v2_WM20261104A001.csv `
   --expected-run-id WM20261104A001 `
   --output-json runs/BOOT-003/WM20261104A001_ledger_validation.json
 ```
