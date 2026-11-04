@@ -4,7 +4,7 @@
 **منبع baseline:** `src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5`  
 **خروجی جدید:** `src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5`  
 **نسخهٔ EA در CSV:** `1.083-C2-TIMING-SB050-T030-LEDGER-V2`  
-**وضعیت:** سورس Instrumented و تست ایستای CI افزوده شده؛ MetaEditor Compile، Strategy Tester و Replay هنوز اجرا نشده‌اند.
+**وضعیت:** تست‌های ایستای CI و یک Single Run واقعی MT5 با RunID برابر `WM20261104A002` و اعتبارسنجی CSV آن موفق شده‌اند؛ Replay A/B و ممیزی مستقل همچنان باز هستند. فایل/لاگ Compile و Hashهای محلی EX5/SET هنوز آرشیو نشده‌اند.
 
 ## 1. تضمین عدم تغییر استراتژی
 
@@ -55,13 +55,13 @@ Rejectهای ساختاریافته شامل موارد زیرند: Spread با�
 
 ## 5. راه اجرای MT5
 
-1. فایل `..._LEDGER_V2.mq5` را در MetaEditor باز و Compile کنید؛ خطا و Warning را ذخیره کنید.
-2. در Strategy Tester، یک RunID جدید مانند `WM20261104A001` تنظیم کنید. مقدار پیش‌فرض `UNASSIGNED` عمداً باعث توقف Init می‌شود.
-3. ابتدا یک بازهٔ کوتاه single-run با همان Symbol، Timeframe، تاریخ و تنظیمات مرجع C2 اجرا کنید.
-4. هر دو فایل CSV (legacy و v2) را Export کنید و manifest شامل RunID، SHA-256 سورس/EX5/SET، بازه و تنظیمات را ثبت کنید.
+1. فایل `..._LEDGER_V2.mq5` را در MetaEditor باز و Compile کنید؛ لاگ Compile و Warningها را نگه دارید.
+2. در Strategy Tester، برای هر اجرا RunID جدید وارد کنید؛ برای نمونهٔ تأییدشدهٔ این سند `WM20261104A002`. مقدار پیش‌فرض `UNASSIGNED` عمداً باعث توقف Init می‌شود.
+3. یک بازهٔ کوتاه single-run با همان Symbol، Timeframe، تاریخ و تنظیمات مرجع C2 اجرا کنید؛ Optimization خاموش باشد.
+4. فایل CSV از Common Files را کپی کنید و با Validator کنترل کنید. نام فایل v2 به شکل `Wyckoff_W0_event_ledger_v2_<RunID>.csv` است.
 5. سطرهای `CANDIDATE_CREATED` را با Recovery eventها تطبیق دهید؛ برای Candidateهای ردشده باید DecisionID و ReasonCode حاضر باشد.
 6. برای سفارش‌های پذیرفته‌شده، OrderID → DealID → PositionID و partial fill/close را با History/OnTradeTransaction تطبیق دهید.
-7. سپس Replay A/B انجام شود: C2 پایه در برابر C2+Ledger v2 با داده، تنظیمات و مدل اجرای یکسان. تعداد/زمان/جهت سیگنال‌ها و سفارش‌ها باید برابر باشند.
+7. پس از ثبت شواهد run، Replay A/B انجام شود: C2 پایه در برابر C2+Ledger v2 با داده، تنظیمات و مدل اجرای یکسان. تعداد/زمان/جهت سیگنال‌ها و سفارش‌ها باید برابر باشند.
 
 ## 6. اعتبارسنج مستقل خروجی CSV
 
@@ -90,13 +90,20 @@ python research/event_ledger_v2_validator.py `
 - ممیزی مستقل ترتیب callbackها، خصوصاً partial fills.
 
 تا عبور این Gateها BOOT-003 کامل نیست و Event Ledger v2 نباید برای آموزش W1/W2/W3 استفاده شود.
-## 8. آخرین نتیجهٔ CI و اصلاح پس از اجرای MT5 — 2026-11-04
+## 8. نتیجهٔ اصلاح و اجرای واقعی MT5 — 2026-11-04
 
-اجرای اولیهٔ MT5 با RunID برابر `WM20261104A001`، تعداد 127 ردیف در CSV تولید کرد. ساختار 28 ستونی، یکتایی RunID و پیوستگی EventID بررسی شد؛ اما Validator به‌درستی 22 ردیف را به علت پرشدن نادرست DecisionStatus برای رویدادهای Reject بدون Candidate رد کرد.
+اجرای اولیه با RunID برابر `WM20261104A001` تعداد 127 ردیف تولید کرد، اما Validator به‌درستی 22 ردیف را به علت پرشدن نادرست DecisionStatus برای Rejectهای پیش از Candidate رد کرد. علت در `LedgerWriteEvent` اصلاح شد: DecisionStatus/DecisionID/ReasonCode فقط وقتی ثبت می‌شوند که CandidateID وجود داشته باشد. برای این اصلاح تست regression اضافه شد.
 
-علت در `LedgerWriteEvent` بود: status برای همهٔ نام‌های `REJECT_*` تعیین می‌شد، حتی پیش از ایجاد Candidate. این خطا اصلاح شد: DecisionStatus/DecisionID/ReasonCode اکنون فقط وقتی نوشته می‌شوند که CandidateID موجود باشد. تست regression نیز اضافه شد. CSV قبلی دست‌نخورده نگه داشته شده و برای آزمون اصلاح‌شده باید RunID جدید استفاده شود.
+CI پس از اصلاح موفق بود: 24 تست ساختاری، 20 تست مصنوعی Validator و `py_compile` همگی Pass شدند.
+گزارش CI: https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41891466125
 
-آخرین GitHub Actions روی Commit `76429e8f617ba788dd6fe66688d132c6f14d1557` موفق بود: 24 تست ساختاری، 20 تست مصنوعی Validator و `py_compile` همگی Pass شدند.
-گزارش: https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41891466125
+سپس اجرای واقعی MT5 با RunID برابر `WM20261104A002` انجام شد و CSV با Validator مستقل Pass شد:
+- 127 ردیف، 28 ستون، 127 EventID یکتا؛
+- یک Candidate و دقیقاً یک Candidate creation؛
+- یک Decision، یک `ORDER_OPENED`، یک `TRADE_ENTRY_DEAL` و یک `TRADE_CLOSED`؛
+- دو رویداد Deal در مجموع؛
+- صفر خطا و صفر هشدار Validator.
 
-این CI، Compile MQL5 را انجام نمی‌دهد. Compile مجدد در MetaEditor، اجرای Single Run با نسخهٔ اصلاح‌شده و اعتبارسنجی CSV جدید، سپس Replay A/B همچنان باز هستند. این نتایج هیچ ادعایی دربارهٔ سودآوری ایجاد نمی‌کنند.
+این نتیجه، صحت ساختاری و پیوند هویتی خروجی همین Single Run را تأیید می‌کند؛ نه صحت سودآوری یا برابری رفتار C2. چون Hash فایل‌های محلی MQ5/EX5/SET و لاگ Compile ارسال نشده‌اند، هویت باینری دقیق اجرای A002 هنوز به‌طور رمزنگاری‌شده آرشیو نشده است.
+
+**Gateهای باز:** آرشیو فایل/لاگ Compile و Hashهای MQ5/EX5/SET؛ تطبیق دقیق Dealها با History و جزئیات مالی؛ Replay A/B نسخهٔ C2 پایه در برابر Ledger v2 با تنظیمات یکسان؛ ممیزی مستقل partial fill و callbackها. تا پایان این Gateها، BOOT-003 برای آموزش W1/W2/W3 تأیید نهایی نشده است.
