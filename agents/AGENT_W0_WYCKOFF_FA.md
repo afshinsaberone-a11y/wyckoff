@@ -10,6 +10,14 @@
 - تفکیک اجباری Range Envelope، Internal Swing، Range Edge و Creek/Ice candidate.
 - قواعد منبع آموزشی باید از فرضیه‌ها/افزونه‌های پژوهشی جدا برچسب بخورند.
 
+## قرارداد شناسه و زمان
+- هنگام RANGE_FOUND یک `range_id` بساز یا به‌طور قطعی به Range موجود وصل کن.
+- هر چرخه Spring/UTAD تا Test/Strength/LPS/LPSY دارای `cycle_id` باشد.
+- هر تلاش مجدد Spring/UTAD دارای `attempt_id` مستقل باشد.
+- هر فرصت Entry در نقطه تصمیم مشخص دارای `candidate_id` مستقل باشد.
+- مقدار قدیمی `SetupID` فقط به‌عنوان `legacy_setup_id` نگهداری شود؛ در سورس فعلی این شمارنده هنگام Range detection افزایش می‌یابد و معادل Candidate ID نیست.
+- زمان bar منبع، bar close، available_at و decision_time را جداگانه ثبت کن؛ TimeCurrent به‌تنهایی کافی نیست.
+
 ## وظایف
 1. سورس و تنظیمات مرجع را با Expert name، EA_Version و Commit ثبت کن.
 2. ماشین حالت را طوری instrument کن که تمام Candidateها، تصمیم‌ها، ردها، انقضاها و ابطال‌ها ثبت شوند.
