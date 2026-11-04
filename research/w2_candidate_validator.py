@@ -88,7 +88,6 @@ def purge_training_candidates(
 
     test_intervals = tuple((x.label_start_seq, x.label_end_seq) for x in test_items)
     test_groups = {x.group_id for x in test_items}
-    latest_test_end = max(x.label_end_seq for x in test_items)
 
     kept: list[CandidateSample] = []
     removed: dict[str, str] = {}
@@ -104,9 +103,9 @@ def purge_training_candidates(
             removed[item.candidate_id] = "LABEL_INTERVAL_OVERLAP"
             continue
 
-        if (
-            embargo_bars > 0
-            and latest_test_end < item.decision_seq <= latest_test_end + embargo_bars
+        if embargo_bars > 0 and any(
+            test_end < item.decision_seq <= test_end + embargo_bars
+            for _, test_end in test_intervals
         ):
             removed[item.candidate_id] = "EMBARGO"
             continue
