@@ -65,7 +65,7 @@ Rejectهای ساختاریافته شامل موارد زیرند: Spread با�
 
 ## 6. اعتبارسنج مستقل خروجی CSV
 
-اسکریپت `research/event_ledger_v2_validator.py` فایل خروجی MT5 را با schema دقیق ۲۸ ستونی کنترل می‌کند: یکتایی و پیوستگی EventSequence/EventID، ترتیب ساخت Candidate، تو در تو بودن Range/Cycle/Attempt/Candidate/Decision ID، تعداد دقیق یک `CANDIDATE_CREATED` برای هر Candidate، زمان‌های broker-server، وضعیت Decision، و اتصال Deal/Position به Candidate. تراکنش بدون اتصال به Candidate خطای سخت است؛ OrderID ناموجود در یک Deal warning است و به‌صورت خودکار جعل نمی‌شود.
+اسکریپت `research/event_ledger_v2_validator.py` فایل خروجی MT5 را با schema دقیق ۲۸ ستونی کنترل می‌کند: عرض واقعی هر ردیف، یکتایی و پیوستگی EventSequence/EventID، ترتیب ساخت Candidate بلافاصله بعد از Recovery هم‌جهت، تو در تو بودن Range/Cycle/Attempt/Candidate/Decision ID، تعداد دقیق یک `CANDIDATE_CREATED` برای هر Candidate، زمان‌های broker-server، وضعیت Decision، و اتصال Deal/Position به Candidate. تراکنش بدون اتصال به Candidate خطای سخت است؛ OrderID ناموجود در یک Deal warning است و به‌صورت خودکار جعل نمی‌شود.
 
 پس از کپی CSV از Common Files ترمینال MT5 به پوشهٔ پروژه، اجرا کنید:
 
