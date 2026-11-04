@@ -108,3 +108,10 @@
 - MetaEditor Compile: NOT RUN.
 - MT5 Strategy Tester: NOT RUN.
 - BOOT-002: همچنان باز/مسدود تا Compile و سه اجرای 5/10/20.
+
+
+## Preflight خودکار مخزن
+
+اسکریپت [validate_financial_ml_preflight.py](../scripts/validate_financial_ml_preflight.py) و workflow [financial-ml-preflight.yml](../.github/workflows/financial-ml-preflight.yml) اضافه شده‌اند. این کنترل‌ها حفظ خطوط پایه v1.083 در v1.084، شناسه نسخه، وجود توابع Audit و تطابق 67 ورودی با سه SET و تفاوت مجاز فقط Lookback/CSV filename را بررسی می‌کنند.
+
+Preflight یک کنترل ایستای repository است؛ حتی در صورت PASS، BOOT-002 تا وقتی MetaEditor Compile و سه اجرای MT5 ثبت نشده‌اند COMPLETE نخواهد شد.
