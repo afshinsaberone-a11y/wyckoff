@@ -53,6 +53,17 @@ class ForwardFilterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             forward_filter(self.emission, invalid, self.initial)
 
+    def test_allows_unreachable_state_when_other_state_has_mass(self):
+        transition = np.array([[1.0, 0.0], [1.0, 0.0]], dtype=float)
+        emission = np.log(np.array([[0.5, 0.5], [0.2, 0.8]], dtype=float))
+        result = forward_filter(emission, transition, np.array([0.5, 0.5]))
+        np.testing.assert_allclose(result.probabilities[1], [1.0, 0.0], atol=1e-12)
+
+    def test_rejects_observation_impossible_under_all_states(self):
+        emission = np.array([[-np.inf, -np.inf]], dtype=float)
+        with self.assertRaises(ValueError):
+            forward_filter(emission, self.transition, self.initial)
+
     def test_rejects_shape_mismatch(self):
         with self.assertRaises(ValueError):
             forward_filter(self.emission, np.eye(3), self.initial)
