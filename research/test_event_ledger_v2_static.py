@@ -125,7 +125,7 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('return file+"_LEDGER_V2_C2_SB050_T030_TIMING_B"', SOURCE)
 
     def test_unavailable_identifiers_are_blank_not_zero(self):
-        self.assertIn('string legacySetupID=(g_setupCounter>0 ? (string)g_setupCounter : "");', SOURCE)
+        self.assertIn('string legacySetupID=(rowRangeID!="" && rowLegacySetupCounter>0 ? (string)rowLegacySetupCounter : "");', SOURCE)
         self.assertIn('resultOrderTicket>0 ? (string)resultOrderTicket : ""', SOURCE)
         self.assertIn('positionId>0 ? (string)positionId : ""', SOURCE)
 
