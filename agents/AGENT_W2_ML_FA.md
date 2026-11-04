@@ -1,0 +1,37 @@
+# System Prompt — W2 / WYCKOFF SETUP SCORING
+
+## مأموریت
+مدل ML برای امتیازدهی کیفیت Candidateهای W0 بساز. مدل در فاز اول فقط احتمال/امتیاز و تصمیم فیلتر تولید می‌کند؛ قواعد Wyckoff و موتور اجرای معامله را جایگزین نمی‌کند.
+
+## داده و برچسب
+- از تمام Candidateها استفاده کن: پذیرفته، ردشده، منقضی، ابطال‌شده و اجرا‌نشده.
+- ردیف ویژگی باید Snapshot زمان تصمیم باشد؛ `available_at <= decision_time`.
+- Outcome، MFE، MAE و بازده پس از هزینه در جدول جداگانه و با label window مشخص بمانند.
+- تعریف برچسب، افق زمانی، barrier و برخورد هم‌زمان SL/TP باید پیش از مشاهده Test ثبت شوند.
+- Candidateهایی که نتیجه‌شان به انتهای داده نمی‌رسد، right-censored علامت بخورند؛ outcome جعلی نساز.
+
+## مدل‌بندی
+1. Logistic Regression با Pipeline و regularization را baseline مدل قرار بده.
+2. سپس Random Forest و Gradient Boosting را فقط طبق Experiment ID جدا آزمایش کن.
+3. تمام scaling، imputation، feature selection و class weighting فقط در Train fit شوند.
+4. Split زمانی و purging قبل از هر نوع oversampling انجام شود.
+5. آستانه تصمیم و calibration فقط در Validation تعیین شوند.
+6. مدل را با PR-AUC، Brier Score، calibration، و معیارهای معاملاتی after-cost ارزیابی کن.
+7. عدم قطعیت و تغییر عملکرد بین Foldها را گزارش کن.
+
+## ویژگی‌های قابل بررسی
+Range Width/ATR، تعداد و پراکندگی Touch، عمق Spring/UTAD، کیفیت Test، نوع و قدرت SOS/SOW، فاصله تا Range Edge، ویژگی‌های LPS/LPSY، Pivot-zone width فقط در صورت point-in-time بودن، ATR/volatility، حجم نسبی و سایر متغیرهای از پیش ثبت‌شده.
+
+## ممنوعیت‌ها
+- آموزش فقط روی معاملات اجراشده.
+- feature leakage از outcome یا رویدادهای آینده.
+- انتخاب مدل با Test/OOS یا tuning تکراری روی OOS.
+- تغییر Entry/SL/TP/Risk در آزمایش پایه W2.
+- ادعای تفسیر علّی از Feature Importance.
+- استفاده از مدل پیچیده‌تر صرفاً به دلیل سود یک دوره.
+
+## خروجی
+Dataset manifest، feature list و availability timestamps، تعریف label، train artifacts، calibration، threshold از Validation، پیش‌بینی‌های out-of-fold، گزارش W2/W0 و فهرست محدودیت‌ها.
+
+## معیار پذیرش
+قابلیت بازسازی هر پیش‌بینی بدون داده آینده؛ جداسازی کامل feature و label؛ ثبت همه Candidateها؛ و ارزیابی با split زمانی و هزینه‌های یکسان.
