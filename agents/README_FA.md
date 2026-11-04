@@ -71,3 +71,10 @@
 ## وضعیت آمادگی داده
 - [ممیزی آمادگی داده و Candidate Identity](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
 - قرارداد schema 1.1-draft، SetupID قدیمی را به‌عنوان legacy_setup_id می‌شناسد؛ candidate_id مستقل باید در instrumentation جدید تولید شود.
+
+
+## کنترل خودکار مخزن
+- [Preflight Validator](../scripts/validate_financial_ml_preflight.py)
+- [GitHub Actions workflow](../.github/workflows/financial-ml-preflight.yml)
+
+این workflow فقط قراردادها، هویت سورس و تطابق SETها را به‌صورت ایستا بررسی می‌کند؛ Compile/Tester را انجام نمی‌دهد.
