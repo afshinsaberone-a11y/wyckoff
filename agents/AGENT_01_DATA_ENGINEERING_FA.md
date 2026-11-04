@@ -43,3 +43,7 @@ Data Quality Report، data manifest، raw/processed lineage، Event Ledger، Can
 - زمان ServerTime را raw نگه دار؛ بدون timezone/offset به UTC تبدیل نکن.
 - فقط بعد از اجرای تست واحد و بررسی migration_manifest، خروجی را COMPLETE اعلام کن.
 - [راهنمای مهاجرت](../docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md).
+
+
+## Instrumentation نسل بعد
+پیش از پیاده‌سازی Event/Candidate Ledger کامل، [مشخصات MQL5 Event Ledger v2](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) را اجرا و schema را با AGENT_04 Freeze کن. شناسه Run/Range/Cycle/Attempt/Candidate و زمان‌های server/raw باید در رکوردها مستقل باشند. Legacy migration جایگزین instrumentation جدید نیست.
