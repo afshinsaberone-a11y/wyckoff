@@ -1308,8 +1308,6 @@ bool PlaceTrade(const ENUM_WYCKOFF_DIRECTION dir,const MqlRates &entryBar)
 
    ulong resultOrderTicket=trade.ResultOrder();
    g_ledgerOrderID=(resultOrderTicket>0 ? (string)resultOrderTicket : "");
-   if(resultOrderTicket>0)
-      LedgerRegisterOrderLink(resultOrderTicket);
    uint retcode=trade.ResultRetcode();
    bool accepted=(retcode==TRADE_RETCODE_DONE ||
                   retcode==TRADE_RETCODE_DONE_PARTIAL ||
@@ -1331,8 +1329,11 @@ bool PlaceTrade(const ENUM_WYCKOFF_DIRECTION dir,const MqlRates &entryBar)
       g_activePositionId=0;
       LogReject("ORDER_SEND_FAILED",trade.ResultRetcodeDescription()+
                 "; retcode="+(string)retcode);
+      g_ledgerOrderID="";
       return false;
      }
+   if(resultOrderTicket>0)
+      LedgerRegisterOrderLink(resultOrderTicket);
    LogEvent("ORDER_OPENED","volume="+DoubleToString(volume,2)+
             "; entry="+DoubleToString(entry,g_digits)+
             "; SL="+DoubleToString(stop,g_digits)+
