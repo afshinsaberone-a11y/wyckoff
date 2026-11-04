@@ -401,3 +401,14 @@ D) MultiAudit v1.084/LB20.
 A/B جفت کنترل عدم‌تداخل diagnostics هستند؛ C/D sensitivity واقعی شرط SOS/SOW. بازه مشترک باید پیش از Run A انتخاب و برای هر چهار Run Freeze شود.
 
 Preflight پیشرفته با پشتیبانی Journal UTF-16 و تطبیق 67 ورودی C2 در GitHub Actions موفق شد: Run 41858327181، Commit eb43035187a2f4e2ab2dfbd8aebea838c555949a، 24 PASS و 0 FAIL. [اجرای CI](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858327181). این Static validation است؛ هیچ Compile MQL5 یا Tester جدیدی اجرا نشده است.
+
+
+## 2026-11-04 — Preflight نهایی 27/27 و BOOT-002 چهار Run
+
+Run Card BOOT-002 به نسخه 2.0 ارتقا یافت. آزمایش شامل چهار اجرا است: H1STRUCT v1.083/LB5، MultiAudit v1.084/LB5، MultiAudit/LB10 و MultiAudit/LB20. جفت A/B کنترل عدم‌تداخل تشخیصی است؛ C/D حساسیت قانون فعال SOS/SOW است، زیرا InpStrengthSwingLookback در ProcessWaitStrength priorHigh/priorLow را تعیین می‌کند. بازه مشترک باید پیش از Run A انتخاب و برای هر چهار Run Freeze شود.
+
+Preflight جدید، شامل کنترل چهار variant، بازه مشترک، Lookback فعال، Journal UTF-16 و 67 مقدار SET بازسازی‌شده، دو بار با 27 PASS و 0 FAIL اجرا شد:
+- Run 41858805308، Commit 021089b2378170da7cfc2bf1e841dd2eb613cc9c.
+- Run 41858859791، Commit 29ca36b3ed1b0e8d8efb7d94d53e504a31d9fecf.
+
+[Manifest نتایج](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json). این‌ها فقط Static Preflight هستند؛ Compile و MT5 Tester جدید اجرا نشده‌اند.
