@@ -2,7 +2,7 @@ Static validation — H1STRUCT MultiLookback Audit v1.084
 
 Source: Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_MULTI_AUDIT.mq5
 Source line count: 1884
-Source bytes: 78587
+Source bytes: 78589
 SET key count: 67
 Input declaration count (input + sinput): 67
 Missing SET keys: []
