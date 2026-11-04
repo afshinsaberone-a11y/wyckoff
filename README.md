@@ -38,7 +38,12 @@
 هیچ نسخه‌ای در این مخزن به‌عنوان آماده معامله زنده معرفی نمی‌شود. سورس‌ها و نتایج باید به نسخه دقیق، تنظیمات و گزارش تست متناظر متصل باشند. نتیجهٔ یک معامله برای اثبات edge کافی نیست.
 
 
-## Financial ML Core+\n- [گزارش اجرای موفق مهاجرت 346 Event](reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md)
+## Financial ML Core+
+- [برنامه شروع موازی ۹ ایجنت](docs/PARALLEL_AGENT_LEARNING_SPRINT_FA.md)
+- [Manifest شروع موازی ایجنت‌ها](experiments/PARALLEL_AGENT_SPRINT_20261104.json)
+- [W1 — شروع یادگیری HMM](docs/W1_HMM_REGIME_RESEARCH_STARTER_FA.md)
+- [W2 — شروع یادگیری ML Scoring](docs/W2_ML_CANDIDATE_SCORING_STARTER_FA.md)
+- [W3 — شروع یادگیری Hybrid](docs/W3_HYBRID_INTEGRATION_STARTER_FA.md)\n- [گزارش اجرای موفق مهاجرت 346 Event](reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md)
 - [مشخصات instrumentation نسخه Event Ledger v2](docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md)
 - [راهنمای مهاجرت Legacy Event CSV](docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md)\n- [اسکریپت مهاجرت Event Ledger](scripts/migrate_legacy_event_csv.py)
 - [ممیزی آمادگی داده و شناسه Candidateها](reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
