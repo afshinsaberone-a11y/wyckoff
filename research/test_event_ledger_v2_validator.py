@@ -147,7 +147,7 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
 
     def test_deal_event_requires_deal_and_position_ids(self):
         rows = valid_candidate_rows()
-        rows.append(make_row(5, "TRADE_ENTRY_DEAL", CycleID=CYCLE,
+        rows.append(make_row(6, "TRADE_ENTRY_DEAL", CycleID=CYCLE,
                              AttemptID=ATTEMPT, CandidateID=CANDIDATE,
                              OrderID="50001", DealID="", PositionID="70001"))
         report = validate_rows(SCHEMA_COLUMNS, rows)
