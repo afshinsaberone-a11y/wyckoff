@@ -18,8 +18,9 @@
   "legacy_csv_separate": true,
   "optimization_mode": "BLOCKED_FOR_SHARED_FILE_SAFETY",
   "no_profitability_claim": true,
-  "static_checks": "PENDING_LATEST_COMMIT",
-  "csv_output_validator": "ADDED_WITH_SYNTHETIC_TESTS",
+  "static_checks": "18_TESTS_PENDING_FINAL_RUN",
+  "csv_output_validator": "16_SYNTHETIC_TESTS_PENDING_FINAL_RUN",
   "trade_link_strategy": "ORDER_ID_AND_POSITION_ID_MAP_WITH_POSITION_HISTORY_FALLBACK",
-  "unlinked_trade_transaction": "EXPLICIT_EVENT_AND_HARD_VALIDATION_FAILURE"
+  "unlinked_trade_transaction": "EXPLICIT_EVENT_AND_HARD_VALIDATION_FAILURE",
+  "final_ci_commit": "PENDING"
 }
