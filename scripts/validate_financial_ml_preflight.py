@@ -21,7 +21,10 @@ def read_text(relative: str) -> str:
     if not path.is_file():
         ERRORS.append(f"Missing required file: {relative}")
         return ""
-    return path.read_text(encoding="utf-8-sig")
+    raw = path.read_bytes()
+    if raw.startswith((b"\\xff\\xfe", b"\\xfe\\xff")):
+        return raw.decode("utf-16")
+    return raw.decode("utf-8-sig")
 
 
 def check(condition: bool, ok: str, error: str) -> None:
