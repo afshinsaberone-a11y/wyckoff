@@ -115,3 +115,9 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 در سورس C2، SetupID هنگام شناسایی Range افزایش می‌یابد؛ بنابراین شناسه Candidate نیست. قراردادها به schema 1.1-draft ارتقا یافتند و سلسله‌مراتب range_id/cycle_id/attempt_id/candidate_id/legacy_setup_id را مشخص می‌کنند.
 
 **نتیجه آمادگی:** Event Funnel Audit قابل انجام است، اما Dataset supervised و HMM/ML هنوز BLOCKED هستند. فایل خام M1/Tick، Feature Snapshot، Label Outcome و Fold manifest هنوز در مخزن موجود نیستند. W1/W2/W3 تا رفع این کمبودها قفل می‌مانند.
+
+
+- [ممیزی آمادگی داده و Candidate Identity](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
+- [گزارش اجرای C2 و تفکیک دو بازه](../reports/20261104_W0_BASELINE_IDENTITY_FA.md)
+
+وضعیت جدید: Event Funnel قابل تحلیل است؛ Event/Candidate schema به 1.1-draft رسیده؛ اما خام M1/Tick، Feature Snapshot و Label Outcome در مخزن حاضر نیستند. W1/W2/W3 همچنان BLOCKED هستند.
