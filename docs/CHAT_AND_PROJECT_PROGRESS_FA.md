@@ -412,3 +412,8 @@ Preflight جدید، شامل کنترل چهار variant، بازه مشترک�
 - Run 41858859791، Commit 29ca36b3ed1b0e8d8efb7d94d53e504a31d9fecf.
 
 [Manifest نتایج](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json). این‌ها فقط Static Preflight هستند؛ Compile و MT5 Tester جدید اجرا نشده‌اند.
+
+
+## 2026-11-04 — مهاجرت محافظه‌کارانه Legacy Event CSV
+
+برای BOOT-003، اسکریپت `scripts/migrate_legacy_event_csv.py` و تست‌های واحد `scripts/test_legacy_event_migration.py` ایجاد شدند. این مهاجرت از Event CSV اجرای C2 فقط Event Ledger می‌سازد: SetupID به legacy_setup_id و Range-level group نگاشت می‌شود؛ candidate/cycle/attempt/trade ID، UTC time، feature یا outcome label حدس زده نمی‌شود. Workflow GitHub Actions به اجرای unit tests، مهاجرت واقعی CSV و تولید Artifact با CSV normalized و migration manifest گسترش یافت. نتیجه CI این گام هنوز در انتظار است.
