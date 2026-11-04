@@ -140,6 +140,6 @@ Event CSV این اجرای مشخص 346 ردیف داده (شامل EA_INIT) و
 
 ## 6. گام بعدی
 
-BOOT-002: ابتدا MultiAudit v1.084 در MetaEditor کامپایل شود. اگر کامپایل موفق بود، اجرای SET=5، سپس 10 و 20 با محدوده و شرایط کاملاً ثابت انجام شود. فایل‌های HTML، Journal و CSV هر اجرا باید با Expert name و EA_VERSION همان نسخه تطبیق داده شوند.
+BOOT-002: ابتدا هر دو Expert یعنی H1STRUCT v1.083 و MultiAudit v1.084 با MetaEditor build یکسان Compile شوند. سپس چهار Run با یک بازه مشترک و شرایط ثابت اجرا شوند: A) H1STRUCT/LB5، B) MultiAudit/LB5، C) MultiAudit/LB10، D) MultiAudit/LB20. A/B جفت کنترل و C/D حساسیت فعال قانون SOS/SOW هستند. فایل‌های HTML، Journal و CSV هر Run باید با Expert name و EA_VERSION همان نسخه تطبیق داده شوند.
 
 این گزارش فقط از سورس‌ها و مستندات ثبت‌شده در GitHub استخراج شده است؛ هیچ Compile، بک‌تست یا اجرای MT5 جدیدی در این مرحله انجام نشده است.
