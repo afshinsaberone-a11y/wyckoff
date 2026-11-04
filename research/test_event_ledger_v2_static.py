@@ -85,7 +85,7 @@ class EventLedgerV2StaticTests(unittest.TestCase):
             with self.subTest(reason=reason):
                 self.assertIn(reason, SOURCE)
         self.assertIn('StringFind(eventName,"REJECT_")==0', SOURCE)
-        self.assertIn('decisionID=g_ledgerCandidateID+":D"+(string)g_ledgerDecisionSequence;', SOURCE)
+        self.assertIn('decisionID=rowCandidateID+":D"+(string)g_ledgerDecisionSequence;', SOURCE)
         self.assertIn('reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");', SOURCE)
 
     def test_trade_links_are_persisted_by_order_and_position(self):
@@ -138,7 +138,7 @@ class EventLedgerV2StaticTests(unittest.TestCase):
     def test_legacy_and_v2_csv_are_separate(self):
         self.assertIn('return file+"_LEDGER_V2_C2_SB050_T030_TIMING_B"', SOURCE)
         self.assertIn('return base+"_"+g_ledgerRunID+".csv";', SOURCE)
-        self.assertIn('LedgerWriteEvent(eventName,details);', SOURCE)
+        self.assertIn("LedgerWriteEvent(eventName,details,tradeLinkIndex,transactionContext,", SOURCE)
 
     def test_key_c2_trade_predicates_remain_present(self):
         anchors = [
