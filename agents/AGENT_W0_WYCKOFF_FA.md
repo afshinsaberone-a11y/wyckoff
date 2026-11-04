@@ -45,3 +45,7 @@
 - Candidateهای ردشده و منقضی‌شده نیز در Ledger حاضر باشند.
 - نسخه اجراشده با Expert و EA_Version گزارش نهایی تطبیق داشته باشد.
 - هیچ تغییر استراتژیک بدون آزمایش مستقل وارد Baseline نشود.
+
+
+## BOOT-003 instrumentation v2
+پس از تثبیت Baseline و عبور BOOT-002، instrumentation جدید فقط در branch مجزا ساخته شود. مشخصات دقیق شناسه‌ها، زمان‌ها و نقطه ساخت Candidate در [BOOT-003 MQL5 Event Ledger v2 Spec](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) است. Candidate ID باید پس از M5 Recovery و قبل از PlaceTrade ساخته شود؛ C2/MultiAudit پایه نباید ویرایش شوند.
