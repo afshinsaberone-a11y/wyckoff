@@ -84,3 +84,8 @@
 
 
 - reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md — مقایسه ایستای مستقل سورس H1STRUCT Audit v1.083 و MultiAudit v1.084؛ نتیجه Static Review PASS WITH LIMITATIONS، بدون Compile/Tester.
+
+
+- docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md — دستور اجرای تکرارپذیر MultiAudit v1.084 در MT5.
+- experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json — قالب ماشین‌خوان برای هویت Compile، SET، Tester و خروجی‌ها.
+- reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md — مقایسه مستقل ایستای سورس v1.083/v1.084.
