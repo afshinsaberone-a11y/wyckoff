@@ -2,7 +2,7 @@
   "snapshot_date": "2026-11-04",
   "repo": "afshinsaberone-a11y/wyckoff",
   "metric": "weighted_deliverable_completion_estimate",
-  "mean_workstream_progress_pct": 43.9,
+  "mean_workstream_progress_pct": 47.8,
   "note": "Simple arithmetic mean of nine evidence-based workstream deliverable estimates; not overall project completion, not runtime telemetry, and not financial performance.",
   "weights_pct": {
     "scope_issue_branch": 10,
@@ -21,7 +21,7 @@
       "branch": "agent/00-orchestrator-parallel-sprint",
       "progress_pct": 30,
       "branch_ahead": 0,
-      "branch_behind_main": 14,
+      "branch_behind_main": 16,
       "evidence": [
         "nine role-based issues and branches",
         "sprint plan, orchestration report and manifest"
@@ -37,37 +37,37 @@
       "branch": "agent/01-data-engineering",
       "progress_pct": 45,
       "branch_ahead": 1,
-      "branch_behind_main": 14,
+      "branch_behind_main": 16,
       "evidence": [
         "OHLCV quality validator implemented",
-        "12 synthetic unit tests passed in dedicated GitHub Actions run 41868381224",
-        "separates structural corruption from gaps/zero or missing spread"
+        "12 synthetic tests passed in CI run 41868381224"
       ],
       "prior_project_evidence_not_attributed": [
         "legacy migration 346/346 rows and historical CI pass"
       ],
       "blockers": [
-        "no raw broker M1/Tick source ingested by this validator",
-        "no production data pipeline, MTF resampling reconciliation or actual dataset quality audit"
+        "raw broker M1/Tick not ingested",
+        "production pipeline and real-data audit incomplete"
       ]
     },
     {
       "role": "AGENT_02",
       "issue": 4,
       "branch": "agent/02-execution-backtest",
-      "progress_pct": 10,
-      "branch_ahead": 0,
-      "branch_behind_main": 14,
+      "progress_pct": 45,
+      "branch_ahead": 2,
+      "branch_behind_main": 16,
       "evidence": [
-        "Issue and branch created",
-        "BOOT-002 four-run card and preflight requirements exist in main"
+        "BOOT-002 A/B/C/D evidence bundle validator",
+        "16 synthetic tests passed in final CI run 41869388009",
+        "Git blob SHA and artifact SHA-256 validated separately"
       ],
       "prior_project_evidence_not_attributed": [
         "BOOT-002 Run Card and static preparation"
       ],
       "blockers": [
-        "no dedicated branch artifact",
-        "two MetaEditor compiles and four MT5 Strategy Tester runs still require user's MT5 environment"
+        "no actual Compile or MT5 Tester artifacts submitted",
+        "two MetaEditor compiles and four real Tester runs still required"
       ]
     },
     {
@@ -76,15 +76,13 @@
       "branch": "agent/03-independent-audit",
       "progress_pct": 35,
       "branch_ahead": 2,
-      "branch_behind_main": 14,
+      "branch_behind_main": 16,
       "evidence": [
-        "independent W1/W2/W3 prototype audit committed",
-        "follow-up audit added after fixes and final CI evidence",
-        "identified schema parity and strict input validation issues"
+        "independent W1/W2/W3 audit and follow-up after fixes"
       ],
       "blockers": [
         "branch remains divergent and not merged",
-        "independent review of future fixes and MT5 evidence still required"
+        "future fixes and MT5 evidence need independent review"
       ],
       "audit_report": "reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md"
     },
@@ -94,18 +92,17 @@
       "branch": "agent/04-governance",
       "progress_pct": 45,
       "branch_ahead": 2,
-      "branch_behind_main": 14,
+      "branch_behind_main": 16,
       "evidence": [
-        "chronological Fold manifest validator added",
-        "13 synthetic unit tests passed in run 41868015500",
-        "strict train/validation/test order and fit/tuning scopes checked"
+        "chronological Fold manifest validator",
+        "13 synthetic tests passed in run 41868015500"
       ],
       "prior_project_evidence_not_attributed": [
         "schema 1.2-draft and fold contracts"
       ],
       "blockers": [
         "does not build folds or perform candidate-level purging",
-        "contract freeze and real label/fold dataset remain incomplete"
+        "protocol/label freeze incomplete"
       ]
     },
     {
@@ -114,17 +111,16 @@
       "branch": "agent/w0-wyckoff-ledger",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 14,
+      "branch_behind_main": 16,
       "evidence": [
         "Issue and branch created",
-        "MQL5 Event Ledger v2 design specification exists in main"
+        "Event Ledger v2 specification available"
       ],
       "prior_project_evidence_not_attributed": [
         "Event Ledger v2 specification"
       ],
       "blockers": [
-        "no dedicated MQL5 instrumentation commit",
-        "compile/replay of candidate and decision ledger not done"
+        "MQL5 instrumentation, compile and replay not done"
       ]
     },
     {
@@ -133,11 +129,11 @@
       "branch": "agent/w1-hmm-regime-learning",
       "progress_pct": 75,
       "branch_ahead": 8,
-      "branch_behind_main": 21,
+      "branch_behind_main": 23,
       "evidence": [
-        "causal HMM forward-filter primitive",
-        "overflow-safe initial probability normalization",
-        "10 tests passed in final run 41867674205"
+        "causal HMM forward filter",
+        "overflow-safe prior normalization and multi-cutoff future invariance",
+        "10 tests passed in run 41867674205"
       ],
       "tests_authored": 10,
       "ci_runs": [
@@ -149,9 +145,9 @@
         }
       ],
       "blockers": [
-        "fold-local fit harness and model fitting are not implemented",
-        "real XAUUSD fit blocked pending data and gates",
-        "no OOS evaluation or operational integration"
+        "fold-local fit harness not implemented",
+        "real XAUUSD fit blocked pending data/gates",
+        "OOS and operational integration pending"
       ],
       "tests_executed": 10
     },
@@ -161,11 +157,11 @@
       "branch": "agent/w2-ml-scoring-learning",
       "progress_pct": 75,
       "branch_ahead": 10,
-      "branch_behind_main": 21,
+      "branch_behind_main": 23,
       "evidence": [
-        "point-in-time candidate validator and interval/group/embargo purge primitive",
-        "strict sequence type validation added",
-        "12 tests passed in final run 41867641271"
+        "Candidate point-in-time validator and purge primitive",
+        "strict integer sequence validation",
+        "12 tests passed in run 41867641271"
       ],
       "tests_authored": 12,
       "ci_runs": [
@@ -177,9 +173,8 @@
         }
       ],
       "blockers": [
-        "no full Fold builder or feature-window purge",
-        "no real Candidate/Feature/Label dataset or fitted scorer",
-        "no after-cost OOS; real XAUUSD fit blocked"
+        "complete Fold/feature-window purge and real candidate labels absent",
+        "no fitted scorer or after-cost OOS evaluation"
       ],
       "tests_executed": 12
     },
@@ -189,11 +184,11 @@
       "branch": "agent/w3-hybrid-integration",
       "progress_pct": 70,
       "branch_ahead": 7,
-      "branch_behind_main": 21,
+      "branch_behind_main": 23,
       "evidence": [
-        "versioned HMM-to-ML interface contract",
-        "Python validator aligned more closely with schema: unknown fields, state count, optional timestamps and config validation",
-        "12 tests passed in final run 41867566930"
+        "versioned HMM-to-ML interface",
+        "schema parity fixes",
+        "12 tests passed in run 41867566930"
       ],
       "tests_authored": 12,
       "ci_runs": [
@@ -205,24 +200,24 @@
         }
       ],
       "blockers": [
-        "W1/W2 real model artifacts not available",
-        "operational integration blocked until independent freeze and Ledger readiness",
-        "no OOS or financial performance evidence"
+        "real W1/W2 artifacts unavailable",
+        "operational integration blocked pending freeze and Ledger"
       ],
       "tests_executed": 12
     }
   ],
   "ci_summary": {
-    "runs_total": 5,
-    "completed": 5,
+    "runs_total": 6,
+    "completed": 6,
     "queued": 0,
-    "passed": 5,
+    "passed": 6,
     "failed": 0,
-    "latest_workstream_jobs": 5,
-    "latest_workstream_jobs_passed": 5,
-    "tests_in_latest_workstream_jobs": 59,
+    "latest_workstream_jobs": 6,
+    "latest_workstream_jobs_passed": 6,
+    "tests_in_latest_workstream_jobs": 75,
     "test_counts": {
       "AGENT_01": 12,
+      "AGENT_02": 16,
       "AGENT_04": 13,
       "W1": 10,
       "W2": 12,
@@ -230,11 +225,17 @@
     },
     "run_ids": [
       41868381224,
+      41869388009,
       41868015500,
       41867674205,
       41867641271,
       41867566930
-    ]
+    ],
+    "historical_corrected_failure": {
+      "run_id": 41869345179,
+      "conclusion": "failure",
+      "reason": "Git blob SHA was initially validated as SHA-256; fixed and rerun succeeded."
+    }
   },
   "gates": {
     "boot_001_baseline": "CONDITIONAL",
@@ -245,8 +246,8 @@
     "real_xauusd_ml_training": "BLOCKED",
     "w3_operational_integration": "BLOCKED"
   },
-  "main_comparison_ref": "b036b4ab9db38a2f7eab2968e266da420198b08c",
-  "snapshot_commit": "b036b4ab9db38a2f7eab2968e266da420198b08c",
+  "main_comparison_ref": "2565b32e742aca60ee989e5bcdc0ba19b70cb221",
+  "snapshot_commit": "2565b32e742aca60ee989e5bcdc0ba19b70cb221",
   "independent_audit": {
     "branch": "agent/03-independent-audit",
     "commit": "317fab4788e25b4e8bbbc69f31b645076ac0c151",
