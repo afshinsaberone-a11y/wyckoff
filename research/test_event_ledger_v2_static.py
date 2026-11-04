@@ -138,7 +138,7 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('g_ledgerOrderID="";', place)
 
     def test_event_time_is_observation_time_not_relabelled_bar_open(self):
-        self.assertIn('datetime eventTime=TimeCurrent();', SOURCE)
+        self.assertIn('datetime eventTime=(eventTimeOverride>0 ? eventTimeOverride : TimeCurrent());', SOURCE)
         self.assertIn('TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS)', SOURCE)
 
     def test_missing_attempt_does_not_fabricate_candidate_hierarchy(self):
