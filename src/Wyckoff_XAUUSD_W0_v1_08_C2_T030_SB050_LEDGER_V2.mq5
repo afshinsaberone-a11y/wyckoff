@@ -233,7 +233,7 @@ string EffectiveCSVFileName()
    int length=StringLen(file);
    if(length>4 && StringSubstr(file,length-4)==".csv")
       file=StringSubstr(file,0,length-4);
-   return file+"_C2_SB050_T030_TIMING_B"+(string)InpBreakoutExpiryBars+
+   return file+"_LEDGER_V2_C2_SB050_T030_TIMING_B"+(string)InpBreakoutExpiryBars+
              "_R"+(string)InpRetestExpiryBars+
              "_RC"+(string)InpRecoveryExpiryBars+".csv";
   }
@@ -291,10 +291,10 @@ void LedgerBeginAttempt()
 void LedgerBeginCandidate(const ENUM_WYCKOFF_DIRECTION direction,const datetime sourceBar)
   {
    if(g_ledgerAttemptID=="")
-      LedgerBeginAttempt();
-   if(g_ledgerAttemptID=="")
      {
-      Print("[Wyckoff W0] Ledger candidate not created: missing Range/Attempt identity.");
+      LedgerWriteEvent("LEDGER_IDENTITY_ERROR",
+                       "Candidate trigger has no RangeID/AttemptID; trade path is not altered");
+      Print("[Wyckoff W0] Ledger candidate identity is missing; preserving strategy execution without inventing IDs.");
       return;
      }
    g_ledgerCandidateSequence++;
@@ -350,13 +350,13 @@ void LedgerWriteEvent(const string eventName,const string details="")
       decisionID=g_ledgerCandidateID+":D"+(string)g_ledgerDecisionSequence;
       reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");
      }
-   datetime eventTime=(g_ledgerSourceBarOpen>0 ? g_ledgerSourceBarOpen : TimeCurrent());
+   datetime eventTime=TimeCurrent(); // Actual broker-server event time; source bar open is a separate field
    string sourceTF=(g_ledgerSourceBarOpen>0 ? EnumToString(g_ledgerSourceTF) : "");
    string sourceBar=(g_ledgerSourceBarOpen>0 ?
                      TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS) : "");
    string rangeHigh=(g_setup.rangeHigh>0.0 ? DoubleToString(g_setup.rangeHigh,g_digits) : "");
    string rangeLow=(g_setup.rangeLow>0.0 ? DoubleToString(g_setup.rangeLow,g_digits) : "");
-   string legacySetupID=(g_setupCounter>0 ? (string)g_setupCounter : "");
+   string legacySetupID=(g_ledgerRangeID!="" && g_setupCounter>0 ? (string)g_setupCounter : "");
 
    FileWrite(g_ledgerHandle,
              "2",g_ledgerRunID,eventID,(string)g_ledgerEventSequence,
