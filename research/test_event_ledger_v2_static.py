@@ -96,6 +96,18 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID)', SOURCE)
         self.assertIn('positionId>0 ? (string)positionId : ""', SOURCE)
 
+    def test_event_time_is_observation_time_not_relabelled_bar_open(self):
+        self.assertIn('datetime eventTime=TimeCurrent();', SOURCE)
+        self.assertIn('TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS)', SOURCE)
+
+    def test_missing_attempt_does_not_fabricate_candidate_hierarchy(self):
+        candidate_body = SOURCE[SOURCE.index('void LedgerBeginCandidate'):SOURCE.index('void LedgerResetActiveIDs')]
+        self.assertNotIn('LedgerBeginAttempt();', candidate_body)
+        self.assertIn('LEDGER_IDENTITY_ERROR', candidate_body)
+
+    def test_legacy_csv_filename_is_isolated_from_c2_output(self):
+        self.assertIn('return file+"_LEDGER_V2_C2_SB050_T030_TIMING_B"', SOURCE)
+
     def test_unavailable_identifiers_are_blank_not_zero(self):
         self.assertIn('string legacySetupID=(g_setupCounter>0 ? (string)g_setupCounter : "");', SOURCE)
         self.assertIn('resultOrderTicket>0 ? (string)resultOrderTicket : ""', SOURCE)
@@ -108,7 +120,7 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS)', SOURCE)
 
     def test_legacy_and_v2_csv_are_separate(self):
-        self.assertIn('return file+"_C2_SB050_T030_TIMING_B"', SOURCE)
+        self.assertIn('return file+"_LEDGER_V2_C2_SB050_T030_TIMING_B"', SOURCE)
         self.assertIn('return base+"_"+g_ledgerRunID+".csv";', SOURCE)
         self.assertIn('LedgerWriteEvent(eventName,details);', SOURCE)
 
