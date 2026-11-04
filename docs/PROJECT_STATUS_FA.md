@@ -193,3 +193,16 @@ Artifact با نام `legacy-event-ledger-1efbb979e031898521aab9ccab799f1fc143fa
 Legacy Event Migration با 346 ردیف و 65 Range group موفق شده است؛ گزارش در [20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md).
 
 قراردادهای Event/Candidate و Feature/Label به schema 1.2-draft ارتقا یافته‌اند. [مشخصات instrumentation v2](BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) تعیین می‌کند Candidate در M5 Recovery و پیش از PlaceTrade ساخته شود؛ بنابراین ردهای اجرایی نیز ثبت می‌شوند. هیچ کد MQL5 برای این تغییر هنوز پیاده‌سازی یا Compile نشده است.
+
+
+## شروع موازی ۹ نقش — 2026-11-04
+
+نه مسیر کاری مستقل در GitHub ثبت شده‌اند: Issueهای #2 تا #10 و branchهای `agent/00...`، `agent/01...`، `agent/02...`، `agent/03...`، `agent/04...`، `agent/w0...`، `agent/w1...`، `agent/w2...` و `agent/w3...`.
+
+- [برنامه موازی و وابستگی‌ها](PARALLEL_AGENT_LEARNING_SPRINT_FA.md)
+- [Manifest ماشینی Sprint](../experiments/PARALLEL_AGENT_SPRINT_20261104.json)
+- [W1 HMM research starter](W1_HMM_REGIME_RESEARCH_STARTER_FA.md)
+- [W2 ML scoring starter](W2_ML_CANDIDATE_SCORING_STARTER_FA.md)
+- [W3 Hybrid starter](W3_HYBRID_INTEGRATION_STARTER_FA.md)
+
+**شفافیت اجرا:** Issue و branchها مسیرهای role-based tracking هستند؛ ۹ پردازه مستقل Agent به‌صورت سرویس خودکار مستقر نشده‌اند. یادگیری پژوهشی و prototypeهای synthetic مجازند؛ fit روی XAUUSD واقعی تا تکمیل Candidate/Feature/Label dataset، داده خام معتبر و Gateهای MT5 مسدود است.
