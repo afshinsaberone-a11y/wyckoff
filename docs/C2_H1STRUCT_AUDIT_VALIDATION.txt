@@ -1,0 +1,17 @@
+C2 H1 STRUCTURE AUDIT — STATIC VALIDATION
+
+PASS | C2 baseline source used
+PASS | Trade entry predicates unchanged
+PASS | M5 Recovery predicates unchanged
+PASS | H1 Spring/UTAD predicates unchanged
+PASS | H1 Test predicates unchanged
+PASS | H1 SOS/SOW acceptance predicates unchanged
+PASS | LPS/LPSY acceptance predicates unchanged
+PASS | New classification labels diagnostic only
+PASS | ATR shift 1 vs 2 audit exists
+PASS | Test age diagnostic exists
+PASS | No stop-probe code remains
+PASS | SET keys exactly match source inputs | 67 inputs; 67 keys
+PASS | Chart drawing, Debug printing, and M5 evaluation logging disabled in SET
+
+NOT COMPILED in MetaEditor in this environment. NOT RUN in MT5 Strategy Tester. Static checks do not replace compilation or backtesting.
