@@ -1,0 +1,48 @@
+{
+  "task_id": "BOOT-002",
+  "check_id": "STATIC_PREFLIGHT_003",
+  "workflow": ".github/workflows/financial-ml-preflight.yml",
+  "job_name": "static-preflight",
+  "runs": [
+    {
+      "workflow_run_id": 41858805308,
+      "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858805308",
+      "head_sha": "021089b2378170da7cfc2bf1e841dd2eb613cc9c",
+      "conclusion": "success",
+      "checks_passed": 27,
+      "checks_failed": 0
+    },
+    {
+      "workflow_run_id": 41858859791,
+      "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41858859791",
+      "head_sha": "29ca36b3ed1b0e8d8efb7d94d53e504a31d9fecf",
+      "conclusion": "success",
+      "checks_passed": 27,
+      "checks_failed": 0
+    }
+  ],
+  "common_checks": [
+    "MultiAudit v1.084 property version and EA_VERSION",
+    "All non-metadata H1STRUCT v1.083 source lines preserved in order",
+    "Diagnostic audit function contains no order/position calls",
+    "SOS/SOW audit event labels and both directional calls",
+    "All three MultiAudit SETs have matching keys and 67 input parity",
+    "Lookback values 5, 10 and 20",
+    "Only Lookback and CSV filename differ across MultiAudit SETs",
+    "C2 v1.082 source, Journal and reconstructed SET contain the same 67 input keys",
+    "All 67 reconstructed C2 SET values exactly match the archived Tester Journal",
+    "H1STRUCT control SET and MultiAudit lookback-5 SET differ only by CSV filename",
+    "InpStrengthSwingLookback is used in active SOS/SOW priorHigh/priorLow calculations",
+    "Run Card identifies all four A/B/C/D variants",
+    "Run Card freezes one common test window before Run A",
+    "Run Card explicitly describes active SOS/SOW Lookback sensitivity"
+  ],
+  "limitations": [
+    "Repository/static validation only",
+    "No MetaEditor compile",
+    "No EX5 build/hash verification for a new compile",
+    "No MT5 Strategy Tester execution",
+    "No trading performance conclusion"
+  ],
+  "gate_effect": "STATIC_PREFLIGHT_PASS_ONLY; BOOT-002 remains open until two MetaEditor compiles and four matched MT5 runs are submitted and audited."
+}
