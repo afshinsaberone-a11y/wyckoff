@@ -68,6 +68,26 @@ class ForwardFilterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             forward_filter(self.emission, np.eye(3), self.initial)
 
+    def test_rejects_initial_weights_whose_sum_overflows(self):
+        with self.assertRaises(ValueError):
+            forward_filter(
+                self.emission,
+                self.transition,
+                np.array([1e308, 1e308]),
+            )
+
+    def test_future_invariance_holds_for_multiple_cutoffs(self):
+        baseline = forward_filter(self.emission, self.transition, self.initial)
+        for cutoff in range(1, len(self.emission)):
+            changed = self.emission.copy()
+            changed[cutoff:] = changed[cutoff:][:, ::-1]
+            revised = forward_filter(changed, self.transition, self.initial)
+            np.testing.assert_allclose(
+                baseline.probabilities[:cutoff],
+                revised.probabilities[:cutoff],
+                atol=1e-12,
+            )
+
     def test_rejects_zero_initial_mass(self):
         with self.assertRaises(ValueError):
             forward_filter(self.emission, self.transition, np.array([0.0, 0.0]))
