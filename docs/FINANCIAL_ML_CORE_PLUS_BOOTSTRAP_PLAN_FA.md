@@ -27,6 +27,7 @@
 **خروجی:** reports/W0_BASELINE_IDENTITY_FA.md و manifest ماشین‌خوان.
 
 ### BOOT-002 — Compile و اجرای واقعی MultiAudit
+**کارت اجرای دقیق:** [BOOT-002 MultiAudit v1.084 Run Card](BOOT_002_MULTIAUDIT_RUN_CARD_FA.md)؛ قالب manifest ماشینی: [BOOT_002_RUN_MANIFEST_TEMPLATE.json](../experiments/BOOT_002_RUN_MANIFEST_TEMPLATE.json).
 **مالک:** W0؛ اجرا/شواهد با AGENT_02؛ ممیزی AGENT_03  
 **کار:**
 1. Compile در MetaEditor با ثبت build و log.
