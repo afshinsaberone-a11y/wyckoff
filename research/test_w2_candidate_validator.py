@@ -37,6 +37,19 @@ class CandidateValidatorTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_unique_candidates(rows)
 
+    def test_embargo_applies_after_each_disjoint_test_interval(self):
+        train = [
+            sample("near_first", "r1", 15, [14], 16, 18),
+            sample("far", "r2", 60, [59], 61, 65),
+        ]
+        test = [
+            sample("te_1", "r3", 10, [9], 11, 12),
+            sample("te_2", "r4", 30, [29], 31, 35),
+        ]
+        result = purge_training_candidates(train, test, embargo_bars=5, group_aware=False)
+        self.assertEqual([x.candidate_id for x in result.kept], ["far"])
+        self.assertEqual(result.removed_reasons["near_first"], "EMBARGO")
+
     def test_rejects_same_candidate_in_train_and_test(self):
         train = [sample("c1", "r1", 10, [9], 11, 15)]
         test = [sample("c1", "r1", 10, [9], 11, 15)]
