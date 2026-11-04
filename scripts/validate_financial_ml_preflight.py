@@ -22,7 +22,7 @@ def read_text(relative: str) -> str:
         ERRORS.append(f"Missing required file: {relative}")
         return ""
     raw = path.read_bytes()
-    if raw.startswith((b"\\xff\\xfe", b"\\xfe\\xff")):
+    if raw[:2] in (bytes((255, 254)), bytes((254, 255))):
         return raw.decode("utf-16")
     return raw.decode("utf-8-sig")
 
