@@ -186,3 +186,10 @@ Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41
 [گزارش مهاجرت](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md) و [manifest ماشینی](../experiments/BOOT_003_LEGACY_EVENT_MIGRATION_RUN_001.json).
 
 Artifact با نام `legacy-event-ledger-1efbb979e031898521aab9ccab799f1fc143fa71` در صفحه Run بالا برای 30 روز قابل دریافت است. این فقط Event Ledger قدیمی است؛ Event/Candidate instrumentation جدید MQL5 همچنان باز است و Dataset آموزشی W1/W2/W3 هنوز آماده نیست.
+
+
+## وضعیت BOOT-003 پس از طراحی Event Ledger v2
+
+Legacy Event Migration با 346 ردیف و 65 Range group موفق شده است؛ گزارش در [20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md](../reports/20261104_LEGACY_EVENT_LEDGER_MIGRATION_RUN_FA.md).
+
+قراردادهای Event/Candidate و Feature/Label به schema 1.2-draft ارتقا یافته‌اند. [مشخصات instrumentation v2](BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) تعیین می‌کند Candidate در M5 Recovery و پیش از PlaceTrade ساخته شود؛ بنابراین ردهای اجرایی نیز ثبت می‌شوند. هیچ کد MQL5 برای این تغییر هنوز پیاده‌سازی یا Compile نشده است.
