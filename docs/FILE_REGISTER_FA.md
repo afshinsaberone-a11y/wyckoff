@@ -102,3 +102,9 @@
 
 - experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json — ثبت دو اجرای GitHub Actions موفق با 27 PASS / 0 FAIL روی طراحی چهار Run.
 - docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md v2.0 — چهار Run کنترل/حساسیت؛ Lookback10/20 به‌عنوان تغییر فعال شرط SOS/SOW.
+
+
+### Legacy Event Ledger migration
+- docs/LEGACY_EVENT_LEDGER_MIGRATION_FA.md — قواعد نگاشت، زمان و محدودیت‌های مهاجرت.
+- scripts/migrate_legacy_event_csv.py — مبدل محافظه‌کار Event CSV به CSV normalized + manifest.
+- scripts/test_legacy_event_migration.py — تست واحد شناسه‌ها، timestamp و عدم جعل Candidate/Label.
