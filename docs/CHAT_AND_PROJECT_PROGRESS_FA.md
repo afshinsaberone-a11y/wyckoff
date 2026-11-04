@@ -378,3 +378,12 @@ Baseline اولیه‌ای که کاربر در دستور پایش ارائه �
 Workflow با نام Financial ML Core+ preflight در Commit `ec3f92cb94737f63f73c9276827b5f5dac934aaf` اجرا شد؛ Job `static-preflight` در Run `41856290720` با نتیجه `success` پایان یافت. [لینک Run](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41856290720).
 
 اسکریپت، حفظ خطوط غیرmetadata نسخه H1STRUCT v1.083 در MultiAudit v1.084، شناسه نسخه، عدم وجود tokenهای سفارش در تابع تشخیصی، وجود رویدادهای SOS/SOW audit، تعداد ورودی‌ها و تطابق SETهای Lookback 5/10/20 را کنترل کرد. این نتیجه صرفاً Preflight استاتیک مخزن است؛ Compile در MetaEditor و Strategy Tester اجرا نشده‌اند.
+
+
+## 2026-11-04 — دو اجرای موفق Preflight
+
+GitHub Actions workflow دو بار با conclusion=success اجرا شد:
+- Run 41856290720 روی Commit `ec3f92cb94737f63f73c9276827b5f5dac934aaf`.
+- Run 41856507674 روی Commit `3e2a6138131ef08531ea743378906a31ef35232c`.
+
+گزارش [BOOT-002 CI verification](../reports/20261104_BOOT_002_CI_VERIFICATION_FA.md) ثبت شد. این کنترل فقط بررسی ایستای فایل‌ها، ورودی‌های SET، شناسه نسخه و حفظ خطوط مبنا را انجام می‌دهد؛ MQL5 compile یا MT5 Tester در آن اجرا نمی‌شود.
