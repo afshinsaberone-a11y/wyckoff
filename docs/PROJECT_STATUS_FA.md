@@ -82,7 +82,9 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 - [تحلیل اجرای H1STRUCT](../reports/20261104_H1STRUCT_AUDIT_RUN_ANALYSIS_FA.md)
 
 
-## Financial ML Core+ و معماری ایجنت‌ها — ثبت 2026-11-04\n\nاولین بررسی BOOT-001 انجام و نتیجه با وضعیت CONDITIONAL ثبت شد: [گزارش تطبیق هویت Baseline W0](../reports/20261104_W0_BASELINE_IDENTITY_FA.md). C2-T030-SB050 Baseline candidate است؛ Freeze نهایی به تطبیق SET اجرای تاریخی و زنجیره EX5/Build وابسته است.
+## Financial ML Core+ و معماری ایجنت‌ها — ثبت 2026-11-04
+
+اولین بررسی BOOT-001 انجام و نتیجه با وضعیت CONDITIONAL ثبت شد: [گزارش تطبیق هویت Baseline W0](../reports/20261104_W0_BASELINE_IDENTITY_FA.md). C2-T030-SB050 Baseline candidate است؛ Freeze نهایی به تطبیق SET اجرای تاریخی و زنجیره EX5/Build وابسته است.
 
 پروتکل پژوهشی Financial ML Core+ و مشخصات **۹ نقش منطقی** در مخزن ثبت شده‌اند:
 - یک هماهنگ‌کننده (AGENT_00)
