@@ -79,7 +79,7 @@ python research/event_ledger_v2_validator.py `
 خروجی با کد ۰ معتبر، کد ۲ نامعتبر و کد ۳ خطای نوشتن گزارش JSON را اعلام می‌کند. این Validator فقط ساختار و پیوند هویتی را می‌سنجد؛ درست‌بودن قیمت، منطق و نتیجهٔ معامله را اثبات نمی‌کند.
 ## 7. تست‌های ایستا و محدودیت
 
-فایل `research/test_event_ledger_v2_static.py` ترتیب Schema، محل Candidate creation، ReasonCodeها، نگاشت پایدار Order/Position، زمان‌های خام و حضور predicateهای اصلی C2 را کنترل می‌کند. فایل `research/test_event_ledger_v2_validator.py` نیز Validator خروجی را با داده‌های مصنوعی مثبت/منفی می‌آزماید. Workflow اختصاصی GitHub Actions هر دو مجموعه را اجرا می‌کند.
+فایل `research/test_event_ledger_v2_static.py` ترتیب Schema، محل Candidate creation، ReasonCodeها، نگاشت پایدار Order/Position، زمان‌های Deal و حضور predicateهای اصلی C2 را کنترل می‌کند. فایل `research/test_event_ledger_v2_validator.py` نیز Validator خروجی را با داده‌های مصنوعی مثبت/منفی می‌آزماید. Workflow اختصاصی GitHub Actions هر دو مجموعه را اجرا می‌کند و در پایان syntax سه ماژول Python را با `py_compile` کنترل می‌کند.
 
 **این تست‌ها Compile MQL5 نیستند.** در این Commit هنوز موارد زیر PASS نشده‌اند:
 
