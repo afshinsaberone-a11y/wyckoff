@@ -1,0 +1,25 @@
+C2 H1 STRUCTURE AUDIT — SOURCE COMPARISON
+
+Compared against: Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5
+Audit source: Wyckoff_XAUUSD_W0_v1_08_C2_H1STRUCT_AUDIT.mq5
+Audit version: 1.083
+
+Comparison result:
+- Existing source code is retained; diagnostic additions were inserted.
+- No pre-existing executable code tokens were removed or replaced in the normalized code comparison.
+- Added diagnostics: H1 range context; ATR shift-1 vs shift-2 comparison; Test-to-Strength age; SOS/SOW class; LPS/LPSY position relative to range edge; Strength-not-found at range expiry.
+- Trading acceptance predicates remain unchanged per static validation and source diff review.
+- SET/source input check: 67 inputs, 67 keys, no missing or extra keys.
+
+Baseline C2 values preserved:
+- H1 structure / signal and M5 entry
+- Risk 0.50%, RR 2.00
+- Stop ATR buffer 0.50
+- M5 retest tolerance 0.30 ATR
+- Breakout / Retest / Recovery expiry = 12 / 12 / 12
+
+Important:
+- This is static source validation only.
+- NOT compiled in MetaEditor here.
+- NOT run in MT5 Strategy Tester here.
+- Run only in Strategy Tester for research. Not approved for demo/live.
