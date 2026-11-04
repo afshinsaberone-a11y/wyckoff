@@ -24,18 +24,29 @@ class PurgeResult:
     removed_reasons: dict[str, str]
 
 
+def _require_non_negative_int(value: object, name: str) -> None:
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        raise ValueError(f"{name} must be a non-negative integer.")
+
+
 def validate_candidate(sample: CandidateSample) -> None:
-    if not sample.candidate_id.strip():
-        raise ValueError("candidate_id must be non-empty.")
-    if not sample.group_id.strip():
-        raise ValueError("group_id must be non-empty.")
-    if sample.decision_seq < 0:
-        raise ValueError("decision_seq must be non-negative.")
+    if not isinstance(sample, CandidateSample):
+        raise ValueError("sample must be a CandidateSample.")
+    if not isinstance(sample.candidate_id, str) or not sample.candidate_id.strip():
+        raise ValueError("candidate_id must be a non-empty string.")
+    if not isinstance(sample.group_id, str) or not sample.group_id.strip():
+        raise ValueError("group_id must be a non-empty string.")
+    _require_non_negative_int(sample.decision_seq, "decision_seq")
+    _require_non_negative_int(sample.label_start_seq, "label_start_seq")
+    _require_non_negative_int(sample.label_end_seq, "label_end_seq")
+    if not isinstance(sample.feature_available_seq, tuple):
+        raise ValueError("feature_available_seq must be a tuple of non-negative integers.")
     if sample.label_start_seq < sample.decision_seq:
         raise ValueError("label interval cannot start before candidate decision.")
     if sample.label_end_seq < sample.label_start_seq:
         raise ValueError("label_end_seq must be >= label_start_seq.")
     for index, available_seq in enumerate(sample.feature_available_seq):
+        _require_non_negative_int(available_seq, f"feature_available_seq[{index}]")
         if available_seq > sample.decision_seq:
             raise ValueError(
                 f"Feature {index} is available at sequence {available_seq}, "
@@ -81,8 +92,9 @@ def purge_training_candidates(
     if cross_split_ids:
         raise ValueError(f"Candidate IDs appear in both train and test: {sorted(cross_split_ids)}")
 
-    if embargo_bars < 0:
-        raise ValueError("embargo_bars must be non-negative.")
+    _require_non_negative_int(embargo_bars, "embargo_bars")
+    if not isinstance(group_aware, bool):
+        raise ValueError("group_aware must be a boolean.")
     if not test_items:
         return PurgeResult(kept=train_items, removed_reasons={})
 
