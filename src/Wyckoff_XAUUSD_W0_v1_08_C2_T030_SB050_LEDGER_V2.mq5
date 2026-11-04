@@ -1817,6 +1817,23 @@ int OnInit()
       Print("[Wyckoff W0] Ledger file already exists; use a new unique RunID. File=",g_ledgerFileName);
       return INIT_FAILED;
      }
+   ResetLastError();
+   g_ledgerHandle=FileOpen(g_ledgerFileName,
+                           FILE_WRITE|FILE_CSV|FILE_SHARE_READ|FILE_ANSI|FILE_COMMON,',');
+   if(g_ledgerHandle==INVALID_HANDLE)
+     {
+      Print("[Wyckoff W0] Cannot create Event Ledger v2. Error=",GetLastError());
+      return INIT_FAILED;
+     }
+   FileWrite(g_ledgerHandle,"SchemaVersion","RunID","EventID","EventSequence",
+             "EventTimeServer","ObservedAtServer","TimeBasis","SourceTimeframe",
+             "SourceBarOpenServer","Symbol","EA_Version","RangeID","CycleID",
+             "AttemptID","CandidateID","DecisionID","OrderID","DealID","PositionID",
+             "LegacySetupID","Direction","Event","DecisionStatus","ReasonCode",
+             "Details","RangeHigh","RangeLow","InitialBalance");
+   FileFlush(g_ledgerHandle);
+   Print("[Wyckoff W0] Event Ledger v2 enabled. RunID=",g_ledgerRunID,
+         "; file=",TerminalInfoString(TERMINAL_COMMONDATA_PATH)+"\\Files\\"+g_ledgerFileName);
    g_csvFileName=EffectiveCSVFileName();
    if(InpExportCSV && (bool)MQLInfoInteger(MQL_OPTIMIZATION))
      {
@@ -1856,23 +1873,6 @@ int OnInit()
            }
         }
      }
-   ResetLastError();
-   g_ledgerHandle=FileOpen(g_ledgerFileName,
-                           FILE_WRITE|FILE_CSV|FILE_SHARE_READ|FILE_ANSI|FILE_COMMON,',');
-   if(g_ledgerHandle==INVALID_HANDLE)
-     {
-      Print("[Wyckoff W0] Cannot create Event Ledger v2. Error=",GetLastError());
-      return INIT_FAILED;
-     }
-   FileWrite(g_ledgerHandle,"SchemaVersion","RunID","EventID","EventSequence",
-             "EventTimeServer","ObservedAtServer","TimeBasis","SourceTimeframe",
-             "SourceBarOpenServer","Symbol","EA_Version","RangeID","CycleID",
-             "AttemptID","CandidateID","DecisionID","OrderID","DealID","PositionID",
-             "LegacySetupID","Direction","Event","DecisionStatus","ReasonCode",
-             "Details","RangeHigh","RangeLow","InitialBalance");
-   FileFlush(g_ledgerHandle);
-   Print("[Wyckoff W0] Event Ledger v2 enabled. RunID=",g_ledgerRunID,
-         "; file=",TerminalInfoString(TERMINAL_COMMONDATA_PATH)+"\\Files\\"+g_ledgerFileName);
    g_lastSignalBar=iTime(g_symbol,InpSignalTF,0);
    g_lastEntryBar=iTime(g_symbol,InpEntryTF,0);
    ResetSetup("");
