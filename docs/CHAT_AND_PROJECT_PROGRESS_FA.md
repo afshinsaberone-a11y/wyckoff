@@ -353,3 +353,12 @@ Baseline اولیه‌ای که کاربر در دستور پایش ارائه �
 مقایسه 67 کلید در SETهای MultiAudit با Lookbackهای 5/10/20 نشان داد فقط InpStrengthSwingLookback و نام CSV خروجی متفاوت‌اند. شناسه داخلی نسخه MultiAudit به‌صورت دقیق 1.08-C2-H1STRUCT-ML-AUDIT-SB050-T030 است؛ این شناسه نباید با ML مدل‌سازی اشتباه شود.
 
 وضعیت BOOT-001 برابر CONDITIONAL است، نه COMPLETE: SET دقیق اجرای تاریخی C2 پایه و زنجیره قابل‌ردیابی EX5/Build-to-source هنوز در شواهد بررسی‌شده کامل نیست. هیچ Compile یا Strategy Tester جدیدی در این مرحله اجرا نشده است.
+
+
+## 2026-11-04 — ممیزی آمادگی داده و شناسه Candidate
+
+در بررسی درخت کامل مخزن، Event CSV اجرای C2 و Journal مورخ 2026-11-03 با هم تطبیق داده شدند. این run از 2024-01-02 تا 2026-10-17 بوده و Event CSV آن 346 ردیف داده، 65 Range، 15 Test، 6 SOS و 2 SOW دارد. گزارش C2 مورخ 2026-11-04 به CSV دیگری با بازه تا 2026-11-04 اشاره می‌کند که در مخزن موجود نیست؛ بنابراین دو run جدا نگه داشته شدند و شمارش‌هایشان با هم ادغام نشد.
+
+در سورس C2، شمارنده g_setupCounter هنگام RANGE_FOUND افزایش می‌یابد و به‌عنوان SetupID در Event CSV ثبت می‌شود. در نتیجه SetupID معرف Range/ماشین حالت است، نه Candidate یکتای ML. قرارداد Event/Candidate و Feature/Label به schema 1.1-draft ارتقا یافتند و سلسله‌مراتب range_id/cycle_id/attempt_id/candidate_id/legacy_setup_id را اجباری کردند.
+
+گزارش [ممیزی آمادگی داده](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md) ثبت شد. Event Funnel Audit قابل انجام است؛ اما Candidate/Feature/Label dataset و آموزش HMM/ML هنوز BLOCKED هستند، زیرا OHLC M1/Tick، snapshotهای point-in-time، label outcome و Fold manifest در مخزن حاضر نیستند. هیچ آموزش مدل یا بک‌تست جدیدی در این مرحله انجام نشد.
