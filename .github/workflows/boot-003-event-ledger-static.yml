@@ -1,4 +1,4 @@
-name: BOOT-003 Event Ledger v2 static checks
+name: BOOT-003 Event Ledger v2 verification gates
 
 on:
   push:
