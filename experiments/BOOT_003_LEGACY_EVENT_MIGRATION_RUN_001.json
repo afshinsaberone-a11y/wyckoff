@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "task_id": "BOOT-003",
+  "run_id": "LEGACY_EVENT_MIGRATION_20261104_001",
+  "workflow_run_id": 41859743204,
+  "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41859743204",
+  "workflow_commit": "1efbb979e031898521aab9ccab799f1fc143fa71",
+  "job": "static-preflight",
+  "conclusion": "success",
+  "preflight_checks": {
+    "passed": 27,
+    "failed": 0
+  },
+  "unit_tests": {
+    "test_count": 5,
+    "conclusion": "passed"
+  },
+  "source": {
+    "path": "events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv",
+    "git_blob_sha": "49eeb12ec611bc0ac5df04a8d7c0aa4f3454b01a",
+    "rows": 346,
+    "ea_version": "1.08-C2-TIMING-SB050-T030"
+  },
+  "migration": {
+    "script": "scripts/migrate_legacy_event_csv.py",
+    "output_rows": 346,
+    "unique_legacy_range_ids": 65,
+    "candidate_ids_created": 0,
+    "cycle_ids_created": 0,
+    "attempt_ids_created": 0,
+    "feature_snapshots_created": 0,
+    "labels_created": 0,
+    "utc_timestamps_created": 0,
+    "event_ledger_output_sha256": "5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e"
+  },
+  "artifact": {
+    "id": 13337654909,
+    "name": "legacy-event-ledger-1efbb979e031898521aab9ccab799f1fc143fa71",
+    "size_in_bytes": 26858,
+    "zip_sha256": "00482187a859e1284e9fc0dbacd2d676d017538129a708082d1846fe9a50e7c0",
+    "expires_at_utc": "2026-12-04T15:37:58Z"
+  },
+  "limitations": [
+    "Event Ledger migration only; not a supervised ML dataset.",
+    "Legacy SetupID preserved and mapped to synthetic range_id; it is not a candidate_id.",
+    "No cycle_id, attempt_id, candidate_id, trade_id, feature snapshot, or label inferred.",
+    "Legacy ServerTime retained as raw broker/server timestamp; no UTC conversion without timezone metadata.",
+    "Artifact is a GitHub Actions artifact with limited retention; raw source CSV remains separately versioned in the repository."
+  ],
+  "gate_effect": "BOOT-003 initial legacy Event migration completed. Full Event/Candidate Ledger remains open pending new MQL5 instrumentation and verified cycle/candidate identity."
+}
