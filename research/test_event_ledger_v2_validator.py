@@ -97,6 +97,30 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
         self.assertFalse(report["valid"])
         self.assertTrue(any("not strictly increasing" in error for error in report["errors"]))
 
+    def test_event_sequence_gap_is_detected(self):
+        rows = valid_candidate_rows()
+        rows[2]["EventSequence"] = "4"
+        rows[2]["EventID"] = f"{RUN}:EV4"
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("not contiguous" in error for error in report["errors"]))
+
+    def test_decision_sequence_is_contiguous_per_candidate(self):
+        rows = valid_candidate_rows()
+        rows[2]["DecisionID"] = CANDIDATE + ":D2"
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("DecisionID sequence should be" in error for error in report["errors"]))
+
+    def test_trade_deal_event_must_link_to_created_candidate(self):
+        rows = valid_candidate_rows()
+        rows.append(make_row(5, "TRADE_ENTRY_DEAL", CycleID=CYCLE,
+                             AttemptID=ATTEMPT, CandidateID="",
+                             OrderID="50001", DealID="60001", PositionID="70001"))
+        report = validate_rows(SCHEMA_COLUMNS, rows)
+        self.assertFalse(report["valid"])
+        self.assertTrue(any("not linked to a created CandidateID" in error for error in report["errors"]))
+
     def test_time_basis_and_timestamp_format_are_checked(self):
         rows = valid_candidate_rows()
         rows[0]["TimeBasis"] = "UTC"
