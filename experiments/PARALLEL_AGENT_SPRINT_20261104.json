@@ -74,5 +74,81 @@
     "production_ea_changes_allowed": false,
     "baseline_mutation_allowed": false,
     "reason": "Candidate/Feature/Label dataset, raw M1/Tick coverage and BOOT-002 MT5 evidence are incomplete."
-  }
+  },
+  "branch_heads": {
+    "agent/00-orchestrator-parallel-sprint": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/01-data-engineering": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/02-execution-backtest": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/03-independent-audit": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/04-governance": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/w0-wyckoff-ledger": "1dda894e61e42aca33ff7c038c4a03b0d628a39e",
+    "agent/w1-hmm-regime-learning": "281cb9a77f6e080f726d8faa271d0f40b0db04d9",
+    "agent/w2-ml-scoring-learning": "062f1c582f73fdf7c775285b7bc3a7ddd7600d52",
+    "agent/w3-hybrid-integration": "248bb7db5595633a68ad2c4ab1ddf3887d1efbb1"
+  },
+  "research_prototypes": [
+    {
+      "role": "W1",
+      "branch": "agent/w1-hmm-regime-learning",
+      "code": "research/w1_forward_filter.py",
+      "tests": "research/test_w1_forward_filter.py",
+      "latest_commit": "281cb9a77f6e080f726d8faa271d0f40b0db04d9",
+      "ci_run_id": 41864331424,
+      "ci_status": "queued",
+      "expected_tests": 8,
+      "key_checks": [
+        "normalization",
+        "future-invariance",
+        "train-test filtering continuation",
+        "unreachable states",
+        "impossible observation"
+      ]
+    },
+    {
+      "role": "W2",
+      "branch": "agent/w2-ml-scoring-learning",
+      "code": "research/w2_candidate_validator.py",
+      "tests": "research/test_w2_candidate_validator.py",
+      "latest_commit": "062f1c582f73fdf7c775285b7bc3a7ddd7600d52",
+      "ci_run_id": 41864363747,
+      "ci_status": "queued",
+      "expected_tests": 7,
+      "key_checks": [
+        "point-in-time feature availability",
+        "duplicate candidate IDs",
+        "cross-split duplicate rejection",
+        "label interval purging",
+        "group purging",
+        "embargo after each test interval"
+      ]
+    },
+    {
+      "role": "W3",
+      "branch": "agent/w3-hybrid-integration",
+      "code": "research/w3_interface_validator.py",
+      "tests": "research/test_w3_interface_validator.py",
+      "schema": "contracts/W3_HMM_ML_INTERFACE_V1.schema.json",
+      "latest_commit": "248bb7db5595633a68ad2c4ab1ddf3887d1efbb1",
+      "ci_run_id": 41864218329,
+      "ci_status": "queued",
+      "expected_tests": 6,
+      "key_checks": [
+        "state dimension",
+        "probability normalization",
+        "causal availability",
+        "staleness",
+        "fail-closed behavior"
+      ]
+    }
+  ],
+  "ci_workflow": ".github/workflows/parallel-agent-learning-tests.yml",
+  "research_sources": [
+    "https://github.com/statsmodels/statsmodels/blob/main/statsmodels/tsa/regime_switching/markov_switching.py",
+    "https://github.com/hmmlearn/hmmlearn/blob/main/doc/source/tutorial.rst",
+    "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html",
+    "https://www.quantresearch.org/Innovations.htm",
+    "https://www.sciencedirect.com/science/article/abs/pii/S0950705124011110",
+    "https://probml.github.io/ssm-book/chapters/hmm/hmm_filter.html"
+  ],
+  "status_note": "Nine role-based issues and branches exist. W1/W2/W3 research prototypes and branch-specific CI have been added. The three research CI runs are queued, not yet passed. Real market HMM/ML fitting remains blocked."
 }
