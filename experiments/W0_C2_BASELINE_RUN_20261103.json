@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "record_type": "historical_backtest_run",
+  "run_id": "C2_BASELINE_20261103_FULL_20240102_20261017",
+  "status": "HISTORICAL_EVIDENCE_RECONSTRUCTED",
+  "variant": "C2_T030_SB050",
+  "actual_run": {
+    "tester_expert_name": "Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050",
+    "expert_binary_filename": "Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.ex5",
+    "expert_binary_size_bytes": 127799,
+    "expert_binary_sha256": null,
+    "tester_build": 6230,
+    "broker_server": "WMMarkets-Demo",
+    "symbol": "XAUUSD",
+    "period": "M5",
+    "start_server_time": "2024-01-02 00:00",
+    "end_server_time": "2026-10-17 00:00",
+    "model": "Every tick based on real ticks",
+    "initial_deposit": 10000.0,
+    "deposit_currency": "USD",
+    "leverage": "1:200",
+    "final_balance": 9937.56,
+    "balance_change_usd": -62.44,
+    "closed_trades_from_event_log": 1,
+    "ticks_generated": 175676444,
+    "bars_generated": 198318,
+    "test_duration": "0:04:03.693"
+  },
+  "source": {
+    "path": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5",
+    "git_blob_sha": "7e6e7ddaf6dd8ef976e53f611018815a4874dd60",
+    "property_version": "1.082",
+    "ea_version": "1.08-C2-TIMING-SB050-T030"
+  },
+  "journal": {
+    "path": "events/20261103.log",
+    "git_blob_sha": "3d15f5e801691d63b6041ad6aba6aac68bfe7ffb",
+    "expert_name_matches": true,
+    "input_count": 67,
+    "input_values_extracted": true
+  },
+  "reconstructed_set": {
+    "path": "sets/Wyckoff_C2_T030_SB050_RECONSTRUCTED_FROM_20261103_JOURNAL.set",
+    "git_blob_sha": "9b5db0bec781de2fbbcb732822a7766d24f5384d",
+    "reconstructed_post_run_from_journal": true,
+    "original_saved_set_available": false,
+    "key_count": 67,
+    "keys_match_source": true,
+    "all_values_match_journal": true
+  },
+  "event_csv": {
+    "path": "events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv",
+    "git_blob_sha": "49eeb12ec611bc0ac5df04a8d7c0aa4f3454b01a",
+    "data_rows_including_ea_init": 346,
+    "ea_version": "1.08-C2-TIMING-SB050-T030",
+    "range_found": 65,
+    "spring_candidate": 20,
+    "spring_confirmed": 15,
+    "utad_candidate": 14,
+    "utad_confirmed": 7,
+    "test_confirmed": 15,
+    "sos_confirmed": 6,
+    "sow_confirmed": 2,
+    "lps_confirmed": 4,
+    "lpsy_confirmed": 2,
+    "m5_breakout_confirmed": 3,
+    "m5_retest_confirmed": 2,
+    "m5_buy_recovery_confirmed": 1,
+    "order_opened": 1,
+    "trade_entry_deal": 1,
+    "trade_closed": 1
+  },
+  "history_quality": {
+    "ohlc_history_synced_from": "2023-01-03",
+    "ohlc_history_synced_to": "2026-10-16",
+    "tick_history_synced_from": "2024-04-19",
+    "tick_history_synced_to": "2026-10-16",
+    "real_ticks_absent_minute_bars": 1111,
+    "real_ticks_discarded_minute_bars": 80385,
+    "whole_days_with_real_ticks_discarded": 32,
+    "tick_volume_mismatched_minute_bars": 6497,
+    "last_price_absent_minute_bars_bid_used": 7456
+  },
+  "set_reconstruction_validation": {
+    "source_input_count": 67,
+    "journal_input_count": 67,
+    "reconstructed_set_key_count": 67,
+    "missing_keys": [],
+    "extra_keys": [],
+    "value_mismatches": [],
+    "status": "PASS"
+  },
+  "baseline_freeze": {
+    "status": "CONDITIONAL",
+    "reason": "The original saved SET file and historical EX5 SHA-256/build-to-source proof are not available. All 67 logged input values have been reconstructed and exactly matched to the C2 v1.082 source.",
+    "next_step": "Compile the C2 v1.082 source with a recorded MetaEditor build, hash the newly generated EX5, load the reconstructed SET, rerun the same date range/conditions, and retain HTML, Journal, and CSV."
+  },
+  "notes": [
+    "The reconstructed SET was created after the historical run from the values recorded in the Tester Journal; it was not the original saved SET file used by the operator.",
+    "This C2 run is distinct from H1STRUCT Audit and MultiAudit runs, even if their balance change is numerically similar.",
+    "The event CSV records historical events, not an ML training dataset.",
+    "The incomplete and mixed real-tick coverage must be disclosed in any execution-sensitive conclusions."
+  ]
+}
