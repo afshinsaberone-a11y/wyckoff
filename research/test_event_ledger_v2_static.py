@@ -4,7 +4,14 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PATH = ROOT / "src" / "Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5"
+BASELINE_SOURCE_PATH = ROOT / "src" / "Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5"
 SOURCE = SOURCE_PATH.read_text(encoding="utf-8")
+BASELINE_SOURCE = BASELINE_SOURCE_PATH.read_text(encoding="utf-8")
+
+EXPECTED_LEGACY_HEADER = [
+    "ServerTime", "EA_Version", "Symbol", "InitialBalance", "SetupID",
+    "Direction", "Event", "Details", "RangeHigh", "RangeLow", "PositionID",
+]
 
 EXPECTED_HEADER = [
     "SchemaVersion", "RunID", "EventID", "EventSequence",
@@ -27,6 +34,22 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         actual = re.findall(r'"([^"]+)"', match.group(0))
         self.assertEqual(actual, EXPECTED_HEADER)
         self.assertEqual(len(actual), 28)
+
+    def test_baseline_and_ledger_v2_keep_identical_legacy_csv_header(self):
+        for label, source in (
+            ("baseline", BASELINE_SOURCE),
+            ("ledger_v2", SOURCE),
+        ):
+            with self.subTest(source=label):
+                match = re.search(
+                    r'FileWrite\(g_csvHandle,"ServerTime",(.*?)\);\s*FileFlush',
+                    source,
+                    flags=re.DOTALL,
+                )
+                self.assertIsNotNone(match, f"{label} legacy CSV header was not found")
+                actual = re.findall(r'"([^"]+)"', match.group(0))
+                self.assertEqual(actual, EXPECTED_LEGACY_HEADER)
+                self.assertEqual(len(actual), 11)
 
     def test_v2_ledger_open_succeeds_before_legacy_csv_is_deleted(self):
         ledger_open = SOURCE.index('g_ledgerHandle=FileOpen(g_ledgerFileName,')
