@@ -126,3 +126,11 @@
 - docs/W1_HMM_REGIME_RESEARCH_STARTER_FA.md — بسته یادگیری HMM و forward filtering.
 - docs/W2_ML_CANDIDATE_SCORING_STARTER_FA.md — بسته یادگیری Candidate Scoring.
 - docs/W3_HYBRID_INTEGRATION_STARTER_FA.md — معماری W3 و طرح آزمایش 2×2.
+
+
+## Sprint موازی ۹ نقش — خروجی‌های شروع
+- reports/20261104_PARALLEL_AGENT_START_REPORT_FA.md — وضعیت Issueها، branchها، prototypeها و CI.
+- research/w1_forward_filter.py و research/test_w1_forward_filter.py — HMM causal filter prototype و tests در branch W1.
+- research/w2_candidate_validator.py و research/test_w2_candidate_validator.py — Candidate chronology/purge/embargo prototype و tests در branch W2.
+- contracts/W3_HMM_ML_INTERFACE_V1.schema.json، research/w3_interface_validator.py و research/test_w3_interface_validator.py — interface contract و fail-closed validator در branch W3.
+- .github/workflows/parallel-agent-learning-tests.yml — workflow اختصاصی W1/W2/W3.
