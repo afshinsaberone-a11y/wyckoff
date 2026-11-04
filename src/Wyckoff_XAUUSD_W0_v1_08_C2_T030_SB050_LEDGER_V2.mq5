@@ -222,6 +222,21 @@ string   g_ledgerDealID = "";
 string   g_ledgerPositionID = "";
 ENUM_TIMEFRAMES g_ledgerSourceTF = PERIOD_CURRENT;
 datetime g_ledgerSourceBarOpen = 0;
+struct SLedgerTradeLink
+  {
+   ulong orderTicket;
+   ulong positionID;
+   string rangeID;
+   string cycleID;
+   string attemptID;
+   string candidateID;
+   long legacySetupID;
+   double rangeHigh;
+   double rangeLow;
+   int direction;
+  };
+
+SLedgerTradeLink g_ledgerTradeLinks[];
 SWyckoffSetup g_setup;
 
 #define EA_VERSION "1.083-C2-TIMING-SB050-T030-LEDGER-V2"
@@ -323,6 +338,92 @@ void LedgerResetActiveIDs()
    g_ledgerPositionID="";
   }
 
+
+int LedgerFindOrderLink(const ulong orderTicket)
+  {
+   if(orderTicket==0) return -1;
+   for(int i=ArraySize(g_ledgerTradeLinks)-1;i>=0;i--)
+      if(g_ledgerTradeLinks[i].orderTicket==orderTicket)
+         return i;
+   return -1;
+  }
+
+int LedgerFindPositionLink(const ulong positionID)
+  {
+   if(positionID==0) return -1;
+   for(int i=ArraySize(g_ledgerTradeLinks)-1;i>=0;i--)
+      if(g_ledgerTradeLinks[i].positionID==positionID)
+         return i;
+   return -1;
+  }
+
+int LedgerFindTradeLink(const ulong orderTicket,const ulong positionID)
+  {
+   int index=LedgerFindOrderLink(orderTicket);
+   if(index>=0) return index;
+
+   index=LedgerFindPositionLink(positionID);
+   if(index>=0) return index;
+
+   // A close deal may have a different order ticket from the entry order.
+   // Recover the entry order through the complete position history if needed.
+   if(positionID>0 && HistorySelectByPosition(positionID))
+     {
+      int total=HistoryDealsTotal();
+      for(int i=0;i<total;i++)
+        {
+         ulong dealTicket=HistoryDealGetTicket(i);
+         if(dealTicket==0) continue;
+         if((ulong)HistoryDealGetInteger(dealTicket,DEAL_POSITION_ID)!=positionID)
+            continue;
+         if(HistoryDealGetInteger(dealTicket,DEAL_ENTRY)!=DEAL_ENTRY_IN)
+            continue;
+         ulong entryOrder=(ulong)HistoryDealGetInteger(dealTicket,DEAL_ORDER);
+         index=LedgerFindOrderLink(entryOrder);
+         if(index>=0)
+           {
+            g_ledgerTradeLinks[index].positionID=positionID;
+            return index;
+           }
+        }
+     }
+   return -1;
+  }
+
+void LedgerRegisterOrderLink(const ulong orderTicket)
+  {
+   if(orderTicket==0 || g_ledgerCandidateID=="")
+      return;
+   int index=LedgerFindOrderLink(orderTicket);
+   if(index<0)
+     {
+      int size=ArraySize(g_ledgerTradeLinks);
+      if(ArrayResize(g_ledgerTradeLinks,size+1)!=size+1)
+        {
+         Print("[Wyckoff W0] Ledger order-link table resize failed. Error=",GetLastError());
+         return;
+        }
+      index=size;
+     }
+   g_ledgerTradeLinks[index].orderTicket=orderTicket;
+   g_ledgerTradeLinks[index].positionID=0;
+   g_ledgerTradeLinks[index].rangeID=g_ledgerRangeID;
+   g_ledgerTradeLinks[index].cycleID=g_ledgerCycleID;
+   g_ledgerTradeLinks[index].attemptID=g_ledgerAttemptID;
+   g_ledgerTradeLinks[index].candidateID=g_ledgerCandidateID;
+   g_ledgerTradeLinks[index].legacySetupID=g_setupCounter;
+   g_ledgerTradeLinks[index].rangeHigh=g_setup.rangeHigh;
+   g_ledgerTradeLinks[index].rangeLow=g_setup.rangeLow;
+   g_ledgerTradeLinks[index].direction=(int)g_setup.direction;
+  }
+
+void LedgerBindPosition(const int index,const ulong positionID)
+  {
+   if(index<0 || index>=ArraySize(g_ledgerTradeLinks) || positionID==0)
+      return;
+   g_ledgerTradeLinks[index].positionID=positionID;
+  }
+
 string LedgerDecisionStatus(const string eventName)
   {
    if(StringFind(eventName,"REJECT_")==0 || eventName=="ORDER_SEND_FAILED")
@@ -332,48 +433,97 @@ string LedgerDecisionStatus(const string eventName)
    return "";
   }
 
-void LedgerWriteEvent(const string eventName,const string details="")
+void LedgerWriteEvent(const string eventName,const string details="",
+                      const int tradeLinkIndex=-1,const bool transactionContext=false,
+                      const ulong eventOrderTicket=0,const ulong eventDealTicket=0,
+                      const ulong eventPositionTicket=0)
   {
    if(g_ledgerHandle==INVALID_HANDLE)
       return;
 
    g_ledgerEventSequence++;
    string eventID=g_ledgerRunID+":EV"+(string)g_ledgerEventSequence;
-   string direction=(g_setup.direction==WYCKOFF_BUY ? "BUY" :
-                     g_setup.direction==WYCKOFF_SELL ? "SELL" : "NONE");
+
+   string rowRangeID=g_ledgerRangeID;
+   string rowCycleID=g_ledgerCycleID;
+   string rowAttemptID=g_ledgerAttemptID;
+   string rowCandidateID=g_ledgerCandidateID;
+   long rowLegacySetupCounter=g_setupCounter;
+   double rowRangeHighValue=g_setup.rangeHigh;
+   double rowRangeLowValue=g_setup.rangeLow;
+   int rowDirectionCode=(int)g_setup.direction;
+   string rowOrderID=g_ledgerOrderID;
+   string rowDealID=g_ledgerDealID;
+   string rowPositionID=g_ledgerPositionID;
+
+   if(transactionContext)
+     {
+      rowOrderID=(eventOrderTicket>0 ? (string)eventOrderTicket : "");
+      rowDealID=(eventDealTicket>0 ? (string)eventDealTicket : "");
+      rowPositionID=(eventPositionTicket>0 ? (string)eventPositionTicket : "");
+      if(tradeLinkIndex>=0 && tradeLinkIndex<ArraySize(g_ledgerTradeLinks))
+        {
+         rowRangeID=g_ledgerTradeLinks[tradeLinkIndex].rangeID;
+         rowCycleID=g_ledgerTradeLinks[tradeLinkIndex].cycleID;
+         rowAttemptID=g_ledgerTradeLinks[tradeLinkIndex].attemptID;
+         rowCandidateID=g_ledgerTradeLinks[tradeLinkIndex].candidateID;
+         rowLegacySetupCounter=g_ledgerTradeLinks[tradeLinkIndex].legacySetupID;
+         rowRangeHighValue=g_ledgerTradeLinks[tradeLinkIndex].rangeHigh;
+         rowRangeLowValue=g_ledgerTradeLinks[tradeLinkIndex].rangeLow;
+         rowDirectionCode=g_ledgerTradeLinks[tradeLinkIndex].direction;
+        }
+      else
+        {
+         // Never attach an unrelated currently-active Candidate to an unmatched deal.
+         rowRangeID="";
+         rowCycleID="";
+         rowAttemptID="";
+         rowCandidateID="";
+         rowLegacySetupCounter=0;
+         rowRangeHighValue=0.0;
+         rowRangeLowValue=0.0;
+         rowDirectionCode=0;
+        }
+     }
+
+   string direction=(rowDirectionCode==WYCKOFF_BUY ? "BUY" :
+                     rowDirectionCode==WYCKOFF_SELL ? "SELL" : "NONE");
    string status=LedgerDecisionStatus(eventName);
    string decisionID="";
    string reasonCode="";
-   if(g_ledgerCandidateID!="" && status!="")
+   if(rowCandidateID!="" && status!="")
      {
       g_ledgerDecisionSequence++;
-      decisionID=g_ledgerCandidateID+":D"+(string)g_ledgerDecisionSequence;
+      decisionID=rowCandidateID+":D"+(string)g_ledgerDecisionSequence;
       reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");
      }
    datetime eventTime=TimeCurrent(); // Actual broker-server event time; source bar open is a separate field
    string sourceTF=(g_ledgerSourceBarOpen>0 ? EnumToString(g_ledgerSourceTF) : "");
    string sourceBar=(g_ledgerSourceBarOpen>0 ?
                      TimeToString(g_ledgerSourceBarOpen,TIME_DATE|TIME_SECONDS) : "");
-   string rangeHigh=(g_setup.rangeHigh>0.0 ? DoubleToString(g_setup.rangeHigh,g_digits) : "");
-   string rangeLow=(g_setup.rangeLow>0.0 ? DoubleToString(g_setup.rangeLow,g_digits) : "");
-   string legacySetupID=(g_ledgerRangeID!="" && g_setupCounter>0 ? (string)g_setupCounter : "");
+   string rangeHigh=(rowRangeHighValue>0.0 ? DoubleToString(rowRangeHighValue,g_digits) : "");
+   string rangeLow=(rowRangeLowValue>0.0 ? DoubleToString(rowRangeLowValue,g_digits) : "");
+   string legacySetupID=(rowRangeID!="" && rowLegacySetupCounter>0 ? (string)rowLegacySetupCounter : "");
 
    FileWrite(g_ledgerHandle,
              "2",g_ledgerRunID,eventID,(string)g_ledgerEventSequence,
              TimeToString(eventTime,TIME_DATE|TIME_SECONDS),
              TimeToString(TimeCurrent(),TIME_DATE|TIME_SECONDS),
              "BROKER_SERVER_RAW",sourceTF,sourceBar,
-             g_symbol,EA_VERSION,g_ledgerRangeID,g_ledgerCycleID,
-             g_ledgerAttemptID,g_ledgerCandidateID,decisionID,
-             g_ledgerOrderID,g_ledgerDealID,g_ledgerPositionID,
+             g_symbol,EA_VERSION,rowRangeID,rowCycleID,
+             rowAttemptID,rowCandidateID,decisionID,
+             rowOrderID,rowDealID,rowPositionID,
              legacySetupID,direction,eventName,status,reasonCode,details,
              rangeHigh,rangeLow,DoubleToString(g_initialBalance,2));
    FileFlush(g_ledgerHandle);
   }
 
-void LogEvent(const string eventName,const string details="")
+void LogEvent(const string eventName,const string details="",const int tradeLinkIndex=-1,
+              const bool transactionContext=false,const ulong eventOrderTicket=0,
+              const ulong eventDealTicket=0,const ulong eventPositionTicket=0)
   {
-   LedgerWriteEvent(eventName,details);
+   LedgerWriteEvent(eventName,details,tradeLinkIndex,transactionContext,
+                    eventOrderTicket,eventDealTicket,eventPositionTicket);
    string dir = (g_setup.direction==WYCKOFF_BUY ? "BUY" :
                  g_setup.direction==WYCKOFF_SELL ? "SELL" : "NONE");
    string msg = eventName+" | "+dir+" | "+details;
@@ -1158,6 +1308,8 @@ bool PlaceTrade(const ENUM_WYCKOFF_DIRECTION dir,const MqlRates &entryBar)
 
    ulong resultOrderTicket=trade.ResultOrder();
    g_ledgerOrderID=(resultOrderTicket>0 ? (string)resultOrderTicket : "");
+   if(resultOrderTicket>0)
+      LedgerRegisterOrderLink(resultOrderTicket);
    uint retcode=trade.ResultRetcode();
    bool accepted=(retcode==TRADE_RETCODE_DONE ||
                   retcode==TRADE_RETCODE_DONE_PARTIAL ||
@@ -1770,6 +1922,18 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    long entryType=HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
    long positionId=HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
    LedgerSetSource(PERIOD_CURRENT,0);
+   int ledgerTradeLinkIndex=LedgerFindTradeLink(trans.order,(ulong)positionId);
+   if(ledgerTradeLinkIndex>=0)
+      LedgerBindPosition(ledgerTradeLinkIndex,(ulong)positionId);
+   if(ledgerTradeLinkIndex<0)
+     {
+      LedgerWriteEvent("LEDGER_UNLINKED_TRADE_TRANSACTION",
+                       "order="+(string)trans.order+"; deal="+(string)trans.deal+
+                       "; position="+(string)positionId,
+                       -1,true,trans.order,trans.deal,(ulong)positionId);
+      Print("[Wyckoff W0] Unlinked trade transaction. Order=",trans.order,
+            "; Deal=",trans.deal,"; Position=",positionId);
+     }
    if(trans.order>0) g_ledgerOrderID=(string)trans.order;
    g_ledgerDealID=(string)trans.deal;
    g_ledgerPositionID=(positionId>0 ? (string)positionId : "");
@@ -1815,7 +1979,8 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                "; actualRiskMoney="+DoubleToString(g_activeRiskMoney,2)+
                "; riskCalc="+(riskOK ? "FILL_TO_SL" : "PLANNED_FALLBACK")+
                "; quoteSpreadPoints="+DoubleToString(g_pendingSpreadPoints,1)+
-               "; slippagePoints="+DoubleToString(slipPoints,1));
+               "; slippagePoints="+DoubleToString(slipPoints,1),
+               ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId);
       return;
      }
 
@@ -1888,7 +2053,8 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                "; realizedR="+DoubleToString(realizedR,3)+
                "; quoteSpreadPoints="+DoubleToString(g_pendingSpreadPoints,1)+
                "; avgEntrySlippagePoints="+DoubleToString(avgEntrySlippage,1)+
-               "; reason="+DealReasonName(dealReason));
+               "; reason="+DealReasonName(dealReason),
+               ledgerTradeLinkIndex,true,trans.order,trans.deal,(ulong)positionId);
       if(!stillOpen)
         {
          g_activePositionId=0;
