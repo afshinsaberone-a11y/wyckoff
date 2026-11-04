@@ -20,11 +20,15 @@ class FilterResult:
 def _logsumexp(values: np.ndarray, axis: int) -> np.ndarray:
     values = np.asarray(values, dtype=float)
     maximum = np.max(values, axis=axis, keepdims=True)
-    if not np.all(np.isfinite(maximum)):
-        raise ValueError("At least one time/state update has no finite probability mass.")
-    shifted = np.exp(values - maximum)
-    total = np.sum(shifted, axis=axis, keepdims=True)
-    result = maximum + np.log(total)
+    finite = np.isfinite(maximum)
+    safe_maximum = np.where(finite, maximum, 0.0)
+    with np.errstate(invalid="ignore"):
+        shifted_values = values - safe_maximum
+    shifted_values = np.where(np.broadcast_to(finite, values.shape), shifted_values, -np.inf)
+    total = np.sum(np.exp(shifted_values), axis=axis, keepdims=True)
+    with np.errstate(divide="ignore"):
+        result = safe_maximum + np.log(total)
+    result = np.where(finite, result, -np.inf)
     return np.squeeze(result, axis=axis)
 
 
@@ -95,6 +99,8 @@ def forward_filter(
 
     unnormalized = log_initial + emissions[0]
     scale = float(_logsumexp(unnormalized, axis=0))
+    if not np.isfinite(scale):
+        raise ValueError("The first observation has zero probability under all states.")
     log_alpha[0] = unnormalized - scale
     total_log_likelihood += scale
 
@@ -107,6 +113,8 @@ def forward_filter(
         # Update with only the current observation x_t.
         unnormalized = predicted_log_prob + emissions[t]
         scale = float(_logsumexp(unnormalized, axis=0))
+        if not np.isfinite(scale):
+            raise ValueError(f"Observation at sequence index {t} has zero probability under all states.")
         log_alpha[t] = unnormalized - scale
         total_log_likelihood += scale
 
