@@ -344,3 +344,12 @@ Baseline اولیه‌ای که کاربر در دستور پایش ارائه �
 4. W3 اصلی ترکیب دو خروجی Freezeشده W1 و W2 باشد؛ مدل تعاملی در آزمایش مجزا ثبت شود.
 5. Auditor مستقل باشد و خودش نتواند خروجی تولیدی خود را تأیید کند.
 6. هیچ نقشی مجوز ارسال سفارش واقعی ندارد.
+
+
+## 2026-11-04 — BOOT-001: تطبیق هویت Baseline
+
+گزارش [تطبیق هویت Baseline W0](../reports/20261104_W0_BASELINE_IDENTITY_FA.md) در مخزن ثبت شد. C2-T030-SB050 با Expert و EA_Version گزارش‌شده به‌عنوان Baseline candidate شناسایی شد؛ H1STRUCT Audit نسخه تشخیصی مستقل است و MultiAudit v1.084 هنوز فقط بررسی ایستا و SETهای کنترل‌شده دارد.
+
+مقایسه 67 کلید در SETهای MultiAudit با Lookbackهای 5/10/20 نشان داد فقط InpStrengthSwingLookback و نام CSV خروجی متفاوت‌اند. شناسه داخلی نسخه MultiAudit به‌صورت دقیق 1.08-C2-H1STRUCT-ML-AUDIT-SB050-T030 است؛ این شناسه نباید با ML مدل‌سازی اشتباه شود.
+
+وضعیت BOOT-001 برابر CONDITIONAL است، نه COMPLETE: SET دقیق اجرای تاریخی C2 پایه و زنجیره قابل‌ردیابی EX5/Build-to-source هنوز در شواهد بررسی‌شده کامل نیست. هیچ Compile یا Strategy Tester جدیدی در این مرحله اجرا نشده است.
