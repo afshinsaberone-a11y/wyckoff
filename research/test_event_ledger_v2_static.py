@@ -28,6 +28,11 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertEqual(actual, EXPECTED_HEADER)
         self.assertEqual(len(actual), 28)
 
+    def test_v2_ledger_open_succeeds_before_legacy_csv_is_deleted(self):
+        ledger_open = SOURCE.index('g_ledgerHandle=FileOpen(g_ledgerFileName,')
+        legacy_delete = SOURCE.index('if(FileIsExist(g_csvFileName,FILE_COMMON))')
+        self.assertLess(ledger_open, legacy_delete)
+
     def test_run_id_collision_is_checked_before_legacy_csv_delete(self):
         collision = SOURCE.index('if(FileIsExist(g_ledgerFileName,FILE_COMMON))')
         legacy_delete = SOURCE.index('if(FileIsExist(g_csvFileName,FILE_COMMON))')
