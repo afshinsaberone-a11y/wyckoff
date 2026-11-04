@@ -25,5 +25,7 @@ jobs:
         run: python research/test_event_ledger_v2_static.py
       - name: Run Event Ledger v2 CSV validator tests
         run: python research/test_event_ledger_v2_validator.py
-      - name: Compile Python validator and test modules
-        run: python -m py_compile research/event_ledger_v2_validator.py research/test_event_ledger_v2_static.py research/test_event_ledger_v2_validator.py
+      - name: Run Replay A/B comparator tests
+        run: python research/test_replay_ab_compare.py
+      - name: Compile Python validator, comparator and test modules
+        run: python -m py_compile research/event_ledger_v2_validator.py research/replay_ab_compare.py research/test_event_ledger_v2_static.py research/test_event_ledger_v2_validator.py research/test_replay_ab_compare.py
