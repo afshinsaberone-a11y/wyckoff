@@ -99,6 +99,14 @@ class EventLedgerV2StaticTests(unittest.TestCase):
         self.assertIn('decisionID=rowCandidateID+":D"+(string)g_ledgerDecisionSequence;', SOURCE)
         self.assertIn('reasonCode=(status=="REJECTED" ? eventName : "ORDER_ACCEPTED");', SOURCE)
 
+    def test_decision_status_is_only_set_for_candidate_linked_events(self):
+        writer_start = SOURCE.index('void LedgerWriteEvent(')
+        writer_end = SOURCE.index('datetime eventTime=', writer_start)
+        writer = SOURCE[writer_start:writer_end]
+        self.assertIn('string eventDecisionStatus=LedgerDecisionStatus(eventName);', writer)
+        self.assertIn('if(rowCandidateID!="" && eventDecisionStatus!="")', writer)
+        self.assertIn('status=eventDecisionStatus;', writer)
+
     def test_trade_links_are_persisted_by_order_and_position(self):
         self.assertIn("struct SLedgerTradeLink", SOURCE)
         self.assertIn("int LedgerFindOrderLink(const ulong orderTicket)", SOURCE)
