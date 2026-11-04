@@ -23,3 +23,5 @@ jobs:
           python-version: "3.12"
       - name: Run Event Ledger v2 static tests
         run: python research/test_event_ledger_v2_static.py
+      - name: Run Event Ledger v2 CSV validator tests
+        run: python research/test_event_ledger_v2_validator.py
