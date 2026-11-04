@@ -78,4 +78,10 @@
 
 ## داشبورد درصد پیشرفت واقعی مسیرها
 
-آخرین درصدهای شواهد-محور، وضعیت Commit شاخه‌ها و نتیجه فعلی CI در [داشبورد پیشرفت Agentها](reports/20261104_AGENT_PROGRESS_DASHBOARD_FA.md) و [Snapshot ماشینی](experiments/AGENT_PROGRESS_DASHBOARD_20261104.json) ثبت شده‌اند. این درصدها بر مبنای تحویل‌های قابل‌مشاهده‌اند؛ شش مسیر هنوز Commit اختصاصی ندارند و CI پنج اجرای W1/W2/W3 هنوز queued است.
+آخرین درصدهای شواهد-محور، وضعیت Commit شاخه‌ها و نتیجه CI در [داشبورد پیشرفت Agentها](reports/20261104_AGENT_PROGRESS_DASHBOARD_FA.md) و [Snapshot ماشینی](experiments/AGENT_PROGRESS_DASHBOARD_20261104.json) ثبت شده‌اند. شش مسیر دارای CI اختصاصی آخرین اجراهای خود را با موفقیت گذرانده‌اند؛ مجموع تست‌های آخرین اجراها ۷۵ مورد است. این تست‌ها synthetic هستند و به معنی Compile MQL5، اجرای Strategy Tester یا آموزش روی XAUUSD واقعی نیستند.
+
+### Validatorهای جدید
+- [AGENT_01 — کیفیت CSV کندل OHLCV](https://github.com/afshinsaberone-a11y/wyckoff/tree/agent/01-data-engineering/research)
+- [AGENT_02 — کنترل بستهٔ شواهد چهار Run در BOOT-002](https://github.com/afshinsaberone-a11y/wyckoff/tree/agent/02-execution-backtest/research)
+- [AGENT_04 — اعتبارسنج Manifest زمانی Fold](https://github.com/afshinsaberone-a11y/wyckoff/tree/agent/04-governance/research)
+- [AGENT_03 — گزارش ممیزی W1/W2/W3](https://github.com/afshinsaberone-a11y/wyckoff/blob/agent/03-independent-audit/reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md)
