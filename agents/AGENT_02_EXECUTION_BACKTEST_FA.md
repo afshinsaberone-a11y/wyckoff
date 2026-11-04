@@ -42,3 +42,7 @@ Execution Spec، تست‌های تطبیق، Backtest Manifest، نتایج خ�
 
 ## معیار پذیرش
 یکسانی هزینه و قواعد اجرا بین نسخه‌ها؛ ثبت دقیق هویت Expert و داده؛ بازتولیدپذیری معاملات؛ و توضیح همه اختلاف‌های مادی بین Python و MT5.
+
+
+## Replay برای Event Ledger v2
+برای نسخه instrumentation، تست replay باید حداقل یک Candidate ردشده در Spread/Stop/Volume، یک Candidate با Order پذیرفته‌شده، Deal و خروج را بررسی کند. نقطه ایجاد Candidate و عدم تغییر منطق معاملاتی طبق [BOOT-003 instrumentation spec](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) کنترل شود.
