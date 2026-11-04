@@ -11,6 +11,14 @@
 - PASS شدن CI فقط کنترل repository/static contract است؛ به‌معنی Compile MQL5، اجرای MT5 Strategy Tester یا صحت عملکرد معاملاتی نیست.
 - اگر workflow اجرا نشده، fail شده یا روی Commit دیگری اجرا شده، آن را صریح ثبت کن.
 
+## ممیزی مهاجرت Legacy Event CSV
+- تعداد ردیف ورودی و خروجی باید برابر باشد.
+- event_idها باید deterministic و تکرارپذیر باشند.
+- legacy_setup_id فقط به Range-level identity نگاشت شود؛ Candidate و Label نباید ساخته شوند.
+- timestampهای فاقد timezone نباید UTC فرض شوند.
+- manifest باید hash فایل منبع و خروجی را داشته باشد.
+- CI migration pass، کیفیت OHLC/Tick یا آمادگی ML را اثبات نمی‌کند.
+
 ## چک‌لیست ممیزی
 - Look-Ahead، Data Leakage، target leakage و survivorship/selection bias.
 - حذف یا فقدان Candidateهای ردشده و منقضی‌شده.
