@@ -77,6 +77,9 @@ def purge_training_candidates(
     test_items = tuple(test)
     validate_unique_candidates(train_items)
     validate_unique_candidates(test_items)
+    cross_split_ids = {x.candidate_id for x in train_items} & {x.candidate_id for x in test_items}
+    if cross_split_ids:
+        raise ValueError(f"Candidate IDs appear in both train and test: {sorted(cross_split_ids)}")
 
     if embargo_bars < 0:
         raise ValueError("embargo_bars must be non-negative.")
