@@ -1,0 +1,105 @@
+# BOOT-003 — دستور اجرای Replay A/B بین C2 و Ledger v2
+
+**شاخه:** \`feature/w0-event-ledger-v2\`  
+**هدف:** اثبات اینکه Instrumentation و Event Ledger v2 رفتار معاملاتی C2 را تغییر نداده است.  
+**وضعیت فعلی:** ابزار مقایسه و تست‌های آن اضافه شده‌اند؛ Replay واقعی A/B هنوز اجرا نشده است.
+
+## 1. اصل مقایسه
+
+دو EA باید با یک داده و یک تنظیمات اجرا شوند:
+
+- **A — Baseline:** \`src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5\` از شاخهٔ \`main\`.
+- **B — Instrumented:** \`src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5\` از شاخهٔ \`feature/w0-event-ledger-v2\`.
+
+هر دو نسخه یک CSV قدیمی/مشترک با Schema یازده‌ستونی می‌نویسند:
+
+\`ServerTime, EA_Version, Symbol, InitialBalance, SetupID, Direction, Event, Details, RangeHigh, RangeLow, PositionID\`
+
+فقط ستون \`EA_Version\` در مقایسه نادیده گرفته می‌شود، چون شناسهٔ Build دو فایل عمداً متفاوت است. ده ستون دیگر، ترتیب سطرها و تعداد سطرها باید دقیقاً برابر باشند. فایل ۲۸ ستونی Event Ledger v2 در این مقایسه با CSV یازده‌ستونی C2 مقایسه نمی‌شود؛ آن فایل برای اعتبارسنجی هویت Candidate/Decision/Order/Deal است.
+
+## 2. قفل کردن محیط آزمایش
+
+قبل از Run A این مقادیر را ثبت و ثابت کنید:
+
+- حساب/سرور: همان حساب WMMarkets-Demo؛
+- Symbol: XAUUSD؛
+- Period: M5؛
+- Model: Every tick based on real ticks؛
+- تاریخ و ساعت شروع/پایان: دقیقاً یکسان و با ساعت سرور؛
+- Initial deposit، ارز حساب و Leverage: یکسان؛
+- Spread mode/value، commission، swap و execution delay: یکسان؛
+- همان تاریخچهٔ تیک و بارهای همگام‌شده؛
+- Optimization و Forward: خاموش؛ فقط Single Run؛
+- همهٔ ورودی‌های مشترک EA: یکسان.
+
+از بازهٔ دقیق Run A002 استفاده کنید؛ تاریخ را از لاگ یا Screenshot اجرای A002 استخراج کنید، حدس نزنید. هر دو فایل \`.set\` را از تب Inputs ذخیره کنید. ورودی‌های اختصاصی Ledger با پیشوند \`InpLedger\` فقط در B وجود دارند و Comparator آن‌ها را از مقایسهٔ ورودی‌های مشترک کنار می‌گذارد.
+
+## 3. ساخت دو EA و اجرای جداگانه
+
+1. فایل Baseline را از شاخهٔ \`main\` دانلود و در MetaEditor با نام اصلی خودش Compile کنید.
+2. فایل Ledger v2 را از شاخهٔ \`feature/w0-event-ledger-v2\` دانلود و جداگانه Compile کنید.
+3. برای هر دو، \`InpExportCSV=true\` باشد و مقدار \`InpCSVFileName\` مشترک بماند.
+4. Run A را با Baseline اجرا کنید و CSV یازده‌ستونی و گزارش HTML و Journal را با نام A ذخیره کنید.
+5. Run B را با Ledger v2 اجرا کنید. \`InpLedgerRunID\` باید یکتا باشد؛ برای نمونه \`WM20261104AB001\`. CSV یازده‌ستونی نسخهٔ B، CSV بیست‌وهشت‌ستونی Ledger و گزارش HTML و Journal را جداگانه ذخیره کنید.
+6. فایل‌های A و B را پس از هر Run از مسیر Common Files کپی و بلافاصله نام‌گذاری کنید؛ اجازه ندهید اجرای بعدی فایل قبلی را جایگزین کند.
+
+**مهم:** برای A/B، CSV قدیمی یازده‌ستونی هر دو EA را به Comparator بدهید. فایل \`Wyckoff_W0_event_ledger_v2_<RunID>.csv\` را به‌عنوان ورودی دوم Comparator استفاده نکنید.
+
+## 4. نام فایل‌های CSV
+
+نام دقیق در Journal چاپ می‌شود. الگوی ساخت نام در سورس:
+
+- Baseline: \`<InpCSVFileName بدون پسوند>_C2_SB050_T030_TIMING_B<BreakoutExpiry>_R<RetestExpiry>_RC<RecoveryExpiry>.csv\`
+- Ledger v2 legacy: \`<InpCSVFileName بدون پسوند>_LEDGER_V2_C2_SB050_T030_TIMING_B<BreakoutExpiry>_R<RetestExpiry>_RC<RecoveryExpiry>.csv\`
+- Event Ledger v2: \`<InpLedgerFileName بدون پسوند>_<InpLedgerRunID>.csv\`
+
+به خروجی Journal اتکا کنید، نه به نام فرضی فایل.
+
+## 5. اجرای Comparator در PowerShell
+
+فایل Comparator را در پوشهٔ کاری BOOT-003 دریافت کنید:
+
+\`\`\`powershell
+$u = "https://raw.githubusercontent.com/afshinsaberone-a11y/wyckoff/feature/w0-event-ledger-v2/research/replay_ab_compare.py"
+Invoke-WebRequest -Uri $u -OutFile .\\replay_ab_compare.py
+\`\`\`
+
+فایل‌ها را با نام‌های زیر در همان پوشه قرار دهید:
+
+- \`A_C2_legacy.csv\`
+- \`B_LEDGER_V2_legacy.csv\`
+- \`A_C2.set\`
+- \`B_LEDGER_V2.set\`
+
+سپس اجرا کنید:
+
+\`\`\`powershell
+python .\\replay_ab_compare.py .\\A_C2_legacy.csv .\\B_LEDGER_V2_legacy.csv --baseline-set .\\A_C2.set --ledger-set .\\B_LEDGER_V2.set --output-json .\\BOOT003_AB_compare.json
+\`\`\`
+
+کد خروجی:
+
+- \`0\`: ورودی‌های مشترک SET و جریان رویداد مشترک CSV برابرند؛ این فقط Gate مقایسهٔ EA است، نه تأیید کامل محیط Tester.
+- \`2\`: اختلاف در جریان رویداد یا ورودی‌های مشترک پیدا شده است.
+- \`3\`: ورودی نامعتبر، فایل ناقص یا خطای I/O.
+- \`4\`: CSVها برابرند، اما فایل‌های SET برای کنترل ورودی‌ها ارائه نشده‌اند؛ A/B هنوز Pass نیست.
+
+گزارش JSON تعداد سطرها، تعداد هر Event، Eventهای معاملاتی، اولین محل اختلاف، ستون‌های متفاوت و مقادیر دو طرف را نگه می‌دارد.
+
+## 6. معیار پذیرش نهایی A/B
+
+برای قبول Replay A/B باید همهٔ شرایط زیر مستند باشند:
+
+1. Comparator جریان ۱۱ ستونی را بدون اختلاف تأیید کند.
+2. ورودی‌های مشترک دو فایل SET برابر باشند.
+3. Symbol، Period، تاریخ‌ها، مدل تیک، Spread، Deposit، Leverage، Commission/Swap و تاریخچهٔ بازار از شواهد Tester برابر باشند.
+4. گزارش‌های HTML و Journal هر دو Run ذخیره و بررسی شده باشند.
+5. Order/Deal/Position و معاملات نهایی با History حساب/Tester تطبیق داده شوند.
+6. Hash فایل MQ5، EX5، SET، CSV و HTML هر دو Run ثبت شده باشد.
+7. هیچ هشدار تاریخچه، missing ticks، یا تفاوت محیطی حل‌نشده باقی نمانده باشد.
+
+اگر اولین اختلاف در Event stream ظاهر شد، اولین ردیف و مقادیر دو طرف باید بررسی شوند. اختلاف را با حذف سطر، تغییر دستی CSV یا نادیده گرفتن ستون‌های استراتژی پنهان نکنید. \`Details\`، \`SetupID\`، RangeHigh/Low، Direction، PositionID و زمان Event بخشی از مقایسه‌اند.
+
+## 7. محدودیت
+
+برابری CSV و ورودی‌ها نشان می‌دهد رویدادهای ثبت‌شدهٔ مشترک در دو Run یکسان‌اند؛ اما به‌تنهایی صحت دادهٔ بازار، یکسانی محیط Tester، اجرای صحیح partial fill در همهٔ حالت‌ها یا سودآوری را ثابت نمی‌کند. نتیجهٔ مالی، تطبیق تاریخچه و ممیزی مستقل باید جدا ثبت شود. تا تکمیل همهٔ Gateها، دادهٔ BOOT-003 برای آموزش W1/W2/W3 تأیید نهایی نیست.
