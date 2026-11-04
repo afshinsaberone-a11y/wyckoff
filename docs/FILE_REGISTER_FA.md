@@ -98,3 +98,7 @@
 - experiments/W0_C2_BASELINE_RUN_20261103.json — manifest شواهد اجرای تاریخی C2 و محدودیت‌های EX5/SET اصلی.
 - experiments/BOOT_002_STATIC_PREFLIGHT_RUN_002.json — GitHub Actions Preflight پیشرفته، 24 PASS / 0 FAIL.
 - docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md — نسخه 2.0، چهار Run A/B/C/D با جفت کنترل و دو حساسیت Lookback.
+
+
+- experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json — ثبت دو اجرای GitHub Actions موفق با 27 PASS / 0 FAIL روی طراحی چهار Run.
+- docs/BOOT_002_MULTIAUDIT_RUN_CARD_FA.md v2.0 — چهار Run کنترل/حساسیت؛ Lookback10/20 به‌عنوان تغییر فعال شرط SOS/SOW.
