@@ -141,3 +141,25 @@ Files:
 CI موفق یعنی تست‌های مصنوعی و قراردادهای محدود موجود عبور کرده‌اند. این نتیجه به معنی fit موفق HMM، یادگیری ML، پیش‌بینی سودآوری، مدل معتبر برای XAUUSD یا آماده بودن W3 برای اتصال به EA نیست.
 
 تا زمان وجود M1/Tick خام قابل ردیابی، Event/Candidate Ledger v2، Feature snapshot، Label outcome، Fold manifest و ارزیابی out-of-fold/after-cost، آموزش روی دادهٔ واقعی و ادعای performance باید BLOCKED بماند.
+
+
+## 8. نتیجهٔ بازبینی پس از اصلاح‌ها — 2026-11-04
+
+سه اصلاح پیشنهادی در شاخه‌های مربوط اعمال و CI نسخهٔ نهایی هر مسیر بررسی شد:
+
+| مسیر | Commit نهایی مورد تست | CI | تست‌های همان اجرا |
+|---|---|---|---:|
+| W1 | `0efa964b33876a31b8b580479bacef6f3788d24a` | [SUCCESS](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41867674205) | 10 |
+| W2 | `b9d34247aca7a3fc863d3acae863ebbbed5e6223` | [SUCCESS](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41867641271) | 12 |
+| W3 | `5a48f9548d9eddd2fc4737d5ce7b957c6f1a4728` | [SUCCESS](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41867566930) | 12 |
+
+W1: guard سرریز مجموع وزن‌های اولیه افزوده شد و آزمون عدم تأثیر future observation برای چند cutoff اجرا شد.  
+W2: بررسی strict نوع sequenceها اضافه شد؛ bool، float، مقدار منفی و sequence container نادرست رد می‌شوند.  
+W3: validator پایتون اکنون کلیدهای اضافی، حداقل 2 state، نوع timestampهای اختیاری و پارامترهای config را کنترل می‌کند تا با JSON Schema هم‌راستا باشد.
+
+این سه CI موفق، موارد گزارش‌شده در همین آزمون‌ها را رفع‌شده نشان می‌دهد؛ اما موارد زیر همچنان بازند:
+- W1 هنوز fit harness و تضمین fold-local در کل pipeline ندارد.
+- W2 هنوز Fold builder کامل، purge پنجره Feature و Dataset واقعی Candidate/Label ندارد.
+- W3 هنوز integration عملیاتی با W1/W2 Freeze‌شده ندارد.
+
+نتیجهٔ بازبینی پس از اصلاح‌ها: **PASS برای تست‌های synthetic این سه primitive؛ CONDITIONAL برای استفادهٔ پژوهشیِ داده‌محور؛ BLOCKED برای fit روی XAUUSD واقعی و integration عملیاتی.**
