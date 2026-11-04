@@ -176,7 +176,7 @@ class EventLedgerV2ValidatorTests(unittest.TestCase):
     def test_accepted_order_event_requires_order_ticket(self):
         rows = valid_candidate_rows()
         rows.append(make_row(6, "ORDER_OPENED", CycleID=CYCLE, AttemptID=ATTEMPT,
-                             CandidateID=CANDIDATE, DecisionID=CANDIDATE + ":D1",
+                             CandidateID=CANDIDATE, DecisionID=CANDIDATE + ":D2",
                              DecisionStatus="ACCEPTED", ReasonCode="ORDER_ACCEPTED",
                              OrderID=""))
         report = validate_rows(SCHEMA_COLUMNS, rows)
