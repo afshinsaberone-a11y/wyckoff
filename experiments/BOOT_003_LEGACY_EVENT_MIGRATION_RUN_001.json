@@ -108,5 +108,24 @@
       "artifact_id": 13338794451,
       "artifact_sha256": "00482187a859e1284e9fc0dbacd2d676d017538129a708082d1846fe9a50e7c0"
     }
-  ]
+  ],
+  "latest_revalidation": {
+    "workflow_run_id": 41861217665,
+    "workflow_run_url": "https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41861217665",
+    "head_sha": "f2a7ae8e8f1eb736c291a58c5de23428458e7c4a",
+    "conclusion": "success",
+    "preflight_checks_passed": 27,
+    "unit_tests_passed": 5,
+    "source_rows": 346,
+    "normalized_rows": 346,
+    "unique_legacy_range_ids": 65,
+    "candidate_ids_created": 0,
+    "labels_created": 0,
+    "output_sha256": "5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e",
+    "artifact_id": 13339607748,
+    "artifact_name": "legacy-event-ledger-f2a7ae8e8f1eb736c291a58c5de23428458e7c4a",
+    "artifact_size_bytes": 26858,
+    "artifact_sha256": "b7eb16bc7742ac3f9bcbec0a1caca8f9a5afbfea8875afc93e1c35a737557393",
+    "artifact_expires_at_utc": "2026-12-04T15:46:33Z"
+  }
 }
