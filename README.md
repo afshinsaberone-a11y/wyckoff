@@ -74,3 +74,8 @@
 - [برنامه راه‌اندازی و بسته‌های کاری BOOT-001 تا BOOT-007](docs/FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md)
 - [مدل استقرار و تحویل بین ایجنت‌ها](agents/EXECUTION_AND_HANDOFF_MODEL_FA.md)
 - [قرارداد Agent Handoff](contracts/AGENT_HANDOFF_SCHEMA_FA.md)
+
+
+## داشبورد درصد پیشرفت واقعی مسیرها
+
+آخرین درصدهای شواهد-محور، وضعیت Commit شاخه‌ها و نتیجه فعلی CI در [داشبورد پیشرفت Agentها](reports/20261104_AGENT_PROGRESS_DASHBOARD_FA.md) و [Snapshot ماشینی](experiments/AGENT_PROGRESS_DASHBOARD_20261104.json) ثبت شده‌اند. این درصدها بر مبنای تحویل‌های قابل‌مشاهده‌اند؛ شش مسیر هنوز Commit اختصاصی ندارند و CI پنج اجرای W1/W2/W3 هنوز queued است.
