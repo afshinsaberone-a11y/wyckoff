@@ -1,105 +1,88 @@
-# داشبورد پیشرفت واقعی ۹ مسیر کاری — Financial ML Core+
+# داشبورد شواهد-محور پیشرفت ۹ مسیر کاری — 2026-11-04
 
-**تاریخ snapshot: 2026-11-04**  
-**Commit مبنای مقایسه Branchها:** `fb1afdf45d62dc8a155792a4954922aa710a4411`  
+**Commit مرجع مقایسه Branchها:** `b036b4ab9db38a2f7eab2968e266da420198b08c`  
 **مخزن:** https://github.com/afshinsaberone-a11y/wyckoff  
-**مبنای درصدها:** شواهد ثبت‌شده در Issue، Branch، Commit، فایل‌های خروجی و GitHub Actions؛ نه زمان سپری‌شده یا ادعای فعال‌بودن عامل خودمختار.
+**روش:** درصدها تخمین تکمیل تحویل‌های قابل مشاهده‌اند؛ نه ساعت کار، نه telemetry عامل‌های خودمختار و نه معیار سودآوری.
 
-## خلاصه مدیریتی
+## خلاصه
 
-- **میانگین ساده ۹ مسیر: 33.3٪**. این میانگین فقط شاخص مقایسه‌ای است؛ به‌دلیل تفاوت اندازه و وابستگی کارها، معادل درصد تکمیل کل پروژه نیست.
-- **۳ مسیر W1/W2/W3** کد و تست مستقل ثبت کرده‌اند.
-- **۵ مسیر AGENT_00 تا AGENT_02 و AGENT_04 و W0** هنوز Commit اختصاصی جلوتر از main ندارند. AGENT_03 اکنون گزارش مستقل خود را در Branch اختصاصی Commit کرده است.
-- **۵ از ۵ اجرای CI مخصوص prototypeها با موفقیت پایان یافته‌اند**؛ ۲۱ تست‌کیس متمایز (۳۶ اجرای تست‌کیس با احتساب تکرارها) در logها PASS هستند.
-- مدل‌های HMM/ML روی داده واقعی XAUUSD هنوز آموزش داده نشده‌اند؛ W3 عملیاتی نیز شروع نشده است.
+- میانگین سادهٔ ۹ مسیر کاری: **43.9%**. این عدد درصد تکمیل کل پروژه نیست.
+- **۵ مسیر دارای prototype/test جدید** آخرین اجرای CI خود را با SUCCESS گذرانده‌اند: AGENT_01، AGENT_04، W1، W2 و W3.
+- تعداد تست‌های آخرین اجرای هر مسیر: **۵۹ تست** (۱۲ + ۱۳ + ۱۰ + ۱۲ + ۱۲).
+- AGENT_03 گزارش ممیزی مستقل را تهیه و پس از اصلاح‌های W1/W2/W3 به‌روزرسانی کرده است.
+- هیچ Agent سرویس خودمختار/همیشه‌فعال مستقر نشده؛ این‌ها Workstreamهای نقش‌محور و branchهای قابل‌ردیابی‌اند.
+- آموزش HMM/ML روی XAUUSD واقعی، BOOT-002 MT5 و Forward Demo هنوز شروع/تأیید نشده‌اند.
 
-## جدول درصد پیشرفت
+## وضعیت پیشرفت
 
-| نقش | پیشرفت | وضعیت قابل مشاهده | مانع یا گام بعدی |
+| نقش | پیشرفت | شواهد فعلی | مانع اصلی |
 |---|---:|---|---|
-| AGENT_00 Orchestrator | **30٪** | Issue/Branchها، برنامه Sprint، گزارش شروع و Manifest هماهنگی ثبت شده‌اند | گزارش تحویل‌های واقعی نقش‌ها، ثبت تصمیم‌ها و پیگیری مداوم؛ Branch اختصاصی هنوز Commit جلوتر از main ندارد |
-| AGENT_01 Data Engineering | **10٪** | Issue و Branch ایجاد شده‌اند | Commit و artifact اختصاصی، inventory داده، pipeline و validator؛ M1/Tick خام در مخزن موجود نیست |
-| AGENT_02 Execution/Backtest | **10٪** | Issue و Branch ایجاد شده‌اند | Commit اختصاصی، parser، دو Compile و چهار Run واقعی MT5؛ اجرای Tester در محیط کاربر لازم است |
-| AGENT_03 Independent Audit | **25٪** | گزارش ممیزی مستقل W1/W2/W3 در Branch اختصاصی ثبت شده؛ CI و محدودیت‌های هر prototype با log تأیید شده‌اند | پیگیری اصلاح یافته‌های W2/W3، همگام‌سازی Branch و ممیزی نسخه اصلاحی |
-| AGENT_04 Governance | **10٪** | Issue و Branch ایجاد شده‌اند | Freeze قراردادها و آزمون‌های مستقل leakage/fold؛ artifact اختصاصی این مسیر هنوز Commit نشده |
-| W0 Wyckoff/Ledger | **10٪** | Issue و Branch ایجاد شده‌اند | پیاده‌سازی MQL5 برای Event/Candidate Ledger v2، سپس Compile/Replay؛ مشخصات موجود به‌تنهایی پیاده‌سازی نیست |
-| W1 HMM | **70٪** | forward-filter prototype؛ دو CI موفق، هرکدام ۸ تست (۱۶ اجرا) | fold-local fit harness، آزمون‌های property-based و ممیزی مستقل؛ fit واقعی همچنان BLOCKED |
-| W2 ML Scoring | **70٪** | Candidate validator؛ دو CI موفق، هرکدام ۷ تست (۱۴ اجرا) | strict type validation، Fold/feature-window controls، candidate dataset و scorer؛ آموزش واقعی BLOCKED |
-| W3 Hybrid | **65٪** | JSON contract و fail-closed validator؛ یک CI موفق با ۶ تست | رفع mismatch بین schema و Python validator؛ integration عملیاتی تا Freeze W1/W2 و Ledger متوقف است |
+| AGENT_00 Orchestrator | **30%** | ۹ Issue/Branch، Sprint plan و manifest | تحویل هماهنگی و integration evidence |
+| AGENT_01 Data Engineering | **45%** | OHLCV quality validator؛ ۱۲ تست CI موفق | ingestion داده واقعی M1/Tick، pipeline و ممیزی داده بروکر |
+| AGENT_02 Execution/Backtest | **10%** | Run Card چهارگانه BOOT-002 در main | دو Compile و چهار MT5 Tester run در محیط کاربر |
+| AGENT_03 Independent Audit | **35%** | گزارش audit و follow-up با CI evidence | audit مجدد بعد از اصلاح‌های بعدی و همگام‌سازی branch |
+| AGENT_04 Governance | **45%** | Fold manifest validator؛ ۱۳ تست CI موفق | ساخت Fold واقعی و candidate-level purge؛ Freeze پروتکل |
+| W0 Wyckoff/Ledger | **10%** | مشخصات Event Ledger v2 | instrumentation در MQL5، Compile و Replay |
+| W1 HMM | **75%** | forward filter مقاوم‌تر؛ ۱۰ تست CI موفق | fit harness fold-local و داده واقعی |
+| W2 ML Scoring | **75%** | candidate validator؛ strict sequence types؛ ۱۲ تست CI موفق | dataset واقعی Candidate/Feature/Label و Fold builder |
+| W3 Hybrid | **70%** | schema/interface validator اصلاح‌شده؛ ۱۲ تست CI موفق | اتصال فقط پس از Freeze واقعی W1/W2 و Ledger |
 
-## روش محاسبه درصد
+## آخرین CIهای تأییدشده
 
-درصد، **برآورد تکمیل تحویل‌های هر Issue** است و با وزن‌دهی به این مراحل محاسبه می‌شود:
+| مسیر | Run | نتیجه | تست‌ها |
+|---|---:|---|---:|
+| AGENT_01 | [41868381224](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41868381224) | SUCCESS | 12 |
+| AGENT_04 | [41868015500](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41868015500) | SUCCESS | 13 |
+| W1 | [41867674205](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41867674205) | SUCCESS | 10 |
+| W2 | [41867641271](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41867641271) | SUCCESS | 12 |
+| W3 | [41867566930](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41867566930) | SUCCESS | 12 |
 
-| مرحله | وزن |
-|---|---:|
-| تعریف محدوده، Issue و Branch | 10٪ |
-| مطالعه و طراحی/Research note | 15٪ |
-| artifact اجرایی یا پیاده‌سازی | 30٪ |
-| نوشتن تست‌ها | 10٪ |
-| اجرای موفق و قابل‌تکرار تست‌ها | 15٪ |
-| ممیزی مستقل و تحویل | 10٪ |
-| ادغام، Freeze و پذیرش نهایی | 10٪ |
-
-برای شش مسیر بدون Commit اختصاصی، صرفاً ثبت Issue/Branch به‌عنوان شروع کار منظور شده است. اسناد و کارهای قبلی موجود در main—مانند مهاجرت 346 Event، Run Card و گزارش‌های Baseline—به‌اشتباه به‌عنوان خروجی تازه Agentها حساب نشده‌اند؛ آن‌ها شواهد و پیش‌نیازهای پروژه‌اند. برای AGENT_00، مستندات هماهنگی Sprint و Manifest نیز به‌عنوان خروجی شروع هماهنگی لحاظ شده‌اند.
-
-برای W1/W2/W3، تست‌های نوشته‌شده و اجراهای موفق CI در درصد لحاظ شده‌اند؛ اما هیچ امتیازی بابت fit روی دادهٔ واقعی XAUUSD، OOS یا integration عملیاتی منظور نشده است. درصد AGENT_03 نیز صرفاً تحویل گزارش ممیزی اولیه را منعکس می‌کند، نه بسته‌شدن همهٔ یافته‌ها.
-
-## شواهد زنده Branchها
-
-| Branch | Ahead نسبت به merge-base | Behind نسبت به main | تفسیر |
-|---|---:|---:|---|
-| AGENT_00 | 0 | 10 | بدون Commit اختصاصی؛ هماهنگی در main مستند است |
-| AGENT_01 | 0 | 10 | بدون Commit اختصاصی؛ داده خام و pipeline باقی است |
-| AGENT_02 | 0 | 10 | بدون Commit اختصاصی؛ نیازمند Compile/Tester واقعی |
-| AGENT_03 | 1 | 10 | گزارش ممیزی prototypeها Commit شده؛ یافته‌ها نیازمند پیگیری |
-| AGENT_04 | 0 | 10 | بدون Commit اختصاصی؛ contract/fold governance باقی است |
-| W0 | 0 | 10 | بدون Commit اختصاصی؛ Ledger v2 MQL5 هنوز پیاده‌سازی نشده |
-| W1 | 6 | 17 | کد و تست مستقل؛ دو CI موفق؛ Branch با main واگراست |
-| W2 | 8 | 17 | validator و تست مستقل؛ دو CI موفق؛ Branch با main واگراست |
-| W3 | 5 | 17 | contract و validator مستقل؛ CI موفق؛ Branch با main واگراست |
-
-**نکته:** Ahead/behind در Branchهای W1/W2/W3 به معنی آماده‌بودن برای Merge نیست؛ Branchها باید با تغییرات جدید main همگام شوند و تست‌ها/ممیزی تکمیل شوند.
-
-## وضعیت CI مخصوص W1/W2/W3
-
-<badge>۵/۵ SUCCESS</badge> — ۲۱ تست‌کیس متمایز، ۳۶ اجرای تست‌کیس شامل تکرار اجرای W1 و W2.
-
-| مسیر | Run ID | Job status | نتیجه |
-|---|---:|---|---|
-| W1 | 41864325081 | completed | SUCCESS — ۸ تست |
-| W1 | 41864331424 | completed | SUCCESS — ۸ تست |
-| W2 | 41864355912 | completed | SUCCESS — ۷ تست |
-| W2 | 41864363747 | completed | SUCCESS — ۷ تست |
-| W3 | 41864218329 | completed | SUCCESS — ۶ تست |
-
-لینک‌ها:
-- [W1 Run 41864325081](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41864325081)
-- [W1 Run 41864331424](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41864331424)
-- [W2 Run 41864355912](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41864355912)
-- [W2 Run 41864363747](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41864363747)
-- [W3 Run 41864218329](https://github.com/afshinsaberone-a11y/wyckoff/actions/runs/41864218329)
+نتایج از وضعیت Job و خروجی log تست‌ها بررسی شده‌اند. این تست‌ها prototypeهای Python/contract روی ورودی‌های مصنوعی را ارزیابی می‌کنند؛ به معنی آموزش HMM/ML یا ارزیابی عملکرد معاملاتی نیستند.
 
 ## گزارش ممیزی مستقل
 
-[گزارش AGENT_03 روی Branch ممیزی](https://github.com/afshinsaberone-a11y/wyckoff/blob/agent/03-independent-audit/reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md) — نتیجه CONDITIONAL PASS برای prototypeهای synthetic؛ mismatch قرارداد W3 و نبود type validation سخت‌گیرانه در W2 از یافته‌های اصلی‌اند.
+[گزارش AGENT_03 — ممیزی W1/W2/W3](https://github.com/afshinsaberone-a11y/wyckoff/blob/agent/03-independent-audit/reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md)
 
-## Gateهای پروژه که هنوز بسته نشده‌اند
+اصلاح‌های ثبت‌شده:
+- W1: کنترل overflow مجموع احتمال اولیه و آزمون future-invariance در چند cutoff.
+- W2: رد bool/float/sequenceهای منفی یا container نامعتبر در indexها.
+- W3: کنترل کلیدهای اضافی، حداقل دو state، فیلدهای اختیاری و تنظیمات validator مطابق قرارداد.
 
-1. **BOOT-001 Baseline:** تطبیق 67 ورودی SET بازسازی‌شده با Journal/SOURCE موفق است، اما EX5 تاریخی و hash آن موجود نیست؛ Freeze نهایی همچنان CONDITIONAL است.
-2. **BOOT-002 MT5:** Run Card آماده است، ولی دو Compile و چهار Tester Run جدید A/B/C/D انجام نشده‌اند.
-3. **BOOT-003 Ledger:** مهاجرت اولیه 346 Event در CI موفق بوده؛ اما Event/Candidate Ledger v2 در MQL5 هنوز پیاده‌سازی، Compile و Replay نشده است.
-4. **Data readiness:** M1/Tick خام، Candidate ID مستقل، Feature snapshot و Outcome label واقعی کافی نیست.
-5. **W1/W2:** فقط research و synthetic prototype مجاز است؛ fit روی XAUUSD واقعی BLOCKED است.
-6. **W3:** integration عملیاتی BLOCKED تا Freeze مستقل W1/W2 و آماده‌شدن Ledger.
+## وضعیت Branchها نسبت به main
 
-## اولویت اجرایی بعدی
+اعداد زیر حاصل compare واقعی `main...branch` با commit مرجع بالا هستند؛ Ahead/Behind به معنی آمادگی Merge نیست.
 
-1. پیگیری یافته‌های ممیزی W1/W2/W3 و رفع type validation در W2 و schema parity در W3؛ سپس CI مجدد.
-2. AGENT_01، AGENT_02، AGENT_04 و W0 باید اولین Commit و artifact اختصاصی خود را در Branch مربوط ثبت کنند؛ AGENT_03 گزارش اولیه را تحویل داده است.
-3. پس از اصلاح W2/W3، AGENT_03 ممیزی مجدد انجام دهد و سپس Branchها را برای همگام‌سازی/PR آماده کند.
-4. BOOT-002 و Event Ledger v2 از مسیر MT5 کاربر پیش بروند؛ نتیجه اجرا تا زمان دریافت HTML/Journal/CSV و Compile logs ثبت نمی‌شود.
+| Branch | Ahead | Behind |
+|---|---:|---:|
+| AGENT_00 | 0 | 14 |
+| AGENT_01 | 1 | 14 |
+| AGENT_02 | 0 | 14 |
+| AGENT_03 | 2 | 14 |
+| AGENT_04 | 2 | 14 |
+| W0 | 0 | 14 |
+| W1 | 8 | 21 |
+| W2 | 10 | 21 |
+| W3 | 7 | 21 |
 
-## محدودیت معنای «Agent»
+Branchهای W1/W2/W3 و کارهای جدید زیرساختی از main واگرا هستند؛ قبل از PR باید همگام‌سازی، تست مجدد و review شود. هیچ Branchی در این به‌روزرسانی Merge نشده است.
 
-این ۹ مورد، **۹ مسیر کاری نقش‌محور در GitHub** هستند که با Issue و Branch ردیابی می‌شوند؛ ۹ پردازه Agent خودمختار و همیشه‌فعال deploy نشده‌اند. درصد بالا نیز درصد تکمیل artifact و تحویل است، نه ساعت کار یا وضعیت یک ربات در حال اجرا.
+## Gateهای باز
+
+1. **BOOT-001 Baseline:** همچنان CONDITIONAL؛ EX5 تاریخی و hash کامل binary در دسترس نیست.
+2. **BOOT-002 MT5:** هنوز دو MetaEditor Compile و چهار اجرای A/B/C/D انجام نشده‌اند. این مرحله نیازمند MT5/MetaEditor و تاریخچهٔ WMMarkets در سیستم کاربر است.
+3. **BOOT-003 Ledger v2:** مهاجرت Legacy موفق بوده، اما instrumentation جدید MQL5 و Replay هنوز انجام نشده است.
+4. **Data readiness:** validator جدید فقط با داده مصنوعی تست شده؛ هنوز فایل واقعی M1/Tick به آن داده نشده است.
+5. **W1/W2 real training:** BLOCKED تا آماده‌شدن Candidate/Feature/Label dataset، Foldهای معتبر و gateهای داده/اجرا.
+6. **W3 operational integration:** BLOCKED تا Freeze مستقل خروجی W1/W2 و Ledger.
+
+## گام بعدی پیشنهادی
+
+- رفع هر نقص باقی‌مانده در W1/W2/W3 و بازبینی مستقل مجدد.
+- AGENT_01: اجرای validator روی CSVهای واقعی M1/کندل و ساخت گزارش data inventory/coverage.
+- AGENT_04: توسعهٔ candidate-level Fold/purge validation پس از تثبیت label horizon.
+- W0/AGENT_02: تکمیل Event Ledger v2 و اجرای BOOT-002 در MT5 کاربر.
+- پس از دریافت HTML/Journal/CSV و Compile logs، نتایج واقعی MT5 به مخزن افزوده شود.
+
+## محدودیت مهم
+
+هیچ‌یک از این CIها MQL5 را در MetaEditor کامپایل یا Strategy Tester را اجرا نمی‌کنند. نتایج مالی قبلی همچنان محدود و زیان‌ده‌اند؛ این به‌روزرسانی هیچ ادعای سودآوری یا آمادگی Live ایجاد نمی‌کند.

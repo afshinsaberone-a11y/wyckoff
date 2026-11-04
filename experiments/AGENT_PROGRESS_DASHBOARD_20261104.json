@@ -2,8 +2,8 @@
   "snapshot_date": "2026-11-04",
   "repo": "afshinsaberone-a11y/wyckoff",
   "metric": "weighted_deliverable_completion_estimate",
-  "mean_workstream_progress_pct": 33.3,
-  "note": "Simple arithmetic mean across nine role workstreams; not overall project completion and not runtime/activity telemetry.",
+  "mean_workstream_progress_pct": 43.9,
+  "note": "Simple arithmetic mean of nine evidence-based workstream deliverable estimates; not overall project completion, not runtime telemetry, and not financial performance.",
   "weights_pct": {
     "scope_issue_branch": 10,
     "research_design": 15,
@@ -21,34 +21,34 @@
       "branch": "agent/00-orchestrator-parallel-sprint",
       "progress_pct": 30,
       "branch_ahead": 0,
-      "branch_behind_main": 10,
+      "branch_behind_main": 14,
       "evidence": [
-        "parallel sprint plan",
-        "start report",
-        "sprint manifest",
-        "nine issues and branches registered"
+        "nine role-based issues and branches",
+        "sprint plan, orchestration report and manifest"
       ],
       "blockers": [
-        "no dedicated branch commit ahead of main",
-        "ongoing handoff and decision log not yet evidenced"
+        "no dedicated implementation commit",
+        "handoff evidence and integration coordination remain open"
       ]
     },
     {
       "role": "AGENT_01",
       "issue": 3,
       "branch": "agent/01-data-engineering",
-      "progress_pct": 10,
-      "branch_ahead": 0,
-      "branch_behind_main": 10,
+      "progress_pct": 45,
+      "branch_ahead": 1,
+      "branch_behind_main": 14,
       "evidence": [
-        "issue and branch created"
+        "OHLCV quality validator implemented",
+        "12 synthetic unit tests passed in dedicated GitHub Actions run 41868381224",
+        "separates structural corruption from gaps/zero or missing spread"
       ],
       "prior_project_evidence_not_attributed": [
         "legacy migration 346/346 rows and historical CI pass"
       ],
       "blockers": [
-        "no dedicated branch commit",
-        "raw M1/Tick inventory and deterministic pipeline incomplete"
+        "no raw broker M1/Tick source ingested by this validator",
+        "no production data pipeline, MTF resampling reconciliation or actual dataset quality audit"
       ]
     },
     {
@@ -57,33 +57,34 @@
       "branch": "agent/02-execution-backtest",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 10,
+      "branch_behind_main": 14,
       "evidence": [
-        "issue and branch created"
+        "Issue and branch created",
+        "BOOT-002 four-run card and preflight requirements exist in main"
       ],
       "prior_project_evidence_not_attributed": [
         "BOOT-002 Run Card and static preparation"
       ],
       "blockers": [
-        "no dedicated branch commit",
-        "two MetaEditor compiles and four MT5 runs not completed"
+        "no dedicated branch artifact",
+        "two MetaEditor compiles and four MT5 Strategy Tester runs still require user's MT5 environment"
       ]
     },
     {
       "role": "AGENT_03",
       "issue": 5,
       "branch": "agent/03-independent-audit",
-      "progress_pct": 25,
-      "branch_ahead": 1,
-      "branch_behind_main": 10,
+      "progress_pct": 35,
+      "branch_ahead": 2,
+      "branch_behind_main": 14,
       "evidence": [
-        "issue and branch created",
-        "independent W1/W2/W3 prototype audit committed to dedicated branch",
-        "five CI workflow jobs and their logs independently checked"
+        "independent W1/W2/W3 prototype audit committed",
+        "follow-up audit added after fixes and final CI evidence",
+        "identified schema parity and strict input validation issues"
       ],
       "blockers": [
-        "audit findings W2 strict sequence types and W3 schema parity require follow-up",
-        "branch remains divergent from main; rebase/PR review pending"
+        "branch remains divergent and not merged",
+        "independent review of future fixes and MT5 evidence still required"
       ],
       "audit_report": "reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md"
     },
@@ -91,18 +92,20 @@
       "role": "AGENT_04",
       "issue": 6,
       "branch": "agent/04-governance",
-      "progress_pct": 10,
-      "branch_ahead": 0,
-      "branch_behind_main": 10,
+      "progress_pct": 45,
+      "branch_ahead": 2,
+      "branch_behind_main": 14,
       "evidence": [
-        "issue and branch created"
+        "chronological Fold manifest validator added",
+        "13 synthetic unit tests passed in run 41868015500",
+        "strict train/validation/test order and fit/tuning scopes checked"
       ],
       "prior_project_evidence_not_attributed": [
         "schema 1.2-draft and fold contracts"
       ],
       "blockers": [
-        "no dedicated branch commit",
-        "contract freeze and independent leakage tests incomplete"
+        "does not build folds or perform candidate-level purging",
+        "contract freeze and real label/fold dataset remain incomplete"
       ]
     },
     {
@@ -111,115 +114,102 @@
       "branch": "agent/w0-wyckoff-ledger",
       "progress_pct": 10,
       "branch_ahead": 0,
-      "branch_behind_main": 10,
+      "branch_behind_main": 14,
       "evidence": [
-        "issue and branch created"
+        "Issue and branch created",
+        "MQL5 Event Ledger v2 design specification exists in main"
       ],
       "prior_project_evidence_not_attributed": [
         "Event Ledger v2 specification"
       ],
       "blockers": [
-        "no dedicated branch commit",
-        "MQL5 instrumentation, compile and replay not done"
+        "no dedicated MQL5 instrumentation commit",
+        "compile/replay of candidate and decision ledger not done"
       ]
     },
     {
       "role": "W1",
       "issue": 8,
       "branch": "agent/w1-hmm-regime-learning",
-      "progress_pct": 70,
-      "branch_ahead": 6,
-      "branch_behind_main": 17,
+      "progress_pct": 75,
+      "branch_ahead": 8,
+      "branch_behind_main": 21,
       "evidence": [
-        "HMM forward-filter research note",
-        "research/w1_forward_filter.py",
-        "research/test_w1_forward_filter.py",
-        "dedicated CI workflow"
+        "causal HMM forward-filter primitive",
+        "overflow-safe initial probability normalization",
+        "10 tests passed in final run 41867674205"
       ],
-      "tests_authored": 8,
+      "tests_authored": 10,
       "ci_runs": [
         {
-          "id": 41864325081,
+          "id": 41867674205,
           "status": "completed",
           "conclusion": "success",
-          "tests": 8
-        },
-        {
-          "id": 41864331424,
-          "status": "completed",
-          "conclusion": "success",
-          "tests": 8
+          "tests": 10
         }
       ],
       "blockers": [
-        "fold-local fit harness and model fitting not implemented",
-        "no real XAUUSD training; blocked pending dataset/gates",
-        "independent audit follow-up and integration freeze pending"
+        "fold-local fit harness and model fitting are not implemented",
+        "real XAUUSD fit blocked pending data and gates",
+        "no OOS evaluation or operational integration"
       ],
-      "tests_executed": 16
+      "tests_executed": 10
     },
     {
       "role": "W2",
       "issue": 9,
       "branch": "agent/w2-ml-scoring-learning",
-      "progress_pct": 70,
-      "branch_ahead": 8,
-      "branch_behind_main": 17,
+      "progress_pct": 75,
+      "branch_ahead": 10,
+      "branch_behind_main": 21,
       "evidence": [
-        "Candidate point-in-time validator",
-        "purge/group/embargo logic",
-        "research/test_w2_candidate_validator.py",
-        "dedicated CI workflow"
+        "point-in-time candidate validator and interval/group/embargo purge primitive",
+        "strict sequence type validation added",
+        "12 tests passed in final run 41867641271"
       ],
-      "tests_authored": 7,
+      "tests_authored": 12,
       "ci_runs": [
         {
-          "id": 41864355912,
+          "id": 41867641271,
           "status": "completed",
           "conclusion": "success",
-          "tests": 7
-        },
-        {
-          "id": 41864363747,
-          "status": "completed",
-          "conclusion": "success",
-          "tests": 7
+          "tests": 12
         }
       ],
       "blockers": [
-        "strict sequence type validation incomplete",
-        "Fold/feature-window controls and real candidate labels absent",
-        "no fitted scorer or after-cost OOS evaluation; real fit blocked"
+        "no full Fold builder or feature-window purge",
+        "no real Candidate/Feature/Label dataset or fitted scorer",
+        "no after-cost OOS; real XAUUSD fit blocked"
       ],
-      "tests_executed": 14
+      "tests_executed": 12
     },
     {
       "role": "W3",
       "issue": 10,
       "branch": "agent/w3-hybrid-integration",
-      "progress_pct": 65,
-      "branch_ahead": 5,
-      "branch_behind_main": 17,
+      "progress_pct": 70,
+      "branch_ahead": 7,
+      "branch_behind_main": 21,
       "evidence": [
-        "versioned HMM/ML JSON interface contract",
-        "research/w3_interface_validator.py",
-        "research/test_w3_interface_validator.py",
-        "dedicated CI workflow"
+        "versioned HMM-to-ML interface contract",
+        "Python validator aligned more closely with schema: unknown fields, state count, optional timestamps and config validation",
+        "12 tests passed in final run 41867566930"
       ],
-      "tests_authored": 6,
+      "tests_authored": 12,
       "ci_runs": [
         {
-          "id": 41864218329,
+          "id": 41867566930,
           "status": "completed",
           "conclusion": "success",
-          "tests": 6
+          "tests": 12
         }
       ],
       "blockers": [
-        "schema/Python validator parity gap needs correction",
-        "operational integration blocked pending W1/W2 freeze and Ledger readiness"
+        "W1/W2 real model artifacts not available",
+        "operational integration blocked until independent freeze and Ledger readiness",
+        "no OOS or financial performance evidence"
       ],
-      "tests_executed": 6
+      "tests_executed": 12
     }
   ],
   "ci_summary": {
@@ -228,8 +218,23 @@
     "queued": 0,
     "passed": 5,
     "failed": 0,
-    "unique_test_cases": 21,
-    "test_case_executions": 36
+    "latest_workstream_jobs": 5,
+    "latest_workstream_jobs_passed": 5,
+    "tests_in_latest_workstream_jobs": 59,
+    "test_counts": {
+      "AGENT_01": 12,
+      "AGENT_04": 13,
+      "W1": 10,
+      "W2": 12,
+      "W3": 12
+    },
+    "run_ids": [
+      41868381224,
+      41868015500,
+      41867674205,
+      41867641271,
+      41867566930
+    ]
   },
   "gates": {
     "boot_001_baseline": "CONDITIONAL",
@@ -240,12 +245,27 @@
     "real_xauusd_ml_training": "BLOCKED",
     "w3_operational_integration": "BLOCKED"
   },
-  "main_comparison_ref": "fb1afdf45d62dc8a155792a4954922aa710a4411",
-  "snapshot_commit": "fb1afdf45d62dc8a155792a4954922aa710a4411",
+  "main_comparison_ref": "b036b4ab9db38a2f7eab2968e266da420198b08c",
+  "snapshot_commit": "b036b4ab9db38a2f7eab2968e266da420198b08c",
   "independent_audit": {
     "branch": "agent/03-independent-audit",
-    "commit": "044e3ccbb28b7dc1bd3545c48b20aba69aee4b85",
-    "verdict": "CONDITIONAL_PASS_SYNTHETIC_ONLY",
+    "commit": "317fab4788e25b4e8bbbc69f31b645076ac0c151",
+    "verdict": "PASS_SYNTHETIC_PRIMITIVES_WITH_CONDITIONS; REAL_XAUUSD_TRAINING_BLOCKED",
     "report_path": "reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md"
+  },
+  "additional_workstreams": {
+    "AGENT_01": {
+      "branch_head": "cd18619dab610860ceaa340373f64fdf040aab85",
+      "ci_run_id": 41868381224,
+      "ci_conclusion": "success",
+      "report": "research/AGENT_01_OHLCV_QUALITY_README.md"
+    },
+    "AGENT_04": {
+      "branch_head": "53de06d847605f09844cbd711d4887984d0c28fc",
+      "tested_commit": "8905994a95d4de4d39795c217577d686289c93c7",
+      "ci_run_id": 41868015500,
+      "ci_conclusion": "success",
+      "report": "research/AGENT_04_FOLD_VALIDATOR_README_FA.md"
+    }
   }
 }
