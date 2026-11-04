@@ -9,3 +9,8 @@
 - Pivotها صرفاً candidate هستند؛ در کد به‌عنوان Creek/Ice قطعی یا فیلتر معامله استفاده نمی‌شوند.
 
 این مقایسهٔ ایستای سورس است. Compile در MetaEditor و اجرای MT5 تأیید نشده‌اند.
+
+
+## بازبینی مستقل تکمیلی — 2026-11-04
+
+گزارش کامل LCS line diff و تحلیل نقطه‌ای تابع تشخیصی در [20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md](../reports/20261104_MULTIAUDIT_STATIC_CODE_REVIEW_FA.md) ثبت شد. جمع‌بندی: 117 خط افزوده و 4 خط metadata حذف؛ هیچ خط اجرایی پایه در مقایسه حذف نشده است. این بررسی ایستا است و جایگزین Compile/Strategy Tester نیست.
