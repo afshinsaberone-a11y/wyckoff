@@ -66,3 +66,8 @@
 - [مدل استقرار، مجوزها و چرخه Job](EXECUTION_AND_HANDOFF_MODEL_FA.md)
 - [قرارداد تحویل بین ایجنت‌ها](../contracts/AGENT_HANDOFF_SCHEMA_FA.md)
 - [برنامه راه‌اندازی BOOT-001 تا BOOT-007](../docs/FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md)
+
+
+## وضعیت آمادگی داده
+- [ممیزی آمادگی داده و Candidate Identity](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md)
+- قرارداد schema 1.1-draft، SetupID قدیمی را به‌عنوان legacy_setup_id می‌شناسد؛ candidate_id مستقل باید در instrumentation جدید تولید شود.
