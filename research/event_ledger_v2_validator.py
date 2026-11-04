@@ -164,6 +164,9 @@ def validate_rows(
         elif decision_id or reason:
             errors.append(f"line {line}: DecisionID/ReasonCode must be blank without DecisionStatus")
 
+        if event == "LEDGER_UNLINKED_TRADE_TRANSACTION":
+            errors.append(f"line {line}: trade transaction could not be linked to its originating CandidateID")
+
         if event in ("TRADE_ENTRY_DEAL", "TRADE_PARTIAL_EXIT", "TRADE_CLOSED"):
             deal_event_count += 1
             if not row.get("DealID") or not row.get("PositionID"):
