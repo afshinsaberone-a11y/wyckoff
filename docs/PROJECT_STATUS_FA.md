@@ -106,3 +106,12 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 - [قرارداد تحویل Agentها](../contracts/AGENT_HANDOFF_SCHEMA_FA.md)
 
 اولین اقدام اجرایی، BOOT-001 یعنی تطبیق هویت دقیق Baseline است؛ پس از آن BOOT-002 نیازمند Compile و اجرای واقعی MultiAudit در محیط MT5/MetaEditor خواهد بود.
+
+
+## ممیزی آمادگی داده Financial ML — 2026-11-04
+
+[گزارش کامل آمادگی داده](../reports/20261104_FINANCIAL_ML_DATA_READINESS_AUDIT_FA.md) اضافه شد. Event CSV آرشیوشده C2 مربوط به اجرای 2026-11-03 تا 2026-10-17 است و 65 Range / 15 Test / 6 SOS / 2 SOW دارد. این شمارش با اجرای جداگانه‌ای که گزارش C2 مورخ 2026-11-04 تا 2026-11-04 توصیف می‌کند یکی فرض نمی‌شود؛ CSV آن اجرای جدید در مخزن حاضر نیست.
+
+در سورس C2، SetupID هنگام شناسایی Range افزایش می‌یابد؛ بنابراین شناسه Candidate نیست. قراردادها به schema 1.1-draft ارتقا یافتند و سلسله‌مراتب range_id/cycle_id/attempt_id/candidate_id/legacy_setup_id را مشخص می‌کنند.
+
+**نتیجه آمادگی:** Event Funnel Audit قابل انجام است، اما Dataset supervised و HMM/ML هنوز BLOCKED هستند. فایل خام M1/Tick، Feature Snapshot، Label Outcome و Fold manifest هنوز در مخزن موجود نیستند. W1/W2/W3 تا رفع این کمبودها قفل می‌مانند.
