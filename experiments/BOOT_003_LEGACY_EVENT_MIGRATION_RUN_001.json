@@ -19,7 +19,8 @@
     "path": "events/Wyckoff_W0_events_v1_08_C2_SB050_T030_TIMING_B12_R12_RC12.csv",
     "git_blob_sha": "49eeb12ec611bc0ac5df04a8d7c0aa4f3454b01a",
     "rows": 346,
-    "ea_version": "1.08-C2-TIMING-SB050-T030"
+    "ea_version": "1.08-C2-TIMING-SB050-T030",
+    "source_sha256": "c515eb7ce43d7a542ab944e5a385adfccbaad8070c7a792f97adb497a443204f"
   },
   "migration": {
     "script": "scripts/migrate_legacy_event_csv.py",
@@ -31,7 +32,39 @@
     "feature_snapshots_created": 0,
     "labels_created": 0,
     "utc_timestamps_created": 0,
-    "event_ledger_output_sha256": "5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e"
+    "event_ledger_output_sha256": "5e1d95e2e1174e7af81771a7e506675d4a0221576011de530fc748ddc9860f7e",
+    "event_type_counts": {
+      "BREAKOUT_PHASE_EXPIRED": 3,
+      "EA_INIT": 1,
+      "LPSY_CONFIRMED": 2,
+      "LPS_CONFIRMED": 4,
+      "M5_BREAKOUT_CONFIRMED": 3,
+      "M5_BUY_RECOVERY_CONFIRMED": 1,
+      "M5_ENTRY_EVALUATION": 57,
+      "M5_ENTRY_SKIPPED_PRE_READY": 6,
+      "M5_RETEST_CONFIRMED": 2,
+      "ORDER_OPENED": 1,
+      "RANGE_FOUND": 65,
+      "REJECT_LPS_INVALIDATED": 2,
+      "REJECT_M5_BREAKOUT_RETEST_FAILED": 1,
+      "REJECT_M5_RETEST_SUPPORT_LOST": 1,
+      "REJECT_NO_REENTRY": 2,
+      "REJECT_SOS_WRONG_SIDE_OF_RANGE": 5,
+      "REJECT_SOW_WRONG_SIDE_OF_RANGE": 2,
+      "REJECT_SPRING_TOO_DEEP": 17,
+      "REJECT_UTAD_TOO_DEEP": 25,
+      "SETUP_RESET": 65,
+      "SOS_CONFIRMED": 6,
+      "SOW_CONFIRMED": 2,
+      "SPRING_CANDIDATE": 20,
+      "SPRING_CONFIRMED": 15,
+      "TEST_CONFIRMED": 15,
+      "TRADE_CLOSED": 1,
+      "TRADE_ENTRY_DEAL": 1,
+      "UTAD_CANDIDATE": 14,
+      "UTAD_CONFIRMED": 7
+    },
+    "timestamp_policy": "Legacy server times preserved as raw strings; no UTC generated."
   },
   "artifact": {
     "id": 13337654909,
@@ -47,5 +80,10 @@
     "Legacy ServerTime retained as raw broker/server timestamp; no UTC conversion without timezone metadata.",
     "Artifact is a GitHub Actions artifact with limited retention; raw source CSV remains separately versioned in the repository."
   ],
-  "gate_effect": "BOOT-003 initial legacy Event migration completed. Full Event/Candidate Ledger remains open pending new MQL5 instrumentation and verified cycle/candidate identity."
+  "gate_effect": "BOOT-003 initial legacy Event migration completed. Full Event/Candidate Ledger remains open pending new MQL5 instrumentation and verified cycle/candidate identity.",
+  "notes": [
+    "GitHub Action artifact was downloaded and inspected; its normalized CSV contains 346 rows, 65 distinct non-empty range_id values and no candidate_id values.",
+    "M5_ENTRY_EVALUATION (57) and M5_ENTRY_SKIPPED_PRE_READY (6) are event log categories, not a count of independent entry candidates or trades.",
+    "Output SHA-256 was recalculated from the extracted artifact and matches migration_manifest.json."
+  ]
 }
