@@ -433,3 +433,15 @@ GitHub Actions Run [41859743204](https://github.com/afshinsaberone-a11y/wyckoff/
 [مشخصات instrumentation v2](../docs/BOOT_003_MQL5_EVENT_LEDGER_V2_SPEC_FA.md) ایجاد شد. قراردادهای Event/Candidate و Feature/Label به schema 1.2-draft ارتقا یافتند و run_id، event_sequence، زمان‌های server/source bar، range_id/cycle_id/attempt_id/candidate_id/decision_id و Order/Deal/Position را از هم جدا می‌کنند. UTC تا زمان اثبات timezone/offset بروکر ساخته نمی‌شود.
 
 وضعیت: Legacy Event CSV Migration موفق؛ instrumentation MQL5 هنوز پیاده‌سازی/کامپایل/Replay نشده است. C2 پایه دست‌نخورده می‌ماند.
+
+
+## 2026-11-04 — آغاز Sprint موازی ۹ نقش
+
+برای ۹ نقش منطقی، ۹ شاخه مستقل و Issueهای #2 تا #10 ایجاد شدند. AGENT_00 مدیریت و وابستگی‌ها را هماهنگ می‌کند؛ AGENT_01 تا AGENT_04 به‌ترتیب داده، اجرا، ممیزی و Governance؛ W0 ممیزی Wyckoff/Event Ledger؛ W1 یادگیری HMM؛ W2 یادگیری ML Scoring؛ W3 طراحی Hybrid را جلو می‌برد.
+
+سه بسته یادگیری آغازین ثبت شد:
+- W1: HMM causal filtering، fit فقط روی Train، state mapping و diagnostics.
+- W2: تعریف Candidate در M5_ENTRY، Logistic baseline، tree challenger، point-in-time features و Purged/Embargo validation.
+- W3: طرح 2×2 برای W0/W1/W2/W3 و interface احتمالات HMM با ML.
+
+این شروع به معنی اجرای ۹ پردازه مستقل خودکار نیست؛ issue/branchها Workstreamهای role-based هستند. Prototypeهای synthetic مجازند، اما HMM/ML fit روی داده واقعی XAUUSD تا رفع موانع داده و Gateهای BOOT-001 تا BOOT-005 مسدود است.
