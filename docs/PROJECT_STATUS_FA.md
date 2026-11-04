@@ -164,3 +164,10 @@ Compile واقعی MultiAudit، سپس اجرای SETهای 5/10/20 با یک Ex
 [Manifest ماشینی](../experiments/BOOT_002_STATIC_PREFLIGHT_RUN_003.json).
 
 BOOT-002 به چهار Run A/B/C/D تغییر کرده است: v1.083/LB5، v1.084/LB5، v1.084/LB10 و v1.084/LB20. Lookback10/20 شرط فعال SOS/SOW را تغییر می‌دهند و sensitivity آزمایشی‌اند. Preflight فقط کنترل ایستای مخزن است؛ دو Compile و چهار MT5 Tester Run هنوز NOT RUN هستند.
+
+
+## BOOT-003 — مهاجرت اولیه Legacy Event Ledger
+
+اسکریپت محافظه‌کارانه [migrate_legacy_event_csv.py](../scripts/migrate_legacy_event_csv.py) و تست‌های واحد آن در مخزن ثبت شده‌اند. هدف تبدیل Event CSV اجرای C2 به Event Ledger استاندارد است؛ هیچ candidate_id، cycle_id، attempt_id، UTC یا Label حدس زده نمی‌شود. GitHub Actions آن را به‌صورت تست واحد + مهاجرت واقعی اجرا و خروجی CSV/manifest را به‌صورت Artifact ذخیره خواهد کرد.
+
+این فقط گام آغازین BOOT-003 است؛ instrumentation جدید MQL5 و Candidate Ledger کامل هنوز انجام نشده‌اند. W1/W2/W3 همچنان BLOCKED هستند.
