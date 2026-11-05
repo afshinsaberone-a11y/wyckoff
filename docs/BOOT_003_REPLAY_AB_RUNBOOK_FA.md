@@ -123,6 +123,37 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 - انتهای History synchronization در A برابر 2026.11.04 و در B برابر 2026.11.03 گزارش شده؛ Tick History span و تعداد تیک/کندل تولیدشده برابر است.
 - Spread mode/value، commission، swap و execution delay هنوز مستقل مستند نشده‌اند.
 - HTML report و Compile logها آرشیو نشده‌اند.
-- ممیزی معنایی Candidate/Decision از CSV بیست‌وهشت‌ستونی A002 باقی است.
+- ممیزی معنایی CSV بیست‌وهشت‌ستونی A002 انجام شده و PASS WITH WARNINGS است؛ جزئیات در گزارش A002 آمده است.
 
 گزارش جزئی و Hashهای آرشیوشده در docs/BOOT_003_REPLAY_AB_RESULTS_20261105_FA.md ثبت شده‌اند. تا بستن موارد بالا، BOOT-003 را برای آموزش W1/W2/W3 تأیید نهایی نکنید.
+
+
+## 9. ممیزی Event Ledger v2 — A002 (2026-11-05)
+
+فایل 28 ستونی RunID=`WM20261104A002` در مسیر `experiments/BOOT_003_A002_event_ledger_v2.csv` آرشیو شده است. ممیزی مستقل شامل 127 ردیف، 28 ستون و 26 کنترل ساختاری/هویتی موفق بود. زنجیرهٔ یک Candidate ثبت‌شده تا Decision پذیرفته‌شده، Order، Deal ورودی، Position و Trade Closed قابل ردیابی است. وضعیت: **PASS WITH WARNINGS**.
+
+### 9.1 قرارداد ترتیب رویدادها
+
+- `EventSequence` ترتیب ثبت/ارسال رویدادها به Ledger را نشان می‌دهد؛ نباید بدون بررسی مسیر کد آن را ترتیب دقیق همهٔ محاسبات داخلی یا causal order فرض کرد.
+- `M5_ENTRY_EVALUATION` در انتهای `ProcessEntryBar` نوشته می‌شود و ممکن است پس از Candidate/Order باشد، در حالی که فیلد Details زمان کندل ارزیابی‌شده را نگه می‌دارد.
+- `SETUP_RESET(POSITION_CLOSED)` و `TRADE_CLOSED` از مسیرهای جداگانهٔ OnTick/ProcessSignalBar و OnTradeTransaction می‌آیند؛ ترتیب آنها در نسخهٔ فعلی ثبت emission را منعکس می‌کند.
+- رویداد `REJECT_LPSY_INVALIDATED` در A002 بدون ReasonCode/Details است. در سورس نیز `LogReject` بدون payload فراخوانی می‌شود؛ اضافه کردن جزئیات تشخیصی فقط telemetry است و نباید شرط یا رفتار معامله را تغییر دهد.
+
+### 9.2 فایل‌های آرشیوشده
+
+- `experiments/BOOT_003_A002_event_ledger_v2.csv`
+- `reports/BOOT003_A002_LEDGER_AUDIT_FA.md`
+- `experiments/BOOT003_A002_LEDGER_AUDIT.json`
+- `reports/BOOT003_A002_LEDGER_SOURCE_REVIEW_FA.md`
+- `experiments/BOOT003_SHA256_MANIFEST_20261105.json`
+
+### 9.3 Gateهای باقی‌مانده
+
+1. تکمیل جزئیات telemetry برای REJECT_LPSY_INVALIDATED در commit مستقل؛ حفظ byte-for-byte خروجی legacy در A/B الزامی است.
+2. MetaEditor compile و آرشیو compile log برای هر دو نسخه.
+3. حل اختلاف انتهای Bar History (A=2026.11.04، B=2026.11.03) یا مستندسازی کافی آن.
+4. ثبت/تطبیق Spread mode/value، Commission، Swap و Execution delay.
+5. آرشیو HTML reports و بررسی دقیق SL fill با تیک خام/History؛ زیان A002 برابر 1.802R بوده است.
+6. Hash فایل EX5 زمان اجرا در Replay تاریخی موجود نیست؛ Hash فایل فعلی جایگزین آن مدرک نمی‌شود.
+
+تا بسته‌شدن Gateهای بالا، داده برای آموزش نهایی W1/W2/W3 تأیید نشده است.
