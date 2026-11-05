@@ -32,14 +32,19 @@
     "period": "M5",
     "model": "Every tick based on real ticks",
     "from_server_time": "2026.01.02 00:00",
-    "to_server_time": "2026.11.04 00:00",
+    "to_server_time": "2026.04.27 01:05",
     "deposit": "10000 USD",
     "leverage": "1:200",
     "prior_reference_ticks": 64536522,
     "prior_reference_bars": 59676,
     "run_id": "WM20261105A003TRACE",
     "compile_status": "NOT_RUN",
-    "tester_status": "NOT_RUN"
+    "tester_status": "NOT_RUN",
+    "full_a002_reference_to_server_time": "2026.11.04 00:00",
+    "scope": "FOCUSED_REPLAY_THROUGH_TARGET_EXIT",
+    "prior_reference_ticks_comparable": false,
+    "prior_reference_bars_comparable": false,
+    "note": "Preserve A002 start date and all pre-entry history; shorten only end date to shortly after target exit. Do not expect full-run total tick/bar counts to match."
   },
   "guardrails": [
     "Do not merge before MetaEditor compile and same-settings MT5 Strategy Tester run.",
