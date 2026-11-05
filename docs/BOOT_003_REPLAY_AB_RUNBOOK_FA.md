@@ -157,3 +157,6 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 6. Hash فایل EX5 زمان اجرا در Replay تاریخی موجود نیست؛ Hash فایل فعلی جایگزین آن مدرک نمی‌شود.
 
 تا بسته‌شدن Gateهای بالا، داده برای آموزش نهایی W1/W2/W3 تأیید نشده است.
+
+
+پیگیری telemetry-only برای EV126 در [Issue شمارهٔ 11](https://github.com/afshinsaberone-a11y/wyckoff/issues/11) ثبت شده است. پیش از پذیرش این تغییر، برابری کامل CSV قدیمی A/B و عدم تغییر منطق معاملاتی باید دوباره ثابت شود.
