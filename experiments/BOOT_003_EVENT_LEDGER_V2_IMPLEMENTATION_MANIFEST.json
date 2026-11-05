@@ -59,7 +59,7 @@
   "mt5_retest_deal_events": 2,
   "mt5_retest_source_commit": "2f3f342a7b61545acd5cd4bfe4adcba0b09df0e2",
   "mt5_retest_source_identity_note": "RunID A002 produced the corrected decision-status behavior; local MQ5/EX5/SET hashes and MetaEditor compile log were not submitted.",
-  "next_gate": "ISSUE_11_TELEMETRY_ONLY_DIAGNOSTICS; METAEDITOR_COMPILE; REPLAY_AB_REGRESSION; CLOSE_HISTORY_SPREAD_COMMISSION_SWAP_DELAY_HTML_AND_RUNTIME_EX5_PROVENANCE_GATES",
+  "next_gate": "CHECKOUT_FIX_BRANCH; METAEDITOR_COMPILE; MT5_REPLAY; LEGACY_AB_COMPARATOR; LEDGER_VALIDATOR; REVIEW_PR_12",
   "replay_ab_comparator": {
     "script": "research/replay_ab_compare.py",
     "script_blob_sha": "414aa59597a22825c3edc5fed7a4ee5f5ec3e807",
@@ -201,5 +201,17 @@
     "title": "Add LPSY invalidation diagnostics to Ledger v2 without changing legacy C2 stream",
     "status": "OPEN",
     "scope": "telemetry_only_details; pre-candidate DecisionStatus/ReasonCode remain blank by design; preserve C2 trade logic and legacy 11-column event stream"
+  },
+  "telemetry_patch": {
+    "branch": "fix/boot003-lpsy-ledger-diagnostics",
+    "source_path": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5",
+    "source_git_blob_sha": "553eea104b81cf31cce5a858e3d5743bb4499669",
+    "commit": "cdd0319fdbe4bf8f8208ede9ca25462ae35b7dfc",
+    "pull_request": 12,
+    "pull_request_url": "https://github.com/afshinsaberone-a11y/wyckoff/pull/12",
+    "status": "DRAFT_STATIC_REVIEW_PASS_METAEDITOR_AND_MT5_RETEST_PENDING",
+    "review_report": "reports/BOOT003_LPSY_TELEMETRY_PATCH_REVIEW_FA.md",
+    "legacy_csv_compatibility_intent": "LEGACY_DETAILS_EMPTY; LEDGER_DETAILS_ENRICHED",
+    "decision_reason_policy": "NO_CANDIDATE_NO_DECISION_STATUS_OR_REASON_CODE"
   }
 }
