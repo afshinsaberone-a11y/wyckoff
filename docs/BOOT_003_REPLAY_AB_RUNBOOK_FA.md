@@ -160,3 +160,6 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 
 
 پیگیری telemetry-only برای EV126 در [Issue شمارهٔ 11](https://github.com/afshinsaberone-a11y/wyckoff/issues/11) ثبت شده است. پیش از پذیرش این تغییر، برابری کامل CSV قدیمی A/B و عدم تغییر منطق معاملاتی باید دوباره ثابت شود.
+
+
+اصلاح telemetry-only در [Draft PR شمارهٔ 13](https://github.com/afshinsaberone-a11y/wyckoff/pull/13) روی شاخهٔ `fix/boot003-lpsy-ledger-diagnostics-rebased` آمادهٔ کامپایل و تست است؛ PR شمارهٔ 12 superseded و بسته شد.
