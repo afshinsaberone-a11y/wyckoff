@@ -1,0 +1,190 @@
+{
+  "audit_name": "BOOT-003 A002 Event Ledger v2 Audit",
+  "input_file": "A002_event_ledger_v2.csv",
+  "input_bytes": 47271,
+  "input_sha256": "77097b3adae7099f0b8199cb58b509f956ade2149ee2d721bf20832c3fd20ba9",
+  "run_id": "WM20261104A002",
+  "symbol": "XAUUSD",
+  "ea_version": "1.083-C2-TIMING-SB050-T030-LEDGER-V2",
+  "schema_version": "2",
+  "rows": 127,
+  "columns": 28,
+  "date_range": {
+    "first_event_server": "2026.01.02 00:00:00",
+    "last_event_server": "2026.10.29 22:00:00"
+  },
+  "structural_checks": {
+    "column_count_28": true,
+    "all_rows_have_28_fields": true,
+    "schema_version_constant": true,
+    "run_id_constant": true,
+    "symbol_constant": true,
+    "ea_version_constant": true,
+    "event_ids_unique": true,
+    "event_id_pattern_valid": true,
+    "sequence_contiguous_1_to_127": true,
+    "event_time_monotonic": true,
+    "observed_time_monotonic": true,
+    "event_time_equals_observed_time_all_rows": true,
+    "time_basis_constant_broker_server_raw": true
+  },
+  "lineage_checks": {
+    "unique_ranges": 22,
+    "ranges_without_range_found": [],
+    "range_high_greater_than_low_all_rows": true,
+    "range_bounds_consistent_within_each_range": true,
+    "parent_child_ids_valid": true,
+    "candidate_count": 1,
+    "candidate_ids": [
+      "WM20261104A002:R9:C5:A1:E1"
+    ],
+    "candidate_linked_rows": 6,
+    "candidate_lifecycle_events": {
+      "WM20261104A002:R9:C5:A1:E1": {
+        "events": [
+          "CANDIDATE_CREATED",
+          "ORDER_OPENED",
+          "M5_ENTRY_EVALUATION",
+          "TRADE_ENTRY_DEAL",
+          "SETUP_RESET",
+          "TRADE_CLOSED"
+        ],
+        "sequences": [
+          52,
+          53,
+          54,
+          55,
+          56,
+          57
+        ],
+        "directions": [
+          "BUY"
+        ],
+        "range_ids": [
+          "WM20261104A002:R9"
+        ],
+        "cycle_ids": [
+          "WM20261104A002:R9:C5"
+        ],
+        "attempt_ids": [
+          "WM20261104A002:R9:C5:A1"
+        ],
+        "decision_ids": [
+          "WM20261104A002:R9:C5:A1:E1:D1"
+        ],
+        "order_ids": [
+          "2",
+          "3"
+        ],
+        "deal_ids": [
+          "2",
+          "3"
+        ],
+        "position_ids": [
+          "2"
+        ]
+      }
+    },
+    "decision_ids": [
+      "WM20261104A002:R9:C5:A1:E1:D1"
+    ],
+    "decision_records": [
+      {
+        "sequence": 53,
+        "event": "ORDER_OPENED",
+        "status": "ACCEPTED",
+        "reason_code": "ORDER_ACCEPTED"
+      }
+    ],
+    "order_ids_seen": [
+      "2",
+      "3"
+    ],
+    "deal_ids_seen": [
+      "2",
+      "3"
+    ],
+    "position_ids_seen": [
+      "2"
+    ]
+  },
+  "event_counts": {
+    "EA_INIT": 1,
+    "RANGE_FOUND": 22,
+    "REJECT_SPRING_TOO_DEEP": 11,
+    "SETUP_RESET": 22,
+    "REJECT_UTAD_TOO_DEEP": 5,
+    "SPRING_CANDIDATE": 8,
+    "SPRING_CONFIRMED": 4,
+    "TEST_CONFIRMED": 5,
+    "REJECT_SOS_WRONG_SIDE_OF_RANGE": 2,
+    "UTAD_CANDIDATE": 4,
+    "SOS_CONFIRMED": 2,
+    "LPS_CONFIRMED": 2,
+    "M5_ENTRY_SKIPPED_PRE_READY": 2,
+    "M5_ENTRY_EVALUATION": 23,
+    "M5_BREAKOUT_CONFIRMED": 1,
+    "M5_RETEST_CONFIRMED": 1,
+    "M5_BUY_RECOVERY_CONFIRMED": 1,
+    "CANDIDATE_CREATED": 1,
+    "ORDER_OPENED": 1,
+    "TRADE_ENTRY_DEAL": 1,
+    "TRADE_CLOSED": 1,
+    "REJECT_NO_REENTRY": 2,
+    "BREAKOUT_PHASE_EXPIRED": 1,
+    "UTAD_CONFIRMED": 2,
+    "SOW_CONFIRMED": 1,
+    "REJECT_LPSY_INVALIDATED": 1
+  },
+  "warnings": [
+    {
+      "id": "W1",
+      "severity": "MEDIUM",
+      "sequence": 54,
+      "event": "M5_ENTRY_EVALUATION",
+      "finding": "This evaluation row appears after ORDER_OPENED at sequence 53, at the same EventTimeServer.",
+      "recommendation": "Inspect EA logging call order and distinguish evaluation-time from log-emission order. Do not infer a trading-logic fault from this CSV alone."
+    },
+    {
+      "id": "W2",
+      "severity": "LOW",
+      "sequence": 56,
+      "event": "SETUP_RESET",
+      "finding": "SETUP_RESET with Details=POSITION_CLOSED appears before TRADE_CLOSED at sequence 57, at the same EventTimeServer.",
+      "recommendation": "Consider logging TRADE_CLOSED before clearing/resetting the setup, or explicitly document this callback ordering."
+    },
+    {
+      "id": "W3",
+      "severity": "LOW",
+      "sequence": 126,
+      "event": "REJECT_LPSY_INVALIDATED",
+      "finding": "Details and ReasonCode are blank.",
+      "recommendation": "Populate a stable ReasonCode and compact diagnostic Details for rejection events."
+    }
+  ],
+  "trade_reconciliation": {
+    "entry_price": 4729.47,
+    "stop_loss": 4712.14,
+    "take_profit": 4764.13,
+    "volume_lots": 0.02,
+    "contract_size_assumed_for_check": 100,
+    "planned_risk_recomputed_usd": 34.66,
+    "planned_risk_logged_usd": 34.66,
+    "reward_recomputed_usd": 69.32,
+    "rr_recomputed": 2.0,
+    "net_profit_recomputed_usd": -62.44,
+    "net_profit_logged_usd": -62.44,
+    "realized_R_recomputed": -1.8015,
+    "realized_R_logged": -1.802,
+    "exit_slippage_points_recomputed": 1336.0,
+    "exit_slippage_points_logged": 1336.0,
+    "note": "The reported loss exceeds planned risk because the exit deal price is 13.36 price units beyond the logged SL reference. The CSV values reconcile arithmetically; the underlying tick/broker execution cause requires separate verification."
+  },
+  "scope_and_limitations": [
+    "This audit covers the uploaded 28-column A002 ledger file only.",
+    "One emitted candidate and one executed trade were found; this does not establish that all possible or rejected candidates were exhaustively logged.",
+    "The event stream is structurally consistent but has the three warnings listed above.",
+    "No code-level conclusion about the two ordering warnings is possible without reviewing the corresponding MQL5 event-emission paths."
+  ],
+  "overall_status": "PASS_WITH_WARNINGS"
+}
