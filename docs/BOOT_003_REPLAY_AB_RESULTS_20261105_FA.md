@@ -149,3 +149,8 @@ Gate مقایسهٔ رفتاری BOOT-003 برای همین Replay با وضعی
 - [Manifest هش‌های SHA-256](../experiments/BOOT003_SHA256_MANIFEST_20261105.json)
 
 علت قیمت خروج 4698.78 در برابر SL مرجع 4712.14 (معادل 1336 پوینت adverse deviation) هنوز با تیک خام/History بروکر بررسی نشده است. هویت EX5 زمان اجرای تاریخی، HTML reports، compile logs و جزئیات Spread/Commission/Swap/Delay نیز Gateهای باز هستند. نتیجهٔ این Replay ادعای سودآوری نیست.
+
+
+### 10.1 پیگیری اصلاح telemetry
+
+برای افزودن جزئیات EV126 بدون تغییر منطق معاملاتی و بدون تغییر CSV مشترک Legacy، [Issue شمارهٔ 11 در GitHub](https://github.com/afshinsaberone-a11y/wyckoff/issues/11) ایجاد شد. این کار هنوز اجرا یا کامپایل نشده است؛ پذیرش آن منوط به حفظ برابری A/B و صفرشدن هشدار EV126 است.
