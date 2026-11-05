@@ -163,3 +163,8 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 
 
 اصلاح telemetry-only در [Draft PR شمارهٔ 13](https://github.com/afshinsaberone-a11y/wyckoff/pull/13) روی شاخهٔ `fix/boot003-lpsy-ledger-diagnostics-rebased` آمادهٔ کامپایل و تست است؛ PR شمارهٔ 12 superseded و بسته شد.
+
+
+## 10. Timing Audit تکمیلی برای SL
+
+نتیجهٔ aggregate از 199 سفارش بازار در [گزارش زمینهٔ اجرای SL](../reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md) ثبت شده است. این sample برای زمان‌بندی عمومی سفارش مفید است، اما Position/Exit Deal A002 را شناسایی نمی‌کند و جایگزین بررسی `DEAL_REASON_SL` نیست. پیش از نتیجه‌گیری دربارهٔ لغزش 1,336 پوینتی، یک مسیر مستقل trigger-to-fill فقط خواندنی لازم است.
