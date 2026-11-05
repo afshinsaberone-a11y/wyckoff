@@ -215,5 +215,25 @@
     "review_report": "reports/BOOT003_LPSY_TELEMETRY_PATCH_REVIEW_FA.md",
     "legacy_csv_compatibility_intent": "LEGACY_DETAILS_EMPTY; LEDGER_DETAILS_ENRICHED",
     "decision_reason_policy": "NO_CANDIDATE_NO_DECISION_STATUS_OR_REASON_CODE"
+  },
+  "execution_timing_audit": {
+    "report": "reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md",
+    "source_repository": "afshinsaberone-a11y/grok-ai-trader",
+    "source_report": "docs/research/xauusd-order-deal-timestamp-audit-20261105.md",
+    "source_json": "artifacts/xauusd-quote-fill-timing-audit.json",
+    "matched_orders": 199,
+    "setup_to_first_fill_median_ms": 1,
+    "quote_age_at_setup_median_ms": 165,
+    "quote_age_at_setup_p95_ms": 443.9,
+    "quote_age_at_setup_max_ms": 777,
+    "reference_quote_to_first_fill_median_ms": 166,
+    "exact_vwap_reference_matches": 199,
+    "vwap_reference_mismatches": 0,
+    "deals_after_setup": 197,
+    "deals_at_setup_millisecond": 2,
+    "no_orders_submitted": true,
+    "interpretation": "TIMESTAMP_REVIEW_REQUIRED",
+    "limitation": "Not joined to A002 PositionID 2 / Exit DealID 3; does not isolate DEAL_REASON_SL or explain 1336-point adverse exit.",
+    "follow_up_issue": "https://github.com/afshinsaberone-a11y/grok-ai-trader/issues/360"
   }
 }
