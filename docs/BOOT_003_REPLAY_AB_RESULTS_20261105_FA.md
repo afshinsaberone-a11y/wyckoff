@@ -159,3 +159,12 @@ Gate مقایسهٔ رفتاری BOOT-003 برای همین Replay با وضعی
 ### 10.2 اصلاح telemetry در Draft PR
 
 اصلاح Details-only برای EV126 در [Draft PR شمارهٔ 13](https://github.com/afshinsaberone-a11y/wyckoff/pull/13) روی شاخهٔ `fix/boot003-lpsy-ledger-diagnostics-rebased` قرار دارد. PR قبلی شمارهٔ 12 به‌علت عقب‌ماندن شاخه بسته و با شاخه‌ای بر پایهٔ head فعلی جایگزین شد. این اصلاح هنوز در MetaEditor کامپایل یا در MT5 اجرا نشده است.
+
+
+## 11. بررسی زمانی تکمیلی Quote-to-Fill — 2026-11-05
+
+یک بررسی read-only مستقل در مخزن Grok AI Trader، 199 سفارش بازار را به Dealهای اجرایی متصل کرده است. میانهٔ عمر Quote در زمان Setup برابر 165ms (P95=443.9ms، max=777ms) و میانهٔ Setup تا Fill برابر 1ms است. 197 Deal بعد از Setup و 2 Deal در همان میلی‌ثانیه ثبت شده‌اند. گزارش ارائه‌شده برای هر 199 سفارش VWAP برابر Quote مرجع و deviation صفر گزارش می‌کند.
+
+این نتیجه نشان می‌دهد در نمونهٔ حاضر، عمر Quote قبل از Setup بخش عمدهٔ فاصلهٔ Quote-to-Fill را توضیح می‌دهد؛ اما latency خالص broker/network را جدا نمی‌کند. مهم‌تر اینکه خروجی aggregate به Position/Exit Deal مربوط به A002 متصل نشده و مسیر `DEAL_REASON_SL` را جدا نکرده است؛ بنابراین علت اختلاف 1,336 پوینتی Stop Loss هنوز نامشخص است.
+
+گزارش تفصیلی: [BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md](../reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md). آزمون بعدی باید صرفاً خواندنی و مخصوص Dealهای Stop Loss باشد.
