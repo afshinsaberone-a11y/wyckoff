@@ -99,3 +99,6 @@
 
 
 اصلاح telemetry-only مربوط به LPSY invalidation در [Draft PR #13](https://github.com/afshinsaberone-a11y/wyckoff/pull/13) آمادهٔ Compile و MT5 retest است؛ تا پیش از دریافت شواهد، merge نمی‌شود.
+
+
+- [BOOT-003 — زمینهٔ زمانی اجرای سفارش و بررسی لغزش SL](reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md)
