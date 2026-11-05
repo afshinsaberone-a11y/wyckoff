@@ -96,3 +96,6 @@
 - [بازبینی مسیرهای ثبت رویداد در سورس Ledger v2](reports/BOOT003_A002_LEDGER_SOURCE_REVIEW_FA.md)
 - [Manifest هش‌های SHA-256 و شواهد اجرا](experiments/BOOT003_SHA256_MANIFEST_20261105.json)
 - [Manifest پیاده‌سازی Event Ledger v2](experiments/BOOT_003_EVENT_LEDGER_V2_IMPLEMENTATION_MANIFEST.json)
+
+
+اصلاح telemetry-only مربوط به LPSY invalidation در [Draft PR #13](https://github.com/afshinsaberone-a11y/wyckoff/pull/13) آمادهٔ Compile و MT5 retest است؛ تا پیش از دریافت شواهد، merge نمی‌شود.
