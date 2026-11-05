@@ -137,7 +137,7 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 - `EventSequence` ترتیب ثبت/ارسال رویدادها به Ledger را نشان می‌دهد؛ نباید بدون بررسی مسیر کد آن را ترتیب دقیق همهٔ محاسبات داخلی یا causal order فرض کرد.
 - `M5_ENTRY_EVALUATION` در انتهای `ProcessEntryBar` نوشته می‌شود و ممکن است پس از Candidate/Order باشد، در حالی که فیلد Details زمان کندل ارزیابی‌شده را نگه می‌دارد.
 - `SETUP_RESET(POSITION_CLOSED)` و `TRADE_CLOSED` از مسیرهای جداگانهٔ OnTick/ProcessSignalBar و OnTradeTransaction می‌آیند؛ ترتیب آنها در نسخهٔ فعلی ثبت emission را منعکس می‌کند.
-- رویداد `REJECT_LPSY_INVALIDATED` در A002 بدون ReasonCode/Details است. در سورس نیز `LogReject` بدون payload فراخوانی می‌شود؛ اضافه کردن جزئیات تشخیصی فقط telemetry است و نباید شرط یا رفتار معامله را تغییر دهد.
+- رویداد `REJECT_LPSY_INVALIDATED` در A002 فاقد Details است. خالی‌بودن CandidateID/DecisionID و به تبع آن DecisionStatus/ReasonCode، چون رخداد قبل از ایجاد Candidate رخ می‌دهد، طبق سیاست Ledger مورد انتظار است. فقط Details باید در Ledger پر شود و Legacy Details خالی بماند.
 
 ### 9.2 فایل‌های آرشیوشده
 
@@ -149,7 +149,7 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 
 ### 9.3 Gateهای باقی‌مانده
 
-1. تکمیل جزئیات telemetry برای REJECT_LPSY_INVALIDATED در commit مستقل؛ حفظ byte-for-byte خروجی legacy در A/B الزامی است.
+1. افزودن Details تشخیصی فقط به Ledger برای REJECT_LPSY_INVALIDATED در commit مستقل؛ DecisionStatus/ReasonCode پیش از Candidate خالی می‌مانند و خروجی Legacy باید برابر حفظ شود.
 2. MetaEditor compile و آرشیو compile log برای هر دو نسخه.
 3. حل اختلاف انتهای Bar History (A=2026.11.04، B=2026.11.03) یا مستندسازی کافی آن.
 4. ثبت/تطبیق Spread mode/value، Commission، Swap و Execution delay.
