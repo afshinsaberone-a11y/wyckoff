@@ -8,11 +8,11 @@
   "ea_version": "1.083-C2-TIMING-SB050-T030-LEDGER-V2",
   "schema_version": 2,
   "schema_columns": 28,
-  "implementation_status": "MT5_SINGLE_RUN_AND_CSV_VALIDATION_PASS_REPLAY_AB_TOOLING_READY_EXECUTION_PENDING",
-  "metaeditor_compile": "EA_EXECUTED_IN_MT5_TESTER_A002_COMPILE_LOG_NOT_ARCHIVED",
-  "strategy_tester": "PASS_SINGLE_RUN_A002_127_EVENTS",
-  "replay_ab": "NOT_RUN_COMPARATOR_AND_RUNBOOK_READY",
-  "independent_audit": "PENDING",
+  "implementation_status": "REPLAY_AB_SHARED_LEGACY_STREAM_PASS_ENVIRONMENT_MOSTLY_MATCHED_RUNTIME_EX5_HASH_AND_CANDIDATE_DECISION_AUDIT_PENDING",
+  "metaeditor_compile": "A_BASELINE_REPORTED_0_ERRORS_0_WARNINGS_B_COMPILE_LOG_NOT_ARCHIVED",
+  "strategy_tester": "PASS_A002_LEDGER_VALIDATION_AND_MATCHED_A_B_REPLAY",
+  "replay_ab": "PASS_SHARED_EA_INPUTS_AND_EVENT_STREAM_ONLY_126_ROWS_ZERO_DIFFERENCES",
+  "independent_audit": "PENDING_CANDIDATE_DECISION_SEMANTIC_AUDIT_AND_RUNTIME_BINARY_PROVENANCE",
   "candidate_creation": "AFTER_M5_RECOVERY_CONFIRMED_BEFORE_PLACETRADE",
   "time_basis": "BROKER_SERVER_RAW",
   "legacy_csv_separate": true,
@@ -59,7 +59,7 @@
   "mt5_retest_deal_events": 2,
   "mt5_retest_source_commit": "2f3f342a7b61545acd5cd4bfe4adcba0b09df0e2",
   "mt5_retest_source_identity_note": "RunID A002 produced the corrected decision-status behavior; local MQ5/EX5/SET hashes and MetaEditor compile log were not submitted.",
-  "next_gate": "EXECUTE_MATCHED_MT5_BASELINE_AND_LEDGER_V2_REPLAY_WITH_IDENTICAL_FROZEN_TESTER_CONFIGURATION",
+  "next_gate": "COPY_WM20261104A002_28_COLUMN_LEDGER_TO_BOOT003_AND_RUN_CANDIDATE_DECISION_SEMANTIC_AUDIT; ARCHIVE_HTML_AND_COMPILE_LOGS; RESOLVE_RUNTIME_EX5_BINARY_PROVENANCE_AND_BAR_HISTORY_END_MARKER",
   "replay_ab_comparator": {
     "script": "research/replay_ab_compare.py",
     "script_blob_sha": "414aa59597a22825c3edc5fed7a4ee5f5ec3e807",
@@ -73,5 +73,70 @@
     "cli_exit_codes": "0=CSV_AND_SHARED_SET_PASS_LIMITED_GATE;2=MISMATCH;3=INPUT_OR_IO_ERROR;4=SET_FILES_NOT_PROVIDED"
   },
   "replay_ab_runbook": "docs/BOOT_003_REPLAY_AB_RUNBOOK_FA.md",
-  "replay_ab_manifest_template": "experiments/BOOT_003_REPLAY_AB_MANIFEST_TEMPLATE.json"
+  "replay_ab_manifest_template": "experiments/BOOT_003_REPLAY_AB_MANIFEST_TEMPLATE.json",
+  "replay_ab_execution": {
+    "completed_date": "2026-11-05",
+    "run_a": {
+      "source_ref": "main",
+      "source_path": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050.mq5",
+      "source_git_blob_sha": "7e6e7ddaf6dd8ef976e53f611018815a4874dd60",
+      "local_source_sha256": "64F0C690195405876D2B81BF14C39EF885EC69D8D86295D0B6ACC8BC10EAE15D",
+      "local_ex5_sha256": "7ADEDED61B14D97B5222B27264F5E075F4D9DB90E585AE2F1D61261527CB98F0",
+      "tester_loaded_ex5_bytes": 127938,
+      "current_local_ex5_bytes": 127900,
+      "tester_log": "A_C2_tester_20261105.log"
+    },
+    "run_b": {
+      "run_id": "WM20261104A002",
+      "source_ref": "feature/w0-event-ledger-v2",
+      "source_path": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5",
+      "source_git_blob_sha": "0366568d082af3e4fa5854e8ddf9790c94be25c8",
+      "local_source_sha256": "870BFC7C61DC566C075385CF28EA7D3C5D8C812A17B23CFDD7C17DF79156EA9E",
+      "local_ex5_sha256": "A88EE1D9C57577FD4D382CF9BEA8B91D0BB58B697409C6028112C654B73C7BE1",
+      "tester_loaded_ex5_bytes": 146391,
+      "current_local_ex5_bytes": 146328,
+      "tester_evidence": "B_A002_tester_evidence.txt"
+    },
+    "tester_configuration": {
+      "broker_server": "WMMarkets-Demo",
+      "symbol": "XAUUSD",
+      "period": "M5",
+      "model": "Every tick based on real ticks",
+      "from_server_time": "2026.01.02 00:00",
+      "to_server_time": "2026.11.04 00:00",
+      "initial_deposit": "10000 USD",
+      "leverage": "1:200",
+      "generated_ticks_each": 64536522,
+      "generated_bars_each": 59676,
+      "tick_history_span_each": "2024.04.19 to 2026.11.03",
+      "final_balance_each": "9937.56 USD",
+      "bar_history_sync_end_a": "2026.11.04",
+      "bar_history_sync_end_b": "2026.11.03",
+      "bar_history_sync_note": "End markers differ by one day even though tick-history span and generated tick/bar counts match."
+    },
+    "comparator": {
+      "status": "PASS_SHARED_EA_INPUTS_AND_EVENT_STREAM_ONLY",
+      "script": "research/replay_ab_compare.py",
+      "local_script_sha256": "1FD072A8F408AE9EE7E1439194B57DA9D82DC5CAFF8969DD562BFF0F44897A03",
+      "report_file": "BOOT003_AB_compare.json",
+      "local_report_sha256": "1454E22934DBF989940C9043E364F8AF9928E2416BF5D0F36CB40B8EC35A2A45",
+      "baseline_rows": 126,
+      "ledger_legacy_rows": 126,
+      "differing_rows": 0,
+      "excluded_column": "EA_Version",
+      "compared_columns": 10,
+      "shared_set_keys": 67,
+      "set_mismatched_keys": 0,
+      "event_stream_exact_match": true,
+      "shared_inputs_exact_match": true
+    },
+    "local_artifacts_sha256": {
+      "baseline_set": "FF8CFB53D19E58287B998B426E9A753A7C94CBA9F04F4399105CAAFD7F876839",
+      "ledger_set": "C71D4347745D183938FBA301AB3C601B05DD9F27E677CC1DAF90DE429B1E9D4E",
+      "baseline_legacy_csv": "599FE903F9552FE107C2957D2B3F62703F8F014049321CF9C332BB54F898B829",
+      "ledger_legacy_csv": "78E466121BCC355423924C84B2D27065FFD1971FB45E935E5A3D485B1608C427",
+      "baseline_tester_log": "39A384DD1F21537E5E8B6CC711126F973B0FA22FD0DD37C5B94575F18F5EA791",
+      "ledger_tester_evidence": "EBF310409105A17636840C78DF4760407371432487E5B9DE13B742EE5F4E3BEF"
+    }
+  }
 }
