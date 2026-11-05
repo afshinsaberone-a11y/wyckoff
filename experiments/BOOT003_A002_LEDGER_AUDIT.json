@@ -158,8 +158,8 @@
       "severity": "LOW",
       "sequence": 126,
       "event": "REJECT_LPSY_INVALIDATED",
-      "finding": "Details and ReasonCode are blank.",
-      "recommendation": "Populate a stable ReasonCode and compact diagnostic Details for rejection events."
+      "finding": "Details is blank. CandidateID and DecisionID are also blank because this LPSY invalidation occurs before any Candidate is created. Under the current Ledger policy, DecisionStatus and ReasonCode are populated only for events linked to a created Candidate; their blank values here are expected, not defects.",
+      "recommendation": "Add diagnostic Details (close, strengthBreakLevel, ATR, InpLPSInvalidationATR and calculated invalidation threshold) to the 28-column Ledger only. Keep legacy Details blank and do not invent CandidateID, DecisionID or ReasonCode."
     }
   ],
   "trade_reconciliation": {
@@ -171,19 +171,19 @@
     "planned_risk_recomputed_usd": 34.66,
     "planned_risk_logged_usd": 34.66,
     "reward_recomputed_usd": 69.32,
-    "rr_recomputed": 2.0,
+    "rr_recomputed": 2,
     "net_profit_recomputed_usd": -62.44,
     "net_profit_logged_usd": -62.44,
     "realized_R_recomputed": -1.8015,
     "realized_R_logged": -1.802,
-    "exit_slippage_points_recomputed": 1336.0,
-    "exit_slippage_points_logged": 1336.0,
+    "exit_slippage_points_recomputed": 1336,
+    "exit_slippage_points_logged": 1336,
     "note": "The reported loss exceeds planned risk because the exit deal price is 13.36 price units beyond the logged SL reference. The CSV values reconcile arithmetically; the underlying tick/broker execution cause requires separate verification."
   },
   "scope_and_limitations": [
     "This audit covers the uploaded 28-column A002 ledger file only.",
     "One emitted candidate and one executed trade were found; this does not establish that all possible or rejected candidates were exhaustively logged.",
-    "The event stream is structurally consistent but has the three warnings listed above.",
+    "The event stream is structurally consistent but has two trace-order notes and one missing-diagnostic-Details warning. Empty DecisionStatus/ReasonCode on pre-candidate EV126 is expected under the current policy.",
     "No code-level conclusion about the two ordering warnings is possible without reviewing the corresponding MQL5 event-emission paths."
   ],
   "overall_status": "PASS_WITH_WARNINGS"
