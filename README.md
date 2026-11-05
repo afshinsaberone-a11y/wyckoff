@@ -85,3 +85,14 @@
 - [AGENT_02 — کنترل بستهٔ شواهد چهار Run در BOOT-002](https://github.com/afshinsaberone-a11y/wyckoff/tree/agent/02-execution-backtest/research)
 - [AGENT_04 — اعتبارسنج Manifest زمانی Fold](https://github.com/afshinsaberone-a11y/wyckoff/tree/agent/04-governance/research)
 - [AGENT_03 — گزارش ممیزی W1/W2/W3](https://github.com/afshinsaberone-a11y/wyckoff/blob/agent/03-independent-audit/reports/20261104_W1_W2_W3_PROTOTYPE_AUDIT_FA.md)
+
+
+## BOOT-003 — Replay A/B و ممیزی Event Ledger v2 (2026-11-05)
+- [راهنمای Replay A/B و Gateها](docs/BOOT_003_REPLAY_AB_RUNBOOK_FA.md)
+- [گزارش نتیجهٔ Replay A/B](docs/BOOT_003_REPLAY_AB_RESULTS_20261105_FA.md)
+- [CSV خام 28 ستونی اجرای A002](experiments/BOOT_003_A002_event_ledger_v2.csv)
+- [گزارش ممیزی مستقل A002](reports/BOOT003_A002_LEDGER_AUDIT_FA.md)
+- [خروجی JSON ممیزی A002](experiments/BOOT003_A002_LEDGER_AUDIT.json)
+- [بازبینی مسیرهای ثبت رویداد در سورس Ledger v2](reports/BOOT003_A002_LEDGER_SOURCE_REVIEW_FA.md)
+- [Manifest هش‌های SHA-256 و شواهد اجرا](experiments/BOOT003_SHA256_MANIFEST_20261105.json)
+- [Manifest پیاده‌سازی Event Ledger v2](experiments/BOOT_003_EVENT_LEDGER_V2_IMPLEMENTATION_MANIFEST.json)
