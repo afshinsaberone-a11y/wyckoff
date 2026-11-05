@@ -542,6 +542,34 @@ void LogEvent(const string eventName,const string details="",const int tradeLink
      }
   }
 
+// Write richer diagnostics to the 28-column Ledger while preserving the
+// legacy 11-column CSV payload exactly. This is telemetry-only.
+void LogRejectWithLedgerDetails(const string reason,
+                                const string legacyDetails,
+                                const string ledgerDetails)
+  {
+   if(InpLogRejectedSetups)
+     {
+      LedgerWriteEvent(reason,ledgerDetails);
+      string dir = (g_setup.direction==WYCKOFF_BUY ? "BUY" :
+                    g_setup.direction==WYCKOFF_SELL ? "SELL" : "NONE");
+      string msg = reason+" | "+dir+" | "+legacyDetails;
+      DebugPrint(msg);
+      if(InpExportCSV && g_csvHandle!=INVALID_HANDLE)
+        {
+         FileWrite(g_csvHandle,TimeToString(TimeCurrent(),TIME_DATE|TIME_SECONDS),
+                   EA_VERSION,g_symbol,DoubleToString(g_initialBalance,2),
+                   g_setupCounter,dir,reason,legacyDetails,
+                   DoubleToString(g_setup.rangeHigh,g_digits),
+                   DoubleToString(g_setup.rangeLow,g_digits),
+                   (string)g_activePositionId);
+         FileFlush(g_csvHandle);
+        }
+     }
+   else
+      LedgerWriteEvent(reason,ledgerDetails);
+  }
+
 void LogReject(const string reason,const string details="")
   {
    if(InpLogRejectedSetups)
@@ -1159,7 +1187,13 @@ void ProcessWaitPullback(const MqlRates &bar,const double atr)
         }
       else if(bar.close>g_setup.strengthBreakLevel+InpLPSInvalidationATR*atr)
         {
-         LogReject("REJECT_LPSY_INVALIDATED");
+         LogRejectWithLedgerDetails("REJECT_LPSY_INVALIDATED","",
+                                  "close="+DoubleToString(bar.close,g_digits)+
+                                  "; strengthBreakLevel="+DoubleToString(g_setup.strengthBreakLevel,g_digits)+
+                                  "; atr="+DoubleToString(atr,g_digits)+
+                                  "; invalidationBufferATR="+DoubleToString(InpLPSInvalidationATR,2)+
+                                  "; invalidationThreshold="+DoubleToString(g_setup.strengthBreakLevel+
+                                                                           InpLPSInvalidationATR*atr,g_digits));
          ResetSetup("LPSY invalidated");
         }
      }
