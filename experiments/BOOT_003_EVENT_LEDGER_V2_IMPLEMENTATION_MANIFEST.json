@@ -59,7 +59,7 @@
   "mt5_retest_deal_events": 2,
   "mt5_retest_source_commit": "2f3f342a7b61545acd5cd4bfe4adcba0b09df0e2",
   "mt5_retest_source_identity_note": "RunID A002 produced the corrected decision-status behavior; local MQ5/EX5/SET hashes and MetaEditor compile log were not submitted.",
-  "next_gate": "CHECKOUT_FIX_BRANCH_REBASED; METAEDITOR_COMPILE; MT5_REPLAY; LEGACY_AB_COMPARATOR; LEDGER_VALIDATOR; REVIEW_PR_13",
+  "next_gate": "METAEDITOR_COMPILE_AND_MT5_RETEST_FOR_PR13; RECONSTRUCT_A002_SL_EXIT_FROM_TESTER_TICKS; CLOSE_EX5_PROVENANCE_AND_TESTER_CONFIGURATION_GATES",
   "replay_ab_comparator": {
     "script": "research/replay_ab_compare.py",
     "script_blob_sha": "414aa59597a22825c3edc5fed7a4ee5f5ec3e807",
@@ -235,5 +235,15 @@
     "interpretation": "TIMESTAMP_REVIEW_REQUIRED",
     "limitation": "Not joined to A002 PositionID 2 / Exit DealID 3; does not isolate DEAL_REASON_SL or explain 1336-point adverse exit.",
     "follow_up_issue": "https://github.com/afshinsaberone-a11y/grok-ai-trader/issues/360"
+  },
+  "sl_execution_forensic_issue": {
+    "number": 14,
+    "url": "https://github.com/afshinsaberone-a11y/wyckoff/issues/14",
+    "status": "OPEN",
+    "target": "A002 strategy-tester stop-loss exit; use same Tester tick-history source/time basis",
+    "observed_adverse_deviation_points": 1336,
+    "evidence_context_report": "reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md",
+    "related_external_aggregate_issue": "https://github.com/afshinsaberone-a11y/grok-ai-trader/issues/360",
+    "next_gate": "RECONSTRUCT_A002_DEAL_REASON_SL_AND_TRIGGER_TO_FIRST_EXECUTABLE_QUOTE_FROM_STRATEGY_TESTER_TICKS"
   }
 }
