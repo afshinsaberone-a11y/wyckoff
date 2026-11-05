@@ -8,11 +8,11 @@
   "ea_version": "1.083-C2-TIMING-SB050-T030-LEDGER-V2",
   "schema_version": 2,
   "schema_columns": 28,
-  "implementation_status": "REPLAY_AB_SHARED_LEGACY_STREAM_PASS_ENVIRONMENT_MOSTLY_MATCHED_RUNTIME_EX5_HASH_AND_CANDIDATE_DECISION_AUDIT_PENDING",
+  "implementation_status": "REPLAY_AB_PASS_LIMITED_A002_LEDGER_AUDIT_PASS_WITH_WARNINGS_RUNTIME_EX5_PROVENANCE_AND_ENVIRONMENT_GATES_OPEN",
   "metaeditor_compile": "A_BASELINE_REPORTED_0_ERRORS_0_WARNINGS_B_COMPILE_LOG_NOT_ARCHIVED",
   "strategy_tester": "PASS_A002_LEDGER_VALIDATION_AND_MATCHED_A_B_REPLAY",
   "replay_ab": "PASS_SHARED_EA_INPUTS_AND_EVENT_STREAM_ONLY_126_ROWS_ZERO_DIFFERENCES",
-  "independent_audit": "PENDING_CANDIDATE_DECISION_SEMANTIC_AUDIT_AND_RUNTIME_BINARY_PROVENANCE",
+  "independent_audit": "PASS_WITH_WARNINGS_26_STRUCTURAL_IDENTITY_CHECKS_PASS_3_WARNINGS_DOCUMENTED_SOURCE_REVIEW_COMPLETED",
   "candidate_creation": "AFTER_M5_RECOVERY_CONFIRMED_BEFORE_PLACETRADE",
   "time_basis": "BROKER_SERVER_RAW",
   "legacy_csv_separate": true,
@@ -59,7 +59,7 @@
   "mt5_retest_deal_events": 2,
   "mt5_retest_source_commit": "2f3f342a7b61545acd5cd4bfe4adcba0b09df0e2",
   "mt5_retest_source_identity_note": "RunID A002 produced the corrected decision-status behavior; local MQ5/EX5/SET hashes and MetaEditor compile log were not submitted.",
-  "next_gate": "COPY_WM20261104A002_28_COLUMN_LEDGER_TO_BOOT003_AND_RUN_CANDIDATE_DECISION_SEMANTIC_AUDIT; ARCHIVE_HTML_AND_COMPILE_LOGS; RESOLVE_RUNTIME_EX5_BINARY_PROVENANCE_AND_BAR_HISTORY_END_MARKER",
+  "next_gate": "IMPLEMENT_TELEMETRY_ONLY_DETAILS_FOR_REJECT_LPSY_INVALIDATED; PRESERVE_C2_TRADING_LOGIC_AND_LEGACY_CSV; METAEDITOR_COMPILE; REPLAY_AB_REGRESSION; CLOSE_HISTORY_SPREAD_COMMISSION_SWAP_DELAY_HTML_AND_RUNTIME_EX5_PROVENANCE_GATES",
   "replay_ab_comparator": {
     "script": "research/replay_ab_compare.py",
     "script_blob_sha": "414aa59597a22825c3edc5fed7a4ee5f5ec3e807",
@@ -138,5 +138,60 @@
       "baseline_tester_log": "39A384DD1F21537E5E8B6CC711126F973B0FA22FD0DD37C5B94575F18F5EA791",
       "ledger_tester_evidence": "EBF310409105A17636840C78DF4760407371432487E5B9DE13B742EE5F4E3BEF"
     }
-  }
+  },
+  "a002_ledger_audit": {
+    "file": "experiments/BOOT_003_A002_event_ledger_v2.csv",
+    "sha256": "77097b3adae7099f0b8199cb58b509f956ade2149ee2d721bf20832c3fd20ba9",
+    "rows": 127,
+    "columns": 28,
+    "structural_identity_checks_passed": 26,
+    "candidate_count": 1,
+    "decision_count": 1,
+    "order_opened_count": 1,
+    "entry_deal_count": 1,
+    "trade_closed_count": 1,
+    "status": "PASS_WITH_WARNINGS",
+    "report": "reports/BOOT003_A002_LEDGER_AUDIT_FA.md",
+    "machine_report": "experiments/BOOT003_A002_LEDGER_AUDIT.json",
+    "source_review": "reports/BOOT003_A002_LEDGER_SOURCE_REVIEW_FA.md",
+    "warnings": [
+      {
+        "id": "W1",
+        "severity": "NOTE",
+        "sequence": 54,
+        "event": "M5_ENTRY_EVALUATION",
+        "finding": "Emitted at end of ProcessEntryBar after PlaceTrade; details refer to the closed M5 bar. This is an emission-order note, not proof of a late decision."
+      },
+      {
+        "id": "W2",
+        "severity": "NOTE",
+        "sequence": 56,
+        "event": "SETUP_RESET",
+        "finding": "Reset from OnTick/ProcessSignalBar is emitted before TRADE_CLOSED from OnTradeTransaction at the same second."
+      },
+      {
+        "id": "W3",
+        "severity": "LOW",
+        "sequence": 126,
+        "event": "REJECT_LPSY_INVALIDATED",
+        "finding": "LogReject is called without details; add telemetry-only diagnostic payload."
+      }
+    ],
+    "source_blob_sha": "0366568d082af3e4fa5854e8ddf9790c94be25c8",
+    "source_review_lines": {
+      "candidate_creation": "306-328,1534-1548",
+      "order_acceptance": "1311-1345",
+      "m5_eval_emission": "1654-1675",
+      "reset": "1702-1705",
+      "lpsy_reject": "1160-1163",
+      "transaction_close": "1911-1948,2041-2060"
+    }
+  },
+  "open_gates": [
+    "Historical EX5 runtime binary provenance: Tester-loaded sizes differ from current local EX5 sizes (A 127938 vs 127900 bytes; B 146391 vs 146328 bytes).",
+    "Bar History synchronization end markers differ by one day: A 2026.11.04, B 2026.11.03.",
+    "Spread mode/value, commissions, swaps and execution delay not independently evidenced.",
+    "A/B HTML reports and MetaEditor compile logs not archived.",
+    "A002 stop-loss exit 1336 points adverse to SL reference needs raw tick/broker history review."
+  ]
 }
