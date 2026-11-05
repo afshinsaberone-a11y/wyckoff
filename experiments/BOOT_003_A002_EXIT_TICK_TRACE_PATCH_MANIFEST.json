@@ -46,5 +46,15 @@
     "Use only historical Strategy Tester; no live account or live orders.",
     "Preserve all strategy and risk inputs from A002; only diagnostics, unique filenames, and RunID differ.",
     "If tester tick/bar counts or history warnings differ, report them and do not claim identical history."
-  ]
+  ],
+  "github_issue": {
+    "number": 14,
+    "url": "https://github.com/afshinsaberone-a11y/wyckoff/issues/14",
+    "status": "OPEN"
+  },
+  "pull_request": {
+    "number": 15,
+    "url": "https://github.com/afshinsaberone-a11y/wyckoff/pull/15",
+    "status": "OPEN_DRAFT"
+  }
 }
