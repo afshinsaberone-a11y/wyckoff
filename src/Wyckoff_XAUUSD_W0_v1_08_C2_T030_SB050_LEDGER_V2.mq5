@@ -107,6 +107,11 @@ input group "=== Event Ledger v2 ==="
 input string          InpLedgerRunID              = "UNASSIGNED"; // Unique ID for every single Tester/Replay run
 input string          InpLedgerFileName            = "Wyckoff_W0_event_ledger_v2.csv";
 
+input group "=== Execution Forensic Trace (read-only; no trading rules) ==="
+input bool             InpEnableExitTickTrace        = false; // Enable only for the A002 forensic rerun
+input datetime         InpExitTickTraceStart         = D'2026.04.24 18:50:00'; // Broker server time
+input datetime         InpExitTickTraceEnd           = D'2026.04.27 01:05:00'; // Broker server time
+
 //------------------------------ Types --------------------------------
 enum ENUM_WYCKOFF_DIRECTION
   {
@@ -207,6 +212,9 @@ long     g_setupCounter = 0;
 int      g_ledgerHandle = INVALID_HANDLE;
 string   g_ledgerRunID = "";
 string   g_ledgerFileName = "";
+int      g_exitTraceHandle = INVALID_HANDLE;
+string   g_exitTraceFileName = "";
+long     g_exitTraceRows = 0;
 long     g_ledgerEventSequence = 0;
 long     g_ledgerRangeSequence = 0;
 long     g_ledgerCycleSequence = 0;
@@ -268,6 +276,118 @@ string LedgerBuildFileName()
    if(length>4 && StringSubstr(base,length-4)==".csv")
       base=StringSubstr(base,0,length-4);
    return base+"_"+g_ledgerRunID+".csv";
+  }
+
+// Optional quote trace for historical Strategy Tester forensics.
+// This function only reads the latest symbol quote and writes a CSV row.
+string ExitTraceBuildFileName()
+  {
+   return "BOOT003_A002_EXIT_TICK_TRACE_"+g_ledgerRunID+".csv";
+  }
+
+void ExitTraceWrite(const string source,
+                    const ulong dealTicket=0,
+                    const ulong orderTicket=0,
+                    const ulong positionId=0,
+                    const long dealTimeMsc=0,
+                    const double dealPrice=0.0,
+                    const long dealReason=-1)
+  {
+   if(g_exitTraceHandle==INVALID_HANDLE)
+      return;
+
+   MqlTick tick;
+   if(!SymbolInfoTick(g_symbol,tick))
+      return;
+
+   datetime tickTime=(datetime)(tick.time_msc/1000);
+   datetime dealTime=(datetime)(dealTimeMsc/1000);
+   bool tickInWindow=(tickTime>=InpExitTickTraceStart &&
+                      tickTime<=InpExitTickTraceEnd);
+   bool dealInWindow=(dealTimeMsc>0 &&
+                      dealTime>=InpExitTickTraceStart &&
+                      dealTime<=InpExitTickTraceEnd);
+   if(!tickInWindow && !dealInWindow)
+      return;
+
+   ulong livePositionTicket=0;
+   long livePositionType=-1;
+   double livePositionSL=0.0;
+   double livePositionTP=0.0;
+   double livePositionVolume=0.0;
+   for(int i=PositionsTotal()-1;i>=0;i--)
+     {
+      ulong ticket=PositionGetTicket(i);
+      if(ticket==0)
+         continue;
+      if(PositionGetString(POSITION_SYMBOL)==g_symbol &&
+         (ulong)PositionGetInteger(POSITION_MAGIC)==InpMagicNumber)
+        {
+         livePositionTicket=(ulong)PositionGetInteger(POSITION_TICKET);
+         livePositionType=PositionGetInteger(POSITION_TYPE);
+         livePositionSL=PositionGetDouble(POSITION_SL);
+         livePositionTP=PositionGetDouble(POSITION_TP);
+         livePositionVolume=PositionGetDouble(POSITION_VOLUME);
+         break;
+        }
+     }
+
+   ENUM_WYCKOFF_DIRECTION traceDirection=g_activeDirection;
+   if(traceDirection==WYCKOFF_NONE && livePositionType==POSITION_TYPE_BUY)
+      traceDirection=WYCKOFF_BUY;
+   else if(traceDirection==WYCKOFF_NONE && livePositionType==POSITION_TYPE_SELL)
+      traceDirection=WYCKOFF_SELL;
+
+   double stopReference=(g_pendingStopPrice>0.0 ? g_pendingStopPrice : livePositionSL);
+   double executableSide=0.0;
+   double signedStopDistancePoints=0.0;
+   string executableSideName="NA";
+   if(traceDirection==WYCKOFF_BUY)
+     {
+      executableSideName="BID";
+      executableSide=tick.bid;
+      if(stopReference>0.0 && g_point>0.0)
+         signedStopDistancePoints=(tick.bid-stopReference)/g_point;
+     }
+   else if(traceDirection==WYCKOFF_SELL)
+     {
+      executableSideName="ASK";
+      executableSide=tick.ask;
+      if(stopReference>0.0 && g_point>0.0)
+         signedStopDistancePoints=(stopReference-tick.ask)/g_point;
+     }
+
+   FileWrite(g_exitTraceHandle,
+             g_ledgerRunID,source,
+             (string)tick.time_msc,
+             TimeToString(tickTime,TIME_DATE|TIME_SECONDS),
+             TimeToString(TimeCurrent(),TIME_DATE|TIME_SECONDS),
+             DoubleToString(tick.bid,g_digits),
+             DoubleToString(tick.ask,g_digits),
+             DoubleToString((tick.ask-tick.bid)/g_point,1),
+             DoubleToString(tick.last,g_digits),
+             (string)tick.volume,
+             DoubleToString(tick.volume_real,2),
+             (string)tick.flags,
+             (string)traceDirection,
+             DoubleToString(stopReference,g_digits),
+             executableSideName,
+             DoubleToString(executableSide,g_digits),
+             DoubleToString(signedStopDistancePoints,1),
+             (string)livePositionTicket,
+             (string)livePositionType,
+             DoubleToString(livePositionVolume,2),
+             DoubleToString(livePositionSL,g_digits),
+             DoubleToString(livePositionTP,g_digits),
+             (string)dealTicket,
+             (string)orderTicket,
+             (string)positionId,
+             (string)dealTimeMsc,
+             DoubleToString(dealPrice,g_digits),
+             (string)dealReason);
+   g_exitTraceRows++;
+   if((g_exitTraceRows%256)==0 || dealTicket>0)
+      FileFlush(g_exitTraceHandle);
   }
 
 void LedgerSetSource(const ENUM_TIMEFRAMES tf,const datetime barOpen)
@@ -1875,6 +1995,42 @@ int OnInit()
            }
         }
      }
+   if(InpEnableExitTickTrace)
+     {
+      if(InpExitTickTraceEnd<=InpExitTickTraceStart)
+        {
+         Print("[Wyckoff W0] Exit trace end must be later than trace start.");
+         return INIT_PARAMETERS_INCORRECT;
+        }
+      g_exitTraceFileName=ExitTraceBuildFileName();
+      if(FileIsExist(g_exitTraceFileName,FILE_COMMON))
+        {
+         Print("[Wyckoff W0] Exit trace file already exists; use a new InpLedgerRunID. File=",
+               g_exitTraceFileName);
+         return INIT_FAILED;
+        }
+      ResetLastError();
+      g_exitTraceHandle=FileOpen(g_exitTraceFileName,
+                                 FILE_WRITE|FILE_CSV|FILE_SHARE_READ|FILE_ANSI|FILE_COMMON,',');
+      if(g_exitTraceHandle==INVALID_HANDLE)
+        {
+         Print("[Wyckoff W0] Cannot create exit trace. Error=",GetLastError());
+         return INIT_FAILED;
+        }
+      FileWrite(g_exitTraceHandle,
+                "RunID","Source","TickTimeMsc","TickTimeServer","ObservedTimeServer",
+                "Bid","Ask","SpreadPoints","Last","TickVolume","TickVolumeReal","TickFlags",
+                "Direction","StopReference","ExecutableSide","ExecutableSidePrice",
+                "SignedStopDistancePoints","LivePositionTicket","LivePositionType",
+                "LivePositionVolume","LivePositionSL","LivePositionTP",
+                "DealTicket","OrderTicket","PositionID","DealTimeMsc","DealPrice","DealReasonCode");
+      FileFlush(g_exitTraceHandle);
+      Print("[Wyckoff W0] Exit trace enabled. File=",
+            TerminalInfoString(TERMINAL_COMMONDATA_PATH)+"\\Files\\"+g_exitTraceFileName,
+            "; start=",TimeToString(InpExitTickTraceStart,TIME_DATE|TIME_SECONDS),
+            "; end=",TimeToString(InpExitTickTraceEnd,TIME_DATE|TIME_SECONDS));
+     }
+
    g_lastSignalBar=iTime(g_symbol,InpSignalTF,0);
    g_lastEntryBar=iTime(g_symbol,InpEntryTF,0);
    ResetSetup("");
@@ -1929,6 +2085,9 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    double dealVolume=HistoryDealGetDouble(trans.deal,DEAL_VOLUME);
    long dealReason=HistoryDealGetInteger(trans.deal,DEAL_REASON);
    long dealType=HistoryDealGetInteger(trans.deal,DEAL_TYPE);
+   long dealTimeMsc=HistoryDealGetInteger(trans.deal,DEAL_TIME_MSC);
+   ExitTraceWrite("DEAL_ADD",trans.deal,trans.order,(ulong)positionId,
+                  dealTimeMsc,dealPrice,dealReason);
    LedgerSetSource(PERIOD_CURRENT,0);
    int ledgerTradeLinkIndex=LedgerFindTradeLink(trans.order,(ulong)positionId);
    if(ledgerTradeLinkIndex>=0)
@@ -2094,11 +2253,18 @@ void OnDeinit(const int reason)
       FileClose(g_ledgerHandle);
       g_ledgerHandle=INVALID_HANDLE;
      }
+   if(g_exitTraceHandle!=INVALID_HANDLE)
+     {
+      FileFlush(g_exitTraceHandle);
+      FileClose(g_exitTraceHandle);
+      g_exitTraceHandle=INVALID_HANDLE;
+     }
    DebugPrint("Deinitialized. Reason="+(string)reason);
   }
 
 void OnTick()
   {
+   ExitTraceWrite("ONTICK");
    if(HasOurPosition())
      {
       g_setup.stage=ST_IN_POSITION;
