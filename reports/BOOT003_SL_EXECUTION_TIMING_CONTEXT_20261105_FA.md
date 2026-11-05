@@ -83,3 +83,8 @@ Timing Audit جدید علت این اختلاف را اثبات نمی‌کند
 این نتیجه فقط یک بررسی زمانی مکمل است. آن را به‌عنوان توضیح قطعی لغزش 1,336 پوینتی، معیار ثابت هزینهٔ اجرای WMMarkets، یا اثبات نبود slippage در Stop Loss استفاده نکنید.
 
 **وضعیت BOOT-003:** Replay A/B همچنان PASS محدود دارد؛ ممیزی Ledger A002 همچنان PASS WITH WARNINGS است؛ علت SL adverse deviation باز می‌ماند.
+
+
+## 8. پیگیری در مخزن Wyckoff
+
+[Issue شمارهٔ 14](https://github.com/afshinsaberone-a11y/wyckoff/issues/14) برای بررسی forensic خروج SL در خود Strategy Tester A002 ثبت شد. نمونهٔ 199 سفارش فقط زمینهٔ زمانی عمومی است؛ برای تعیین علت 1,336 پوینت باید تیک‌های همان اجرای Tester و Deal با Reason=SL بازسازی شوند.
