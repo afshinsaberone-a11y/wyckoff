@@ -174,7 +174,7 @@
         "severity": "LOW",
         "sequence": 126,
         "event": "REJECT_LPSY_INVALIDATED",
-        "finding": "LogReject is called without details; add telemetry-only diagnostic payload."
+        "finding": "Ledger Details is blank; CandidateID/DecisionID and therefore DecisionStatus/ReasonCode are intentionally blank because this rejection occurs before Candidate creation."
       }
     ],
     "source_blob_sha": "0366568d082af3e4fa5854e8ddf9790c94be25c8",
@@ -185,7 +185,8 @@
       "reset": "1702-1705",
       "lpsy_reject": "1160-1163",
       "transaction_close": "1911-1948,2041-2060"
-    }
+    },
+    "reason_code_policy_note": "Do not synthesize CandidateID/DecisionID/ReasonCode for pre-candidate setup rejection events. DecisionStatus and ReasonCode are assigned only to events linked to a created Candidate."
   },
   "open_gates": [
     "Historical EX5 runtime binary provenance: Tester-loaded sizes differ from current local EX5 sizes (A 127938 vs 127900 bytes; B 146391 vs 146328 bytes).",
@@ -199,6 +200,6 @@
     "url": "https://github.com/afshinsaberone-a11y/wyckoff/issues/11",
     "title": "Add LPSY invalidation diagnostics to Ledger v2 without changing legacy C2 stream",
     "status": "OPEN",
-    "scope": "telemetry_only; preserve C2 trade logic and legacy 11-column event stream"
+    "scope": "telemetry_only_details; pre-candidate DecisionStatus/ReasonCode remain blank by design; preserve C2 trade logic and legacy 11-column event stream"
   }
 }
