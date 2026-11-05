@@ -6,6 +6,8 @@
 
 - شاخهٔ تشخیصی: `forensics/a002-exit-tick-trace-20261105`
 - سورس پایه: `src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5`
+- **دانلود مستقیم فایل کامل:** https://raw.githubusercontent.com/afshinsaberone-a11y/wyckoff/forensics/a002-exit-tick-trace-20261105/src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5
+- **کنترل کامل‌بودن:** سورس در مخزن با ابزار دریافت کامل فایل خوانده شد؛ 2,278 خط و blob SHA برابر `6399777c9516a0194816e4408b76709d7b9e9d2c` دارد. پیش‌نمایش صفحهٔ GitHub را با فایل دانلودشده اشتباه نگیرید.
 - تغییر: افزودن ردیاب اختیاری و فقط‌خواندنی Quote در `OnTick` و ثبت متادیتای Deal در `OnTradeTransaction`.
 - پیش‌فرض `InpEnableExitTickTrace=false` است؛ فقط در اجرای تشخیصی تاریخی فعال شود.
 - ردیاب فقط `SymbolInfoTick` را می‌خواند و فایل CSV می‌نویسد؛ هیچ تابع ارسال/اصلاح/بستن سفارش را فراخوانی نمی‌کند.
