@@ -45,9 +45,9 @@
 
 `LogReject("REJECT_LPSY_INVALIDATED");`
 
-پس EV126 در CSV فاقد `ReasonCode` و `Details` است. بلافاصله پس از آن `ResetSetup("LPSY invalidated")` اجرا می‌شود.
+پس EV126 در CSV فاقد `Details` است. در همین ردیف `CandidateID` و `DecisionID` نیز خالی‌اند، چون invalidation در مرحلهٔ LPSY و پیش از ایجاد Candidate رخ می‌دهد. سیاست `LedgerDecisionStatus` فقط برای رخدادهای متصل به Candidate، DecisionStatus/ReasonCode می‌سازد؛ بنابراین خالی‌بودن ReasonCode/DecisionStatus در EV126 صحیح است و نباید شناسه یا تصمیم مصنوعی تولید شود. بلافاصله پس از آن `ResetSetup("LPSY invalidated")` اجرا می‌شود.
 
-**اقدام پیشنهادی، فقط برای telemetry:** فراخوانی `LogReject` باید یک payload تشخیصی کوتاه اضافه کند؛ حداقل close، `strengthBreakLevel`، ATR، `InpLPSInvalidationATR` و مقدار آستانهٔ invalidation. منطق شرط و مسیر Reset نباید تغییر کند. پس از تغییر، MetaEditor compile و تست A/B با خروجی legacy برابر لازم است.
+**اقدام پیشنهادی، فقط برای telemetry:** فقط `Details` در Event Ledger 28 ستونی باید payload تشخیصی دریافت کند: close، `strengthBreakLevel`، ATR، `InpLPSInvalidationATR` و آستانهٔ invalidation. `ReasonCode` و `DecisionStatus` به دلیل نبود Candidate باید خالی بمانند. مقدار Details در Legacy CSV یازده‌ستونی نیز باید خالی حفظ شود. منطق شرط و مسیر Reset نباید تغییر کند. پس از تغییر، MetaEditor compile و تست A/B با خروجی legacy برابر لازم است.
 
 ## 6. تطبیق مستقل CSV
 
@@ -72,7 +72,7 @@
 
 1. CSV و audit report در مخزن آرشیو شوند.
 2. W1 و W2 در runbook به‌عنوان ترتیب emission مستند شوند، بدون تغییر رفتار معاملاتی.
-3. W3 به‌عنوان اصلاح telemetry-only در یک commit مستقل پیاده‌سازی شود.
+3. W3 به‌عنوان اصلاح telemetry-only برای Details در یک commit مستقل پیاده‌سازی شود؛ ReasonCode برای EV126 خالی باقی بماند.
 4. نسخهٔ اصلاح‌شده باید در MetaEditor کامپایل شود؛ سپس validator، تست واقعی MT5، و comparator A/B روی همان بازه اجرا شوند.
 5. EX5 hash زمان اجرای قدیمی، تفاوت یک‌روزهٔ انتهای Bar History، HTML reports و compile logs همچنان Gateهای جداگانه‌اند.
 
