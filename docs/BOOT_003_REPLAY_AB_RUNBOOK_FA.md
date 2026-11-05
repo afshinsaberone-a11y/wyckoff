@@ -168,3 +168,6 @@ Run A با Baseline C2 از main و Run B با Ledger v2 (RunID برابر WM202
 ## 10. Timing Audit تکمیلی برای SL
 
 نتیجهٔ aggregate از 199 سفارش بازار در [گزارش زمینهٔ اجرای SL](../reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md) ثبت شده است. این sample برای زمان‌بندی عمومی سفارش مفید است، اما Position/Exit Deal A002 را شناسایی نمی‌کند و جایگزین بررسی `DEAL_REASON_SL` نیست. پیش از نتیجه‌گیری دربارهٔ لغزش 1,336 پوینتی، یک مسیر مستقل trigger-to-fill فقط خواندنی لازم است.
+
+
+پیگیری علت خروج SL در A002 با اختلاف 1,336 پوینت در [Issue شمارهٔ 14](https://github.com/afshinsaberone-a11y/wyckoff/issues/14) ثبت شد. منبع تشخیص باید تیک‌های همان اجرای Strategy Tester باشد؛ نتیجهٔ aggregate 199 سفارش از حساب/تاریخچهٔ مستقل جایگزین این داده نیست.
