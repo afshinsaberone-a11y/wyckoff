@@ -154,3 +154,8 @@ Gate مقایسهٔ رفتاری BOOT-003 برای همین Replay با وضعی
 ### 10.1 پیگیری اصلاح telemetry
 
 برای افزودن جزئیات EV126 بدون تغییر منطق معاملاتی و بدون تغییر CSV مشترک Legacy، [Issue شمارهٔ 11 در GitHub](https://github.com/afshinsaberone-a11y/wyckoff/issues/11) ایجاد شد. این کار هنوز اجرا یا کامپایل نشده است؛ پذیرش آن منوط به حفظ برابری A/B و صفرشدن هشدار EV126 است.
+
+
+### 10.2 اصلاح telemetry در Draft PR
+
+اصلاح Details-only برای EV126 در [Draft PR شمارهٔ 13](https://github.com/afshinsaberone-a11y/wyckoff/pull/13) روی شاخهٔ `fix/boot003-lpsy-ledger-diagnostics-rebased` قرار دارد. PR قبلی شمارهٔ 12 به‌علت عقب‌ماندن شاخه بسته و با شاخه‌ای بر پایهٔ head فعلی جایگزین شد. این اصلاح هنوز در MetaEditor کامپایل یا در MT5 اجرا نشده است.
