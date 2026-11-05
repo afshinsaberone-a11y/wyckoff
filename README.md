@@ -102,3 +102,5 @@
 
 
 - [BOOT-003 — زمینهٔ زمانی اجرای سفارش و بررسی لغزش SL](reports/BOOT003_SL_EXECUTION_TIMING_CONTEXT_20261105_FA.md)
+
+- [پیگیری forensic خروج SL در اجرای A002 — Issue #14](https://github.com/afshinsaberone-a11y/wyckoff/issues/14)
