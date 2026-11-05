@@ -1,0 +1,147 @@
+{
+  "workstream": "BOOT-003",
+  "created_date": "2026-11-05",
+  "note": "The first 15 terminal artifact hashes below are transcribed from the user's PowerShell Get-FileHash output. Their binary/text contents were not all uploaded to this runtime. Hashes for the A002 ledger and audit reports are separately recorded in the audit artifacts.",
+  "artifacts": [
+    {
+      "name": "A_C2_baseline_complete.mq5",
+      "bytes": 69231,
+      "sha256": "64F0C690195405876D2B81BF14C39EF885EC69D8D86295D0B6ACC8BC10EAE15D",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "A_C2_baseline_complete.mq5 (Experts copy)",
+      "bytes": 69231,
+      "sha256": "64F0C690195405876D2B81BF14C39EF885EC69D8D86295D0B6ACC8BC10EAE15D",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "A_C2_baseline_complete.ex5",
+      "bytes": 127900,
+      "sha256": "7ADEDED61B14D97B5222B27264F5E075F4D9DB90E585AE2F1D61261527CB98F0",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5",
+      "bytes": 86942,
+      "sha256": "870BFC7C61DC566C075385CF28EA7D3C5D8C812A17B23CFDD7C17DF79156EA9E",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.ex5",
+      "bytes": 146328,
+      "sha256": "A88EE1D9C57577FD4D382CF9BEA8B91D0BB58B697409C6028112C654B73C7BE1",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "A_C2.set",
+      "bytes": 6864,
+      "sha256": "FF8CFB53D19E58287B998B426E9A753A7C94CBA9F04F4399105CAAFD7F876839",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "B_LEDGER_V2.set",
+      "bytes": 7006,
+      "sha256": "C71D4347745D183938FBA301AB3C601B05DD9F27E677CC1DAF90DE429B1E9D4E",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "A_C2_utf8.set",
+      "bytes": 3434,
+      "sha256": "E54AE514510E99D03E08437EFABBF819088EBFEE73CB7671AB2BDEF91279D51A",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "B_LEDGER_V2_utf8.set",
+      "bytes": 3505,
+      "sha256": "C31F0ABE0C3654B87ED4FDE76DE67FE50FD7C87C6AAC9AB5B54831AC1D10237A",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "A_C2_legacy_runA.csv",
+      "bytes": 24900,
+      "sha256": "599FE903F9552FE107C2957D2B3F62703F8F014049321CF9C332BB54F898B829",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "B_LEDGER_V2_legacy.csv",
+      "bytes": 26286,
+      "sha256": "78E466121BCC355423924C84B2D27065FFD1971FB45E935E5A3D485B1608C427",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "A_C2_tester_20261105.log",
+      "bytes": 70196,
+      "sha256": "39A384DD1F21537E5E8B6CC711126F973B0FA22FD0DD37C5B94575F18F5EA791",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "B_A002_tester_evidence.txt",
+      "bytes": 37346,
+      "sha256": "EBF310409105A17636840C78DF4760407371432487E5B9DE13B742EE5F4E3BEF",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "replay_ab_compare.py",
+      "bytes": 13044,
+      "sha256": "1FD072A8F408AE9EE7E1439194B57DA9D82DC5CAFF8969DD562BFF0F44897A03",
+      "provenance": "user_terminal_sha256"
+    },
+    {
+      "name": "BOOT003_AB_compare.json",
+      "bytes": 3145,
+      "sha256": "1454E22934DBF989940C9043E364F8AF9928E2416BF5D0F36CB40B8EC35A2A45",
+      "provenance": "user_terminal_sha256"
+    }
+  ],
+  "runtime_binary_caveat": {
+    "A_tester_loaded_bytes": 127938,
+    "A_current_local_ex5_bytes": 127900,
+    "A_difference_bytes": 38,
+    "B_tester_loaded_bytes": 146391,
+    "B_current_local_ex5_bytes": 146328,
+    "B_difference_bytes": 63,
+    "meaning": "Current local EX5 SHA-256 values do not prove identity with the historical binaries loaded by Tester."
+  },
+  "replay_scope": {
+    "legacy_rows_each": 126,
+    "legacy_diff_rows": 0,
+    "shared_ea_input_keys": 67,
+    "shared_ea_input_mismatches": 0,
+    "broker": "WMMarkets-Demo",
+    "symbol": "XAUUSD",
+    "period": "M5",
+    "model": "Every tick based on real ticks",
+    "from_server_time": "2026.01.02 00:00",
+    "to_server_time": "2026.11.04 00:00",
+    "initial_deposit_usd": 10000,
+    "leverage": "1:200",
+    "ticks_each": 64536522,
+    "bars_each": 59676,
+    "final_balance_usd_each": 9937.56,
+    "history_sync_end_A": "2026.11.04",
+    "history_sync_end_B": "2026.11.03"
+  },
+  "ledger_audit": {
+    "run_id": "WM20261104A002",
+    "rows": 127,
+    "columns": 28,
+    "structural_checks_passed": 26,
+    "warnings": [
+      "EV54 M5_ENTRY_EVALUATION follows ORDER_OPENED in emission sequence; source shows evaluation snapshot is logged at end of ProcessEntryBar after PlaceTrade.",
+      "EV56 SETUP_RESET precedes EV57 TRADE_CLOSED at same timestamp; events originate from separate OnTick/ProcessSignalBar and OnTradeTransaction paths.",
+      "EV126 REJECT_LPSY_INVALIDATED has no Details or ReasonCode because LogReject is called without details."
+    ],
+    "candidate_count": 1,
+    "decision_count": 1,
+    "order_opened_count": 1,
+    "entry_deal_count": 1,
+    "trade_closed_count": 1,
+    "status": "PASS_WITH_WARNINGS"
+  },
+  "scope_limits": [
+    "No profitability claim.",
+    "Hashes for files not uploaded to this runtime are transcribed from the user's terminal output.",
+    "Historical EX5 identity, HTML reports, compile logs, complete spread/commission/swap/delay settings and exact tick-level explanation of the SL fill remain open."
+  ]
+}
