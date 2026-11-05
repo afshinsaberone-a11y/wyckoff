@@ -84,7 +84,7 @@ Replay واقعی A/B اجرا شد. Comparator رسمی، جریان Legacy ی�
 
 اعتبارسنجی قبلی Ledger v2 برای RunID برابر WM20261104A002 نیز PASS بود: 127 ردیف، 28 ستون، 127 EventID یکتا، یک Candidate، یک Candidate creation، یک Decision، یک Order opened، یک Entry deal، یک Trade closed، دو Deal event، صفر خطا و صفر هشدار.
 
-Validator صحت ساختاری و پیوند هویتی CSV را می‌سنجد؛ ممیزی معنایی Candidate/Decision و تطبیق مستقل با Trade History جداگانه باقی می‌ماند.
+Validator ساختاری قبلی برای A002 بدون خطا و هشدار بود. ممیزی مستقل معنایی انجام شد و وضعیت آن PASS WITH WARNINGS است؛ 26 کنترل ساختاری/هویتی PASS شدند و سه هشدار در گزارش مستقل ثبت شده‌اند. پیوند Candidate → Decision → Order → Deal → Position برای یک Candidate مشاهده‌شده قابل ردیابی است، اما کامل‌بودن ثبت همهٔ Candidateهای ممکن اثبات نشده است. گزارش: [ممیزی Ledger A002](../reports/BOOT003_A002_LEDGER_AUDIT_FA.md) و [بازبینی مسیرهای سورس](../reports/BOOT003_A002_LEDGER_SOURCE_REVIEW_FA.md).
 
 ## 6. هویت سورس‌ها
 
@@ -121,8 +121,31 @@ Git Blob SHA محاسبه‌شده از هر دو فایل محلی دقیقاً
 3. Spread mode/value، Commission، Swap و Execution delay از شواهد موجود به‌طور مستقل تطبیق داده نشده‌اند.
 4. فایل HTML هر دو اجرا آرشیو نشده است.
 5. خروجی Compile نسخهٔ A به‌صورت متنی گزارش شده (0 errors و 0 warnings)، اما Compile log آرشیو نشده؛ Compile log متناظر B نیز در دسترس نیست.
-6. ممیزی معنایی Candidate، Decision، ReasonCode و اتصال Order/Deal/Position از CSV بیست‌وهشت‌ستونی A002 باقی است.
+6. ممیزی معنایی A002 انجام شده است؛ سه هشدار آن شامل emission دیرهنگام snapshot ارزیابی M5 نسبت به ORDER_OPENED، ترتیب SETUP_RESET/TRADE_CLOSED در دو مسیر callback، و خالی بودن جزئیات REJECT_LPSY_INVALIDATED است. دو مورد اول در بازبینی سورس به‌عنوان تفاوت ترتیب emission/callback مستند شدند؛ مورد سوم نقص telemetry قابل اصلاح است.
 
 ## 9. تصمیم
 
 Gate مقایسهٔ رفتاری BOOT-003 برای همین Replay با وضعیت محدود PASS ثبت می‌شود: جریان Legacy برابر، ورودی‌های مشترک برابر و شرایط اصلی Tester هم‌تراز هستند. کل ممیزی BOOT-003 هنوز بسته نیست. پیش از تأیید داده برای آموزش W1/W2/W3، موارد باز بالا باید بررسی و مستند شوند.
+
+
+## 10. ممیزی مستقل Event Ledger v2 و بازبینی سورس — 2026-11-05
+
+فایل خام 28 ستونی A002 با نام `experiments/BOOT_003_A002_event_ledger_v2.csv` به مخزن اضافه شد. SHA-256 آن:
+
+`77097b3adae7099f0b8199cb58b509f956ade2149ee2d721bf20832c3fd20ba9`
+
+نتیجهٔ ممیزی: 127 ردیف، 28 ستون، 26 کنترل ساختاری/هویتی PASS، یک Candidate، یک Decision پذیرفته‌شده، یک Order، یک Entry Deal، یک Position و یک Trade Closed. ترتیب EventSequence پیوسته است و timestampها غیرکاهشی‌اند. وضعیت مستقل: **PASS WITH WARNINGS**.
+
+سه یافته:
+1. EV54 `M5_ENTRY_EVALUATION` بعد از EV53 `ORDER_OPENED` نوشته شده است. بازبینی سورس نشان داد snapshot ارزیابی در انتهای `ProcessEntryBar`، پس از اجرای `PlaceTrade`، ثبت می‌شود؛ جزئیات آن به کندل 18:50 اشاره دارد در حالی که timestamp ثبت 18:55 است. این تفاوت emission order است و به‌تنهایی خطای تصمیم معاملاتی را ثابت نمی‌کند.
+2. EV56 `SETUP_RESET` پیش از EV57 `TRADE_CLOSED` در یک timestamp آمده است. سورس دو مسیر جدا را نشان می‌دهد: بررسی state در `OnTick/ProcessSignalBar` و ثبت Deal در `OnTradeTransaction`. ترتیب فعلی باید در قرارداد Ledger مستند شود؛ فعلاً منطق state تغییر نکند.
+3. EV126 `REJECT_LPSY_INVALIDATED` بدون `ReasonCode` و `Details` است. در سورس، `LogReject` بدون payload تشخیصی فراخوانی می‌شود. اصلاح telemetry-only با افزودن close، threshold/level و ATR پیشنهاد می‌شود؛ شرط معاملاتی نباید تغییر کند.
+
+گزارش‌ها و داده‌ها:
+- [CSV خام A002](../experiments/BOOT_003_A002_event_ledger_v2.csv)
+- [گزارش ممیزی فارسی](../reports/BOOT003_A002_LEDGER_AUDIT_FA.md)
+- [گزارش ماشین‌خوان ممیزی](../experiments/BOOT003_A002_LEDGER_AUDIT.json)
+- [بازبینی مسیرهای سورس](../reports/BOOT003_A002_LEDGER_SOURCE_REVIEW_FA.md)
+- [Manifest هش‌های SHA-256](../experiments/BOOT003_SHA256_MANIFEST_20261105.json)
+
+علت قیمت خروج 4698.78 در برابر SL مرجع 4712.14 (معادل 1336 پوینت adverse deviation) هنوز با تیک خام/History بروکر بررسی نشده است. هویت EX5 زمان اجرای تاریخی، HTML reports، compile logs و جزئیات Spread/Commission/Swap/Delay نیز Gateهای باز هستند. نتیجهٔ این Replay ادعای سودآوری نیست.
