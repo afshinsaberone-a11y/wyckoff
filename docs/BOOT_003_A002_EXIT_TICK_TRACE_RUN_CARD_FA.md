@@ -88,6 +88,8 @@ Start/End به **ساعت سرور WMMarkets** هستند، نه ساعت محل
 
 در هر سطر، `TickTimeMsc` زمان خود Quote است و `DealTimeMsc` زمان Deal از History است. `ObservedTimeServer` زمان مشاهدهٔ callback را ثبت می‌کند؛ برای ترتیب، هر سه را کنار هم بررسی کنید. Quote خوانده‌شده در callback به‌تنهایی جایگزین دنبالهٔ OnTick نیست.
 
+**هشدار کامل‌بودن Tick Trace:** در MQL5 اگر رویداد `NewTick` قبلی هنوز در صف باشد یا `OnTick` در حال پردازش باشد، رویداد جدید ممکن است به صف EA اضافه نشود. چون این Patch در هر `OnTick`، `SymbolInfoTick`، پیمایش Positionها و `FileWrite` اجرا می‌کند، CSV حاصل را باید «نمونه‌های Quote مشاهده‌شده در callbackها» دانست، نه تضمیناً تمام Tickهای منبع. بنابراین از آن به‌تنهایی برای تعیین قطعی اولین Tick عبور از SL استفاده نکنید. برای نسخهٔ دقیق‌تر، برداشت محدود و chunk‌شدهٔ `CopyTicksRange` با `COPY_TICKS_INFO` از همان تاریخچهٔ Strategy Tester پیشنهاد می‌شود؛ تعداد بازگشتی، `GetLastError`، خطای buffer و بازهٔ زمانی هر chunk باید ثبت شود. این برداشت تاریخچه هنوز در کد فعلی PR #15 پیاده‌سازی نشده است و باید جداگانه کامپایل و اعتبارسنجی شود. مرجع: https://www.mql5.com/en/docs/event_handlers/ontick و https://www.mql5.com/en/docs/series/copyticksrange
+
 ## 6. تفکیک نتیجه‌ها
 
 - **Gap محتمل:** آخرین Bid قبل از وقفه بالای SL بوده و اولین Bid بعد از وقفه از قبل به‌طور معنادار پایین‌تر از SL باز شده است؛ Deal نیز با همان Quote/حرکت همخوانی دارد.
