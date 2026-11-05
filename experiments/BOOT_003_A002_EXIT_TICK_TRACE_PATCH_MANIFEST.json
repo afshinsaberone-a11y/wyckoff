@@ -1,0 +1,50 @@
+{
+  "workstream": "BOOT-003",
+  "task": "A002_STOP_LOSS_EXIT_TICK_TRACE",
+  "status": "SOURCE_PATCH_COMMITTED_STATIC_CHECKS_ONLY_METAEDITOR_AND_TESTER_PENDING",
+  "date": "2026-11-05",
+  "branch": "forensics/a002-exit-tick-trace-20261105",
+  "base_branch": "feature/w0-event-ledger-v2",
+  "base_source": "src/Wyckoff_XAUUSD_W0_v1_08_C2_T030_SB050_LEDGER_V2.mq5",
+  "base_source_blob_sha": "0366568d082af3e4fa5854e8ddf9790c94be25c8",
+  "patched_source_blob_sha": "6399777c9516a0194816e4408b76709d7b9e9d2c",
+  "patch_commit": "b3a317f75f9d56e556bc29acbd2a0a3fe77a6fda",
+  "run_card": "docs/BOOT_003_A002_EXIT_TICK_TRACE_RUN_CARD_FA.md",
+  "trace": {
+    "enabled_by_default": false,
+    "callback_sources": [
+      "OnTick",
+      "OnTradeTransaction:DEAL_ADD"
+    ],
+    "output": "BOOT003_A002_EXIT_TICK_TRACE_<RunID>.csv",
+    "window_server_time": [
+      "2026.04.24 18:50:00",
+      "2026.04.27 01:05:00"
+    ],
+    "executable_side_for_buy": "BID",
+    "executable_side_for_sell": "ASK",
+    "trading_logic_changed": false,
+    "order_send_or_modify_added": false
+  },
+  "tester_replay": {
+    "broker_server": "WMMarkets-Demo",
+    "symbol": "XAUUSD",
+    "period": "M5",
+    "model": "Every tick based on real ticks",
+    "from_server_time": "2026.01.02 00:00",
+    "to_server_time": "2026.11.04 00:00",
+    "deposit": "10000 USD",
+    "leverage": "1:200",
+    "prior_reference_ticks": 64536522,
+    "prior_reference_bars": 59676,
+    "run_id": "WM20261105A003TRACE",
+    "compile_status": "NOT_RUN",
+    "tester_status": "NOT_RUN"
+  },
+  "guardrails": [
+    "Do not merge before MetaEditor compile and same-settings MT5 Strategy Tester run.",
+    "Use only historical Strategy Tester; no live account or live orders.",
+    "Preserve all strategy and risk inputs from A002; only diagnostics, unique filenames, and RunID differ.",
+    "If tester tick/bar counts or history warnings differ, report them and do not claim identical history."
+  ]
+}
