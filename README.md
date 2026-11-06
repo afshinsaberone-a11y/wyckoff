@@ -11,6 +11,10 @@
 - [برآورد پیشرفت با جزئیات](docs/PROJECT_PROGRESS_ESTIMATE_FA.md)
 - [معماری ده‌لایه پروژه](docs/PROJECT_ARCHITECTURE_FA.md)
 
+## نقشه اجرایی ساده‌شده — 2026-11-06
+- [نقشه راه کوتاه‌شده ایجنت‌ها و مراحل پروژه](docs/STREAMLINED_AGENT_ROADMAP_FA.md) — ۶ نقش فعال، حذف Gateهای تکراری، W3 مشروط و تخمین زمان جدید.
+- سند قدیمی [BOOT-001 تا BOOT-007](docs/FINANCIAL_ML_CORE_PLUS_BOOTSTRAP_PLAN_FA.md) فقط برای سوابق و جزئیات تاریخی نگه داشته شده است.
+
 ## مستندات مدیریتی و فنی
 - [تاریخچه بک‌تست](docs/BACKTEST_HISTORY_FA.md)
 - [فهرست فایل‌ها و انتقال](docs/FILE_REGISTER_FA.md)
