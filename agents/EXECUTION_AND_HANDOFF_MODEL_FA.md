@@ -1,78 +1,57 @@
-# مدل استقرار، اجرا و تحویل بین ایجنت‌ها
+# مدل ساده استقرار و تحویل نقش‌های Wyckoff
 
-نسخه: 1.0-draft  
-وضعیت: طرح عملیاتی؛ هیچ Agent runner یا محیط مستقل هنوز مستقر نشده است.
+**نسخه:** 2.0 — 2026-11-06  
+**وضعیت:** طرح استقرار؛ هیچ runner مستقل و سرویس خودمختار دائمی هنوز مستقر نشده است.  
+**نقشه اجرایی:** [STREAMLINED_AGENT_ROADMAP_FA.md](../docs/STREAMLINED_AGENT_ROADMAP_FA.md)
 
-## 1. نقش منطقی در برابر Agent فعال
+> این سند جایگزین طرح ۹ نقش/AGENT_04 جداگانه است. نسخه قبلی فقط در تاریخچه Git حفظ می‌شود.
 
-فایل‌های System Prompt تعریف می‌کنند هر نقش چه مسئولیتی دارد؛ اما به‌تنهایی یک عامل خودکار را مستقر نمی‌کنند. برای استقرار واقعی هر نقش به runner، محیط فایل، ابزارهای مجاز، مجوز GitHub، ثبت اجرا، کنترل هزینه و مسیر تأیید انسانی نیاز است.
+## 1. ساختار فعال
 
-پیشنهاد می‌شود در شروع از orchestrator مرکزی و jobهای محدود و قابل بازتولید استفاده شود. لازم نیست ۹ مدل مستقل اجرا شوند؛ جداسازی مسئولیت و مجوز از تعداد مدل‌ها مهم‌تر است.
+شش نقش Agent تعریف شده‌اند: AGENT_00، AGENT_01، AGENT_02، AGENT_03، W1 و W2. W0 ربات پایه ثابت است و Agent هوش مصنوعی محسوب نمی‌شود. W3 تا عبور W1/W2 از ارزیابی مستقل خارج از نمونه معلق است. وظایف AGENT_04 در AGENT_03 ادغام شده‌اند.
 
-## 2. جداسازی محیط و شاخه
+این نقش‌ها به معنی شش مدل یا شش پردازه مستقل نیستند؛ می‌توانند با یک مدل پایه و prompt/tool permissions تفکیک‌شده اجرا شوند. جداسازی مجوز و artifact مهم‌تر از تعداد مدل‌هاست.
 
-الگوی شاخه:
-agent/<agent-id>/<task-id>
+## 2. مسیر کار
 
-مثال:
-- agent/W0/BOOT-003-event-ledger
-- agent/W1/EXP-W1-FOLD-01
-- agent/AGENT_03/AUDIT-EXP-001
+1. AGENT_00 یک Issue با هدف، ورودی، مالک، معیار پذیرش و stop condition تعیین می‌کند.
+2. Agent مسئول روی Branch محدود کار می‌کند و فقط artifactهای لازم را تولید می‌کند.
+3. AGENT_02 در موارد مربوط به اجرا، Source/EX5/SET/Journal و هزینه‌ها را تطبیق می‌دهد.
+4. AGENT_03 خروجی و Gate داده/Label/Fold را مستقلاً ممیزی می‌کند.
+5. تصمیم Gate و merge حساس با کنترل انسانی انجام می‌شود.
 
-قواعد:
-1. Baseline با tag یا commit مشخص و read-only نگهداری شود.
-2. هر Agent در شاخه کاری خودش تغییر دهد.
-3. هیچ Agent مستقیماً روی main commit نکند.
-4. تحویل کد از طریق Pull Request با لینک آزمایش و چک‌لیست باشد.
-5. Auditor دسترسی read-only به artifactهای مورد ممیزی داشته باشد.
-6. Governance مسئول پذیرش پروتکل و تصمیم Gate باشد؛ merge نهایی با کنترل انسانی انجام شود.
-7. داده خام immutable باشد؛ هر پاک‌سازی باید در لایه processed و با log انجام شود.
+**قاعده اصلی:** در هر زمان فقط یک اولویت اجرایی اصلی فعال است. W1/W2 می‌توانند پس از آماده‌شدن Dataset در مرحله مدل‌سازی موازی شوند.
 
-## 3. سطوح دسترسی پیشنهادی
+## 3. حدود دسترسی
 
-| نقش | خواندن | نوشتن | ممنوع |
-|---|---|---|---|
-| AGENT_00 | همه manifestها و وضعیت‌ها | task/registry | تغییر کد استراتژی و تأیید ممیزی |
-| W0 | داده و قرارداد | فقط شاخه W0 | تغییر main و استفاده از HMM/ML |
-| W1 | W0 ledger و Train folds | artifacts مدل W1 | Test/OOS fit و تغییر W0 |
-| W2 | Candidate/Feature/Label مجاز | artifacts مدل W2 | حذف Candidate و تغییر execution |
-| W3 | artifacts Freezeشده W1/W2 | artifacts ترکیبی | آموزش مجدد روی OOS |
-| AGENT_01 | raw data | processed data و ledger | بازنویسی raw data |
-| AGENT_02 | داده، کد و config | گزارش اجرا و replay tests | تغییر قواعد سیگنال |
-| AGENT_03 | همه شواهد | فقط Audit Report | تغییر artifact تحت ممیزی |
-| AGENT_04 | همه manifestها | protocol/gate/change log | دست‌کاری نتایج خام |
+| نقش | مجوز اصلی | ممنوع |
+|---|---|---|
+| AGENT_00 | هماهنگی Issue/manifest | تغییر W0 یا تأیید ممیزی |
+| AGENT_01 | داده خام read-only، processed data و Ledger | بازنویسی raw یا جعل Candidate/Label |
+| AGENT_02 | فایل‌های اجرا و هزینه‌ها؛ گزارش/Replay | تغییر قواعد سیگنال |
+| AGENT_03 | read-only شواهد و صدور Audit/Gate | تأیید کدی که خودش نوشته بدون ممیزی مستقل |
+| W1 | Train folds و artifact HMM | fit روی Validation/Test/OOS |
+| W2 | Candidate/Feature/Label مجاز و artifact ML | حذف Candidate یا fit روی Test/OOS |
+| W0 | فقط Baseline ثابت و branch مجاز | تغییر main، ریسک یا سفارش زنده |
 
-هیچ نقش پژوهشی به credentials، API token حساب معاملاتی، یا اجازه ارسال سفارش واقعی نیاز ندارد.
+هیچ نقش به اعتبارنامه حساب، کلید خصوصی یا دسترسی ارسال سفارش واقعی نیاز ندارد.
 
-## 4. چرخه یک Job
+## 4. تحویل و بازتولید
 
-1. AGENT_00 یک Task با ورودی، هدف، مجوز و معیار پذیرش مشخص صادر می‌کند.
-2. AGENT_04 تأیید می‌کند Task با پروتکل Freezeشده سازگار است.
-3. Agent مسئول در شاخه و محیط مجزا اجرا می‌کند.
-4. خروجی‌ها با manifest و checksum ذخیره می‌شوند.
-5. Agent تحویل‌دهنده نتیجه را به شکل COMPLETE، BLOCKED یا FAILED گزارش می‌کند.
-6. AGENT_03 در موارد لازم خروجی را مستقل ممیزی می‌کند.
-7. AGENT_04 وضعیت Gate را ثبت می‌کند؛ merge یا عبور حساس با تأیید انسانی است.
+هر تحویل باید شامل این موارد باشد:
+- issue_id / task_id و agent_id
+- status: COMPLETE / BLOCKED / FAILED / WAITING
+- branch و commit SHA
+- ورودی‌ها، SET/config/data hashes
+- artifact links و checksum
+- تست‌های واقعی اجراشده و نتیجه
+- limitations، UNKNOWNها و next action
 
-## 5. قرارداد تحویل
+اگر MT5 یا داده خام در دسترس نیست، Agent باید BLOCKED ثبت کند؛ نه اینکه اجرای انجام‌نشده را PASS اعلام کند.
 
-هر تحویل باید حداقل شامل این موارد باشد:
-- task_id، agent_id، experiment_id
-- status، objective، summary
-- inputs و نسخه/هش هر ورودی
-- outputs و مسیر artifactها
-- code_commit، data_hash، config_hash، model_hash
-- checks_run و نتیجه هر تست
-- limitations، open_findings
-- next_action، requested_gate
+## 5. امنیت و کنترل انسانی
 
-ساختار جزئی در [Agent Handoff Schema](../contracts/AGENT_HANDOFF_SCHEMA_FA.md) آمده است.
-
-## 6. قابلیت بازتولید و امنیت
-
-- seed، نسخه کتابخانه‌ها، محیط اجرا و timestamp ذخیره شوند.
-- فایل خام، log و گزارش نهایی با checksum پیوند بخورند.
-- secrets در GitHub، log یا Prompt قرار نگیرند.
-- داده و خروجی‌ها با حداقل دسترسی و سیاست نگهداری مناسب ذخیره شوند.
-- اجرای Tester یا آموزش مدل بدون manifest معتبر «نتیجه رسمی» محسوب نشود.
-- اگر runner یا ابزار موردنیاز موجود نیست، Agent باید BLOCKED بدهد و دلیل را ثبت کند؛ نباید نتیجه را شبیه‌سازی یا جعل کند.
+- secrets در GitHub، log یا prompt ذخیره نشوند.
+- raw data immutable بماند؛ هر تبدیل در لایه processed با manifest انجام شود.
+- بدون manifest معتبر، Tester یا model result رسمی محسوب نشود.
+- هیچ Agent مجاز به معامله زنده، تغییر بی‌اجازه ریسک یا override کردن کنترل‌های W0 نیست.
